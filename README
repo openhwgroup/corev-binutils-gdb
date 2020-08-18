@@ -1,3 +1,21 @@
+		   CORE-V Binutils and GDB Development
+
+NOTE: This is not the standard GNU binutils/GDB. For that repository go to
+https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git.
+
+This is the repository for CORE-V binutils and GDB development prior to
+submitting for inclusion upstream. It has only two branches
+
+1. development - this is where the active development continues. This branch
+tracks upstream FSF binutils-gdb and incorporates changes for CORE-V. It
+should always compile and pass tests.
+
+2. stable - this branch is an occasional snapshot of the development branch,
+at points of significant CORE-V feature enhancement.  This branch has always
+been thoroughly tested.
+
+The remainder of this file is the standard FSF README file for binutils-gdb
+
 		   README for GNU development tools
 
 This directory contains various GNU compilers, assemblers, linkers, 
