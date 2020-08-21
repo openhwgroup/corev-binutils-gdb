@@ -1,0 +1,12 @@
+2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
+
+	* ld-riscv-elf/ld-riscv-elf.exp: Added CORE-V hardware loop
+	tests.
+	* ld-riscv-elf/cv-hwloop-starti.s: Added new test.
+	* ld-riscv-elf/cv-hwloop-starti.d: Likewise.
+	* ld-riscv-elf/cv-hwloop-endi.d: Likewise.
+	* ld-riscv-elf/cv-hwloop-endi.s: Likewise.
+	* ld-riscv-elf/cv-hwloop-setup.d: Likewise.
+	* ld-riscv-elf/cv-hwloop-setup.s: Likewise.
+	* ld-riscv-elf/cv-hwloop-setupi.d: Likewise.
+	* ld-riscv-elf/cv-hwloop-setupi.s: Likewise.

@@ -2,6 +2,13 @@
    Copyright (C) 2011-2020 Free Software Foundation, Inc.
    Contributed by Andrew Waterman
 
+   Modified for CORE-V by:
+   Mary Bennett (mary.bennett@embecosm.com)
+   Pietra Ferreira (pietra.ferreira@embecosm.com)
+   Jessica Mills (jessica.mills@embecosm.com)
+
+   Some of these changes are (C) Open Hardware Group, pending FSF assignment.
+
    This file is part of GDB, GAS, and the GNU binutils.
 
    GDB, GAS, and the GNU binutils are free software; you can redistribute
@@ -843,6 +850,23 @@
 #define CSR_MCONTEXT 0x7a8
 #define CSR_SCONTEXT 0x7aa
 #endif /* RISCV_ENCODING_H.  */
+
+/* CORE-V Specific Instructions  */
+/* Hardware loops  */
+#define MASK_HWLP_STARTI 0x000ff07f
+#define MASK_HWLP_ENDI   0x000ff07f
+#define MASK_HWLP_COUNT  0xfff0707f
+#define MASK_HWLP_COUNTI 0x000ff07f
+#define MASK_HWLP_SETUP  0x0000707f
+#define MASK_HWLP_SETUPI 0x0000707f
+
+#define MATCH_HWLP_STARTI 0x0007b
+#define MATCH_HWLP_ENDI   0x0107b
+#define MATCH_HWLP_COUNT  0x0207b
+#define MATCH_HWLP_COUNTI 0x0307b
+#define MATCH_HWLP_SETUP  0x0407b
+#define MATCH_HWLP_SETUPI 0x0507b
+
 #ifdef DECLARE_INSN
 DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
 DECLARE_INSN(srli_rv32, MATCH_SRLI_RV32, MASK_SRLI_RV32)
