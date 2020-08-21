@@ -1,0 +1,6 @@
+2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
+
+	* config/tc-riscv.c: Added CORE-V harware loop support.
+	* config/tc-riscv.h: Likewise.
+	* doc/c-riscv.texi: Noted Xcorev as additional ISA extension
+	 for CORE-V.
