@@ -1,0 +1,3 @@
+2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
+
+	* emultempl/riscvelf.em: Added initial CORE-V support.
