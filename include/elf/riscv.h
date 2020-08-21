@@ -95,6 +95,10 @@ START_RELOC_NUMBERS (elf_riscv_reloc_type)
   RELOC_NUMBER (R_RISCV_TLSDESC_LOAD_LO12, 63)
   RELOC_NUMBER (R_RISCV_TLSDESC_ADD_LO12, 64)
   RELOC_NUMBER (R_RISCV_TLSDESC_CALL, 65)
+
+  /* CORE-V Specific Relocations.  */
+  RELOC_NUMBER (R_RISCV_CVPCREL_UI12, 224)
+  RELOC_NUMBER (R_RISCV_CVPCREL_URS1, 225)
 END_RELOC_NUMBERS (R_RISCV_max)
 
 /* Internal relocations used exclusively by the relaxation pass.  */
