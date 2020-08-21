@@ -1752,6 +1752,27 @@ perform_relocation (const reloc_howto_type *howto,
       value = ENCODE_UTYPE_IMM (RISCV_CONST_HIGH_PART (value));
       break;
 
+    /* CORE-V Specific Relocations.  */
+    case R_RISCV_CVPCREL_UI12:
+      if (bfd_check_overflow (howto->complain_on_overflow, 12, 0,
+	    bfd_get_reloc_size (howto) * 8, value >> howto->rightshift)
+		     != bfd_reloc_overflow)
+      {
+        value = ENCODE_ITYPE_IMM (value >> howto->rightshift);
+        break;
+      }
+      return bfd_reloc_overflow;
+
+    case R_RISCV_CVPCREL_URS1:
+      if (bfd_check_overflow (howto->complain_on_overflow, 5, 0,
+	    bfd_get_reloc_size (howto) * 8, value >> howto->rightshift)
+		     != bfd_reloc_overflow)
+      {
+	value = ENCODE_CV_HWLP_UIMM5 (value >> howto->rightshift);
+	break;
+      }
+      return bfd_reloc_overflow;
+
     case R_RISCV_LO12_I:
     case R_RISCV_GPREL_I:
     case R_RISCV_TPREL_LO12_I:
@@ -2497,6 +2518,9 @@ riscv_elf_relocate_section (bfd *output_bfd,
 	case R_RISCV_SET32:
 	case R_RISCV_32_PCREL:
 	case R_RISCV_DELETE:
+	/* CORE-V Specific.  */
+	case R_RISCV_CVPCREL_URS1:
+	case R_RISCV_CVPCREL_UI12:
 	  /* These require no special handling beyond perform_relocation.  */
 	  break;
 

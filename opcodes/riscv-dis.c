@@ -429,6 +429,21 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	    print (info->stream, dis_style_immediate, "0");
 	  break;
 
+	/* CORE-V Specific.  */
+	case 'b':
+	  if (oparg[1] == '1')
+	    {
+	      info->target = (EXTRACT_ITYPE_IMM (l)<<2) + pc; ++oparg;
+	      (*info->print_address_func) (info->target, info);
+	      break;
+            }
+	  else if (oparg[1] == '2')
+	    {
+	      info->target = (EXTRACT_CV_HWLP_UIMM5 (l)<<2) + pc; ++oparg;
+	      (*info->print_address_func) (info->target, info);
+	      break;
+	    }
+	/* Fall through.  */
 	case 's':
 	  if ((l & MASK_JALR) == MATCH_JALR)
 	    maybe_print_address (pd, rs1, EXTRACT_ITYPE_IMM (l), 0);
@@ -464,6 +479,13 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	  maybe_print_address (pd, rs1, EXTRACT_ITYPE_IMM (l), 0);
 	  /* Fall through.  */
 	case 'j':
+		/* ji is CORE-V Specific.  */
+	  if (oparg[1] == 'i')
+	    {
+	      ++oparg;
+	      print (info->stream, dis_style_immediate, "%d", (int) EXTRACT_CV_HWLP_UIMM12 (l));
+	      break;
+	    }
 	  if (((l & MASK_ADDI) == MATCH_ADDI && rs1 != 0)
 	      || (l & MASK_JALR) == MATCH_JALR)
 	    maybe_print_address (pd, rs1, EXTRACT_ITYPE_IMM (l), 0);
@@ -497,7 +519,15 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	    pd->hi_addr[rd] = EXTRACT_UTYPE_IMM (l);
 	  else if ((l & MASK_C_LUI) == MATCH_C_LUI)
 	    pd->hi_addr[rd] = EXTRACT_CITYPE_LUI_IMM (l);
-	  print (info->stream, dis_style_register, "%s", riscv_gpr_names[rd]);
+	  if (oparg[1] == 'i')
+	    {
+	      ++oparg;
+	      /* di refers to just bit 7. Therefore we have masked the top 4 bits
+	       *  of rd, bits 11 to 7. */
+	      print (info->stream, dis_style_immediate, "%d", (int) (rd & 0b00001));
+	    }
+	  else
+	    print (info->stream, dis_style_register, "%s", riscv_gpr_names[rd]);
 	  break;
 
 	case 'y':

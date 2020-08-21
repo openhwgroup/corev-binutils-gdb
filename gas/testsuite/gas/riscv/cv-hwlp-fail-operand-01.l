@@ -1,0 +1,13 @@
+.*: Assembler messages:
+.*: Error: -1 constant out of range for cv.starti, range:\[0, 16380\]
+.*: Error: -1 constant out of range for cv.endi, range:\[0, 16380\]
+.*: Error: -1 constant out of range for cv.setup, range:\[0, 16380\]
+.*: Error: -6 constant out of range for cv.starti, range:\[0, 16380\]
+.*: Error: -94 constant out of range for cv.endi, range:\[0, 16380\]
+.*: Error: -842 constant out of range for cv.setup, range:\[0, 16380\]
+.*: Error: 16384 constant out of range for cv.starti, range:\[0, 16380\]
+.*: Error: 16384 constant out of range for cv.endi, range:\[0, 16380\]
+.*: Error: 16384 constant out of range for cv.setup, range:\[0, 16380\]
+.*: Error: 89444 constant out of range for cv.starti, range:\[0, 16380]
+.*: Error: 3624724 constant out of range for cv.endi, range:\[0, 16380\]
+.*: Error: 20394 constant out of range for cv.setup, range:\[0, 16380\]

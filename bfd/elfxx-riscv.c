@@ -808,6 +808,37 @@ static reloc_howto_type howto_table[] =
 	 0,				/* src_mask */
 	 0,				/* dst_mask */
 	 false),			/* pcrel_offset */
+
+  /* CORE-V Specific.  */
+  /* 12-bit PC-relative offset, for hwloop.  */
+  HOWTO (R_RISCV_CVPCREL_UI12,		/* type */
+	 2,				/* rightshift */
+	 2,				/* size */
+	 32,				/* bitsize */
+	 true,				/* pc_relative */
+	 0,				/* bitpos */
+	 complain_overflow_unsigned,	/* complain_on_overflow */
+	 bfd_elf_generic_reloc,		/* special_function */
+	 "R_RISCV_CVPCREL_UI12",	/* name */
+	 false,				/* partial_inplace */
+	 0,				/* src_mask */
+	 ENCODE_ITYPE_IMM (-1U),	/* dst_mask */
+	 true),				/* pcrel_offset */
+
+  /* Unsigned 5-bit PC-relative offset, for hwloop.  */
+  HOWTO (R_RISCV_CVPCREL_URS1,		/* type */
+	 2,				/* rightshift */
+	 1,				/* size */
+	 32,				/* bitsize */
+	 true,				/* pc_relative */
+	 0,				/* bitpos */
+	 complain_overflow_unsigned,	/* complain_on_overflow */
+	 bfd_elf_generic_reloc,		/* special_function */
+	 "R_RISCV_CVPCREL_URS1",	/* name */
+	 false,				/* partial_inplace */
+	 0,				/* src_mask */
+	 ENCODE_CV_HWLP_UIMM5 (-1U),	/* dst_mask */
+	 true),				/* pcrel_offset */
 };
 
 static reloc_howto_type howto_table_internal[] =
@@ -947,23 +978,10 @@ static const struct elf_reloc_map riscv_reloc_map[] =
   { BFD_RELOC_RISCV_32_PCREL, R_RISCV_32_PCREL },
   { BFD_RELOC_RISCV_SET_ULEB128, R_RISCV_SET_ULEB128 },
   { BFD_RELOC_RISCV_SUB_ULEB128, R_RISCV_SUB_ULEB128 },
+  /* CORE-V Specific.  */
+  { BFD_RELOC_RISCV_CVPCREL_UI12, R_RISCV_CVPCREL_UI12 },
+  { BFD_RELOC_RISCV_CVPCREL_URS1, R_RISCV_CVPCREL_URS1 },
 };
-
-/* Given a BFD reloc type, return a howto structure.  */
-
-reloc_howto_type *
-riscv_reloc_type_lookup (bfd *abfd ATTRIBUTE_UNUSED,
-			 bfd_reloc_code_real_type code)
-{
-  unsigned int i;
-
-  for (i = 0; i < ARRAY_SIZE (riscv_reloc_map); i++)
-    if (riscv_reloc_map[i].bfd_val == code)
-      return &howto_table[(int) riscv_reloc_map[i].elf_val];
-
-  bfd_set_error (bfd_error_bad_value);
-  return NULL;
-}
 
 reloc_howto_type *
 riscv_reloc_name_lookup (bfd *abfd ATTRIBUTE_UNUSED, const char *r_name)
@@ -980,17 +998,35 @@ riscv_reloc_name_lookup (bfd *abfd ATTRIBUTE_UNUSED, const char *r_name)
 reloc_howto_type *
 riscv_elf_rtype_to_howto (bfd *abfd, unsigned int r_type)
 {
-  if (r_type < ARRAY_SIZE (howto_table))
-    return &howto_table[r_type];
-  else if (r_type < R_RISCV_max + ARRAY_SIZE (howto_table_internal))
-    return &howto_table_internal[r_type - R_RISCV_max];
-  else
+  unsigned int i;
+  for (i = 0; i < ARRAY_SIZE (howto_table); i++)
     {
-      (*_bfd_error_handler) (_("%pB: unsupported relocation type %#x"),
-			     abfd, r_type);
-      bfd_set_error (bfd_error_bad_value);
-      return NULL;
+      if (r_type == howto_table[i].type)
+	return &howto_table[i];
     }
+  if (r_type < R_RISCV_max + ARRAY_SIZE (howto_table_internal))
+    return &howto_table_internal[r_type - R_RISCV_max];
+
+  (*_bfd_error_handler) (_("%pB: unsupported relocation type %#x"),
+			 abfd, r_type);
+  bfd_set_error (bfd_error_bad_value);
+  return NULL;
+}
+
+/* Given a BFD reloc type, return a howto structure.  */
+
+reloc_howto_type *
+riscv_reloc_type_lookup (bfd *abfd,
+			 bfd_reloc_code_real_type code)
+{
+  unsigned int i;
+
+  for (i = 0; i < ARRAY_SIZE (riscv_reloc_map); i++)
+    if (riscv_reloc_map[i].bfd_val == code)
+      return riscv_elf_rtype_to_howto(abfd, riscv_reloc_map[i].elf_val);
+
+  bfd_set_error (bfd_error_bad_value);
+  return NULL;
 }
 
 /* Special_function of RISCV_ADD and RISCV_SUB relocations.  */
@@ -1372,6 +1408,7 @@ static struct riscv_supported_ext riscv_supported_vendor_x_ext[] =
   {"xcvelw",		ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
   {"xcvbi",		ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
   {"xcvmem",		ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
+  {"xcvhwlp",		ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
   {"xtheadba",		ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
   {"xtheadbb",		ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
   {"xtheadbs",		ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
@@ -2585,6 +2622,8 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
       return riscv_subset_supports (rps, "xcvbi");
     case INSN_CLASS_XCVMEM:
       return riscv_subset_supports (rps, "xcvmem");
+    case INSN_CLASS_XCVHWLP:
+      return riscv_subset_supports (rps, "xcvhwlp");
     case INSN_CLASS_XTHEADBA:
       return riscv_subset_supports (rps, "xtheadba");
     case INSN_CLASS_XTHEADBB:
@@ -2843,6 +2882,8 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return "xcvbi";
     case INSN_CLASS_XCVMEM:
       return "xcvmem";
+    case INSN_CLASS_XCVHWLP:
+      return "xcvhwlp";
     case INSN_CLASS_XTHEADBA:
       return "xtheadba";
     case INSN_CLASS_XTHEADBB:

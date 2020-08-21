@@ -120,6 +120,12 @@ static inline unsigned int riscv_insn_length (insn_t insn)
   (RV_X(x, 25, 5))
 #define EXTRACT_CV_BI_IMM5(x) \
   (RV_X(x, 20, 5) | (RV_IMM_SIGN_N(x, 20, 5) << 5))
+#define EXTRACT_CV_HWLP_UIMM5(x) \
+  (RV_X(x, 15, 5))
+#define EXTRACT_CV_HWLP_LN(x) \
+  (RV_X(x, 7, 1))
+#define EXTRACT_CV_HWLP_UIMM12(x) \
+  (RV_X(x, 20, 12))
 
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
@@ -176,6 +182,10 @@ static inline unsigned int riscv_insn_length (insn_t insn)
   (RV_X(x, 0, 5) << 20)
 #define ENCODE_CV_IS3_UIMM5(x) \
   (RV_X(x, 0, 5) << 25)
+#define ENCODE_CV_HWLP_UIMM5(x) \
+  (RV_X(x, 0, 5) << 15)
+#define ENCODE_CV_HWLP_LN(x) \
+  (RV_X(x, 0, 1) << 7)
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
@@ -267,6 +277,14 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define OP_SH_AQ		26
 #define OP_MASK_RL		0x1
 #define OP_SH_RL		25
+
+/* CORE-V Specific.  */
+#define OP_MASK_IMM12           0xfff
+#define OP_SH_IMM12             20
+#define OP_MASK_IMM5            0x1f
+#define OP_SH_IMM5              15
+#define OP_MASK_LN              0x1
+#define OP_SH_LN                7
 
 #define OP_MASK_CSR		0xfffU
 #define OP_SH_CSR		20
@@ -477,6 +495,7 @@ enum riscv_insn_class
   INSN_CLASS_XCVELW,
   INSN_CLASS_XCVBI,
   INSN_CLASS_XCVMEM,
+  INSN_CLASS_XCVHWLP,
   INSN_CLASS_XTHEADBA,
   INSN_CLASS_XTHEADBB,
   INSN_CLASS_XTHEADBS,
