@@ -4,6 +4,13 @@
    Contributed by Andrew Waterman (andrew@sifive.com).
    Based on TILE-Gx and MIPS targets.
 
+   Modified for CORE-V by:
+   Mary Bennett (mary.bennett@embecosm.com)
+   Pietra Ferreira (pietra.ferreira@embecosm.com)
+   Jessica Mills (jessica.mills@embecosm.com)
+
+   Some of these changes are (C) Open Hardware Group, pending FSF assignment.
+
    This file is part of BFD, the Binary File Descriptor library.
 
    This program is free software; you can redistribute it and/or modify
@@ -854,6 +861,37 @@ static reloc_howto_type howto_table[] =
 	 0,				/* src_mask */
 	 MINUS_ONE,			/* dst_mask */
 	 FALSE),			/* pcrel_offset */
+
+  /* CORE-V Specific.  */
+  /* 12-bit PC-relative offset, for hwloop.  */
+  HOWTO (R_RISCV_CVPCREL_UI12,		/* type */
+	 1,				/* rightshift */
+	 2,				/* size */
+	 32,				/* bitsize */
+	 TRUE,				/* pc_relative */
+	 0,				/* bitpos */
+	 complain_overflow_unsigned,	/* complain_on_overflow */
+	 bfd_elf_generic_reloc,		/* special_function */
+	 "R_RISCV_CVPCREL_UI12",	/* name */
+	 FALSE,				/* partial_inplace */
+	 0,				/* src_mask */
+	 ENCODE_ITYPE_IMM (-1U),	/* dst_mask */
+	 TRUE),				/* pcrel_offset */
+
+  /* Unsigned 5-bit PC-relative offset, for hwloop.  */
+  HOWTO (R_RISCV_CVPCREL_URS1,		/* type */
+	 1,				/* rightshift */
+	 1,				/* size */
+	 32,				/* bitsize */
+	 TRUE,				/* pc_relative */
+	 0,				/* bitpos */
+	 complain_overflow_unsigned,	/* complain_on_overflow */
+	 bfd_elf_generic_reloc,		/* special_function */
+	 "R_RISCV_CVPCREL_URS1",	/* name */
+	 FALSE,				/* partial_inplace */
+	 0,				/* src_mask */
+	 ENCODE_I1TYPE_UIMM (-1U),	/* dst_mask */
+	 TRUE),				/* pcrel_offset */
 };
 
 /* A mapping from BFD reloc types to RISC-V ELF reloc types.  */
@@ -916,23 +954,10 @@ static const struct elf_reloc_map riscv_reloc_map[] =
   { BFD_RELOC_RISCV_SET16, R_RISCV_SET16 },
   { BFD_RELOC_RISCV_SET32, R_RISCV_SET32 },
   { BFD_RELOC_RISCV_32_PCREL, R_RISCV_32_PCREL },
+  /* CORE-V Specific.  */
+  { BFD_RELOC_RISCV_CVPCREL_UI12, R_RISCV_CVPCREL_UI12 },
+  { BFD_RELOC_RISCV_CVPCREL_URS1, R_RISCV_CVPCREL_URS1 },
 };
-
-/* Given a BFD reloc type, return a howto structure.  */
-
-reloc_howto_type *
-riscv_reloc_type_lookup (bfd *abfd ATTRIBUTE_UNUSED,
-			 bfd_reloc_code_real_type code)
-{
-  unsigned int i;
-
-  for (i = 0; i < ARRAY_SIZE (riscv_reloc_map); i++)
-    if (riscv_reloc_map[i].bfd_val == code)
-      return &howto_table[(int) riscv_reloc_map[i].elf_val];
-
-  bfd_set_error (bfd_error_bad_value);
-  return NULL;
-}
 
 reloc_howto_type *
 riscv_reloc_name_lookup (bfd *abfd ATTRIBUTE_UNUSED, const char *r_name)
@@ -949,15 +974,35 @@ riscv_reloc_name_lookup (bfd *abfd ATTRIBUTE_UNUSED, const char *r_name)
 reloc_howto_type *
 riscv_elf_rtype_to_howto (bfd *abfd, unsigned int r_type)
 {
-  if (r_type >= ARRAY_SIZE (howto_table))
+  unsigned int i;
+  for (i = 0; i < ARRAY_SIZE (howto_table); i++)
     {
-      (*_bfd_error_handler) (_("%pB: unsupported relocation type %#x"),
-			     abfd, r_type);
-      bfd_set_error (bfd_error_bad_value);
-      return NULL;
+      if (r_type == howto_table[i].type)
+	return &howto_table[i];
     }
-  return &howto_table[r_type];
+
+  (*_bfd_error_handler) (_("%pB: unsupported relocation type %#x"),
+			 abfd, r_type);
+  bfd_set_error (bfd_error_bad_value);
+  return NULL;
 }
+
+/* Given a BFD reloc type, return a howto structure.  */
+
+reloc_howto_type *
+riscv_reloc_type_lookup (bfd *abfd,
+			 bfd_reloc_code_real_type code)
+{
+  unsigned int i;
+
+  for (i = 0; i < ARRAY_SIZE (riscv_reloc_map); i++)
+    if (riscv_reloc_map[i].bfd_val == code)
+      return riscv_elf_rtype_to_howto(abfd, riscv_reloc_map[i].elf_val);
+
+  bfd_set_error (bfd_error_bad_value);
+  return NULL;
+}
+
 
 /* Special_function of RISCV_ADD and RISCV_SUB relocations.  */
 

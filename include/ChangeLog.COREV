@@ -1,0 +1,6 @@
+2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
+
+	* elf/riscv.h: Added CORE-V hardware loop specific relocations.
+	* opcode/riscv.h: Added CORE-V hardware loop specific masks and
+	CORE-V instruction class. Added macros for unsigned I type
+	immediate and loop number.

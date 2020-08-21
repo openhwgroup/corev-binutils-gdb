@@ -2,6 +2,13 @@
    Copyright (C) 2011-2020 Free Software Foundation, Inc.
    Contributed by Andrew Waterman
 
+   Modified for CORE-V by:
+   Mary Bennett (mary.bennett@embecosm.com)
+   Pietra Ferreira (pietra.ferreira@embecosm.com)
+   Jessica Mills (jessica.mills@embecosm.com)
+
+   Some of these changes are (C) Open Hardware Group, pending FSF assignment.
+
    This file is part of GDB, GAS, and the GNU binutils.
 
    GDB, GAS, and the GNU binutils are free software; you can redistribute
@@ -100,6 +107,14 @@ static const char * const riscv_pred_succ[16] =
 #define EXTRACT_RVC_J_IMM(x) \
   ((RV_X(x, 3, 3) << 1) | (RV_X(x, 11, 1) << 4) | (RV_X(x, 2, 1) << 5) | (RV_X(x, 7, 1) << 6) | (RV_X(x, 6, 1) << 7) | (RV_X(x, 9, 2) << 8) | (RV_X(x, 8, 1) << 10) | (-RV_X(x, 12, 1) << 11))
 
+/* CORE-V Specific.  */
+#define EXTRACT_I1TYPE_UIMM(x) \
+  (RV_X(x, 15, 5))
+#define EXTRACT_I1TYPE_LN(x) \
+  (RV_X(x, 7, 1))
+#define EXTRACT_ITYPE_UIMM(x) \
+  (RV_X(x, 20, 12))
+
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
 #define ENCODE_STYPE_IMM(x) \
@@ -138,6 +153,12 @@ static const char * const riscv_pred_succ[16] =
   ((RV_X(x, 1, 2) << 3) | (RV_X(x, 3, 2) << 10) | (RV_X(x, 5, 1) << 2) | (RV_X(x, 6, 2) << 5) | (RV_X(x, 8, 1) << 12))
 #define ENCODE_RVC_J_IMM(x) \
   ((RV_X(x, 1, 3) << 3) | (RV_X(x, 4, 1) << 11) | (RV_X(x, 5, 1) << 2) | (RV_X(x, 6, 1) << 7) | (RV_X(x, 7, 1) << 6) | (RV_X(x, 8, 2) << 9) | (RV_X(x, 10, 1) << 8) | (RV_X(x, 11, 1) << 12))
+
+/* CORE-V Specific.  */
+#define ENCODE_I1TYPE_UIMM(x) \
+  (RV_X(x, 0, 5) << 15)
+#define ENCODE_I1TYPE_LN(x) \
+  (RV_X(x, 0, 1) << 7)
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
@@ -222,6 +243,14 @@ static const char * const riscv_pred_succ[16] =
 #define OP_SH_AQ		26
 #define OP_MASK_RL		0x1
 #define OP_SH_RL		25
+
+/* CORE-V Specific.  */
+#define OP_MASK_IMM12           0xfff
+#define OP_SH_IMM12             20
+#define OP_MASK_IMM5            0x1f
+#define OP_SH_IMM5              15
+#define OP_MASK_LN              0x1
+#define OP_SH_LN                7
 
 #define OP_MASK_CUSTOM_IMM	0x7f
 #define OP_SH_CUSTOM_IMM	25
@@ -309,6 +338,7 @@ enum riscv_insn_class
    INSN_CLASS_D_AND_C,
    INSN_CLASS_F_AND_C,
    INSN_CLASS_Q,
+   INSN_CLASS_COREV,
   };
 
 /* This structure holds information for a particular instruction.  */

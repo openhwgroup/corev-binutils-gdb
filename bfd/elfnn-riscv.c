@@ -4,6 +4,13 @@
    Contributed by Andrew Waterman (andrew@sifive.com).
    Based on TILE-Gx and MIPS targets.
 
+   Modified for CORE-V by:
+   Mary Bennett (mary.bennett@embecosm.com)
+   Pietra Ferreira (pietra.ferreira@embecosm.com)
+   Jessica Mills (jessica.mills@embecosm.com)
+
+   Some of these changes are (C) Open Hardware Group, pending FSF assignment.
+
    This file is part of BFD, the Binary File Descriptor library.
 
    This program is free software; you can redistribute it and/or modify
@@ -1327,6 +1334,15 @@ perform_relocation (const reloc_howto_type *howto,
       value = ENCODE_UTYPE_IMM (RISCV_CONST_HIGH_PART (value));
       break;
 
+    /* CORE-V Specific Relocations.  */
+    case R_RISCV_CVPCREL_UI12:
+      value = ENCODE_ITYPE_IMM (value >> howto->rightshift);
+      break;
+
+    case R_RISCV_CVPCREL_URS1:
+      value = ENCODE_I1TYPE_UIMM (value >> howto->rightshift);
+      break;
+
     case R_RISCV_LO12_I:
     case R_RISCV_GPREL_I:
     case R_RISCV_TPREL_LO12_I:
@@ -1750,6 +1766,9 @@ riscv_elf_relocate_section (bfd *output_bfd,
 	case R_RISCV_SET32:
 	case R_RISCV_32_PCREL:
 	case R_RISCV_DELETE:
+	/* CORE-V Specific.  */
+	case R_RISCV_CVPCREL_URS1:
+	case R_RISCV_CVPCREL_UI12:
 	  /* These require no special handling beyond perform_relocation.  */
 	  break;
 

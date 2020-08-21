@@ -1,0 +1,4 @@
+2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
+
+	* riscv-dis.c: Added CORE-V hardware loop support.
+	* riscv-opc.c: Likewise.
