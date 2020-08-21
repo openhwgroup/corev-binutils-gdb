@@ -2133,6 +2133,17 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.sw", 0, INSN_CLASS_XCVMEM, "t,d(s)",  MATCH_CV_SWRR,      MASK_CV_SRR,      match_opcode, 0},
 {"cv.sw", 0, INSN_CLASS_XCVMEM, "t,(s),d", MATCH_CV_SWRRPOST,  MASK_CV_SRRPOST,  match_opcode, 0},
 
+/* Vendor-specific (CORE-V) Xcvhwlp instructions.  */
+{"cv.start",  0, INSN_CLASS_XCVHWLP, "di,s",     MATCH_CV_START,  MASK_CV_START,  match_opcode, 0},
+{"cv.starti", 0, INSN_CLASS_XCVHWLP, "di,b1",    MATCH_CV_STARTI, MASK_CV_STARTI, match_opcode, 0},
+{"cv.end",    0, INSN_CLASS_XCVHWLP, "di,s",     MATCH_CV_END,    MASK_CV_END,    match_opcode, 0},
+{"cv.endi",   0, INSN_CLASS_XCVHWLP, "di,b1",    MATCH_CV_ENDI,   MASK_CV_ENDI,   match_opcode, 0},
+{"cv.count",  0, INSN_CLASS_XCVHWLP, "di,s",     MATCH_CV_COUNT,  MASK_CV_COUNT,  match_opcode, 0},
+{"cv.counti", 0, INSN_CLASS_XCVHWLP, "di,ji",    MATCH_CV_COUNTI, MASK_CV_COUNTI, match_opcode, 0},
+{"cv.setup",  0, INSN_CLASS_XCVHWLP, "di,s,b1",  MATCH_CV_SETUP,  MASK_CV_SETUP,  match_opcode, 0},
+{"cv.setupi", 0, INSN_CLASS_XCVHWLP, "di,ji,b2", MATCH_CV_SETUPI, MASK_CV_SETUPI, match_opcode, 0},
+
+
 /* Vendor-specific (T-Head) XTheadBa instructions.  */
 {"th.addsl",    0, INSN_CLASS_XTHEADBA,    "d,s,t,Xtu2@25",   MATCH_TH_ADDSL,    MASK_TH_ADDSL,    match_opcode, 0},
 
