@@ -2,6 +2,13 @@
    Copyright (C) 2011-2022 Free Software Foundation, Inc.
    Contributed by Andrew Waterman
 
+   Modified for CORE-V by:
+   Mary Bennett (mary.bennett@embecosm.com)
+   Pietra Ferreira (pietra.ferreira@embecosm.com)
+   Jessica Mills (jessica.mills@embecosm.com)
+
+   Some of these changes are (C) Open Hardware Group, pending FSF assignment.
+
    This file is part of GDB, GAS, and the GNU binutils.
 
    GDB, GAS, and the GNU binutils are free software; you can redistribute
@@ -112,6 +119,14 @@ static const char * const riscv_pred_succ[16] =
 #define EXTRACT_RVV_VC_IMM(x) \
   (RV_X(x, 20, 11))
 
+/* CORE-V Specific.  */
+#define EXTRACT_I1TYPE_UIMM(x) \
+  (RV_X(x, 15, 5))
+#define EXTRACT_I1TYPE_LN(x) \
+  (RV_X(x, 7, 1))
+#define EXTRACT_ITYPE_UIMM(x) \
+  (RV_X(x, 20, 12))
+
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
 #define ENCODE_STYPE_IMM(x) \
@@ -156,6 +171,12 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 0, 10) << 20)
 #define ENCODE_RVV_VC_IMM(x) \
   (RV_X(x, 0, 11) << 20)
+
+/* CORE-V Specific.  */
+#define ENCODE_I1TYPE_UIMM(x) \
+  (RV_X(x, 0, 5) << 15)
+#define ENCODE_I1TYPE_LN(x) \
+  (RV_X(x, 0, 1) << 7)
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
@@ -245,6 +266,14 @@ static const char * const riscv_pred_succ[16] =
 #define OP_SH_AQ		26
 #define OP_MASK_RL		0x1
 #define OP_SH_RL		25
+
+/* CORE-V Specific.  */
+#define OP_MASK_IMM12           0xfff
+#define OP_SH_IMM12             20
+#define OP_MASK_IMM5            0x1f
+#define OP_SH_IMM5              15
+#define OP_MASK_LN              0x1
+#define OP_SH_LN                7
 
 #define OP_MASK_CSR		0xfffU
 #define OP_SH_CSR		20
@@ -370,6 +399,7 @@ enum riscv_insn_class
   INSN_CLASS_F_OR_ZFINX,
   INSN_CLASS_D_OR_ZDINX,
   INSN_CLASS_Q_OR_ZQINX,
+  INSN_CLASS_COREV,
   INSN_CLASS_ZBA,
   INSN_CLASS_ZBB,
   INSN_CLASS_ZBC,

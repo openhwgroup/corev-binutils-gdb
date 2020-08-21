@@ -4,6 +4,13 @@
    Contributed by Andrew Waterman (andrew@sifive.com).
    Based on MIPS target.
 
+   Modified for CORE-V by:
+   Mary Bennett (mary.bennett@embecosm.com)
+   Pietra Ferreira (pietra.ferreira@embecosm.com)
+   Jessica Mills (jessica.mills@embecosm.com)
+
+   Some of these changes are (C) Open Hardware Group, pending FSF assignment.
+
    This file is part of the GNU opcodes library.
 
    This library is free software; you can redistribute it and/or modify
@@ -394,7 +401,21 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	    print (info->stream, dis_style_immediate, "0");
 	  break;
 
+	/* CORE-V Specific.  */
 	case 'b':
+	  if (d[1] == '1')
+	    {
+	      info->target = (EXTRACT_ITYPE_IMM (l)<<1) + pc; ++d;
+	      (*info->print_address_func) (info->target, info);
+	      break;
+            }
+	  else if (d[1] == '2')
+	    {
+	      info->target = (EXTRACT_I1TYPE_UIMM (l)<<1) + pc; ++d;
+	      (*info->print_address_func) (info->target, info);
+	      break;
+	    }
+	/* Fall through.  */
 	case 's':
 	  if ((l & MASK_JALR) == MATCH_JALR)
 	    maybe_print_address (pd, rs1, 0, 0);
@@ -430,6 +451,13 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	  maybe_print_address (pd, rs1, EXTRACT_ITYPE_IMM (l), 0);
 	  /* Fall through.  */
 	case 'j':
+		/* ji is CORE-V Specific.  */
+	  if (d[1] == 'i')
+	    {
+	      ++d;
+	      print (info->stream, "%d", (int) EXTRACT_ITYPE_UIMM (l));
+	      break;
+	    }
 	  if (((l & MASK_ADDI) == MATCH_ADDI && rs1 != 0)
 	      || (l & MASK_JALR) == MATCH_JALR)
 	    maybe_print_address (pd, rs1, EXTRACT_ITYPE_IMM (l), 0);
@@ -468,13 +496,18 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	    pd->hi_addr[rd] = EXTRACT_UTYPE_IMM (l);
 	  else if ((l & MASK_C_LUI) == MATCH_C_LUI)
 	    pd->hi_addr[rd] = EXTRACT_CITYPE_LUI_IMM (l);
-	  print (info->stream, dis_style_register, "%s", riscv_gpr_names[rd]);
+	  if (d[1] == 'i')
+	    {
+	      ++d;
+	      print (info->stream, dis_style_register, "%d", (int) rd);
+	    }
+	  else
+	    print (info->stream, dis_style_register, "%s", riscv_gpr_names[rd]);
 	  break;
 
 	case 'y':
 	  print (info->stream, dis_style_text, "0x%x",
 		 (int)EXTRACT_OPERAND (BS, l));
-	  break;
 
 	case 'z':
 	  print (info->stream, dis_style_register, "%s", riscv_gpr_names[0]);

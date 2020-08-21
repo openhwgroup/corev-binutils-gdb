@@ -45,6 +45,9 @@ Select the base isa, as specified by ISA.  For example -march=rv32ima.
 If this option and the architecture attributes aren't set, then assembler
 will check the default configure setting --with-arch=ISA.
 
+For the CORE-V variant of the assembler, an additional ISA option @samp{Xcorev}
+is provided to enable the CORE-V extensions.
+
 @cindex @samp{-misa-spec=ISAspec} option, RISC-V
 @item -misa-spec=ISAspec
 Select the default isa spec version.  If the version of ISA isn't set
