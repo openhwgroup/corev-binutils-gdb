@@ -4,6 +4,13 @@
    Contributed by Andrew Waterman (andrew@sifive.com).
    Based on MIPS target.
 
+   Modified for CORE-V by:
+   Mary Bennett (mary.bennett@embecosm.com)
+   Pietra Ferreira (pietra.ferreira@embecosm.com)
+   Jessica Mills (jessica.mills@embecosm.com)
+
+   Some of these changes are (C) Open Hardware Group, pending FSF assignment.
+
    This file is part of the GNU opcodes library.
 
    This library is free software; you can redistribute it and/or modify
@@ -1752,6 +1759,15 @@ const struct riscv_opcode riscv_opcodes[] =
 {"hsv.h",       0, INSN_CLASS_I, "t,0(s)", MATCH_HSV_H, MASK_HSV_H, match_opcode, INSN_DREF|INSN_2_BYTE },
 {"hsv.w",       0, INSN_CLASS_I, "t,0(s)", MATCH_HSV_W, MASK_HSV_W, match_opcode, INSN_DREF|INSN_4_BYTE },
 {"hsv.d",      64, INSN_CLASS_I, "t,0(s)", MATCH_HSV_D, MASK_HSV_D, match_opcode, INSN_DREF|INSN_8_BYTE },
+
+/* CORE-V Specific Opcodes.  */
+/* Hardware loops  */
+{"cv.starti", 0, INSN_CLASS_COREV_HWLP, "di,b1",    MATCH_CV_STARTI, MASK_CV_STARTI, match_opcode, 0},
+{"cv.endi",   0, INSN_CLASS_COREV_HWLP, "di,b1",    MATCH_CV_ENDI,   MASK_CV_ENDI,   match_opcode, 0},
+{"cv.count",  0, INSN_CLASS_COREV_HWLP, "di,s",     MATCH_CV_COUNT,  MASK_CV_COUNT,  match_opcode, 0},
+{"cv.counti", 0, INSN_CLASS_COREV_HWLP, "di,ji",    MATCH_CV_COUNTI, MASK_CV_COUNTI, match_opcode, 0},
+{"cv.setup",  0, INSN_CLASS_COREV_HWLP, "di,s,b1",  MATCH_CV_SETUP,  MASK_CV_SETUP,  match_opcode, 0},
+{"cv.setupi", 0, INSN_CLASS_COREV_HWLP, "di,ji,b2", MATCH_CV_SETUPI, MASK_CV_SETUPI, match_opcode, 0},
 
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
