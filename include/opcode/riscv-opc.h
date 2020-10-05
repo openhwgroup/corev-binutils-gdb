@@ -853,12 +853,12 @@
 
 /* CORE-V Specific Instructions  */
 /* Hardware loops  */
-#define MASK_HWLP_STARTI 0x000ff07f
-#define MASK_HWLP_ENDI   0x000ff07f
-#define MASK_HWLP_COUNT  0xfff0707f
-#define MASK_HWLP_COUNTI 0x000ff07f
-#define MASK_HWLP_SETUP  0x0000707f
-#define MASK_HWLP_SETUPI 0x0000707f
+#define MASK_HWLP_STARTI 0x000fff7f
+#define MASK_HWLP_ENDI   0x000fff7f
+#define MASK_HWLP_COUNT  0xfff07f7f
+#define MASK_HWLP_COUNTI 0x000fff7f
+#define MASK_HWLP_SETUP  0x00007f7f
+#define MASK_HWLP_SETUPI 0x00007f7f
 
 #define MATCH_HWLP_STARTI 0x0007b
 #define MATCH_HWLP_ENDI   0x0107b
