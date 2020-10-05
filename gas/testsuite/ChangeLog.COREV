@@ -1,3 +1,39 @@
+2020-10-30  Mary Bennett  <mary.bennett@embecosm.com>
+
+	* gas/riscv/cv-hwloop-01.d: Changed march option to xcorehwlp.
+	* gas/riscv/cv-hwloop-02.d: Likewise.
+	* gas/riscv/cv-hwloop-03.d: Likewise.
+	* gas/riscv/cv-hwloop-04.d: Likewise.
+	* gas/riscv/cv-hwloop-05.d: Likewise.
+	* gas/riscv/cv-hwloop-06.d: Likewise.
+	* gas/riscv/cv-hwloop-07.d: Likewise.
+	* gas/riscv/cv-hwloop-08.d: Likewise.
+	* gas/riscv/cv-hwloop-count.d: Likewise.
+	* gas/riscv/cv-hwloop-counti.d: Likewise.
+	* gas/riscv/cv-hwloop-endi.d: Likewise.
+	* gas/riscv/cv-hwloop-setup.d: Likewise.
+	* gas/riscv/cv-hwloop-setupi.d: Likewise.
+	* gas/riscv/cv-hwloop-starti.d: Likewise.
+	* gas/riscv/cv-hwloop-09.d: Likewise.
+	* gas/riscv/cv-hwloop-10.d: Likewise.
+	* gas/riscv/cv-hwloop-11.d: Added new test.
+	* gas/riscv/cv-hwloop-11.l: Likewise.
+	* gas/riscv/cv-hwloop-11.s: Likewise.
+	* gas/riscv/cv-hwloop-12.d: Likewise.
+	* gas/riscv/cv-hwloop-12.l: Likewise.
+	* gas/riscv/cv-hwloop-12.s: Likewise.
+	* gas/riscv/cv-hwloop-13.d: Likewise.
+	* gas/riscv/cv-hwloop-13.l: Likewise.
+	* gas/riscv/cv-hwloop-13.s: Likewise.
+	* gas/riscv/cv-hwloop-14.d: Likewise.
+	* gas/riscv/cv-hwloop-14.l: Likewise.
+	* gas/riscv/cv-hwloop-14.s: Likewise.
+	* gas/riscv/cv-hwloop-15.d: Likewise.
+	* gas/riscv/cv-hwloop-15.l: Likewise.
+	* gas/riscv/cv-hwloop-15.s: Likewise.
+	* gas/riscv/cv-march-rv32i-xcorev.s: Added test for march option.
+	* gas/riscv/cv-march-rv32i-xcorev.d: Likewise.
+
 2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
 	* gas/riscv/cv-hwloop-01.d: Added new test.
