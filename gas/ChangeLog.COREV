@@ -1,3 +1,8 @@
+2020-10-05  Jessica Mills <jessica.mills@embecosm.com>
+
+	* config/tc-riscv.c: Fixed issue arising from incorrect CORE-V
+	hardware loop masks and added support for xcorevhwlp.
+
 2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
 	* config/tc-riscv.c: Added CORE-V harware loop support.
