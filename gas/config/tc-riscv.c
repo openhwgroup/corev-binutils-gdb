@@ -242,7 +242,8 @@ riscv_multi_subset_supports (enum riscv_insn_class insn_class)
 
     case INSN_CLASS_Q: return riscv_subset_supports ("q");
 
-    case INSN_CLASS_COREV: return riscv_subset_supports ("xcorev");
+    case INSN_CLASS_COREV_HWLP:
+      return riscv_subset_supports ("xcorevhwlp") || riscv_subset_supports ("xcorev");
 
     default:
       as_fatal ("Unreachable");
@@ -962,7 +963,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case 'd':
 	if (*p == 'i')
 	  {
-	    used_bits |= (0xf00 |(ENCODE_I1TYPE_LN(-1U))); /* Bits 11:08 preset to 0 */
+	    used_bits |= ENCODE_I1TYPE_LN(-1U);
 	    ++p;
 	    break;
 	  }
