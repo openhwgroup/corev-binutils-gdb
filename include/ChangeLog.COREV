@@ -1,3 +1,9 @@
+2020-10-05  Mary Bennett <mary.bennett@embecosm.com>
+
+	* opcode/riscv-opc.h: Fixed incorrect masks for CORE-V hardware loop
+	instructions.
+	* opcode/riscv.h: Added support for xcorevhwlp.
+
 2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
 	* elf/riscv.h: Added CORE-V hardware loop specific relocations.
