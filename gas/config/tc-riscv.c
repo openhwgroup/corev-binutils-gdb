@@ -242,7 +242,8 @@ riscv_multi_subset_supports (enum riscv_insn_class insn_class)
 
     case INSN_CLASS_Q: return riscv_subset_supports ("q");
 
-    case INSN_CLASS_COREV: return riscv_subset_supports ("xcorev");
+    case INSN_CLASS_COREV_HWLP:
+      return riscv_subset_supports ("xcorevhwlp") || riscv_subset_supports ("xcorev");
 
     default:
       as_fatal ("Unreachable");
@@ -962,7 +963,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case 'd':
 	if (*p == 'i')
 	  {
-	    used_bits |= (0xf00 |(ENCODE_I1TYPE_LN(-1U))); /* Bits 11:08 preset to 0 */
+	    used_bits |= ENCODE_I1TYPE_LN(-1U);
 	    ++p;
 	    break;
 	  }
@@ -2297,8 +2298,8 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  s = expr_end;
 		  if (imm_expr->X_op != O_constant ||
 		      imm_expr->X_add_number < 0 || imm_expr->X_add_number > 1)
-		    as_bad (_("loop number must be 0 or 1 not %ld"),
-			      imm_expr->X_add_number);
+		    as_bad (_("%s loop number must be 0 or 1"),
+			    ip->insn_mo->name);
 		  INSERT_OPERAND (LN, *ip, imm_expr->X_add_number);
 		  continue;
 		}
@@ -2393,19 +2394,22 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		{
 		  ++args;
 		  my_getExpression (imm_expr, s);
+		  if ((imm_expr->X_op != O_symbol && imm_expr->X_op != O_constant)
+		      || reg_lookup (&s, RCLASS_GPR, &regno))
+		    as_bad(_("%s immediate value must be a constant or label"),
+			   ip->insn_mo->name);
 		  s = expr_end;
 		  if (imm_expr->X_op == O_constant)
 		    {
 		      if (imm_expr->X_add_number < 0 ||
 			  ((imm_expr->X_add_number>>1) > 0x0FFF))
-			as_bad (_("%ld constant out of range for "
-				  "cv.starti/cv.endi/cv.setup, range:[0, %d]"),
-				  imm_expr->X_add_number, 0xFFE);
+			as_bad (_("%ld constant out of range for %s, range:[0, %d]"),
+				imm_expr->X_add_number, ip->insn_mo->name, 0xFFE);
 		      if ((imm_expr->X_add_number % 2) == 1)
 			{
-			  as_warn (_("constant for cv.starti/cv.endi/cv.setup "
-				     "must be even: %ld truncated to %ld"),
-				   imm_expr->X_add_number, imm_expr->X_add_number-1);
+			  as_warn (_("constant for %s must be even: %ld truncated to %ld"),
+				   ip->insn_mo->name, imm_expr->X_add_number,
+				   imm_expr->X_add_number-1);
 			  imm_expr->X_add_number--;
 			}
 		      INSERT_OPERAND (IMM12, *ip, (imm_expr->X_add_number>>1));
@@ -2417,6 +2421,10 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		{
 		  ++args;
 		  my_getExpression (imm_expr, s);
+		  if ((imm_expr->X_op != O_symbol && imm_expr->X_op != O_constant)
+		      || reg_lookup (&s, RCLASS_GPR, &regno))
+		    as_bad(_("%s immediate value must be a constant or label"),
+			   ip->insn_mo->name);
 		  s = expr_end;
 		  if (imm_expr->X_op == O_constant)
 		    {
@@ -2463,12 +2471,11 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  my_getExpression (imm_expr, s);
 		  check_absolute_expr (ip, imm_expr, FALSE);
 		  s = expr_end;
-		  if (imm_expr->X_op != O_constant ||
-		      imm_expr->X_add_number >= (int) RISCV_IMM_REACH ||
+		  if (imm_expr->X_add_number >= (int) RISCV_IMM_REACH ||
 		      imm_expr->X_add_number < 0)
-		    as_bad (_("%ld constant out of range for "
-			      "cv.counti/cv.setupi, range:[0, %d]"),
-			    imm_expr->X_add_number, ((int) RISCV_IMM_REACH) -1);
+		    as_bad (_("%ld constant out of range for %s, range:[0, %d]"),
+			    imm_expr->X_add_number, ip->insn_mo->name,
+			    ((int) RISCV_IMM_REACH) -1);
 		  INSERT_OPERAND (IMM12, *ip, imm_expr->X_add_number);
 		  continue;
 		}
