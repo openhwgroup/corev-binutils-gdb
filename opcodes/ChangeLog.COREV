@@ -1,3 +1,8 @@
+2020-11-11  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* riscv-dis.c: Added CORE-V multiply accumulate support.
+	* riscv-opc.c: Likewise.
+
 2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* riscv-opc.c (print_insn_args): Renamed macros for clarity -

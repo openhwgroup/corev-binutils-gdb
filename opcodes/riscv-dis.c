@@ -415,6 +415,12 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	      (*info->print_address_func) (info->target, info);
 	      break;
 	    }
+	  else if (oparg[1] == '3')
+	    {
+	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_MAC_UIMM5 (l)));
+	      ++oparg;
+	      break;
+	    }
 	/* Fall through.  */
 	case 's':
 	  if ((l & MASK_JALR) == MATCH_JALR)

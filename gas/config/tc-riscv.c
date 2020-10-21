@@ -1166,12 +1166,17 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	case 'b': /* CORE-V Specific.  */
 	  if (oparg[1] == '1')
 	    {
-	      used_bits |= ENCODE_ITYPE_IMM(-1U); /* For loop I type pc rel displacement */
+	      used_bits |= ENCODE_ITYPE_IMM(-1U);
 	      ++oparg; break;
 	    }
 	  else if (oparg[1] == '2')
 	    {
-	      used_bits |= ENCODE_CV_HWLP_UIMM5(-1U); /* For loop I1 type pc rel displacement */
+	      used_bits |= ENCODE_CV_HWLP_UIMM5(-1U);
+	      ++oparg; break;
+	    }
+	  else if (oparg[1] == '3')
+	    {
+	      used_bits |= ENCODE_CV_MAC_UIMM5(-1U);
 	      ++oparg; break;
 	    }
 	  break;
@@ -3071,6 +3076,15 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		      INSERT_OPERAND (IMM5, *ip, (imm_expr->X_add_number>>1));
 		    }
 		  else *imm_reloc = BFD_RELOC_RISCV_CVPCREL_URS1;
+		}
+	      else if (oparg[1] == '3')
+		{
+		  my_getExpression (imm_expr, asarg);
+		  check_absolute_expr (ip, imm_expr, FALSE);
+		  asarg = expr_end;
+		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>31) break;
+		  ip->insn_opcode |= ENCODE_CV_MAC_UIMM5 (imm_expr->X_add_number);
+		  ++oparg;
 		}
 	      else
 		{
