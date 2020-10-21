@@ -1,3 +1,8 @@
+2020-11-11  Jessica Mills <jessica.mills@embecosm.com>
+
+	* opcode/riscv-opc.h: Added CORE-V multiply accumulate support.
+	* opcode/riscv.h: Likewise.
+
 2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* opcode/riscv.h (riscv_pred_succ): Renamed macros for clarity -
