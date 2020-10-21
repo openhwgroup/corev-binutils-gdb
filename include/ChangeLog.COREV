@@ -1,3 +1,8 @@
+2020-10-21  Jessica Mills <jessica.mills@embecosm.com>
+
+	* opcode/riscv-opc.h: Added CORE-V multiply accumulate support.
+	* opcode/riscv.h: Added CORE-V multiply accumulate support.
+
 2020-10-05  Mary Bennett <mary.bennett@embecosm.com>
 
 	* opcode/riscv-opc.h: Fixed incorrect masks for CORE-V hardware loop

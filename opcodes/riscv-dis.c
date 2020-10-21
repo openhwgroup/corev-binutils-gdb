@@ -286,6 +286,11 @@ print_insn_args (const char *d, insn_t l, bfd_vma pc, disassemble_info *info)
 	      (*info->print_address_func) (info->target, info);
 	      break;
 	    }
+	  else if (d[1]=='3')
+	    {
+	      print (info->stream, "%d", ((int) EXTRACT_I3TYPE_UIMM (l))&0x1F); ++d;
+	      break;
+	    }
 	/* Fall through.  */
 	case 's':
 	  if ((l & MASK_JALR) == MATCH_JALR)

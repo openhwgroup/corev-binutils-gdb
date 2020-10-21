@@ -796,6 +796,41 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.setup",  0, INSN_CLASS_COREV_HWLP, "di,s,b1",  	MATCH_HWLP_SETUP,  MASK_HWLP_SETUP, match_opcode, 0},
 {"cv.setupi", 0, INSN_CLASS_COREV_HWLP, "di,ji,b2", 	MATCH_HWLP_SETUPI, MASK_HWLP_SETUPI,match_opcode, 0},
 
+/* 32x32 into 32 Mac/Msu */
+{"cv.mac",	0, INSN_CLASS_COREV_MAC, "d,s,t",	MATCH_MAC32,	MASK_MACMSU32,  match_opcode,   0},
+{"cv.msu",	0, INSN_CLASS_COREV_MAC, "d,s,t",	MATCH_MSU32,	MASK_MACMSU32,  match_opcode,   0},
+
+/*  16x16 into 32 Mult/Mac with optional norm and rounding */
+{"cv.muls",	0, INSN_CLASS_COREV_MAC, "d,s,t",     MATCH_MULS,	MASK_MACMUL,    match_opcode,   0},
+{"cv.mulhhs",	0, INSN_CLASS_COREV_MAC, "d,s,t",     MATCH_MULHHS,	MASK_MACMUL,    match_opcode,   0},
+{"cv.mulu",	0, INSN_CLASS_COREV_MAC, "d,s,t",     MATCH_MULU,	MASK_MACMUL,    match_opcode,   0},
+{"cv.mulhhu",	0, INSN_CLASS_COREV_MAC, "d,s,t",     MATCH_MULHHU,	MASK_MACMUL,    match_opcode,   0},
+
+{"cv.macs",	0, INSN_CLASS_COREV_MAC, "d,s,t",     MATCH_MACS,	MASK_MACMUL,    match_opcode,   0},
+{"cv.machhs",	0, INSN_CLASS_COREV_MAC, "d,s,t",     MATCH_MACHHS,	MASK_MACMUL,    match_opcode,   0},
+{"cv.macu",	0, INSN_CLASS_COREV_MAC, "d,s,t",     MATCH_MACU,	MASK_MACMUL,    match_opcode,   0},
+{"cv.machhu",	0, INSN_CLASS_COREV_MAC, "d,s,t",     MATCH_MACHHU,	MASK_MACMUL,    match_opcode,   0},
+
+{"cv.mulsn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MULSN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.mulhhsn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MULHHSN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.mulsrn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MULSRN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.mulhhsrn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MULHHSRN,	MASK_MACMULNR,  match_opcode,   0},
+
+{"cv.mulun",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MULUN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.mulhhun",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MULHHUN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.mulurn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MULURN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.mulhhurn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MULHHURN,	MASK_MACMULNR,  match_opcode,   0},
+
+{"cv.macsn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MACSN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.machhsn", 	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MACHHSN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.macsrn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MACSRN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.machhsrn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MACHHSRN,	MASK_MACMULNR,  match_opcode,   0},
+
+{"cv.macun",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MACUN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.machhun",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MACHHUN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.macurn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MACURN,	MASK_MACMULNR,  match_opcode,   0},
+{"cv.machhurn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",  MATCH_MACHHURN,	MASK_MACMULNR,  match_opcode,   0},
+
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
 };
