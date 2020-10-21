@@ -116,6 +116,8 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 7, 1))
 #define EXTRACT_CV_HWLP_UIMM12(x) \
   (RV_X(x, 20, 12))
+#define EXTRACT_CV_MAC_UIMM5(x) \
+  (RV_X(x, 25, 5))
 
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
@@ -163,6 +165,8 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 0, 5) << 15)
 #define ENCODE_CV_HWLP_LN(x) \
   (RV_X(x, 0, 1) << 7)
+#define ENCODE_CV_MAC_UIMM5(x) \
+  (RV_X(x, 0, 5) << 25)
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
@@ -349,6 +353,7 @@ enum riscv_insn_class
   INSN_CLASS_ZBB,
   INSN_CLASS_ZBC,
   INSN_CLASS_COREV_HWLP,
+  INSN_CLASS_COREV_MAC,
 };
 
 /* This structure holds information for a particular instruction.  */
