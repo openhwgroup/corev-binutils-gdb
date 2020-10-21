@@ -1,3 +1,73 @@
+2020-11-11  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* gas/riscv/cv-mac-01.d: Added new test.
+	* gas/riscv/cv-mac-01.l: Likewise.
+	* gas/riscv/cv-mac-01.s: Likewise.
+	* gas/riscv/cv-mac-02.d: Likewise.
+	* gas/riscv/cv-mac-02.l: Likewise.
+	* gas/riscv/cv-mac-02.s: Likewise.
+	* gas/riscv/cv-mac-03.d: Likewise.
+	* gas/riscv/cv-mac-03.l: Likewise.
+	* gas/riscv/cv-mac-03.s: Likewise.
+	* gas/riscv/cv-mac-04.d: Likewise.
+	* gas/riscv/cv-mac-04.l: Likewise.
+	* gas/riscv/cv-mac-04.s: Likewise.
+	* gas/riscv/cv-mac-05.d: Likewise.
+	* gas/riscv/cv-mac-05.l: Likewise.
+	* gas/riscv/cv-mac-05.s: Likewise.
+	* gas/riscv/cv-mac-06.d: Likewise.
+	* gas/riscv/cv-mac-06.l: Likewise.
+	* gas/riscv/cv-mac-06.s: Likewise.
+	* gas/riscv/cv-mac-mac.d: Likewise.
+	* gas/riscv/cv-mac-mac.s: Likewise.
+	* gas/riscv/cv-mac-machhsn.d: Likewise.
+	* gas/riscv/cv-mac-machhsn.s: Likewise.
+	* gas/riscv/cv-mac-machhsrn.d: Likewise.
+	* gas/riscv/cv-mac-machhsrn.s: Likewise.
+	* gas/riscv/cv-mac-machhun.d: Likewise.
+	* gas/riscv/cv-mac-machhun.s: Likeiwse.
+	* gas/riscv/cv-mac-machhurn.d: Likewise.
+	* gas/riscv/cv-mac-machhurn.s: Likewise.
+	* gas/riscv/cv-mac-machhurn.d: Likewise.
+	* gas/riscv/cv-mac-machhurn.s: Likewise.
+	* gas/riscv/cv-mac-macsrn.d: Likewise.
+	* gas/riscv/cv-mac-macsrn.s: Likewise.
+	* gas/riscv/cv-mac-macun.d: Likewise.
+	* gas/riscv/cv-mac-macun.s: Likewise.
+	* gas/riscv/cv-mac-macurn.d: Likewise.
+	* gas/riscv/cv-mac-macurn.s: Likewise.
+	* gas/riscv/cv-mac-msu.d: Likewise.
+	* gas/riscv/cv-mac-msu.s: Likewise.
+	* gas/riscv/cv-mac-mulhhs.d: Likewise.
+	* gas/riscv/cv-mac-mulhhs.s: Likewise.
+	* gas/riscv/cv-mac-mulhhsn.d: Likewise.
+	* gas/riscv/cv-mac-mulhhsn.s: Likewise.
+	* gas/riscv/cv-mac-mulhhsrn.d: Likewise.
+	* gas/riscv/cv-mac-mulhhsrn.s: Likewise.
+	* gas/riscv/cv-mac-mulhhu.d: Likewise.
+	* gas/riscv/cv-mac-mulhhu.s: Likewise.
+	* gas/riscv/cv-mac-mulhhun.d: Likewise.
+	* gas/riscv/cv-mac-mulhhun.s: Likewise.
+	* gas/riscv/cv-mac-mulhhurn.d: Likewise.
+	* gas/riscv/cv-mac-mulhhurn.s: Likewise.
+	* gas/riscv/cv-mac-muls.d: Likewise.
+	* gas/riscv/cv-mac-muls.s: Likewise.
+	* gas/riscv/cv-mac-mulsn.d: Likewise.
+	* gas/riscv/cv-mac-mulsn.s: Likewise.
+	* gas/riscv/cv-mac-mulsrn.d: Likewise.
+	* gas/riscv/cv-mac-mulsrn.s: Likewise.
+	* gas/riscv/cv-mac-mulu.d: Likewise.
+	* gas/riscv/cv-mac-mulu.s: Likewise.
+	* gas/riscv/cv-mac-mulun.d: Likewise.
+	* gas/riscv/cv-mac-mulun.s: Likewise.
+	* gas/riscv/cv-mac-mulurn.d: Likewise.
+	* gas/riscv/cv-mac-mulurn.s: Likewise.
+	* gas/riscv/cv-mac-march-rv32i-xcorev.s: Likewise.
+	* gas/riscv/cv-mac-march-rv32i-xcorev.d: Likewise.
+	* gas/riscv/cv-hwloop-march-rv32i-xcorev.s: Renamed to seperate from
+	mac.
+	* gas/riscv/cv-hwloop-march-rv32i-xcorev.d: Likewise.
+
 2020-10-30  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* gas/riscv/cv-hwloop-01.d: Changed march option to xcorehwlp.
