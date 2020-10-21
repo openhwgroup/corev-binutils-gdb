@@ -1,4 +1,4 @@
-# Testing xcorev march option works for all CORE-V extensions
+# xcorev march option works for all CORE-V hwloop extensions
 target:
 	cv.starti 1, 320
         cv.endi   1, 1056
