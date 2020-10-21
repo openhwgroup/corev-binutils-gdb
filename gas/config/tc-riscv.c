@@ -245,6 +245,9 @@ riscv_multi_subset_supports (enum riscv_insn_class insn_class)
     case INSN_CLASS_COREV_HWLP:
       return riscv_subset_supports ("xcorevhwlp") || riscv_subset_supports ("xcorev");
 
+    case INSN_CLASS_COREV_MAC:
+      return riscv_subset_supports ("xcorevmac") || riscv_subset_supports ("xcorev");
+
     default:
       as_fatal ("Unreachable");
       return FALSE;
@@ -988,12 +991,17 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case 'b':
 	if (*p == '1')
 	  {
-	    used_bits |= ENCODE_ITYPE_IMM(-1U); /* For loop I type pc rel displacement */
+	    used_bits |= ENCODE_ITYPE_IMM(-1U);
 	    ++p; break;
 	  }
 	else if (*p == '2')
 	  {
-	    used_bits |= ENCODE_CV_HWLP_UIMM5(-1U); /* For loop I1 type pc rel displacement */
+	    used_bits |= ENCODE_CV_HWLP_UIMM5(-1U);
+	    ++p; break;
+	  }
+	else if (*p == '3')
+	  {
+	    used_bits |= ENCODE_CV_MAC_UIMM5(-1U);
 	    ++p; break;
 	  }
 	break;
@@ -2444,6 +2452,15 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		      INSERT_OPERAND (IMM5, *ip, (imm_expr->X_add_number>>1));
 		    }
 		  else *imm_reloc = BFD_RELOC_RISCV_CVPCREL_URS1;
+		}
+	      else if (args[1] == '3')
+		{
+		  my_getExpression (imm_expr, s);
+		  check_absolute_expr (ip, imm_expr, FALSE);
+		  s = expr_end;
+		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>31) break;
+		  ip->insn_opcode |= ENCODE_CV_MAC_UIMM5 (imm_expr->X_add_number);
+		  ++args;
 		}
 	      else
 		{
