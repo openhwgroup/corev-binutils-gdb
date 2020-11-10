@@ -1097,26 +1097,26 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case 'A': break; /* Macro operand, must be symbol.  */
       case 'B': break; /* Macro operand, must be symbol or constant.  */
       case 'b': /* CORE-V Specific.  */
-        if (*p == '1')
-          {
-            used_bits |= ENCODE_ITYPE_IMM(-1U); /* For loop I type pc rel displacement */
-            ++p; break;
-          }
-        else if (*p == '2')
-          {
-            used_bits |= ENCODE_I1TYPE_UIMM(-1U); /* For loop I1 type pc rel displacement */
-            ++p; break;
-          }
-        break;
+	if (*p == '1')
+	  {
+	    used_bits |= ENCODE_ITYPE_IMM(-1U); /* For loop I type pc rel displacement */
+	    ++p; break;
+	  }
+	else if (*p == '2')
+	  {
+	    used_bits |= ENCODE_CV_HWLP_UIMM5(-1U); /* For loop I1 type pc rel displacement */
+	    ++p; break;
+	  }
+	break;
       case 'I': break; /* Macro operand, must be constant.  */
       case 'D': /* RD, floating point.  */
       case 'd': 
 	if (*p == 'i')
-          {
-            used_bits |= ENCODE_I1TYPE_LN(-1U);
-            ++p;
-            break;
-          }	
+ 	  {
+	    used_bits |= ENCODE_CV_HWLP_LN(-1U);
+	    ++p;
+	    break;
+	  }
 	USE_BITS (OP_MASK_RD, OP_SH_RD); break;
       case 'Z': /* RS1, CSR number.  */
       case 'S': /* RS1, floating point.  */
@@ -3313,7 +3313,7 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
 	  if (r == bfd_reloc_overflow)
 	    as_fatal (_("BFD_RELOC_RISCV_CVPCREL_URS1 Overflow: Disp=%d"),
 		      (int) delta);
-	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_I1TYPE_UIMM (delta), buf);
+	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_CV_HWLP_UIMM5 (delta), buf);
 	}
       break;
 
