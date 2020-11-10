@@ -1,3 +1,9 @@
+2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
+
+	* riscv-opc.c (print_insn_args): Renamed macros for clarity -
+	EXTRACT_I1TYPE_UIMM-> EXTRACT_CV_HWLP_UIMM5
+	EXTRACT_ITYPE_UIMM -> EXTRACT_CV_HWLP_UIMM12
+
 2020-10-08  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* riscv-opc.c: Added support for corevhwlp.

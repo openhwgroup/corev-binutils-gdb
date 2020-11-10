@@ -906,7 +906,7 @@ static reloc_howto_type howto_table[] =
 	 "R_RISCV_CVPCREL_URS1",	/* name */
 	 false,				/* partial_inplace */
 	 0,				/* src_mask */
-	 ENCODE_I1TYPE_UIMM (-1U),	/* dst_mask */
+	 ENCODE_CV_HWLP_UIMM5 (-1U),	/* dst_mask */
 	 true),				/* pcrel_offset */
 };
 

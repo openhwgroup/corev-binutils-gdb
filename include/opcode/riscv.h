@@ -120,11 +120,11 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 20, 11))
 
 /* CORE-V Specific.  */
-#define EXTRACT_I1TYPE_UIMM(x) \
+#define EXTRACT_CV_HWLP_UIMM5(x) \
   (RV_X(x, 15, 5))
-#define EXTRACT_I1TYPE_LN(x) \
+#define EXTRACT_CV_HWLP_LN(x) \
   (RV_X(x, 7, 1))
-#define EXTRACT_ITYPE_UIMM(x) \
+#define EXTRACT_CV_HWLP_UIMM12(x) \
   (RV_X(x, 20, 12))
 
 #define ENCODE_ITYPE_IMM(x) \
@@ -173,9 +173,9 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 0, 11) << 20)
 
 /* CORE-V Specific.  */
-#define ENCODE_I1TYPE_UIMM(x) \
+#define ENCODE_CV_HWLP_UIMM5(x) \
   (RV_X(x, 0, 5) << 15)
-#define ENCODE_I1TYPE_LN(x) \
+#define ENCODE_CV_HWLP_LN(x) \
   (RV_X(x, 0, 1) << 7)
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
