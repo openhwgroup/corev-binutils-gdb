@@ -411,7 +411,7 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
             }
 	  else if (oparg[1] == '2')
 	    {
-	      info->target = (EXTRACT_I1TYPE_UIMM (l)<<1) + pc; ++oparg;
+	      info->target = (EXTRACT_CV_HWLP_UIMM5 (l)<<1) + pc; ++oparg;
 	      (*info->print_address_func) (info->target, info);
 	      break;
 	    }
@@ -455,7 +455,7 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	  if (oparg[1] == 'i')
 	    {
 	      ++oparg;
-	      print (info->stream, dis_style_immediate, "%d", (int) EXTRACT_ITYPE_UIMM (l));
+	      print (info->stream, dis_style_immediate, "%d", (int) EXTRACT_CV_HWLP_UIMM12 (l));
 	      break;
 	    }
 	  if (((l & MASK_ADDI) == MATCH_ADDI && rs1 != 0)
