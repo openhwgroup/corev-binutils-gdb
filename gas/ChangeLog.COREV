@@ -1,3 +1,11 @@
+2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
+
+	* config/tc-riscv.c (validate_riscv_insn): Renamed macros for clarity -
+	ENCODE_I1TYPE_UIMM -> ENCODE_CV_HWLP_UIMM5
+	ENCODE_I1TYPE_LN   -> ENCODE_CV_HWLP_LN
+	* config/tc-riscv.c (md_apply_fix): Renamed macros for clarity -
+	ENCODE_I1TYPE_UIMM -> ENCODE_CV_HWLP_UIMM5
+
 2020-10-05  Mary Bennett <mary.bennett@embecosm.com>
 
 	* config/tc-riscv.c: Fixed issue arising from incorrect CORE-V

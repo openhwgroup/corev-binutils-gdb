@@ -1,3 +1,12 @@
+2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
+
+	* opcode/riscv.h (riscv_pred_succ): Renamed macros for clarity -
+	ENCODE_I1TYPE_UIMM -> ENCODE_CV_HWLP_UIMM5
+	ENCODE_I1TYPE_LN   -> ENCODE_CV_HWLP_LN
+	EXTRACT_I1TYPE_UIMM-> EXTRACT_CV_HWLP_UIMM5
+	EXTRACT_I1TYPE_LN  -> EXTRACT_CV_HWLP_LN
+	EXTRACT_ITYPE_UIMM -> EXTRACT_CV_HWLP_UIMM12
+
 2020-10-05  Mary Bennett <mary.bennett@embecosm.com>
 
 	* opcode/riscv-opc.h: Fixed incorrect masks for CORE-V hardware loop

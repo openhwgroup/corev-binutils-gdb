@@ -963,7 +963,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case 'd':
 	if (*p == 'i')
 	  {
-	    used_bits |= ENCODE_I1TYPE_LN(-1U);
+	    used_bits |= ENCODE_CV_HWLP_LN(-1U);
 	    ++p;
 	    break;
 	  }
@@ -993,7 +993,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	  }
 	else if (*p == '2')
 	  {
-	    used_bits |= ENCODE_I1TYPE_UIMM(-1U); /* For loop I1 type pc rel displacement */
+	    used_bits |= ENCODE_CV_HWLP_UIMM5(-1U); /* For loop I1 type pc rel displacement */
 	    ++p; break;
 	  }
 	break;
@@ -3167,7 +3167,7 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
 	  if (r == bfd_reloc_overflow)
 	    as_fatal (_("BFD_RELOC_RISCV_CVPCREL_URS1 Overflow: Disp=%d"),
 		      (int) delta);
-	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_I1TYPE_UIMM (delta), buf);
+	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_CV_HWLP_UIMM5 (delta), buf);
 	}
       break;
 
