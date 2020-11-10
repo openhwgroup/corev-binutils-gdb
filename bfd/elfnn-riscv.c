@@ -1656,7 +1656,7 @@ perform_relocation (const reloc_howto_type *howto,
       break;
 
     case R_RISCV_CVPCREL_URS1:
-      value = ENCODE_I1TYPE_UIMM (value >> howto->rightshift);
+      value = ENCODE_CV_HWLP_UIMM5 (value >> howto->rightshift);
       break;
 
     case R_RISCV_LO12_I:
