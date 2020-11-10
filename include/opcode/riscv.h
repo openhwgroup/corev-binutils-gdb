@@ -108,11 +108,11 @@ static const char * const riscv_pred_succ[16] =
   ((RV_X(x, 3, 3) << 1) | (RV_X(x, 11, 1) << 4) | (RV_X(x, 2, 1) << 5) | (RV_X(x, 7, 1) << 6) | (RV_X(x, 6, 1) << 7) | (RV_X(x, 9, 2) << 8) | (RV_X(x, 8, 1) << 10) | (-RV_X(x, 12, 1) << 11))
 
 /* CORE-V Specific.  */
-#define EXTRACT_I1TYPE_UIMM(x) \
+#define EXTRACT_CV_HWLP_UIMM5(x) \
   (RV_X(x, 15, 5))
-#define EXTRACT_I1TYPE_LN(x) \
+#define EXTRACT_CV_HWLP_LN(x) \
   (RV_X(x, 7, 1))
-#define EXTRACT_ITYPE_UIMM(x) \
+#define EXTRACT_CV_HWLP_UIMM12(x) \
   (RV_X(x, 20, 12))
 
 #define ENCODE_ITYPE_IMM(x) \
@@ -155,9 +155,9 @@ static const char * const riscv_pred_succ[16] =
   ((RV_X(x, 1, 3) << 3) | (RV_X(x, 4, 1) << 11) | (RV_X(x, 5, 1) << 2) | (RV_X(x, 6, 1) << 7) | (RV_X(x, 7, 1) << 6) | (RV_X(x, 8, 2) << 9) | (RV_X(x, 10, 1) << 8) | (RV_X(x, 11, 1) << 12))
 
 /* CORE-V Specific.  */
-#define ENCODE_I1TYPE_UIMM(x) \
+#define ENCODE_CV_HWLP_UIMM5(x) \
   (RV_X(x, 0, 5) << 15)
-#define ENCODE_I1TYPE_LN(x) \
+#define ENCODE_CV_HWLP_LN(x) \
   (RV_X(x, 0, 1) << 7)
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
