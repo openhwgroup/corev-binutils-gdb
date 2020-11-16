@@ -2459,6 +2459,9 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
     case INSN_CLASS_COREV_MAC:
       return riscv_subset_supports (rps, "xcorevmac")
 	     || riscv_subset_supports (rps, "xcorev");
+    case INSN_CLASS_COREV_ALU:
+      return riscv_subset_supports (rps, "xcorevalu")
+	     || riscv_subset_supports (rps, "xcorev");
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));
