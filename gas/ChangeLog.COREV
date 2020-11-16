@@ -1,3 +1,7 @@
+2020-11-20  Pietra Ferreira  <pietra.ferreira@embecosm.com>
+
+	* config/tc-riscv.c: Added CORE-V general ALU operations support.
+
 2020-11-19  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* config/tc-riscv.c: Fixed bug in hardware loop operand boundary

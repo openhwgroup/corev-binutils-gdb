@@ -292,6 +292,12 @@ print_insn_args (const char *d, insn_t l, bfd_vma pc, disassemble_info *info)
 	      ++d;
 	      break;
 	    }
+	  else if (d[1] == 'i')
+	    {
+	      print (info->stream, "%d", ((int) EXTRACT_CV_ALU_UIMM5 (l)));
+	      ++d;
+	      break;
+	    }
 	/* Fall through.  */
 	case 's':
 	  if ((l & MASK_JALR) == MATCH_JALR)
