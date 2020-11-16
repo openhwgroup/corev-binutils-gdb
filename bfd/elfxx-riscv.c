@@ -2411,6 +2411,9 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
     case INSN_CLASS_COREV_MAC:
       return (riscv_subset_supports (rps, "xcorevmac")
 	      || riscv_subset_supports (rps, "xcorev"));
+    case INSN_CLASS_COREV_ALU:
+      return (riscv_subset_supports (rps, "xcorevalu")
+	      || riscv_subset_supports (rps, "xcorev"));
     case INSN_CLASS_ZBA:
       return riscv_subset_supports (rps, "zba");
     case INSN_CLASS_ZBB:
@@ -2519,6 +2522,8 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return "xcorevhwlp' or `xcorev";
     case INSN_CLASS_COREV_MAC:
       return "xcorevmac' or `xcorev";
+    case INSN_CLASS_COREV_ALU:
+      return "xcorevalu' or `xcorev";
     case INSN_CLASS_ZBA:
       return "zba";
     case INSN_CLASS_ZBB:
