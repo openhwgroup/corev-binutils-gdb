@@ -3254,7 +3254,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  if (imm_expr->X_op == O_constant)
 		    {
 		      if (imm_expr->X_add_number < 0 ||
-			  ((imm_expr->X_add_number>>1) > 0x0FFF))
+			  ((imm_expr->X_add_number>>1) > 0x07FF))
 			as_bad (_("%ld constant out of range for %s, range:[0, %d]"),
 				imm_expr->X_add_number, ip->insn_mo->name, 0xFFE);
 		      if ((imm_expr->X_add_number % 2) == 1)
@@ -3281,7 +3281,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  if (imm_expr->X_op == O_constant)
 		    {
 		      if (imm_expr->X_add_number < 0 ||
-			  ((imm_expr->X_add_number>>1) > 31))
+			  ((imm_expr->X_add_number>>1) > 0xF))
 			as_bad (_("%ld constant out of range for "
 				  "cv.setupi, range:[0, %d]"),
 				imm_expr->X_add_number, 0x1E);
@@ -3301,7 +3301,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		{
 		  my_getExpression (imm_expr, asarg);
 		  check_absolute_expr (ip, imm_expr, FALSE);
-		  asarg = expr_end;
+		  asarg = expr_parse_end;
 		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>31) break;
 		  ip->insn_opcode |= ENCODE_CV_MAC_UIMM5 (imm_expr->X_add_number);
 		  ++oparg;
