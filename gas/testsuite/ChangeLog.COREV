@@ -1,3 +1,40 @@
+2020-11-19  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* cv-hwloop-16.d: Added new boundary test.
+	* cv-hwloop-16.l: Likewise.
+	* cv-hwloop-16.s: Likewise.
+	* cv-hwloop-17.d: Likewise.
+	* cv-hwloop-17.l: Likewise.
+	* cv-hwloop-17.s: Likewise.
+	* cv-hwloop-18.d: Likewise.
+	* cv-hwloop-18.l: Likewise.
+	* cv-hwloop-18.s: Likewise.
+	* cv-hwloop-19.d: Likewise.
+	* cv-hwloop-19.l: Likewise.
+	* cv-hwloop-19.s: Likewise.
+	* cv-hwloop-20.d: Likewise.
+	* cv-hwloop-20.l: Likewise.
+	* cv-hwloop-20.s: Likewise.
+	* cv-hwloop-21.d: Likewise.
+	* cv-hwloop-21.l: Likewise.
+	* cv-hwloop-21.s: Likewise.
+	* cv-hwloop-22.d: Likewise.
+	* cv-hwloop-22.l: Likewise.
+	* cv-hwloop-22.s: Likewise.
+	* cv-hwloop-23.d: Likewise.
+	* cv-hwloop-23.l: Likewise.
+	* cv-hwloop-23.s: Likewise.
+	* cv-hwloop-09.s: Fixed incorrect comment.
+	* cv-hwloop-10.s: Likewise.
+	* cv-mac-07.d: Added new boundary test.
+	* cv-mac-07.l: Likewise.
+	* cv-mac-07.s: Likewise.
+	* cv-mac-08.d: Likewise.
+	* cv-mac-08.l: Likewise.
+	* cv-mac-08.s: Likewise.
+	* cv-mac-05.l: Changed to non-boundary value.
+	* cv-mac-05.s: Likewise.
+
 2020-11-11  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-mac-01.d: Added new test.
