@@ -4,6 +4,12 @@
 	(MATCH_MACHHU): Remove obsolete matches.
 	(MASK_MULMAC): Rename mask as MASK_MULSH
 
+2020-12-14  Enrico Tabanelli  <enrico.tabanelli3@unibo.it>
+
+	* riscv-dis.c (print_insn_args): Add post-increment symbol. 
+	* riscv-opc.c (riscv_opcodes): Add post-increment and 
+	register-indexed load/store opcodes.
+
 2020-11-20  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
 	* riscv-dis.c (print_insn_args): Add general ALU ops operands.

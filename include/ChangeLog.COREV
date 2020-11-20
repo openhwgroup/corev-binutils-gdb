@@ -4,6 +4,13 @@
 	(MATCH_MACHHU): Remove obsolete matches.
 	(MASK_MULMAC): Rename mask as MASK_MULSH.
 
+2020-12-14  Enrico Tabanelli  <enrico.tabanelli3@unibo.it>
+
+	* riscv-opc.h: Add post-increment and register-indexed 
+	load/store matches and masks.
+	* riscv.h (riscv_insn_class): Add post-increment and
+	register-indexed load/store class.
+
 2020-11-20  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* opcode/riscv-opc.h: Add general ALU ops masks and matches.
