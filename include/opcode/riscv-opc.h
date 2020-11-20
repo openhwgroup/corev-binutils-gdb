@@ -902,6 +902,26 @@
 
 #define MASK_MULMACN   0xC000707F
 
+/* Post-Incrementing stores */
+#define MASK_SPOST     0x707f
+#define MATCH_SBPOST   0x002b
+#define MATCH_SHPOST   0x102b
+#define MATCH_SWPOST   0x202b
+
+/* Reg-Reg Post-Incrementing stores */
+//#define MASK_SRRPOST   0xc0007fff
+#define MASK_SRRPOST   0xfe00707f
+#define MATCH_SBRRPOST 0x0000402b
+#define MATCH_SHRRPOST 0x0000502b
+#define MATCH_SWRRPOST 0x0000602b
+
+/* Reg-Reg stores */
+//#define MASK_SRR       0xc0007fff
+#define MASK_SRR       0xfe00707f
+#define MATCH_SBRR     0x00004023
+#define MATCH_SHRR     0x00005023
+#define MATCH_SWRR     0x00006023
+
 #ifdef DECLARE_INSN
 DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
 DECLARE_INSN(srli_rv32, MATCH_SRLI_RV32, MASK_SRLI_RV32)
