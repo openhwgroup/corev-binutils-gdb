@@ -954,6 +954,35 @@
 #define MATCH_SHRR     0x00005023
 #define MATCH_SWRR     0x00006023
 
+/* Loads */
+/* Register-immediate with post-increment */
+#define MASK_LPOST      0x707f
+
+#define MATCH_LBPOST    0x000b
+#define MATCH_LBUPOST   0x400b
+#define MATCH_LHPOST    0x100b
+#define MATCH_LHUPOST   0x500b
+#define MATCH_LWPOST    0x200b
+
+/* Register-register with post-increment */
+#define MASK_LRRPOST    0xfe00707f
+
+#define MATCH_LBRRPOST  0x0000700b
+#define MATCH_LBURRPOST 0x4000700b
+#define MATCH_LHRRPOST  0x1000700b
+#define MATCH_LHURRPOST 0x5000700b
+#define MATCH_LWRRPOST  0x2000700b
+
+/* Register-register */
+#define MASK_LRR        0xfe00707f
+
+#define MATCH_LBRR      0x00007003
+#define MATCH_LBURR     0x40007003
+#define MATCH_LHRR      0x10007003
+#define MATCH_LHURR     0x50007003
+#define MATCH_LWRR      0x20007003
+
+
 #ifdef DECLARE_INSN
 DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
 DECLARE_INSN(srli_rv32, MATCH_SRLI_RV32, MASK_SRLI_RV32)
