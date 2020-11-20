@@ -1,3 +1,12 @@
+2021-01-22  Nazareno Bruschi  <nazareno.bruschi@unibo.it>
+
+	* config/tc-riscv.c (riscv_multi_subset_supports): Add immediate
+	branching instruction class.
+	(validate_riscv_insn, riscv_ip): Add immediate branching
+	operand and modify PC-relative offset operand.
+	* doc/c-riscv.texi: Add details on CORE-V immediate
+	branching ops ISA options.
+
 2020-11-24  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* doc/c-riscv.texi: Add details on hardware loop,
