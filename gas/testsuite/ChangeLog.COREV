@@ -1,3 +1,101 @@
+2020-12-14  Enrico Tabanelli  <enrico.tabanelli3@unibo.it>
+
+	* gas/riscv/cv-postinc-fail-operand-01.d: Fail test for 
+	type of operand "d" for post-increment and 
+	register-indexed load/store.
+	* gas/riscv/cv-postinc-fail-operand-01.s: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-01.l: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-02.d: Fail test for 
+	type of operand "t" for post-increment and 
+	register-indexed load/store.
+	* gas/riscv/cv-postinc-fail-operand-02.s: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-02.l: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-03.d: Fail test for 
+	type of operand "s" for post-increment and 
+	register-indexed load/store.
+	* gas/riscv/cv-postinc-fail-operand-03.s: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-03.l: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-04.d: Fail test for 
+	range of operand "o" for post-increment and 
+	register-indexed load.
+	* gas/riscv/cv-postinc-fail-operand-04.s: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-04.l: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-05.d: Fail test for 
+	range of operand "q" for post-increment and 
+	register-indexed store.
+	* gas/riscv/cv-postinc-fail-operand-05.s: Likewise.
+	* gas/riscv/cv-postinc-fail-operand-05.l: Likewise.
+	* gas/riscv/cv-postinc-fail-march.d: Fail test for -march 
+	not specified.
+	* gas/riscv/cv-postinc-fail-march.s: Likewise.
+	* gas/riscv/cv-postinc-fail-march.l: Likewise.
+	* gas/riscv/cv-postinc-lb.d: Pass test.
+	* gas/riscv/cv-postinc-lbpost.d: Likewise.
+	* gas/riscv/cv-postinc-lbpost.s: Likewise.
+	* gas/riscv/cv-postinc-lbrr.d: Likewise.
+	* gas/riscv/cv-postinc-lbrrpost.d: Likewise.
+	* gas/riscv/cv-postinc-lbrrpost.s: Likewise.
+	* gas/riscv/cv-postinc-lbrr.s: Likewise.
+	* gas/riscv/cv-postinc-lb.s: Likewise.
+	* gas/riscv/cv-postinc-lbu.d: Likewise.
+	* gas/riscv/cv-postinc-lbupost.d: Likewise.
+	* gas/riscv/cv-postinc-lbupost.s: Likewise.
+	* gas/riscv/cv-postinc-lburr.d: Likewise.
+	* gas/riscv/cv-postinc-lburrpost.d: Likewise.
+	* gas/riscv/cv-postinc-lburrpost.s: Likewise.
+	* gas/riscv/cv-postinc-lburr.s: Likewise.
+	* gas/riscv/cv-postinc-lbu.s: Likewise.
+	* gas/riscv/cv-postinc-lh.d: Likewise.
+	* gas/riscv/cv-postinc-lhpost.d: Likewise.
+	* gas/riscv/cv-postinc-lhpost.s: Likewise.
+	* gas/riscv/cv-postinc-lhrr.d: Likewise.
+	* gas/riscv/cv-postinc-lhrrpost.d: Likewise.
+	* gas/riscv/cv-postinc-lhrrpost.s: Likewise.
+	* gas/riscv/cv-postinc-lhrr.s: Likewise.
+	* gas/riscv/cv-postinc-lh.s: Likewise.
+	* gas/riscv/cv-postinc-lhu.d: Likewise.
+	* gas/riscv/cv-postinc-lhupost.d: Likewise.
+	* gas/riscv/cv-postinc-lhupost.s: Likewise.
+	* gas/riscv/cv-postinc-lhurr.d: Likewise.
+	* gas/riscv/cv-postinc-lhurrpost.d: Likewise.
+	* gas/riscv/cv-postinc-lhurrpost.s: Likewise.
+	* gas/riscv/cv-postinc-lhurr.s: Likewise.
+	* gas/riscv/cv-postinc-lhu.s: Likewise.
+	* gas/riscv/cv-postinc-lw.d: Likewise.
+	* gas/riscv/cv-postinc-lwpost.d: Likewise.
+	* gas/riscv/cv-postinc-lwpost.s: Likewise.
+	* gas/riscv/cv-postinc-lwrr.d: Likewise.
+	* gas/riscv/cv-postinc-lwrrpost.d: Likewise.
+	* gas/riscv/cv-postinc-lwrrpost.s: Likewise.
+	* gas/riscv/cv-postinc-lwrr.s: Likewise.
+	* gas/riscv/cv-postinc-lw.s: Likewise.
+	* gas/riscv/cv-postinc-march-rv32i-xcorev.d: Likewise.
+	* gas/riscv/cv-postinc-march-rv32i-xcorev.s: Likewise.
+	* gas/riscv/cv-postinc-sb.d: Likewise.
+	* gas/riscv/cv-postinc-sbpost.d: Likewise.
+	* gas/riscv/cv-postinc-sbpost.s: Likewise.
+	* gas/riscv/cv-postinc-sbrr.d: Likewise.
+	* gas/riscv/cv-postinc-sbrrpost.d: Likewise.
+	* gas/riscv/cv-postinc-sbrrpost.s: Likewise.
+	* gas/riscv/cv-postinc-sbrr.s: Likewise.
+	* gas/riscv/cv-postinc-sb.s: Likewise.
+	* gas/riscv/cv-postinc-sh.d: Likewise.
+	* gas/riscv/cv-postinc-shpost.d: Likewise.
+	* gas/riscv/cv-postinc-shpost.s: Likewise.
+	* gas/riscv/cv-postinc-shrr.d: Likewise.
+	* gas/riscv/cv-postinc-shrrpost.d: Likewise.
+	* gas/riscv/cv-postinc-shrrpost.s: Likewise.
+	* gas/riscv/cv-postinc-shrr.s: Likewise.
+	* gas/riscv/cv-postinc-sh.s: Likewise.
+	* gas/riscv/cv-postinc-sw.d: Likewise.
+	* gas/riscv/cv-postinc-swpost.d: Likewise.
+	* gas/riscv/cv-postinc-swpost.s: Likewise.
+	* gas/riscv/cv-postinc-swrr.d: Likewise.
+	* gas/riscv/cv-postinc-swrrpost.d: Likewise.
+	* gas/riscv/cv-postinc-swrrpost.s: Likewise.
+	* gas/riscv/cv-postinc-swrr.s: Likewise.
+	* gas/riscv/cv-postinc-sw.s: Likewise.
+
 2020-11-20  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-alu-01.d: Added new test.

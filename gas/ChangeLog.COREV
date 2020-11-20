@@ -1,3 +1,10 @@
+2020-12-14  Enrico Tabanelli  <enrico.tabanelli3@unibo.it>
+
+	* config/tc-riscv.c: Added case "!" for CORE-V post-increment 
+	and register-indexed load/store in riscv_ip() and 
+	validate_riscv_insn(), added INSN_CLASS_COREV_POSTINC in 
+	function riscv_multi_subset_supports()
+
 2020-11-24  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* doc/c-riscv.texi: Added details on CORE-V hardware loop,

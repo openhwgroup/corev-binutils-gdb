@@ -1,3 +1,11 @@
+2020-12-14  Enrico Tabanelli  <enrico.tabanelli3@unibo.it>
+
+	* riscv-dis.c: Added case "!" for CORE-V post-increment 
+	and register-indexed load/store in print_insn_args() and 
+	validate_riscv_insn().
+	* riscv-opc.c: Added in struct riscv_opcodes post-increment
+	and register-indexed load/store opcodes.
+
 2020-11-20  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
 	* riscv-dis.c: Added CORE-V general ALU operations support.

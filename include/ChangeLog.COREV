@@ -1,3 +1,11 @@
+2020-12-14  Enrico Tabanelli  <enrico.tabanelli3@unibo.it>
+
+	* riscv-opc.h: Added MATCH and MASK defines for CORE-V 
+	post-increment and register-indexed load/store.
+	* riscv.h: Added in struct riscv_insn_class the class 
+	INSN_CLASS_COREV_POSTINC for post-increment and 
+	register-indexed load/store.
+
 2020-11-20  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* opcode/riscv-opc.h: Added CORE-V general ALU operations support.
