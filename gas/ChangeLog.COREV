@@ -1,3 +1,8 @@
+2020-11-24  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* doc/c-riscv.texi: Added details on CORE-V hardware loop,
+	multiply-accumulate and general ALU ops ISA options.
+
 2020-11-20  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
 	* config/tc-riscv.c: Added CORE-V general ALU operations support.
