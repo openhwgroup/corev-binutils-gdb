@@ -826,27 +826,27 @@ const struct riscv_opcode riscv_opcodes[] =
 
 
 /* Post-incrementing and register-register loads */
-{"cv.lb",   0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LB,             MASK_LB,        match_opcode, 0},
+{"cv.lb",   0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LB,             MASK_LB,        match_opcode, INSN_DREF|INSN_1_BYTE},
 {"cv.lb",   0, INSN_CLASS_COREV_POSTINC, "d,o(s!)",   MATCH_LBPOST,         MASK_LPOST,     match_opcode, 0},
 {"cv.lb",   0, INSN_CLASS_COREV_POSTINC, "d,t(s!)",   MATCH_LBRRPOST,       MASK_LRRPOST,   match_opcode, 0},
 {"cv.lb",   0, INSN_CLASS_COREV_POSTINC, "d,t(s)",    MATCH_LBRR,           MASK_LRR,       match_opcode, 0},
 
-{"cv.lbu",  0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LBU,            MASK_LBU,       match_opcode, 0},
+{"cv.lbu",  0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LBU,            MASK_LBU,       match_opcode, INSN_DREF|INSN_1_BYTE},
 {"cv.lbu",  0, INSN_CLASS_COREV_POSTINC, "d,o(s!)",   MATCH_LBUPOST,        MASK_LPOST,     match_opcode, 0},
 {"cv.lbu",  0, INSN_CLASS_COREV_POSTINC, "d,t(s!)",   MATCH_LBURRPOST,      MASK_LRRPOST,   match_opcode, 0},
 {"cv.lbu",  0, INSN_CLASS_COREV_POSTINC, "d,t(s)",    MATCH_LBURR,          MASK_LRR,       match_opcode, 0},
 
-{"cv.lh",   0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LH,             MASK_LH,        match_opcode, 0},
+{"cv.lh",   0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LH,             MASK_LH,        match_opcode, INSN_DREF|INSN_2_BYTE},
 {"cv.lh",   0, INSN_CLASS_COREV_POSTINC, "d,o(s!)",   MATCH_LHPOST,         MASK_LPOST,     match_opcode, 0},
 {"cv.lh",   0, INSN_CLASS_COREV_POSTINC, "d,t(s!)",   MATCH_LHRRPOST,       MASK_LRRPOST,   match_opcode, 0},
 {"cv.lh",   0, INSN_CLASS_COREV_POSTINC, "d,t(s)",    MATCH_LHRR,           MASK_LRR,       match_opcode, 0},
 
-{"cv.lhu",  0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LHU,            MASK_LHU,       match_opcode, 0},
+{"cv.lhu",  0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LHU,            MASK_LHU,       match_opcode, INSN_DREF|INSN_2_BYTE},
 {"cv.lhu",  0, INSN_CLASS_COREV_POSTINC, "d,o(s!)",   MATCH_LHUPOST,        MASK_LPOST,     match_opcode, 0},
 {"cv.lhu",  0, INSN_CLASS_COREV_POSTINC, "d,t(s!)",   MATCH_LHURRPOST,      MASK_LRRPOST,   match_opcode, 0},
 {"cv.lhu",  0, INSN_CLASS_COREV_POSTINC, "d,t(s)",    MATCH_LHURR,          MASK_LRR,       match_opcode, 0},
 
-{"cv.lw",   0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LW,             MASK_LW,        match_opcode, 0},
+{"cv.lw",   0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LW,             MASK_LW,        match_opcode, INSN_DREF|INSN_4_BYTE},
 {"cv.lw",   0, INSN_CLASS_COREV_POSTINC, "d,o(s!)",   MATCH_LWPOST,         MASK_LPOST,     match_opcode, 0},
 {"cv.lw",   0, INSN_CLASS_COREV_POSTINC, "d,t(s!)",   MATCH_LWRRPOST,       MASK_LRRPOST,   match_opcode, 0},
 {"cv.lw",   0, INSN_CLASS_COREV_POSTINC, "d,t(s)",    MATCH_LWRR,           MASK_LRR,       match_opcode, 0},
