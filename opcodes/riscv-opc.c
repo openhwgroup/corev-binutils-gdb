@@ -826,17 +826,17 @@ const struct riscv_opcode riscv_opcodes[] =
 
 /* Store */
 /* Reg-immediate store with Post-Incrementing */
-{"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SB,        MASK_SB,       match_opcode, 0},
+{"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SB,        MASK_SB,       match_opcode, INSN_DREF|INSN_1_BYTE},
 {"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,q(s!)", MATCH_SBPOST,    MASK_SPOST,    match_opcode, 0},
 {"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,d(s)",  MATCH_SBRR,      MASK_SRR,      match_opcode, 0},
 {"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,d(s!)", MATCH_SBRRPOST,  MASK_SRRPOST,  match_opcode, 0},
 /* Reg-Reg store with Post-Incrementing */
-{"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SH,        MASK_SH,       match_opcode, 0},
+{"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SH,        MASK_SH,       match_opcode, INSN_DREF|INSN_2_BYTE},
 {"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,q(s!)", MATCH_SHPOST,    MASK_SPOST,    match_opcode, 0},
 {"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,d(s)",  MATCH_SHRR,      MASK_SRR,      match_opcode, 0},
 {"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,d(s!)", MATCH_SHRRPOST,  MASK_SRRPOST,  match_opcode, 0},
 /* Reg-Reg store */
-{"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SW,        MASK_SW,       match_opcode, 0},
+{"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SW,        MASK_SW,       match_opcode, INSN_DREF|INSN_4_BYTE},
 {"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,q(s!)", MATCH_SWPOST,    MASK_SPOST,    match_opcode, 0},
 {"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,d(s)",  MATCH_SWRR,      MASK_SRR,      match_opcode, 0},
 {"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,d(s!)", MATCH_SWRRPOST,  MASK_SRRPOST,  match_opcode, 0},
