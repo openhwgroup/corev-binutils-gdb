@@ -824,7 +824,6 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.macurn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",	MATCH_MACURN,	MASK_MULMACN,	match_opcode,	0},
 {"cv.machhurn",	0, INSN_CLASS_COREV_MAC, "d,s,t,b3",	MATCH_MACHHURN,	MASK_MULMACN,	match_opcode,	0},
 
-
 /* Post-incrementing and register-register loads */
 {"cv.lb",   0, INSN_CLASS_COREV_POSTINC, "d,o(s)",    MATCH_LB,             MASK_LB,        match_opcode, INSN_DREF|INSN_1_BYTE},
 {"cv.lb",   0, INSN_CLASS_COREV_POSTINC, "d,o(s!)",   MATCH_LBPOST,         MASK_LPOST,     match_opcode, 0},
@@ -851,6 +850,22 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.lw",   0, INSN_CLASS_COREV_POSTINC, "d,t(s!)",   MATCH_LWRRPOST,       MASK_LRRPOST,   match_opcode, 0},
 {"cv.lw",   0, INSN_CLASS_COREV_POSTINC, "d,t(s)",    MATCH_LWRR,           MASK_LRR,       match_opcode, 0},
 
+/* Store */
+/* Reg-immediate store with Post-Incrementing */
+{"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SB,        MASK_SB,       match_opcode, INSN_DREF|INSN_1_BYTE},
+{"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,q(s!)", MATCH_SBPOST,    MASK_SPOST,    match_opcode, 0},
+{"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,d(s)",  MATCH_SBRR,      MASK_SRR,      match_opcode, 0},
+{"cv.sb", 0, INSN_CLASS_COREV_POSTINC, "t,d(s!)", MATCH_SBRRPOST,  MASK_SRRPOST,  match_opcode, 0},
+/* Reg-Reg store with Post-Incrementing */
+{"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SH,        MASK_SH,       match_opcode, INSN_DREF|INSN_2_BYTE},
+{"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,q(s!)", MATCH_SHPOST,    MASK_SPOST,    match_opcode, 0},
+{"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,d(s)",  MATCH_SHRR,      MASK_SRR,      match_opcode, 0},
+{"cv.sh", 0, INSN_CLASS_COREV_POSTINC, "t,d(s!)", MATCH_SHRRPOST,  MASK_SRRPOST,  match_opcode, 0},
+/* Reg-Reg store */
+{"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,q(s)",  MATCH_SW,        MASK_SW,       match_opcode, INSN_DREF|INSN_4_BYTE},
+{"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,q(s!)", MATCH_SWPOST,    MASK_SPOST,    match_opcode, 0},
+{"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,d(s)",  MATCH_SWRR,      MASK_SRR,      match_opcode, 0},
+{"cv.sw", 0, INSN_CLASS_COREV_POSTINC, "t,d(s!)", MATCH_SWRRPOST,  MASK_SRRPOST,  match_opcode, 0},
 
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
