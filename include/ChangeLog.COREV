@@ -1,7 +1,7 @@
 2020-12-14  Enrico Tabanelli, Nazareno Bruschi and Giuseppe Tagliavini  <enrico.tabanelli3@unibo.it>
 
-	* riscv-dis.c: Added CORE-V post-increment and register-indexed load/store support.
-	* riscv-opc.c: Likewise.
+	* riscv-opc.h: Added CORE-V post-increment and register-indexed load/store support.
+	* riscv.h: Likewise.
 
 2020-11-11  Jessica Mills <jessica.mills@embecosm.com>
 
