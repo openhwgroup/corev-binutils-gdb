@@ -1,3 +1,4 @@
 # Five bit immediate must be an absolute value
 target:
-	cv.clipu t0, t3, t6
+	cv.clip t4,t2,t3
+	cv.clipu t4,t2,t3
