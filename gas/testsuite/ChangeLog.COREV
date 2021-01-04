@@ -1,5 +1,110 @@
 2021-01-15  Jessica Mills  <jessica.mills@embecosm.com>
 
+	* gas/riscv/cv-alu-fail-march.d: Added new test.
+	* gas/riscv/cv-alu-fail-march.l: Likewise.
+	* gas/riscv/cv-alu-fail-march.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-01.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-01.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-01.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-02.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-02.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-02.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-03.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-03.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-03.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-04.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-04.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-04.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-05.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-05.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-05.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-06.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-06.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-06.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-07.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-07.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-07.s: Likewise.
+	* gas/riscv/cv-alu-01.d: Deleted, content subsumed into
+	cv-alu-fail-operand-01.d.
+	* gas/riscv/cv-alu-01.l: Deleted, content subsumed into
+	cv-alu-fail-operand-01.l.
+	* gas/riscv/cv-alu-01.s: Deleted, content subsumed into
+	cv-alu-fail-operand-01.s.
+	* gas/riscv/cv-alu-02.d: Deleted, content subsumed into
+	cv-alu-fail-operand-02.d.
+	* gas/riscv/cv-alu-02.l: Deleted, content subsumed into
+	cv-alu-fail-operand-02.l.
+	* gas/riscv/cv-alu-02.s: Deleted, content subsumed into
+	cv-alu-fail-operand-02.s.
+	* gas/riscv/cv-alu-03.d: Deleted, content subsumed into
+	cv-alu-fail-operand-03.d.
+	* gas/riscv/cv-alu-03.l: Deleted, content subsumed into
+	cv-alu-fail-operand-03.l.
+	* gas/riscv/cv-alu-03.s: Deleted, content subsumed into
+	cv-alu-fail-operand-03.s.
+	* gas/riscv/cv-alu-04.d: Deleted, content subsumed into
+	cv-alu-fail-operand-04.d.
+	* gas/riscv/cv-alu-04.l: Deleted, content subsumed into
+	cv-alu-fail-operand-04.l.
+	* gas/riscv/cv-alu-04.s: Deleted, content subsumed into
+	cv-alu-fail-operand-04.s.
+	* gas/riscv/cv-alu-05.d: Deleted, content subsumed into
+	cv-alu-fail-operand-05.d.
+	* gas/riscv/cv-alu-05.l: Deleted, content subsumed into
+	cv-alu-fail-operand-05.l.
+	* gas/riscv/cv-alu-05.s: Deleted, content subsumed into
+	cv-alu-fail-operand-05.s.
+	* gas/riscv/cv-alu-06.d: Deleted, content subsumed into
+	cv-alu-fail-operand-06.d.
+	* gas/riscv/cv-alu-06.l: Deleted, content subsumed into
+	cv-alu-fail-operand-06.l.
+	* gas/riscv/cv-alu-06.s: Deleted, content subsumed into
+	cv-alu-fail-operand-06.s.
+	* gas/riscv/cv-alu-07.d: Deleted, content subsumed into
+	cv-alu-fail-operand-06.d.
+	* gas/riscv/cv-alu-07.l: Deleted, content subsumed into
+	cv-alu-fail-operand-06.l.
+	* gas/riscv/cv-alu-07.s: Deleted, content subsumed into
+	cv-alu-fail-operand-06.s.
+	* gas/riscv/cv-alu-08.d: Deleted, content subsumed into
+	cv-alu-fail-operand-07.d.
+	* gas/riscv/cv-alu-08.l: Deleted, content subsumed into
+	cv-alu-fail-operand-07.l.
+	* gas/riscv/cv-alu-08.s: Deleted, content subsumed into
+	cv-alu-fail-operand-07.s.
+	* gas/riscv/cv-alu-09.d: Deleted, content subsumed into
+	cv-alu-fail-operand-07.d.
+	* gas/riscv/cv-alu-09.l: Deleted, content subsumed into
+	cv-alu-fail-operand-07.l.
+	* gas/riscv/cv-alu-09.s: Deleted, content subsumed into
+	cv-alu-fail-operand-07.s.
+	* gas/riscv/cv-alu-10.d: Deleted, content subsumed into
+	cv-alu-fail-operand-06.d.
+	* gas/riscv/cv-alu-10.l: Deleted, content subsumed into
+	cv-alu-fail-operand-06.l.
+	* gas/riscv/cv-alu-10.s: Deleted, content subsumed into
+	cv-alu-fail-operand-06.s.
+	* gas/riscv/cv-alu-11.d: Deleted, content subsumed into
+	cv-alu-fail-operand-06.d.
+	* gas/riscv/cv-alu-11.l: Deleted, content subsumed into
+	cv-alu-fail-operand-06.l.
+	* gas/riscv/cv-alu-11.s: Deleted, content subsumed into
+	cv-alu-fail-operand-06.s.
+	* gas/riscv/cv-alu-12.d: Deleted, content subsumed into
+	cv-alu-fail-operand-07.d.
+	* gas/riscv/cv-alu-12.l: Deleted, content subsumed into
+	cv-alu-fail-operand-07.l.
+	* gas/riscv/cv-alu-12.s: Deleted, content subsumed into
+	cv-alu-fail-operand-07.s.
+	* gas/riscv/cv-alu-13.d: Deleted, content subsumed into
+	cv-alu-fail-operand-07.d.
+	* gas/riscv/cv-alu-13.l: Deleted, content subsumed into
+	cv-alu-fail-operand-07.l.
+	* gas/riscv/cv-alu-13.s: Deleted, content subsumed into
+	cv-alu-fail-operand-07.s.
+
+2021-01-15  Jessica Mills  <jessica.mills@embecosm.com>
+
 	* gas/riscv/cv-hwloop-count.d: Renamed to cv-hwlp-count.d.
 	* gas/riscv/cv-hwloop-count.s: Renamed to cv-hwlp-count.s.
 	* gas/riscv/cv-hwloop-counti.d: Renamed to cv-hwlp-counti.d.
