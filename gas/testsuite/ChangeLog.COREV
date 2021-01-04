@@ -1,3 +1,69 @@
+2021-01-04  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* gas/riscv/cv-alu-fail-march.d: Added new test.
+	* gas/riscv/cv-alu-fail-march.l: Likewise.
+	* gas/riscv/cv-alu-fail-march.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-01.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-01.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-01.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-02.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-02.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-02.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-03.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-03.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-03.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-04.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-04.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-04.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-05.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-05.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-05.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-06.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-06.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-06.s: Likewise.
+	* gas/riscv/cv-alu-fail-operand-07.d: Likewise.
+	* gas/riscv/cv-alu-fail-operand-07.l: Likewise.
+	* gas/riscv/cv-alu-fail-operand-07.s: Likewise.
+	* gas/riscv/cv-alu-01.d: Subsumed into cv-alu-fail-operand-01.
+	* gas/riscv/cv-alu-01.l: Likewise.
+	* gas/riscv/cv-alu-01.s: Likewise.
+	* gas/riscv/cv-alu-02.d: Subsumed into cv-alu-fail-operand-02.
+	* gas/riscv/cv-alu-02.l: Likewise.
+	* gas/riscv/cv-alu-02.s: Likewise.
+	* gas/riscv/cv-alu-03.d: Subsumed into cv-alu-fail-operand-03.
+	* gas/riscv/cv-alu-03.l: Likewise.
+	* gas/riscv/cv-alu-03.s: Likewise.
+	* gas/riscv/cv-alu-04.d: Subsumed into cv-alu-fail-operand-04.
+	* gas/riscv/cv-alu-04.l: Likewise.
+	* gas/riscv/cv-alu-04.s: Likewise.
+	* gas/riscv/cv-alu-05.d: Subsumed into cv-alu-fail-operand-05.
+	* gas/riscv/cv-alu-05.l: Likewise.
+	* gas/riscv/cv-alu-05.s: Likewise.
+	* gas/riscv/cv-alu-06.d: Subsumed into cv-alu-fail-operand-06.
+	* gas/riscv/cv-alu-06.l: Likewise.
+	* gas/riscv/cv-alu-06.s: Likewise.
+	* gas/riscv/cv-alu-07.d: Likewise.
+	* gas/riscv/cv-alu-07.l: Likewise.
+	* gas/riscv/cv-alu-07.s: Likewise.
+	* gas/riscv/cv-alu-08.d: Subsumed into cv-alu-fail-operand-07.
+	* gas/riscv/cv-alu-08.l: Likewise.
+	* gas/riscv/cv-alu-08.s: Likewise.
+	* gas/riscv/cv-alu-09.d: Likewise.
+	* gas/riscv/cv-alu-09.l: Likewise.
+	* gas/riscv/cv-alu-09.s: Likewise.
+	* gas/riscv/cv-alu-10.d: Subsumed into cv-alu-fail-operand-06.
+	* gas/riscv/cv-alu-10.l: Likewise.
+	* gas/riscv/cv-alu-10.s: Likewise.
+	* gas/riscv/cv-alu-11.d: Likewise.
+	* gas/riscv/cv-alu-11.l: Likewise.
+	* gas/riscv/cv-alu-11.s: Likewise.
+	* gas/riscv/cv-alu-12.d: Subsumed into cv-alu-fail-operand-07.
+	* gas/riscv/cv-alu-12.l: Likewise.
+	* gas/riscv/cv-alu-12.s: Likewise.
+	* gas/riscv/cv-alu-13.d: Likewise.
+	* gas/riscv/cv-alu-13.l: Likewise.
+	* gas/riscv/cv-alu-13.s: Likewise.
+
 2020-11-20  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-alu-01.d: Added new test.
