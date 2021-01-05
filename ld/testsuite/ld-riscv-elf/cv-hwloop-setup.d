@@ -1,6 +1,6 @@
 #name: setup relocation
 #source: cv-hwloop-setup.s
-#as: -march=rv32i_xcorevhwlp
+#as: -march=rv32i_xcorevhwlp1p0
 #ld: -melf32lriscv
 #objdump: -dr
 
