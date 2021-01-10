@@ -1,5 +1,74 @@
 2021-01-15  Jessica Mills  <jessica.mills@embecosm.com>
 
+	* gas/riscv/cv-mac-fail-march.d: Added new test.
+	* gas/riscv/cv-mac-fail-march.l: Likewise.
+	* gas/riscv/cv-mac-fail-march.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-01.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-01.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-01.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-02.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-02.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-02.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-03.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-03.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-03.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-04.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-04.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-04.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-05.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-05.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-05.s: Likewise.
+	* gas/riscv/cv-mac-01.d: Deleted, content subsumed into
+	cv-mac-fail-operand-01.d.
+	* gas/riscv/cv-mac-01.l: Deleted, content subsumed into
+	cv-mac-fail-operand-01.l.
+	* gas/riscv/cv-mac-01.s: Deleted, content subsumed into
+	cv-mac-fail-operand-01.s.
+	* gas/riscv/cv-mac-02.d: Deleted, content subsumed into
+	cv-mac-fail-operand-02.d.
+	* gas/riscv/cv-mac-02.l: Deleted, content subsumed into
+	cv-mac-fail-operand-02.l.
+	* gas/riscv/cv-mac-02.s: Deleted, content subsumed into
+	cv-mac-fail-operand-02.s.
+	* gas/riscv/cv-mac-03.d: Deleted, content subsumed into
+	cv-mac-fail-operand-03.d.
+	* gas/riscv/cv-mac-03.l: Deleted, content subsumed into
+	cv-mac-fail-operand-03.l.
+	* gas/riscv/cv-mac-03.s: Deleted, content subsumed into
+	cv-mac-fail-operand-03.s.
+	* gas/riscv/cv-mac-04.d: Deleted, content subsumed into
+	cv-mac-fail-operand-04.d.
+	* gas/riscv/cv-mac-04.l: Deleted, content subsumed into
+	cv-mac-fail-operand-04.l.
+	* gas/riscv/cv-mac-04.s: Deleted, content subsumed into
+	cv-mac-fail-operand-04.s.
+	* gas/riscv/cv-mac-05.d: Deleted, content subsumed into
+	cv-mac-fail-operand-04.d.
+	* gas/riscv/cv-mac-05.l: Deleted, content subsumed into
+	cv-mac-fail-operand-04.l.
+	* gas/riscv/cv-mac-05.s: Deleted, content subsumed into
+	cv-mac-fail-operand-04.s.
+	* gas/riscv/cv-mac-06.d: Deleted, content subsumed into
+	cv-mac-fail-operand-05.d.
+	* gas/riscv/cv-mac-06.l: Deleted, content subsumed into
+	cv-mac-fail-operand-05.l.
+	* gas/riscv/cv-mac-06.s: Deleted, content subsumed into
+	cv-mac-fail-operand-05.s.
+	* gas/riscv/cv-mac-07.d: Deleted, content subsumed into
+	cv-mac-fail-operand-04.d.
+	* gas/riscv/cv-mac-07.l: Deleted, content subsumed into
+	cv-mac-fail-operand-04.l.
+	* gas/riscv/cv-mac-07.s: Deleted, content subsumed into
+	cv-mac-fail-operand-04.s.
+	* gas/riscv/cv-mac-08.d: Deleted, content subsumed into
+	cv-mac-fail-operand-04.d.
+	* gas/riscv/cv-mac-08.l: Deleted, content subsumed into
+	cv-mac-fail-operand-04.l.
+	* gas/riscv/cv-mac-08.s: Deleted, content subsumed into
+	cv-mac-fail-operand-04.s.
+
+2021-01-15  Jessica Mills  <jessica.mills@embecosm.com>
+
 	* gas/riscv/cv-alu-fail-march.d: Added new test.
 	* gas/riscv/cv-alu-fail-march.l: Likewise.
 	* gas/riscv/cv-alu-fail-march.s: Likewise.
