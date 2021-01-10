@@ -1,3 +1,45 @@
+2021-01-10  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* gas/riscv/cv-mac-fail-operand-01.d: Added new test.
+	* gas/riscv/cv-mac-fail-operand-01.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-01.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-02.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-02.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-02.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-03.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-03.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-03.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-04.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-04.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-04.s: Likewise.
+	* gas/riscv/cv-mac-fail-operand-05.d: Likewise.
+	* gas/riscv/cv-mac-fail-operand-05.l: Likewise.
+	* gas/riscv/cv-mac-fail-operand-05.s: Likewise.
+	* gas/riscv/cv-mac-01.d: Subsumed into cv-mac-fail-operand-01.
+	* gas/riscv/cv-mac-01.l: Likewise.
+	* gas/riscv/cv-mac-01.s: Likewise.
+	* gas/riscv/cv-mac-02.d: Subsumed into cv-mac-fail-operand-02.
+	* gas/riscv/cv-mac-02.l: Likewise.
+	* gas/riscv/cv-mac-02.s: Likewise.
+	* gas/riscv/cv-mac-03.d: Subsumed into cv-mac-fail-operand-03.
+	* gas/riscv/cv-mac-03.l: Likewise.
+	* gas/riscv/cv-mac-03.s: Likewise.
+	* gas/riscv/cv-mac-04.d: Subsumed into cv-mac-fail-operand-04.
+	* gas/riscv/cv-mac-04.l: Likewise.
+	* gas/riscv/cv-mac-04.s: Likewise.
+	* gas/riscv/cv-mac-05.d: Subsumed into cv-mac-fail-operand-04.
+	* gas/riscv/cv-mac-05.l: Likewise.
+	* gas/riscv/cv-mac-05.s: Likewise.
+	* gas/riscv/cv-mac-06.d: Subsumed into cv-mac-fail-operand-05.
+	* gas/riscv/cv-mac-06.l: Likewise.
+	* gas/riscv/cv-mac-06.s: Likewise.
+	* gas/riscv/cv-mac-07.d: Subsumed into cv-mac-fail-operand-04.
+	* gas/riscv/cv-mac-07.l: Likewise.
+	* gas/riscv/cv-mac-07.s: Likewise.
+	* gas/riscv/cv-mac-08.d: Likewise.
+	* gas/riscv/cv-mac-08.l: Likewise.
+	* gas/riscv/cv-mac-08.s: Likewise.
+
 2021-01-05  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-hwloop-count.d: Renamed to cv-hwlp-count.d.
