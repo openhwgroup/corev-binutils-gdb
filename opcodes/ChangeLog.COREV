@@ -1,3 +1,11 @@
+2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* riscv-opc.c: Removed obsolete instructions -
+	cv.macs:	Removed.
+	cv.machhs:	Removed.
+	cv.macu:	Removed.
+	cv.machhu:	Removed.
+
 2020-11-20  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
 	* riscv-dis.c: Added CORE-V general ALU operations support.
