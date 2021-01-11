@@ -1,3 +1,13 @@
+2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* opcode/riscv-opc.h: Removed obsolete matches and renamed mask
+	accordingly -
+	MATCH_MACS:	Removed.
+	MATCH_MACHHS:	Removed.
+	MATCH_MACU:	Removed.
+	MATCH_MACHHU:	Removed.
+	MASK_MULMAC ->	MASK_MULSH
+
 2020-11-20  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* opcode/riscv-opc.h: Added CORE-V general ALU operations support.

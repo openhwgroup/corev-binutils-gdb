@@ -1,3 +1,10 @@
+2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* gas/riscv/cv-mac-machhsn.d: Removed obsolete instruction cv.machhs.
+	* gas/riscv/cv-mac-machhun.d: Removed obsolete instruction cv.machhu.
+	* gas/riscv/cv-mac-macsn.d: Removed obsolete instruction cv.macs.
+	* gas/riscv/cv-mac-macun.d: Removed obsolete instruction cv.macu.
+
 2020-11-20  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-alu-01.d: Added new test.
