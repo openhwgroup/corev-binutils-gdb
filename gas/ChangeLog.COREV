@@ -1,20 +1,24 @@
 2020-11-24  Jessica Mills  <jessica.mills@embecosm.com>
 
-	* doc/c-riscv.texi: Added details on CORE-V hardware loop,
+	* doc/c-riscv.texi: Add details on hardware loop,
 	multiply-accumulate and general ALU ops ISA options.
 
 2020-11-20  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
-	* config/tc-riscv.c: Added CORE-V general ALU operations support.
+	* config/tc-riscv.c (riscv_multi_subset_supports): Add general
+	ALU ops instruction class.
+	(validate_riscv_insn, riscv_ip): Add general ALU ops operands.
 
 2020-11-19  Jessica Mills  <jessica.mills@embecosm.com>
 
-	* config/tc-riscv.c: Fixed bug in hardware loop operand boundary
-	checks (b1 and b2).
+	* config/tc-riscv.c (riscv_ip): Bug fix in hardware loop operand
+	boundary checks - b1 and b2.
 
 2020-11-11  Jessica Mills  <jessica.mills@embecosm.com>
 
-	* config/tc-riscv.c: Added CORE-V multiply accumulate support.
+	* config/tc-riscv.c (riscv_multi_subset_supports): Add multiply
+	accumulate instruction class.
+	(validate_riscv_insn, riscv_ip): Add multiply accumulate operands.
 
 2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
 
@@ -26,13 +30,18 @@
 
 2020-10-05  Mary Bennett  <mary.bennett@embecosm.com>
 
-	* config/tc-riscv.c: Fixed issue arising from incorrect CORE-V
-	hardware loop masks and added support for xcorevhwlp and new
-	error messages.
+	* config/tc-riscv.c (riscv_multi_subset_supports): Replace general
+	CORE-V instruction class with hardware loop instruction class.
+	(validate_riscv_insn): Fix issue arising from incorrect hardware loop
+	masks.
+	(riscv_ip): Improve error messages.
 
 2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
-	* config/tc-riscv.c: Added CORE-V hardware loop support.
-	* config/tc-riscv.h: Likewise.
+	* config/tc-riscv.c (riscv_multi_subset_supports): Add CORE-V
+	instruction class.
+	(validate_riscv_insn, riscv_ip): Add hardware loop operands.
+	(md_apply_fix): Add hardware loop relocations
+	BFD_RELOC_RISCV_CVPCREL_UI12 and BFD_RELOC_RISCV_CVPCREL_URS1.
 	* doc/c-riscv.texi: Noted Xcorev as additional ISA extension
 	 for CORE-V.

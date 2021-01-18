@@ -1,26 +1,25 @@
 2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
 
-	* opcode/riscv-opc.h: Removed obsolete matches and renamed mask
-	accordingly -
-	MATCH_MACS:	Removed.
-	MATCH_MACHHS:	Removed.
-	MATCH_MACU:	Removed.
-	MATCH_MACHHU:	Removed.
-	MASK_MULMAC ->	MASK_MULSH
+	* opcode/riscv-opc.h: (MATCH_MACS, MATCH_MACHHS, MATCH_MACU)
+	(MATCH_MACHHU): Remove obsolete matches.
+	(MASK_MULMAC): Rename mask as MASK_MULSH.
 
 2020-11-20  Mary Bennett  <mary.bennett@embecosm.com>
 
-	* opcode/riscv-opc.h: Added CORE-V general ALU operations support.
-	* opcode/riscv.h: Likewise.
+	* opcode/riscv-opc.h: Add general ALU ops masks and matches.
+	* opcode/riscv.h (EXTRACT_CV_ALU_UIMM5, ENCODE_CV_ALU_UIMM5): Add
+	macros for general ALU ops 5-bit unsigned immediate.
 
 2020-11-11  Jessica Mills  <jessica.mills@embecosm.com>
 
-	* opcode/riscv-opc.h: Added CORE-V multiply accumulate support.
-	* opcode/riscv.h: Likewise.
+	* opcode/riscv-opc.h: Add multiply accumulate masks and
+	matches.
+	* opcode/riscv.h (EXTRACT_CV_MAC_UIMM5, ENCODE_CV_MAC_UIMM5): Add
+	macros for multiply accumulate 5-bit unsigned immediate.
 
 2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
 
-	* opcode/riscv.h (riscv_pred_succ): Renamed macros for clarity -
+	* opcode/riscv.h (riscv_pred_succ): Rename macros for clarity -
 	ENCODE_I1TYPE_UIMM -> ENCODE_CV_HWLP_UIMM5
 	ENCODE_I1TYPE_LN   -> ENCODE_CV_HWLP_LN
 	EXTRACT_I1TYPE_UIMM-> EXTRACT_CV_HWLP_UIMM5
@@ -29,13 +28,17 @@
 
 2020-10-05  Mary Bennett <mary.bennett@embecosm.com>
 
-	* opcode/riscv-opc.h: Fixed incorrect masks for CORE-V hardware loop
+	* opcode/riscv-opc.h: Fix incorrect masks for hardware loop
 	instructions.
-	* opcode/riscv.h: Added support for xcorevhwlp.
+	* opcode/riscv.h (riscv_insn_class): Add hardware loop instruction
+	class.
 
 2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
-	* elf/riscv.h: Added CORE-V hardware loop specific relocations.
-	* opcode/riscv.h: Added CORE-V hardware loop specific masks and
-	CORE-V instruction class. Added macros for unsigned I type
-	immediate and loop number.
+	* elf/riscv.h: Add hardware loop specific relocations -
+	R_RISCV_CVPCREL_UI12 and R_RISCV_CVPCREL_URS1.
+	* opcode/riscv.h: Add hardware loop masks.
+	(riscv_insn_class): Add CORE-V instruction class. 
+	(EXTRACT_I1TYPE_UIMM, EXTRACT_I1TYPE_LN, EXTRACT_ITYPE_UIMM)
+	(ENCODE_I1TYPE_UIMM, ENCODE_I1TYPE_LN): Add macros for unsigned I type
+	immediates and loop number.
