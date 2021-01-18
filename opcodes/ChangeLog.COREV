@@ -1,32 +1,32 @@
 2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
 
-	* riscv-opc.c: Removed obsolete instructions -
-	cv.macs:	Removed.
-	cv.machhs:	Removed.
-	cv.macu:	Removed.
-	cv.machhu:	Removed.
+	* riscv-opc.h (MATCH_MACS, MATCH_MACHHS, MATCH_MACU)
+	(MATCH_MACHHU): Remove obsolete matches.
+	(MASK_MULMAC): Rename mask as MASK_MULSH
 
 2020-11-20  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
-	* riscv-dis.c: Added CORE-V general ALU operations support.
-	* riscv-opc.c: Likewise.
+	* riscv-dis.c (print_insn_args): Add general ALU ops operands.
+	* riscv-opc.c (riscv_opcodes): Add general ALU ops opcodes.
 
 2020-11-11  Jessica Mills  <jessica.mills@embecosm.com>
 
-	* riscv-dis.c: Added CORE-V multiply accumulate support.
-	* riscv-opc.c: Likewise.
+	* riscv-dis.c (print_insn_args): Add multiply accumulate operands.
+	* riscv-opc.c (riscv_opcodes): Add multiply accumulate opcodes.
 
 2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
 
-	* riscv-opc.c (print_insn_args): Renamed macros for clarity -
+	* riscv-opc.c (print_insn_args): Rename macros for clarity -
 	EXTRACT_I1TYPE_UIMM-> EXTRACT_CV_HWLP_UIMM5
 	EXTRACT_ITYPE_UIMM -> EXTRACT_CV_HWLP_UIMM12
 
 2020-10-08  Mary Bennett  <mary.bennett@embecosm.com>
 
-	* riscv-opc.c: Added support for corevhwlp.
+	* riscv-opc.c (riscv_opcodes): Amend instruction class for hardware
+	loop opcodes -
+	INSN_CLASS_COREV -> INSN_CLASS_COREV_HWLP
 
 2020-09-10  Pietra Ferreira  <pietra.ferreira@embecosm.com>
 
-	* riscv-dis.c: Added CORE-V hardware loop support.
-	* riscv-opc.c: Likewise.
+	* riscv-dis.c (print_insn_args): Add hardware loop operands.
+	* riscv-opc.c (riscv_opcodes): Add hardware loop opcodes.
