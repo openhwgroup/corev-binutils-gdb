@@ -1,3 +1,8 @@
+2021-01-27  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* gas/riscv/cv-hwlp-fail-operand-07.l: Remove obsolete
+	BFD_RELOC_RISCV_CVPCREL_UI12 overflow error message.
+
 2021-01-15  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-mac-fail-march.d: Added new test.
