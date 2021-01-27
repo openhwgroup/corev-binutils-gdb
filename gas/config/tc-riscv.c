@@ -3786,16 +3786,13 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
 	  reloc_howto_type *howto;
 	  bfd_reloc_status_type r;
 
-	  /* This reloc is local, always resolvable, S_GET_VALUE returns an
-	     error in case not resolvable */
+	  /* Fill in a tentative value to improve objdump readability.  */
 	  howto = bfd_reloc_type_lookup (stdoutput, fixP->fx_r_type);
 	  bfd_vma target = S_GET_VALUE (fixP->fx_addsy) + *valP;
 	  bfd_vma delta = (target - md_pcrel_from (fixP)) >> howto->rightshift;
 	  r = bfd_check_overflow (howto->complain_on_overflow, 12, 0, 32, delta);
-	  if (r == bfd_reloc_overflow)
-	    as_fatal (_("BFD_RELOC_RISCV_CVPCREL_UI12 Overflow: Disp=%d"),
-		      (int) delta);
-	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_ITYPE_IMM (delta), buf);
+	  if (r != bfd_reloc_overflow)
+	    bfd_putl32 (bfd_getl32 (buf) | ENCODE_ITYPE_IMM (delta), buf);
 	}
       break;
 
@@ -3805,16 +3802,13 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
 	  reloc_howto_type *howto;
 	  bfd_reloc_status_type r;
 
-	  /* This reloc is local, always resolvable, S_GET_VALUE returns an
-	  error in case not resolvable */
+	  /* Fill in a tentative value to improve objdump readability.  */
 	  howto = bfd_reloc_type_lookup (stdoutput, fixP->fx_r_type);
 	  bfd_vma target = S_GET_VALUE (fixP->fx_addsy) + *valP;
 	  bfd_vma delta = (target - md_pcrel_from (fixP)) >> howto->rightshift;
 	  r = bfd_check_overflow (howto->complain_on_overflow, 5, 0, 32, delta);
-	  if (r == bfd_reloc_overflow)
-	    as_fatal (_("BFD_RELOC_RISCV_CVPCREL_URS1 Overflow: Disp=%d"),
-		      (int) delta);
-	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_CV_HWLP_UIMM5 (delta), buf);
+	  if (r != bfd_reloc_overflow)
+	    bfd_putl32 (bfd_getl32 (buf) | ENCODE_CV_HWLP_UIMM5 (delta), buf);
 	}
       break;
 
