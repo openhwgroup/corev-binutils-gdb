@@ -2468,6 +2468,37 @@
 #define MASK_CV_BNEIMM 0x707f
 #define MATCH_CV_BEQIMM 0x600b
 #define MASK_CV_BEQIMM 0x707f
+/* Vendor-specific (CORE-V) Xcvmem instructions. */
+#define MATCH_CV_LBPOST    0xb
+#define MATCH_CV_LBUPOST   0x400b
+#define MATCH_CV_LHPOST    0x100b
+#define MATCH_CV_LHUPOST   0x500b
+#define MATCH_CV_LWPOST    0x200b
+#define MATCH_CV_LBRRPOST  0x302b
+#define MATCH_CV_LBURRPOST 0x1000302b
+#define MATCH_CV_LHRRPOST  0x200302b
+#define MATCH_CV_LHURRPOST 0x1200302b
+#define MATCH_CV_LWRRPOST  0x400302b
+#define MATCH_CV_LBRR      0x800302b
+#define MATCH_CV_LBURR     0x1800302b
+#define MATCH_CV_LHRR      0xa00302b
+#define MATCH_CV_LHURR     0x1a00302b
+#define MATCH_CV_LWRR      0xc00302b
+#define MASK_CV_LPOST      0x707f
+#define MASK_CV_LRRPOST    0xfe00707f
+#define MASK_CV_LRR        0xfe00707f
+#define MATCH_CV_SBPOST   0x2b
+#define MATCH_CV_SHPOST   0x102b
+#define MATCH_CV_SWPOST   0x202b
+#define MATCH_CV_SBRRPOST 0x2000302b
+#define MATCH_CV_SHRRPOST 0x2200302b
+#define MATCH_CV_SWRRPOST 0x2400302b
+#define MATCH_CV_SBRR     0x2800302b
+#define MATCH_CV_SHRR     0x2a00302b
+#define MATCH_CV_SWRR     0x2c00302b
+#define MASK_CV_SPOST     0x707f
+#define MASK_CV_SRRPOST   0xfe00707f
+#define MASK_CV_SRR       0xfe00707f
 /* Vendor-specific (T-Head) XTheadBa instructions.  */
 #define MATCH_TH_ADDSL 0x0000100b
 #define MASK_TH_ADDSL 0xf800707f
