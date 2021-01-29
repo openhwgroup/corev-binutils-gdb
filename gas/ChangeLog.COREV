@@ -1,3 +1,12 @@
+2020-12-14  Enrico Tabanelli  <enrico.tabanelli3@unibo.it>
+
+	* config/tc-riscv.c (riscv_multi_subset_supports): Add 
+	post-increment and register-indexed load/store instruction 
+	class. 
+	(validate_riscv_insn, riscv_ip): Add post-increment symbol.
+	* doc/c-riscv.texi: Added details on CORE-V post-incrementing
+	and reg-reg load/store ops ISA options.
+
 2020-11-24  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* doc/c-riscv.texi: Add details on hardware loop,
