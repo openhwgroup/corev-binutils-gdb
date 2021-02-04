@@ -853,6 +853,10 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.subrnr", 0, INSN_CLASS_COREV_ALU, "d,s,t",    MATCH_SUBRNR, MASK_SLET,   match_opcode,   0},
 {"cv.suburnr",0, INSN_CLASS_COREV_ALU, "d,s,t",    MATCH_SUBURNR,MASK_SLET,   match_opcode,   0},
 
+/* Immediate branching */
+{"cv.beqimm", 0, INSN_CLASS_COREV_BI, "s,b4,p", MATCH_BEQIMM, MASK_BEQIMM, match_opcode, 0},
+{"cv.bneimm", 0, INSN_CLASS_COREV_BI, "s,b4,p", MATCH_BNEIMM, MASK_BNEIMM, match_opcode, 0},
+
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
 };

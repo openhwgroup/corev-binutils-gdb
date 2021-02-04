@@ -292,6 +292,12 @@ print_insn_args (const char *d, insn_t l, bfd_vma pc, disassemble_info *info)
 	      ++d;
 	      break;
 	    }
+	  else if (d[1] == '4')
+	    {
+	      print (info->stream, "%d", ((int) EXTRACT_CV_BI_IMM5 (l)<<27)>>27);
+	      ++d;
+	      break;
+	    }
 	  else if (d[1] == 'i')
 	    {
 	      print (info->stream, "%d", ((int) EXTRACT_CV_ALU_UIMM5 (l)));

@@ -1,3 +1,10 @@
+2021-01-22  Nazareno Bruschi  <nazareno.bruschi@unibo.it>
+
+	* riscv-dis.c (print_insn_args): Add immediate branching
+	operand.
+	* riscv-opc.c (riscv_opcodes): Add immediate branching
+	opcodes.
+
 2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* riscv-opc.h (MATCH_MACS, MATCH_MACHHS, MATCH_MACU)

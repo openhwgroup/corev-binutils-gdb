@@ -1,3 +1,27 @@
+2021-01-22  Nazareno Bruschi  <nazareno.bruschi@unibo.it>
+
+	* gas/riscv/cv-bi-beqimm.d: Add immediate branching test.
+	* gas/riscv/cv-bi-beqimm.s: Likewise.
+	* gas/riscv/cv-bi-bneimm.d: Likewise.
+	* gas/riscv/cv-bi-bneimm.s: Likewise.
+	* gas/riscv/cv-bi-fail-march.d: Likewise.
+	* gas/riscv/cv-bi-fail-march.l: Likewise.
+	* gas/riscv/cv-bi-fail-march.s: Likewise.
+	* gas/riscv/cv-bi-fail-operand-01.d: Likewise.
+	* gas/riscv/cv-bi-fail-operand-01.l: Likewise.
+	* gas/riscv/cv-bi-fail-operand-01.s: Likewise.
+	* gas/riscv/cv-bi-fail-operand-02.d: Likewise.
+	* gas/riscv/cv-bi-fail-operand-02.l: Likewise.
+	* gas/riscv/cv-bi-fail-operand-02.s: Likewise.
+	* gas/riscv/cv-bi-fail-operand-03.d: Likewise.
+	* gas/riscv/cv-bi-fail-operand-03.l: Likewise.
+	* gas/riscv/cv-bi-fail-operand-03.s: Likewise.
+	* gas/riscv/cv-bi-fail-operand-04.d: Likewise.
+	* gas/riscv/cv-bi-fail-operand-04.l: Likewise.
+	* gas/riscv/cv-bi-fail-operand-04.s: Likewise.
+	* gas/riscv/cv-bi-march-rv32i-xcorev.d: Likewise.
+	* gas/riscv/cv-bi-march-rv32i-xcorev.s: Likewise.
+
 2021-01-15  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-mac-fail-march.d: Added new test.
@@ -367,6 +391,7 @@
 	* gas/riscv/cv-mac-machhun.d: Removed obsolete instruction cv.machhu.
 	* gas/riscv/cv-mac-macsn.d: Removed obsolete instruction cv.macs.
 	* gas/riscv/cv-mac-macun.d: Removed obsolete instruction cv.macu.
+
 
 2020-11-20  Jessica Mills  <jessica.mills@embecosm.com>
 
