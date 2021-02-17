@@ -1,3 +1,17 @@
+2021-02-17  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* gas/riscv/cv-hwlp-endi.d: Amend to include '0x' prefix for offset immediate.
+	* gas/riscv/cv-hwlp-march-rv32i-xcorev.d: Likewise.
+	* gas/riscv/cv-hwlp-setup.d: Likewise.
+	* gas/riscv/cv-hwlp-setupi.d: Likewise.
+	* gas/riscv/cv-hwlp-starti.d: Likewise.
+	* gas/riscv/cv-hwlp-endi.s: Amend to use hexadecimal immediate value
+	where objdump outputs hexadecimal value. 
+	* gas/riscv/cv-hwlp-march-rv32i-xcorev.s: Likewise.
+	* gas/riscv/cv-hwlp-setup.s: Likewise.
+	* gas/riscv/cv-hwlp-setupi.s: Likewise.
+	* gas/riscv/cv-hwlp-starti.s: Likewise.
+
 2021-01-27  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-hwlp-fail-operand-07.l: Remove obsolete

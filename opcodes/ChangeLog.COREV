@@ -1,3 +1,8 @@
+2021-02-17  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* riscv-dis.c (print_insn_args): Add '0x' prefix for hexadecimal
+	immediate offsets b1 and b2.
+
 2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* riscv-opc.h (MATCH_MACS, MATCH_MACHHS, MATCH_MACU)
