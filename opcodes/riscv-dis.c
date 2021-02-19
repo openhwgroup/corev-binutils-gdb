@@ -279,7 +279,7 @@ print_insn_args (const char *d, insn_t l, bfd_vma pc, disassemble_info *info)
 	      info->target = (EXTRACT_ITYPE_IMM (l)<<1) + pc; ++d;
 	      (*info->print_address_func) (info->target, info);
 	      break;
-            }
+	    }
 	  else if (d[1] == '2')
 	    {
 	      info->target = (EXTRACT_CV_HWLP_UIMM5 (l)<<1) + pc; ++d;

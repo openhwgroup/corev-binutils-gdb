@@ -1,3 +1,7 @@
+2021-02-19  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* riscv-dis.c: Fix whitespace inconsistency.
+
 2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* riscv-opc.h (MATCH_MACS, MATCH_MACHHS, MATCH_MACU)

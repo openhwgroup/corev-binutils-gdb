@@ -1,3 +1,8 @@
+2021-02-19  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* gas/riscv/cv-hwlp-march-rv32i-xcorev.s: Fix whitespace
+	inconsistencies.
+
 2021-01-27  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* gas/riscv/cv-hwlp-fail-operand-07.l: Remove obsolete
