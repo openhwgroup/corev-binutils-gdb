@@ -1,5 +1,5 @@
-#name: endi relocation
-#source: cv-hwloop-endi.s
+#name: starti relocation
+#source: cv-hwlp-starti.s
 #as: -march=rv32i_xcorevhwlp1p0
 #ld: -melf32lriscv
 #objdump: -dr
@@ -13,7 +13,7 @@ Disassembly of section \.text:
 .*:[[:space:]]+00008067[[:space:]]+ret
 
 .* <_start>:
-.*:[[:space:]]+0040107b[[:space:]]+cv.endi[[:space:]]+0,10060 <L2>
+.*:[[:space:]]+0040007b[[:space:]]+cv.starti[[:space:]]+0,10060 <L2>
 .*:[[:space:]]+ff9ff0ef[[:space:]]+jal[[:space:]]+ra,10054 <func>
 
 .* <L2>:
