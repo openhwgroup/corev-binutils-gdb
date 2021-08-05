@@ -1,3 +1,9 @@
+2021-08-28  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* riscv-opc.c (MATCH_CV_EXTHS, MATCH_CV_EXTHZ, MATCH_CV_EXTBS)
+	(MATCH_CV_EXTBZ): Add new match.
+	(riscv_opcodes): Fix indentation inconsistencies.
+
 2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
 
 	* riscv-dis.c (print_insn_args): Add immediate branching

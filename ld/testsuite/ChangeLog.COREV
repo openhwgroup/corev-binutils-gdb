@@ -1,3 +1,16 @@
+2021-08-23  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* ld-riscv-elf/ld-riscv-elf.exp: Renamed CORE-V hwlp tests to match
+	-march option for the instruction set.
+	* ld-riscv-elf/cv-hwloop-starti.s: Renamed to cv-hwlp-starti.s.
+	* ld-riscv-elf/cv-hwloop-starti.d: Renamed to cv-hwlp-starti.d.
+	* ld-riscv-elf/cv-hwloop-endi.d: Renamed to cv-hwlp-endi.d.
+	* ld-riscv-elf/cv-hwloop-endi.s: Renamed to cv-hwlp-endi.s.
+	* ld-riscv-elf/cv-hwloop-setup.d: Renamed to cv-hwlp-setup.d.
+	* ld-riscv-elf/cv-hwloop-setup.s: Renamed to cv-hwlp-setup.s.
+	* ld-riscv-elf/cv-hwloop-setupi.d: Renamed to cv-hwlp-setupi.d.
+	* ld-riscv-elf/cv-hwloop-setupi.s: Renamed to cv-hwlp-setupi.s.
+
 2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
 
 	* ld-riscv-elf/cv-bi-beqimm.d: Add new test.

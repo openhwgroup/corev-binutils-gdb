@@ -1,3 +1,8 @@
+2021-08-23  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* opcode/riscv-opc.h: Fix hexadecimal number format inconsistencies
+	for matches and masks.
+
 2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
 
 	* opcode/riscv-opc.h: Add immediate branching matches and
