@@ -170,10 +170,10 @@ if [istarget "riscv*-*-*"] {
     run_dump_test "attr-merge-priv-spec-failed-06"
     run_dump_test "attr-phdr"
     # CORE-V Specific Tests
-    run_dump_test "cv-hwloop-starti"
-    run_dump_test "cv-hwloop-endi"
-    run_dump_test "cv-hwloop-setup"
-    run_dump_test "cv-hwloop-setupi"
+    run_dump_test "cv-hwlp-starti"
+    run_dump_test "cv-hwlp-endi"
+    run_dump_test "cv-hwlp-setup"
+    run_dump_test "cv-hwlp-setupi"
     run_dump_test "cv-bi-bneimm"
     run_dump_test "cv-bi-beqimm"
     run_ld_link_tests [list \
