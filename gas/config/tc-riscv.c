@@ -3021,9 +3021,9 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  if (imm_expr->X_op == O_constant)
 		    {
 		      if (imm_expr->X_add_number < 0 ||
-			  ((imm_expr->X_add_number>>1) > 0x07FF))
+			  ((imm_expr->X_add_number>>1) > 4095))
 			as_bad (_("%ld constant out of range for %s, range:[0, %d]"),
-				imm_expr->X_add_number, ip->insn_mo->name, 0xFFE);
+				imm_expr->X_add_number, ip->insn_mo->name, 8191);
 		      if ((imm_expr->X_add_number % 2) == 1)
 			{
 			  as_warn (_("constant for %s must be even: %ld truncated to %ld"),
@@ -3048,16 +3048,14 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  if (imm_expr->X_op == O_constant)
 		    {
 		      if (imm_expr->X_add_number < 0 ||
-			  ((imm_expr->X_add_number>>1) > 0xF))
-			as_bad (_("%ld constant out of range for "
-				  "cv.setupi, range:[0, %d]"),
-				imm_expr->X_add_number, 0x1E);
+			  ((imm_expr->X_add_number>>1) > 31))
+			as_bad (_("%ld constant out of range for cv.setupi, "
+				  "range:[0, %d]"), imm_expr->X_add_number, 63);
 		      if ((imm_expr->X_add_number % 2) == 1)
 			{
 			  as_warn (_("constant for cv.setupi must be even: "
 				     "%ld truncated to %ld"),
-				   imm_expr->X_add_number,
-				   imm_expr->X_add_number-1);
+				   imm_expr->X_add_number, imm_expr->X_add_number-1);
 			  imm_expr->X_add_number--;
 			}
 		      INSERT_OPERAND (IMM5, *ip, (imm_expr->X_add_number>>1));

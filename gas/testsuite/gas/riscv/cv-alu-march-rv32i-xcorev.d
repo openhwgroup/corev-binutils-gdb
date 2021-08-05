@@ -14,10 +14,10 @@ Disassembly of section .text:
 [ 	]+10:[ 	]+05f3deb3[ 	]+cv.minu[ 	]+t4,t2,t6
 [ 	]+14:[ 	]+05f3eeb3[ 	]+cv.max[ 	]+t4,t2,t6
 [ 	]+18:[ 	]+05f3feb3[ 	]+cv.maxu[ 	]+t4,t2,t6
-[ 	]+1c:[ 	]+0403ceb3[ 	]+cv.exths[ 	]+t4,t2
-[ 	]+20:[ 	]+0403deb3[ 	]+cv.exthz[ 	]+t4,t2
-[ 	]+24:[ 	]+0403eeb3[ 	]+cv.extbs[ 	]+t4,t2
-[ 	]+28:[ 	]+0403feb3[ 	]+cv.extbz[ 	]+t4,t2
+[ 	]+1c:[ 	]+1003ceb3[ 	]+cv.exths[ 	]+t4,t2
+[ 	]+20:[ 	]+1003deb3[ 	]+cv.exthz[ 	]+t4,t2
+[ 	]+24:[ 	]+1003eeb3[ 	]+cv.extbs[ 	]+t4,t2
+[ 	]+28:[ 	]+1003feb3[ 	]+cv.extbz[ 	]+t4,t2
 [ 	]+2c:[ 	]+14539eb3[ 	]+cv.clip[ 	]+t4,t2,5
 [ 	]+30:[ 	]+1453aeb3[ 	]+cv.clipu[ 	]+t4,t2,5
 [ 	]+34:[ 	]+15f3deb3[ 	]+cv.clipr[ 	]+t4,t2,t6

@@ -1,3 +1,27 @@
+2021-08-23  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* gas/riscv/cv-alu-extbs.d: Fix test after encoding change.
+	* gas/riscv/cv-alu-extbs.s: Likewise.
+	* gas/riscv/cv-alu-extbz.d: Likewise.
+	* gas/riscv/cv-alu-exths.d: Likewise.
+	* gas/riscv/cv-alu-exthz.d: Likewise.
+	* gas/riscv/cv-alu-march-rv32i-xcorev.d: Amend test with branch
+	offset boundary change.
+	* gas/riscv/cv-hwlp-endi.d: Likewise.
+	* gas/riscv/cv-hwlp-endi.s: Likewise.
+	* gas/riscv/cv-hwlp-fail-operand-01.l: Likewise.
+	* gas/riscv/cv-hwlp-fail-operand-01.s: Likewise.
+	* gas/riscv/cv-hwlp-fail-operand-02.l: Likewise.
+	* gas/riscv/cv-hwlp-fail-operand-02.s: Likewise.
+	* gas/riscv/cv-hwlp-fail-operand-03.l: Likewise.
+	* gas/riscv/cv-hwlp-fail-operand-03.s: Likewise.
+	* gas/riscv/cv-hwlp-fail-operand-04.l: Likewise.
+	* gas/riscv/cv-hwlp-fail-operand-04.s: Likewise.
+	* gas/riscv/cv-hwlp-setup.d: Likewise.
+	* gas/riscv/cv-hwlp-setup.s: Likewise.
+	* gas/riscv/cv-hwlp-starti.d: Likewise.
+	* gas/riscv/cv-hwlp-starti.s: Likewise.
+
 2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
 
 	* gas/riscv/cv-bi-beqimm.d: Add immediate branching test.
