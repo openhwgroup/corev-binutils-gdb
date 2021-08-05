@@ -1,3 +1,9 @@
+2021-08-23  Jessica Mills  <jessica.mills@embecosm.com>
+
+	* config/tc-riscv.c (riscv_ip): Fix boundary bug for hardware loop
+	branch operands - upper boundary of long branch offset changed from
+	4094 to 8191 and short offset from 30 to 63.
+
 2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
 
 	* config/tc-riscv.c (riscv_multi_subset_supports): Add immediate
