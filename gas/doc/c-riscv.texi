@@ -55,6 +55,8 @@ hardware loop: @samp{Xcorevhwlp}
 multiply-accumulate: @samp{Xcorevmac}
 @item
 general ALU operations: @samp{Xcorevalu}
+@item
+Post-incrementing and reg-reg load/store: @samp{Xcorevmem}
 @end itemize
 
 @cindex @samp{-misa-spec=ISAspec} option, RISC-V

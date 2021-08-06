@@ -359,6 +359,9 @@ riscv_multi_subset_supports (enum riscv_insn_class insn_class)
     case INSN_CLASS_COREV_ALU:
       return riscv_subset_supports ("xcorevalu") || riscv_subset_supports ("xcorev");
 
+    case INSN_CLASS_COREV_MEM:
+      return riscv_subset_supports ("xcorevmem") || riscv_subset_supports ("xcorev");
+
     default:
       as_fatal ("internal: unreachable");
       return false;
@@ -1098,6 +1101,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case ',': break;
       case '(': break;
       case ')': break;
+      case '!': break;
       case '<': USE_BITS (OP_MASK_SHAMTW, OP_SH_SHAMTW); break;
       case '>': USE_BITS (OP_MASK_SHAMT, OP_SH_SHAMT); break;
       case 'A': break; /* Macro operand, must be symbol.  */
@@ -2412,6 +2416,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 	    case ')':
 	    case '[':
 	    case ']':
+	    case '!':
 	      if (*s++ == *args)
 		continue;
 	      break;
