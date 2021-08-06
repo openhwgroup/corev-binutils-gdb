@@ -1,3 +1,10 @@
+2021-08-06  Enrico Tabanelli  <enrico.tabanelli@embecosm.com>
+
+	* riscv-opc.h: Add post-increment and register-indexed 
+	load/store matches and masks.
+	* riscv.h (riscv_insn_class): Add post-increment and
+	register-indexed load/store class.
+
 2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* opcode/riscv-opc.h: (MATCH_MACS, MATCH_MACHHS, MATCH_MACU)
