@@ -275,21 +275,7 @@ struct riscv_option_stack
   riscv_subset_list_t *subset_list;
 };
 
-<<<<<<< HEAD
 static struct riscv_option_stack *riscv_opts_stack = NULL;
-=======
-    case INSN_CLASS_COREV_MAC:
-      return riscv_subset_supports ("xcorevmac") || riscv_subset_supports ("xcorev");
-
-    case INSN_CLASS_COREV_ALU:
-      return riscv_subset_supports ("xcorevalu") || riscv_subset_supports ("xcorev");
-
-    default:
-      as_fatal ("internal: unreachable");
-      return false;
-    }
-}
->>>>>>> Added CORE-V multiply accumulate support
 
 /* Set which ISA and extensions are available.  */
 
@@ -1139,95 +1125,9 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 		case '3': USE_BITS (OP_MASK_CFUNCT3, OP_SH_CFUNCT3); break;
 		case '2': USE_BITS (OP_MASK_CFUNCT2, OP_SH_CFUNCT2); break;
 		default:
-<<<<<<< HEAD
 		  goto unknown_validate_operand;
 		}
 	      break;
-=======
-		  as_bad (_("internal: bad RISC-V opcode "
-			    "(unknown operand type `CF%c'): %s %s"),
-			  c, opc->name, opc->args);
-		  return false;
-	      }
-	    break;
-	  default:
-	    as_bad (_("internal: bad RISC-V opcode "
-		      "(unknown operand type `C%c'): %s %s"),
-		    c, opc->name, opc->args);
-	    return false;
-	  }
-	break;
-      case ',': break;
-      case '(': break;
-      case ')': break;
-      case '<': USE_BITS (OP_MASK_SHAMTW, OP_SH_SHAMTW); break;
-      case '>': USE_BITS (OP_MASK_SHAMT, OP_SH_SHAMT); break;
-      case 'A': break; /* Macro operand, must be symbol.  */
-      case 'B': break; /* Macro operand, must be symbol or constant.  */
-      case 'b': /* CORE-V Specific.  */
-	if (*p == '1')
-	  {
-	    used_bits |= ENCODE_ITYPE_IMM(-1U);
-	    ++p; break;
-	  }
-	else if (*p == '2')
-	  {
-	    used_bits |= ENCODE_CV_HWLP_UIMM5(-1U);
-	    ++p; break;
-	  }
-	else if (*p == '3')
-	  {
-	    used_bits |= ENCODE_CV_MAC_UIMM5(-1U);
-	    ++p; break;
-	  }
-	else if (*p == 'i')
-	  {
-	    used_bits |= ENCODE_CV_ALU_UIMM5(-1U);
-	    ++p; break;
-	  }
-	break;
-      case 'I': break; /* Macro operand, must be constant.  */
-      case 'D': /* RD, floating point.  */
-      case 'd': 
-	if (*p == 'i')
- 	  {
-	    used_bits |= ENCODE_CV_HWLP_LN(-1U);
-	    ++p;
-	    break;
-	  }
-	USE_BITS (OP_MASK_RD, OP_SH_RD); break;
-      case 'Z': /* RS1, CSR number.  */
-      case 'S': /* RS1, floating point.  */
-      case 's': USE_BITS (OP_MASK_RS1, OP_SH_RS1); break;
-      case 'U': /* RS1 and RS2 are the same, floating point.  */
-	USE_BITS (OP_MASK_RS1, OP_SH_RS1);
-	/* Fall through.  */
-      case 'T': /* RS2, floating point.  */
-      case 't': USE_BITS (OP_MASK_RS2, OP_SH_RS2); break;
-      case 'R': /* RS3, floating point.  */
-      case 'r': USE_BITS (OP_MASK_RS3, OP_SH_RS3); break;
-      case 'm': USE_BITS (OP_MASK_RM, OP_SH_RM); break;
-      case 'E': USE_BITS (OP_MASK_CSR, OP_SH_CSR); break;
-      case 'P': USE_BITS (OP_MASK_PRED, OP_SH_PRED); break;
-      case 'Q': USE_BITS (OP_MASK_SUCC, OP_SH_SUCC); break;
-      case 'o': /* ITYPE immediate, load displacement.  */
-      case 'j': used_bits |= ENCODE_ITYPE_IMM (-1U); if (*p == 'i') ++p; break;
-      case 'a': used_bits |= ENCODE_JTYPE_IMM (-1U); break;
-      case 'p': used_bits |= ENCODE_BTYPE_IMM (-1U); break;
-      case 'q': used_bits |= ENCODE_STYPE_IMM (-1U); break;
-      case 'u': used_bits |= ENCODE_UTYPE_IMM (-1U); break;
-      case 'z': break; /* Zero immediate.  */
-      case '[': break; /* Unused operand.  */
-      case ']': break; /* Unused operand.  */
-      case '0': break; /* AMO displacement, must to zero.  */
-      case '1': break; /* Relaxation operand.  */
-      case 'F': /* Funct for .insn directive.  */
-	switch (c = *p++)
-	  {
-	    case '7': USE_BITS (OP_MASK_FUNCT7, OP_SH_FUNCT7); break;
-	    case '3': USE_BITS (OP_MASK_FUNCT3, OP_SH_FUNCT3); break;
-	    case '2': USE_BITS (OP_MASK_FUNCT2, OP_SH_FUNCT2); break;
->>>>>>> Added CORE-V multiply accumulate support
 	    default:
 	      goto unknown_validate_operand;
 	    }
@@ -1259,6 +1159,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	case ',': break;
 	case '(': break;
 	case ')': break;
+	case '!': break;
 	case '<': USE_BITS (OP_MASK_SHAMTW, OP_SH_SHAMTW); break;
 	case '>': USE_BITS (OP_MASK_SHAMT, OP_SH_SHAMT); break;
 	case 'A': break; /* Macro operand, must be symbol.  */
@@ -2940,6 +2841,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 	    case ')':
 	    case '[':
 	    case ']':
+	    case '!':
 	      if (*asarg++ == *oparg)
 		continue;
 	      break;
