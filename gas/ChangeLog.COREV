@@ -1,3 +1,12 @@
+2021-08-06  Enrico Tabanelli  <enrico.tabanelli@embecosm.com>
+
+	* config/tc-riscv.c (riscv_multi_subset_supports): Add 
+	post-increment and register-indexed load/store instruction 
+	class. 
+	(validate_riscv_insn, riscv_ip): Add post-increment symbol.
+	* doc/c-riscv.texi: Added details on CORE-V post-incrementing
+	and reg-reg load/store ops ISA options.
+
 2021-01-27  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* config/tc-riscv.c (md_apply_fix): Remove unnecessary overflow check
