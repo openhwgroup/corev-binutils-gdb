@@ -368,6 +368,7 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	  break;
 
 	case ',':
+	case '!':
 	case '(':
 	case ')':
 	case '[':
