@@ -1,3 +1,10 @@
+2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
+
+	* riscv-dis.c (print_insn_args): Add immediate branching
+	operand.
+	* riscv-opc.c (riscv_opcodes): Add immediate branching
+	opcodes.
+
 2021-08-06  Enrico Tabanelli  <enrico.tabanelli@embecosm.com>
 
 	* riscv-dis.c (print_insn_args): Add post-increment symbol. 
