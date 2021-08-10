@@ -929,6 +929,12 @@
 #define MASK_ABS      0xFFF0707F
 #define MASK_SLET     0xFE00707F
 #define MASK_ADDN     0xC000707F
+/* Immediate Branching */
+#define MATCH_CV_BNEIMM    0x00003063
+#define MATCH_CV_BEQIMM    0x00002063
+
+#define MASK_CV_BNEIMM     0x0000707f
+#define MASK_CV_BEQIMM     0x0000707f
 
 #ifdef DECLARE_INSN
 DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)

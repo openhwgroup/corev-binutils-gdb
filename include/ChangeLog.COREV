@@ -1,3 +1,13 @@
+2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
+
+	* opcode/riscv-opc.h: Add immediate branching matches and
+	masks.
+	* opcode/riscv.h (riscv_insn_class, EXTRACT_CV_BI_IMM5):
+	Add immediate branching class and macros for 5-bit signed
+	immediate.
+	(ENCODE_CV_ALU_UIMM5): Rename macro as ENCODE_CV_UIMM5.
+	(RV_IMM_SIGN_N): Add macro for general sign extraction.
+
 2021-01-11  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* opcode/riscv-opc.h: (MATCH_MACS, MATCH_MACHHS, MATCH_MACU)
