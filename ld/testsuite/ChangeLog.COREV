@@ -1,3 +1,12 @@
+2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
+
+	* ld-riscv-elf/cv-bi-beqimm.d: Add new test.
+	* ld-riscv-elf/cv-bi-beqimm.s: Likewise.
+	* ld-riscv-elf/cv-bi-bneimm.d: Likewise.
+	* ld-riscv-elf/cv-bi-bneimm.s: Likewise.
+	* ld-riscv-elf/ld-riscv-elf.exp: Add CORE-V immediate
+	branching tests.
+
 2020-10-21  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* ld-riscv-elf/cv-hwloop-starti.d: Changed march option to xcorevhwlp.
