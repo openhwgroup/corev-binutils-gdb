@@ -174,6 +174,8 @@ if [istarget "riscv*-*-*"] {
     run_dump_test "cv-hwloop-endi"
     run_dump_test "cv-hwloop-setup"
     run_dump_test "cv-hwloop-setupi"
+    run_dump_test "cv-bi-bneimm"
+    run_dump_test "cv-bi-beqimm"
     run_ld_link_tests [list \
 	[list "Weak reference 32" "-T weakref.ld -m[riscv_choose_ilp32_emul]" "" \
 	    "-march=rv32i -mabi=ilp32" {weakref32.s} \

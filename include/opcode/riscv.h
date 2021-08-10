@@ -67,6 +67,7 @@ static const char * const riscv_pred_succ[16] =
 
 #define RV_X(x, s, n)  (((x) >> (s)) & ((1 << (n)) - 1))
 #define RV_IMM_SIGN(x) (-(((x) >> 31) & 1))
+#define RV_IMM_SIGN_N(x, s, n) (-(((x) >> ((s) + (n) - 1)) & 1))
 
 #define EXTRACT_ITYPE_IMM(x) \
   (RV_X(x, 20, 12) | (RV_IMM_SIGN(x) << 12))
@@ -130,6 +131,8 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 25, 5))
 #define EXTRACT_CV_ALU_UIMM5(x) \
   (RV_X(x, 20, 5))
+#define EXTRACT_CV_BI_IMM5(x) \
+  (RV_X(x, 20, 5) | (RV_IMM_SIGN_N(x, 20, 5) << 5))
 
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
@@ -177,6 +180,8 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 0, 11) << 20)
 
 /* CORE-V Specific.  */
+#define ENCODE_CV_UIMM5(x) \
+  (RV_X(x, 0, 5) << 20)
 #define ENCODE_CV_HWLP_UIMM5(x) \
   (RV_X(x, 0, 5) << 15)
 #define ENCODE_CV_HWLP_LN(x) \
@@ -428,7 +433,8 @@ enum riscv_insn_class
   INSN_CLASS_COREV_HWLP,
   INSN_CLASS_COREV_MAC,
   INSN_CLASS_COREV_ALU,
-  INSN_CLASS_COREV_MEM
+  INSN_CLASS_COREV_MEM,
+  INSN_CLASS_COREV_BI
 };
 
 /* This structure holds information for a particular instruction.  */

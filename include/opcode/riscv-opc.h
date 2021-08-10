@@ -2390,6 +2390,12 @@
 #define MASK_CV_ABS      0xFFF0707F
 #define MASK_CV_SLET     0xFE00707F
 #define MASK_CV_ADDN     0xC000707F
+/* Immediate Branching */
+#define MATCH_CV_BNEIMM    0x00003063
+#define MATCH_CV_BEQIMM    0x00002063
+
+#define MASK_CV_BNEIMM     0x0000707f
+#define MASK_CV_BEQIMM     0x0000707f
 
 /* Post-incrementing and reg-reg load/store */
 #define MATCH_CV_LBPOST    0xb

@@ -1860,6 +1860,10 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.sw", 0, INSN_CLASS_COREV_MEM, "t,d(s)",  MATCH_CV_SWRR,      MASK_CV_SRR,      match_opcode, 0},
 {"cv.sw", 0, INSN_CLASS_COREV_MEM, "t,d(s!)", MATCH_CV_SWRRPOST,  MASK_CV_SRRPOST,  match_opcode, 0},
 
+/* Immediate branching */
+{"cv.beqimm", 0, INSN_CLASS_COREV_BI, "s,b4,p", MATCH_CV_BEQIMM, MASK_CV_BEQIMM, match_opcode, 0},
+{"cv.bneimm", 0, INSN_CLASS_COREV_BI, "s,b4,p", MATCH_CV_BNEIMM, MASK_CV_BNEIMM, match_opcode, 0},
+
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
 };
