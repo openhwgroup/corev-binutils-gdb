@@ -1,3 +1,27 @@
+2021-08-10  Nazareno Bruschi  <nazareno.bruschi@embecosm.com>
+
+	* gas/riscv/cv-bi-beqimm.d: Add immediate branching test.
+	* gas/riscv/cv-bi-beqimm.s: Likewise.
+	* gas/riscv/cv-bi-bneimm.d: Likewise.
+	* gas/riscv/cv-bi-bneimm.s: Likewise.
+	* gas/riscv/cv-bi-fail-march.d: Likewise.
+	* gas/riscv/cv-bi-fail-march.l: Likewise.
+	* gas/riscv/cv-bi-fail-march.s: Likewise.
+	* gas/riscv/cv-bi-fail-operand-01.d: Likewise.
+	* gas/riscv/cv-bi-fail-operand-01.l: Likewise.
+	* gas/riscv/cv-bi-fail-operand-01.s: Likewise.
+	* gas/riscv/cv-bi-fail-operand-02.d: Likewise.
+	* gas/riscv/cv-bi-fail-operand-02.l: Likewise.
+	* gas/riscv/cv-bi-fail-operand-02.s: Likewise.
+	* gas/riscv/cv-bi-fail-operand-03.d: Likewise.
+	* gas/riscv/cv-bi-fail-operand-03.l: Likewise.
+	* gas/riscv/cv-bi-fail-operand-03.s: Likewise.
+	* gas/riscv/cv-bi-fail-operand-04.d: Likewise.
+	* gas/riscv/cv-bi-fail-operand-04.l: Likewise.
+	* gas/riscv/cv-bi-fail-operand-04.s: Likewise.
+	* gas/riscv/cv-bi-march-rv32i-xcorev.d: Likewise.
+	* gas/riscv/cv-bi-march-rv32i-xcorev.s: Likewise.
+
 2021-08-06  Enrico Tabanelli  <enrico.tabanelli@embecosm.com>
 
 	* gas/riscv/cv-mem-fail-operand-01.d: Add post-increment

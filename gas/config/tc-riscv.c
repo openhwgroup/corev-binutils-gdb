@@ -362,6 +362,9 @@ riscv_multi_subset_supports (enum riscv_insn_class insn_class)
     case INSN_CLASS_COREV_MEM:
       return riscv_subset_supports ("xcorevmem") || riscv_subset_supports ("xcorev");
 
+    case INSN_CLASS_COREV_BI:
+      return riscv_subset_supports ("xcorevbi") || riscv_subset_supports ("xcorev");
+
     default:
       as_fatal ("internal: unreachable");
       return false;
@@ -1122,9 +1125,14 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	    used_bits |= ENCODE_CV_MAC_UIMM5(-1U);
 	    ++p; break;
 	  }
+	else if (*p == '4')
+	  {
+	    used_bits |= ENCODE_CV_UIMM5(-1U);
+	    ++p; break;
+	  }
 	else if (*p == 'i')
 	  {
-	    used_bits |= ENCODE_CV_ALU_UIMM5(-1U);
+	    used_bits |= ENCODE_CV_UIMM5(-1U);
 	    ++p; break;
 	  }
 	break;
@@ -2592,6 +2600,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		     sign-extended immediate as pc rel displacement for hwloop
 		 b2: pc rel 5 bits unsigned offset for cv.setupi
 		 b3: 5 bits usigned offset for MAC
+		 b4: 5 bits signed immediate bits[24..20]
 		 bi: 5 bits unsigned offset for cv.clip and cv.clipu
 		     ALU luimm5 [24...20]	 */
 	    case 'b':
@@ -2659,13 +2668,24 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  ip->insn_opcode |= ENCODE_CV_MAC_UIMM5 (imm_expr->X_add_number);
 		  ++args;
 		}
+	      else if (args[1] == '4')
+		{
+		  my_getExpression (imm_expr, s);
+		  check_absolute_expr (ip, imm_expr, FALSE);
+		  s = expr_end;
+		  if (imm_expr->X_add_number<-16 || imm_expr->X_add_number>15)
+		  as_bad(_("immediate value must be 5-bit signed, %ld is out of range"),
+		  imm_expr->X_add_number);
+		  ip->insn_opcode |= ENCODE_CV_UIMM5 (imm_expr->X_add_number);
+		  ++args;
+		}
 	      else if (args[1] == 'i')
 		{
 		  my_getExpression (imm_expr, s);
 		  check_absolute_expr (ip, imm_expr, FALSE);
 		  s = expr_end;
 		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>31) break;
-		  ip->insn_opcode |= ENCODE_CV_ALU_UIMM5 (imm_expr->X_add_number);
+		  ip->insn_opcode |= ENCODE_CV_UIMM5 (imm_expr->X_add_number);
 		  ++args;
 		}
 	      else
