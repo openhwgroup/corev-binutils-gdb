@@ -1180,9 +1180,14 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	      used_bits |= ENCODE_CV_MAC_UIMM5(-1U);
 	      ++oparg; break;
 	    }
+	  else if (oparg[1] == '4')
+	    {
+	      used_bits |= ENCODE_CV_UIMM5(-1U);
+	      ++oparg; break;
+	    }
 	  else if (oparg[1] == 'i')
 	    {
-	      used_bits |= ENCODE_CV_ALU_UIMM5(-1U);
+	      used_bits |= ENCODE_CV_UIMM5(-1U);
 	      ++oparg; break;
 	    }
 	  break;
@@ -3029,6 +3034,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		     sign-extended immediate as pc rel displacement for hwloop
 		 b2: pc rel 5 bits unsigned offset for cv.setupi
 		 b3: 5 bits usigned offset for MAC
+		 b4: 5 bits signed immediate bits[24..20]
 		 bi: 5 bits unsigned offset for cv.clip and cv.clipu
 		     ALU luimm5 [24...20]	 */
 	    case 'b':
@@ -3096,13 +3102,24 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  ip->insn_opcode |= ENCODE_CV_MAC_UIMM5 (imm_expr->X_add_number);
 		  ++oparg;
 		}
+	      else if (oparg[1] == '4')
+		{
+		  my_getExpression (imm_expr, asarg);
+		  check_absolute_expr (ip, imm_expr, FALSE);
+		  asarg = expr_end;
+		  if (imm_expr->X_add_number<-16 || imm_expr->X_add_number>15)
+		  as_bad(_("immediate value must be 5-bit signed, %ld is out of range"),
+		  imm_expr->X_add_number);
+		  ip->insn_opcode |= ENCODE_CV_UIMM5 (imm_expr->X_add_number);
+		  ++oparg;
+		}
 	      else if (oparg[1] == 'i')
 		{
 		  my_getExpression (imm_expr, asarg);
 		  check_absolute_expr (ip, imm_expr, FALSE);
 		  asarg = expr_end;
 		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>31) break;
-		  ip->insn_opcode |= ENCODE_CV_ALU_UIMM5 (imm_expr->X_add_number);
+		  ip->insn_opcode |= ENCODE_CV_UIMM5 (imm_expr->X_add_number);
 		  ++oparg;
 		}
 	      else

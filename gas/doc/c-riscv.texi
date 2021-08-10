@@ -57,6 +57,8 @@ multiply-accumulate: @samp{Xcorevmac}
 general ALU operations: @samp{Xcorevalu}
 @item
 Post-incrementing and reg-reg load/store: @samp{Xcorevmem}
+@item
+immediate branching: @samp{Xcorevbi}
 @end itemize
 
 @cindex @samp{-misa-spec=ISAspec} option, RISC-V

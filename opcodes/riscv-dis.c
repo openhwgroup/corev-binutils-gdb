@@ -422,6 +422,12 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	      ++oparg;
 	      break;
 	    }
+	  else if (oparg[1] == '4')
+	    {
+	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_BI_IMM5 (l)));
+	      ++oparg;
+	      break;
+	    }
 	  else if (oparg[1] == 'i')
 	    {
 	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_ALU_UIMM5 (l)));
