@@ -1,0 +1,21 @@
+# test if zcb instructions compress instructions with improper operands
+target:
+	# improper imm operands
+	sb x8,-1(x8)
+	sb x8,4(x8)
+	sb x8,-2(x8)
+	lbu x8,-1(x8)
+	lbu x8,4(x8)
+	lbu x8,-2(x8)
+	sh x8,4(x8)
+	sh x8,3(x8)
+	sh x8,-1(x8)
+	sh x8,-2(x8)
+	lh x8,4(x8)
+	lh x8,3(x8)
+	lh x8,-1(x8)
+	lh x8,-3(x8)
+	lhu x8,4(x8)
+	lhu x8,3(x8)
+	lhu x8,-1(x8)
+	lhu x8,3(x8)
