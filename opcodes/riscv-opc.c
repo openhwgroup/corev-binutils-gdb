@@ -250,7 +250,9 @@ const struct riscv_opcode riscv_opcodes[] =
 {"mv",          0, INSN_CLASS_I, "d,s",       MATCH_ADDI, MASK_ADDI|MASK_IMM, match_opcode, INSN_ALIAS },
 {"move",        0, INSN_CLASS_C, "d,CV",      MATCH_C_MV, MASK_C_MV, match_c_add, INSN_ALIAS },
 {"move",        0, INSN_CLASS_I, "d,s",       MATCH_ADDI, MASK_ADDI|MASK_IMM, match_opcode, INSN_ALIAS },
+{"zext.b",      0, INSN_CLASS_ZCEE,  "Cs,Cw", MATCH_C_ZEXT_B, MASK_C_ZEXT_B, match_opcode, INSN_ALIAS },
 {"zext.b",      0, INSN_CLASS_I, "d,s",       MATCH_ANDI|ENCODE_ITYPE_IMM (255), MASK_ANDI | MASK_IMM, match_opcode, INSN_ALIAS },
+{"andi",        0, INSN_CLASS_ZCEE, "Cs,Cw,nf", MATCH_C_ZEXT_B, MASK_C_ZEXT_B, match_opcode, INSN_ALIAS },
 {"andi",        0, INSN_CLASS_C, "Cs,Cw,Co",  MATCH_C_ANDI, MASK_C_ANDI, match_opcode, INSN_ALIAS },
 {"andi",        0, INSN_CLASS_I, "d,s,j",     MATCH_ANDI, MASK_ANDI, match_opcode, 0 },
 {"and",         0, INSN_CLASS_C, "Cs,Cw,Ct",  MATCH_C_AND, MASK_C_AND, match_opcode, INSN_ALIAS },
@@ -496,6 +498,7 @@ const struct riscv_opcode riscv_opcodes[] =
 {"amominu.d.aqrl", 64, INSN_CLASS_A, "d,t,0(s)", MATCH_AMOMINU_D|MASK_AQRL, MASK_AMOMINU_D|MASK_AQRL, match_opcode, INSN_DREF|INSN_8_BYTE },
 
 /* Multiply/Divide instruction subset.  */
+{"mul",        0, INSN_CLASS_ZCEE, "Cs,Cw,Ct", MATCH_C_MUL, MASK_C_MUL, match_opcode, INSN_ALIAS },
 {"mul",        0, INSN_CLASS_M,   "d,s,t",     MATCH_MUL, MASK_MUL, match_opcode, 0 },
 {"mulh",       0, INSN_CLASS_M,   "d,s,t",     MATCH_MULH, MASK_MULH, match_opcode, 0 },
 {"mulhu",      0, INSN_CLASS_M,   "d,s,t",     MATCH_MULHU, MASK_MULHU, match_opcode, 0 },
@@ -758,6 +761,14 @@ const struct riscv_opcode riscv_opcodes[] =
 {"c.fswsp",   32, INSN_CLASS_F_AND_C, "CT,CM(Cc)", MATCH_C_FSWSP, MASK_C_FSWSP, match_opcode, INSN_DREF|INSN_4_BYTE },
 {"c.fsw",     32, INSN_CLASS_F_AND_C, "CD,Ck(Cs)", MATCH_C_FSW, MASK_C_FSW, match_opcode, INSN_DREF|INSN_4_BYTE },
 
+/* ZCEE subset, where ZCEE is a subset of ZCEA  */
+{"c.sext.b",   0, INSN_CLASS_ZCEE,  "Cs",  MATCH_C_SEXT_B, MASK_C_SEXT_B, match_opcode, 0 },
+{"c.sext.h",   0, INSN_CLASS_ZCEE,  "Cs",  MATCH_C_SEXT_H, MASK_C_SEXT_H, match_opcode, 0 },
+{"c.zext.b",   0, INSN_CLASS_ZCEE,  "Cs",  MATCH_C_ZEXT_B, MASK_C_ZEXT_B, match_opcode, 0 },
+{"c.zext.h",   0, INSN_CLASS_ZCEE,  "Cs",  MATCH_C_ZEXT_H, MASK_C_ZEXT_H, match_opcode, 0 },
+{"c.zext.w",  64, INSN_CLASS_ZCEE,  "Cs",  MATCH_C_ZEXT_W, MASK_C_ZEXT_W, match_opcode, 0 },
+{"c.mul",      0, INSN_CLASS_ZCEE,  "Cs,Ct",  MATCH_C_MUL, MASK_C_MUL, match_opcode, 0 },
+
 /* Supervisor instructions.  */
 {"csrr",       0, INSN_CLASS_ZICSR,"d,E",      MATCH_CSRRS, MASK_CSRRS|MASK_RS1, match_opcode, INSN_ALIAS },
 {"csrwi",      0, INSN_CLASS_ZICSR,"E,Z",      MATCH_CSRRWI, MASK_CSRRWI|MASK_RD, match_opcode, INSN_ALIAS },
@@ -796,10 +807,13 @@ const struct riscv_opcode riscv_opcodes[] =
 {"max",        0, INSN_CLASS_ZBB,  "d,s,t", MATCH_MAX, MASK_MAX, match_opcode, 0 },
 {"minu",       0, INSN_CLASS_ZBB,  "d,s,t", MATCH_MINU, MASK_MINU, match_opcode, 0 },
 {"maxu",       0, INSN_CLASS_ZBB,  "d,s,t", MATCH_MAXU, MASK_MAXU, match_opcode, 0 },
+{"sext.b",     0, INSN_CLASS_ZCEE, "Cs,Cw", MATCH_C_SEXT_B, MASK_C_SEXT_B, match_opcode, INSN_ALIAS },
 {"sext.b",     0, INSN_CLASS_ZBB,  "d,s",   MATCH_SEXT_B, MASK_SEXT_B, match_opcode, 0 },
 {"sext.b",     0, INSN_CLASS_I,         "d,s",   0, (int) M_SEXTB, match_never, INSN_MACRO },
+{"sext.h",     0, INSN_CLASS_ZCEE, "Cs,Cw", MATCH_C_SEXT_H, MASK_C_SEXT_H, match_opcode, INSN_ALIAS },
 {"sext.h",     0, INSN_CLASS_ZBB,  "d,s",   MATCH_SEXT_H, MASK_SEXT_H, match_opcode, 0 },
 {"sext.h",     0, INSN_CLASS_I,         "d,s",   0, (int) M_SEXTH, match_never, INSN_MACRO },
+{"zext.h",     0, INSN_CLASS_ZCEE, "Cs,Cw", MATCH_C_ZEXT_H, MASK_C_ZEXT_H, match_opcode, INSN_ALIAS },
 {"zext.h",    32, INSN_CLASS_ZBB,  "d,s",   MATCH_PACK, MASK_PACK | MASK_RS2, match_opcode, 0 },
 {"zext.h",    64, INSN_CLASS_ZBB,  "d,s",   MATCH_PACKW, MASK_PACKW | MASK_RS2, match_opcode, 0 },
 {"zext.h",     0, INSN_CLASS_I,         "d,s",   0, (int) M_ZEXTH, match_never, INSN_MACRO },
@@ -826,6 +840,7 @@ const struct riscv_opcode riscv_opcodes[] =
 {"sh1add.uw", 64, INSN_CLASS_ZBA,  "d,s,t", MATCH_SH1ADD_UW, MASK_SH1ADD_UW, match_opcode, 0 },
 {"sh2add.uw", 64, INSN_CLASS_ZBA,  "d,s,t", MATCH_SH2ADD_UW, MASK_SH2ADD_UW, match_opcode, 0 },
 {"sh3add.uw", 64, INSN_CLASS_ZBA,  "d,s,t", MATCH_SH3ADD_UW, MASK_SH3ADD_UW, match_opcode, 0 },
+{"zext.w",    64, INSN_CLASS_ZCEE, "Cs,Cw", MATCH_C_ZEXT_W, MASK_C_ZEXT_W, match_opcode, INSN_ALIAS },
 {"zext.w",    64, INSN_CLASS_ZBA,  "d,s",   MATCH_ADD_UW, MASK_ADD_UW | MASK_RS2, match_opcode, INSN_ALIAS },
 {"zext.w",    64, INSN_CLASS_I, "d,s",       0, (int) M_ZEXTW, match_never, INSN_MACRO },
 {"add.uw",    64, INSN_CLASS_ZBA,  "d,s,t", MATCH_ADD_UW, MASK_ADD_UW, match_opcode, 0 },
@@ -833,7 +848,6 @@ const struct riscv_opcode riscv_opcodes[] =
 {"clmul",      0, INSN_CLASS_ZBC,  "d,s,t", MATCH_CLMUL, MASK_CLMUL, match_opcode, 0 },
 {"clmulh",     0, INSN_CLASS_ZBC,  "d,s,t", MATCH_CLMULH, MASK_CLMULH, match_opcode, 0 },
 {"clmulr",     0, INSN_CLASS_ZBC,  "d,s,t", MATCH_CLMULR, MASK_CLMULR, match_opcode, 0 },
-
 
 /* CORE-V Specific Opcodes.  */
 /* Hardware loops  */

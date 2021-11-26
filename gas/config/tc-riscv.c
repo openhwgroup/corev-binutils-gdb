@@ -150,6 +150,8 @@ static const struct riscv_ext_version ext_version_table[] =
   {"zba",   ISA_SPEC_CLASS_DRAFT, 0, 93},
   {"zbc",   ISA_SPEC_CLASS_DRAFT, 0, 93},
 
+  {"zcee",  ISA_SPEC_CLASS_DRAFT, 1, 0},
+
   /* Terminate the list.  */
   {NULL, 0, 0, 0}
 };
@@ -349,6 +351,9 @@ riscv_multi_subset_supports (enum riscv_insn_class insn_class)
 
     case INSN_CLASS_ZBC:
       return riscv_subset_supports ("zbc");
+
+    case INSN_CLASS_ZCEE:
+      return riscv_subset_supports ("zcee");
 
     case INSN_CLASS_COREV_HWLP:
       return riscv_subset_supports ("xcorevhwlp") || riscv_subset_supports ("xcorev");
@@ -1166,6 +1171,17 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case 'p': used_bits |= ENCODE_BTYPE_IMM (-1U); break;
       case 'q': used_bits |= ENCODE_STYPE_IMM (-1U); break;
       case 'u': used_bits |= ENCODE_UTYPE_IMM (-1U); break;
+      case 'n': /* ZCE */
+	      switch (c = *p++)
+	        {
+	          case 'f': break;
+	          default:
+	            as_bad (_("internal: bad RISC-V opcode "
+	      		"(unknown operand type `n%c'): %s %s"),
+	      	      c, opc->name, opc->args);
+	          return FALSE;
+	        }
+	      break;
       case 'z': break; /* Zero immediate.  */
       case '[': break; /* Unused operand.  */
       case ']': break; /* Unused operand.  */
@@ -2898,6 +2914,24 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  as_bad (_("internal: unknown funct field "
 			    "specifier `F%c'\n"), *args);
 		}
+	      break;
+
+      case 'n':
+	      switch (*++args)
+	        {
+		      case 'f':
+		        if (my_getSmallExpression (imm_expr, imm_reloc, s, p)
+		            || imm_expr->X_op != O_constant
+		            || imm_expr->X_add_number != 255)
+		          break;
+		        s = expr_end;
+		        imm_expr->X_op = O_absent;
+		        continue;
+		      default:
+		        as_bad (_("internal: unknown ZCE 32 bits instruction "
+		              "field specifier `n%c'"), *args);
+		        break;
+		      }
 	      break;
 
 	    case 'z':
