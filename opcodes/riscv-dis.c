@@ -265,6 +265,15 @@ print_insn_args (const char *d, insn_t l, bfd_vma pc, disassemble_info *info)
 	      print (info->stream, "%s",
 		     riscv_fpr_names[EXTRACT_OPERAND (CRS2S, l) + 8]);
 	      break;
+	    case 'Z': /* ZCE 16 bits length instruction field */
+	      switch (*++d)
+		{
+		case 'c':
+		  print (info->stream, "%s",
+		     riscv_gpr_names[EXTRACT_OPERAND (CRS1S, l) + 8]);
+		default: break;
+		}
+	      break;
 	    }
 	  break;
 
@@ -463,6 +472,16 @@ print_insn_args (const char *d, insn_t l, bfd_vma pc, disassemble_info *info)
 	case 'Z':
 	  print (info->stream, "%d", rs1);
 	  break;
+
+	case 'n':
+	  switch (*++d)
+	    {
+	      case 'd':
+		print (info->stream, "%s", riscv_gpr_names[rd]);
+		break;
+	      default: break;
+	    }
+	    break;
 
 	default:
 	  /* xgettext:c-format */
