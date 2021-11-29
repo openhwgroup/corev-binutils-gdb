@@ -276,6 +276,9 @@ struct riscv_set_options
   int relax; /* Emit relocs the linker is allowed to relax.  */
   int arch_attr; /* Emit architecture and privileged elf attributes.  */
   int csr_check; /* Enable the CSR checking.  */
+  int zce_zext;  /* Enable c.zext.b, c.zext.h, c.zext.w (RV64) */
+  int zce_sext;  /* Enable c.sext.b, c.sext.h, c.sext.w (RV64 pseudo) */
+  int zce_cmul;  /* Enable c.mul */
 };
 
 static struct riscv_set_options riscv_opts =
@@ -286,6 +289,9 @@ static struct riscv_set_options riscv_opts =
   1, /* relax */
   DEFAULT_RISCV_ATTR, /* arch_attr */
   0, /* csr_check */
+  0, /* zce_zext */
+  0, /* zce_sext */
+  0  /* zce_cmul */
 };
 
 static void
@@ -1085,6 +1091,17 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	  case 'l': used_bits |= ENCODE_CLTYPE_LD_IMM (-1U); break;
 	  case 'p': used_bits |= ENCODE_CBTYPE_IMM (-1U); break;
 	  case 'a': used_bits |= ENCODE_CJTYPE_IMM (-1U); break;
+	  case 'Z': /* ZCE */
+	    switch (c = *p++)
+	      {
+		case 'c': USE_BITS (OP_MASK_CRS1S, OP_SH_CRS1S); break;
+		default:
+		  as_bad (_("internal: bad RISC-V opcode "
+			    "(unknown operand type `CZ%c'): %s %s"),
+			  c, opc->name, opc->args);
+		  return FALSE;
+	      }
+	    break;
 	  case 'F': /* Compressed funct for .insn directive.  */
 	    switch (c = *p++)
 	      {
@@ -1172,16 +1189,17 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
       case 'q': used_bits |= ENCODE_STYPE_IMM (-1U); break;
       case 'u': used_bits |= ENCODE_UTYPE_IMM (-1U); break;
       case 'n': /* ZCE */
-	      switch (c = *p++)
-	        {
-	          case 'f': break;
-	          default:
-	            as_bad (_("internal: bad RISC-V opcode "
-	      		"(unknown operand type `n%c'): %s %s"),
-	      	      c, opc->name, opc->args);
-	          return FALSE;
-	        }
-	      break;
+	switch (c = *p++)
+	  {
+	    case 'f': break;
+	    case 'd': USE_BITS (OP_MASK_RD, OP_SH_RD); break;
+	    default:
+	      as_bad (_("internal: bad RISC-V opcode "
+			"(unknown operand type `n%c'): %s %s"),
+		      c, opc->name, opc->args);
+	    return FALSE;
+	  }
+	break;
       case 'z': break; /* Zero immediate.  */
       case '[': break; /* Unused operand.  */
       case ']': break; /* Unused operand.  */
@@ -2354,6 +2372,32 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		    break;
 		  INSERT_OPERAND (CRS2, *ip, regno);
 		  continue;
+		case 'Z':
+		  switch (*++args)
+		    {
+		    case 'c': /* ZCEE RS1 x8-x15.  */
+		      if (!riscv_opts.zce_cmul
+		        && insn->match == MATCH_C_MUL)
+			break;
+		      if (!riscv_opts.zce_sext
+			&& (insn->match == MATCH_C_SEXT_B
+			    || insn->match == MATCH_C_SEXT_H))
+			break;
+		      if (!riscv_opts.zce_zext
+			&& (insn->match == MATCH_C_ZEXT_B
+			    || insn->match == MATCH_C_ZEXT_H
+			    || insn->match == MATCH_C_ZEXT_W))
+			break;
+		      if (!reg_lookup (&s, RCLASS_GPR, &regno)
+			  || !(regno >= 8 && regno <= 15))
+			break;
+		      INSERT_OPERAND (CRS1S, *ip, regno % 8);
+		      continue;
+		    default:
+		      as_bad (_("internal: unknown ZCE field specifier "
+			  "field specifier `CZ%c'"), *args);
+		    }
+		  break;
 		case 'F':
 		  switch (*++args)
 		    {
@@ -2916,24 +2960,6 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		}
 	      break;
 
-      case 'n':
-	      switch (*++args)
-	        {
-		      case 'f':
-		        if (my_getSmallExpression (imm_expr, imm_reloc, s, p)
-		            || imm_expr->X_op != O_constant
-		            || imm_expr->X_add_number != 255)
-		          break;
-		        s = expr_end;
-		        imm_expr->X_op = O_absent;
-		        continue;
-		      default:
-		        as_bad (_("internal: unknown ZCE 32 bits instruction "
-		              "field specifier `n%c'"), *args);
-		        break;
-		      }
-	      break;
-
 	    case 'z':
 	      if (my_getSmallExpression (imm_expr, imm_reloc, s, p)
 		  || imm_expr->X_op != O_constant
@@ -2942,6 +2968,30 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 	      s = expr_end;
 	      imm_expr->X_op = O_absent;
 	      continue;
+
+	    case 'n':
+	      switch (*++args)
+	        {
+		case 'f':
+		  if (my_getSmallExpression (imm_expr, imm_reloc, s, p)
+		      || imm_expr->X_op != O_constant
+		      || imm_expr->X_add_number != 255)
+		    break;
+		  s = expr_end;
+		  imm_expr->X_op = O_absent;
+		  continue;
+		case 'd':
+		  if (!riscv_opts.zce_sext
+		      || !reg_lookup (&s, RCLASS_GPR, &regno))
+		    break;
+		  INSERT_OPERAND (RD, *ip, regno);
+		  continue;
+		default:
+		  as_bad (_("internal: unknown ZCE 32 bits instruction "
+		        "field specifier `n%c'"), *args);
+		  break;
+		}
+	      break;
 
 	    default:
 	      as_fatal (_("internal: unknown argument type `%c'"), *args);
@@ -3551,6 +3601,12 @@ s_riscv_option (int x ATTRIBUTE_UNUSED)
     riscv_opts.csr_check = true;
   else if (strcmp (name, "no-csr-check") == 0)
     riscv_opts.csr_check = false;
+  else if (strcmp (name, "zce-cmul") == 0)
+    riscv_opts.zce_cmul = TRUE;
+  else if (strcmp (name, "zce-sext") == 0)
+    riscv_opts.zce_sext = TRUE;
+  else if (strcmp (name, "zce-zext") == 0)
+    riscv_opts.zce_zext = TRUE;
   else if (strcmp (name, "push") == 0)
     {
       struct riscv_option_stack *s;
