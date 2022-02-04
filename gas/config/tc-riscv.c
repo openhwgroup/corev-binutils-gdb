@@ -150,7 +150,7 @@ static const struct riscv_ext_version ext_version_table[] =
   {"zba",   ISA_SPEC_CLASS_DRAFT, 0, 93},
   {"zbc",   ISA_SPEC_CLASS_DRAFT, 0, 93},
 
-  {"zcee",  ISA_SPEC_CLASS_DRAFT, 1, 0},
+  {"zcee",  ISA_SPEC_CLASS_DRAFT, 0, 50},
 
   /* Terminate the list.  */
   {NULL, 0, 0, 0}
