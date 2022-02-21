@@ -1161,6 +1161,12 @@ static struct riscv_implicit_subset riscv_implicit_subsets[] =
   {"zks", "zbkx",	check_implicit_always},
   {"zks", "zksed",	check_implicit_always},
   {"zks", "zksh",	check_implicit_always},
+  {"zcmb", "zcb",	check_implicit_always},
+  {"zcmp", "zca",	check_implicit_always},
+  {"zcmt", "zca",	check_implicit_always},
+  {"zcmpe", "zca",	check_implicit_always},
+  {"zcf", "zca",	check_implicit_always},
+  {"zcb", "zca",	check_implicit_always},
   {NULL, NULL, NULL}
 };
 
@@ -1263,6 +1269,13 @@ static struct riscv_supported_ext riscv_supported_std_z_ext[] =
   {"zvl16384b",		ISA_SPEC_CLASS_DRAFT,		1, 0,  0 },
   {"zvl32768b",		ISA_SPEC_CLASS_DRAFT,		1, 0,  0 },
   {"zvl65536b",		ISA_SPEC_CLASS_DRAFT,		1, 0,  0 },
+  {"zca",		ISA_SPEC_CLASS_DRAFT,		0, 7,  0 },
+  {"zcb",		ISA_SPEC_CLASS_DRAFT,		0, 7,  0 },
+  {"zcf",		ISA_SPEC_CLASS_DRAFT,		0, 7,  0 },
+  {"zcmb",		ISA_SPEC_CLASS_DRAFT,		0, 7,  0 },
+  {"zcmp",		ISA_SPEC_CLASS_DRAFT,		0, 7,  0 },
+  {"zcmpe",		ISA_SPEC_CLASS_DRAFT,		0, 7,  0 },
+  {"zcmt",		ISA_SPEC_CLASS_DRAFT,		0, 7,  0 },
   {NULL, 0, 0, 0, 0}
 };
 
@@ -2387,10 +2400,12 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
     case INSN_CLASS_Q:
       return riscv_subset_supports (rps, "q");
     case INSN_CLASS_C:
-      return riscv_subset_supports (rps, "c");
+      return riscv_subset_supports (rps, "c")
+		|| riscv_subset_supports (rps, "zca");
     case INSN_CLASS_F_AND_C:
       return (riscv_subset_supports (rps, "f")
-	      && riscv_subset_supports (rps, "c"));
+	      && (riscv_subset_supports (rps, "c")
+		  || riscv_subset_supports (rps, "zcf")));
     case INSN_CLASS_D_AND_C:
       return (riscv_subset_supports (rps, "d")
 	      && riscv_subset_supports (rps, "c"));
