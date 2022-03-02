@@ -2501,6 +2501,17 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
 	      || riscv_subset_supports (rps, "zve32f"));
     case INSN_CLASS_SVINVAL:
       return riscv_subset_supports (rps, "svinval");
+    case INSN_CLASS_ZCB:
+      return riscv_subset_supports (rps, "zcb");
+    case INSN_CLASS_ZCB_AND_ZBB:
+      return riscv_subset_supports (rps, "zcb")
+	    && riscv_subset_supports (rps, "zbb");
+    case INSN_CLASS_ZCB_AND_ZBA:
+      return riscv_subset_supports (rps, "zcb")
+	    && riscv_subset_supports (rps, "zba");
+    case INSN_CLASS_ZCB_AND_M:
+      return riscv_subset_supports (rps, "zcb")
+	    && riscv_subset_supports (rps, "m");
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));
