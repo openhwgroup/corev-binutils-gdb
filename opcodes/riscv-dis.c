@@ -295,6 +295,18 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	      print (info->stream, "%s",
 		     riscv_fpr_names[EXTRACT_OPERAND (CRS2S, l) + 8]);
 	      break;
+	    case 'Z': /* ZC 16 bits length instruction fields. */
+	      switch (*++oparg)
+		{
+		case 'b':
+		  print (info->stream, "%d", (int)EXTRACT_ZCB_BYTE_UIMM (l));
+		  break;
+		case 'h':
+		  print (info->stream, "%d", (int)EXTRACT_ZCB_HALFWORD_UIMM (l));
+		  break;
+		default: break;
+		}
+	      break;
 	    }
 	  break;
 

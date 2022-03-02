@@ -134,6 +134,12 @@ static const char * const riscv_pred_succ[16] =
 #define EXTRACT_CV_BI_IMM5(x) \
   (RV_X(x, 20, 5) | (RV_IMM_SIGN_N(x, 20, 5) << 5))
 
+/* ZC Specific.  */
+#define EXTRACT_ZCB_BYTE_UIMM(x) \
+  (RV_X(x, 6, 1) | (RV_X(x, 5, 1) << 1))
+#define EXTRACT_ZCB_HALFWORD_UIMM(x) \
+  (RV_X(x, 5, 1) << 1)
+
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
 #define ENCODE_STYPE_IMM(x) \
@@ -191,6 +197,12 @@ static const char * const riscv_pred_succ[16] =
 #define ENCODE_CV_ALU_UIMM5(x) \
   (RV_X(x, 0, 5) << 20)
 
+/* ZC Specific.  */
+#define ENCODE_ZCB_BYTE_UIMM(x) \
+  ((RV_X(x, 0, 1) << 6) | (RV_X(x, 1, 1) << 5))
+#define ENCODE_ZCB_HALFWORD_UIMM(x) \
+  (RV_X(x, 1, 1) << 5)
+
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
 #define VALID_BTYPE_IMM(x) (EXTRACT_BTYPE_IMM(ENCODE_BTYPE_IMM(x)) == (x))
@@ -215,6 +227,10 @@ static const char * const riscv_pred_succ[16] =
 #define VALID_CJTYPE_IMM(x) (EXTRACT_CJTYPE_IMM(ENCODE_CJTYPE_IMM(x)) == (x))
 #define VALID_RVV_VB_IMM(x) (EXTRACT_RVV_VB_IMM(ENCODE_RVV_VB_IMM(x)) == (x))
 #define VALID_RVV_VC_IMM(x) (EXTRACT_RVV_VC_IMM(ENCODE_RVV_VC_IMM(x)) == (x))
+
+/* ZC Specific.  */
+#define VALID_ZCB_BYTE_UIMM(x) (EXTRACT_ZCB_BYTE_UIMM(ENCODE_ZCB_BYTE_UIMM(x)) == (x))
+#define VALID_ZCB_HALFWORD_UIMM(x) (EXTRACT_ZCB_HALFWORD_UIMM(ENCODE_ZCB_HALFWORD_UIMM(x)) == (x))
 
 #define RISCV_RTYPE(insn, rd, rs1, rs2) \
   ((MATCH_ ## insn) | ((rd) << OP_SH_RD) | ((rs1) << OP_SH_RS1) | ((rs2) << OP_SH_RS2))
@@ -434,7 +450,11 @@ enum riscv_insn_class
   INSN_CLASS_COREV_MAC,
   INSN_CLASS_COREV_ALU,
   INSN_CLASS_COREV_MEM,
-  INSN_CLASS_COREV_BI
+  INSN_CLASS_COREV_BI,
+  INSN_CLASS_ZCB,
+  INSN_CLASS_ZCB_AND_ZBA,
+  INSN_CLASS_ZCB_AND_ZBB,
+  INSN_CLASS_ZCB_AND_M
 };
 
 /* This structure holds information for a particular instruction.  */
