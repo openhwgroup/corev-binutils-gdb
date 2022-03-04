@@ -1116,6 +1116,10 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 		case 'h': used_bits |= ENCODE_ZCB_HALFWORD_UIMM (-1U); break;
 		/* halfword immediate operators, load/store halfword insns.  */
 		case 'b': used_bits |= ENCODE_ZCB_BYTE_UIMM (-1U); break;
+		/* byte immediate operators, load/store byte insns.  */
+		case 'H': used_bits |= ENCODE_ZCMB_HALFWORD_UIMM (-1U); break;
+		/* halfword immediate operators, load/store halfword insns.  */
+		case 'B': used_bits |= ENCODE_ZCMB_BYTE_UIMM (-1U); break;
 		default:
 		  goto unknown_validate_operand;
 		}
@@ -2687,6 +2691,28 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 			|| !VALID_ZCB_BYTE_UIMM ((valueT) imm_expr->X_add_number))
 			break;
 		      ip->insn_opcode |= ENCODE_ZCB_BYTE_UIMM (imm_expr->X_add_number);
+		      goto rvc_imm_done;
+
+		    case 'H': /* immediate field for cm.lh/cm.lhu/cm.sh.  */
+		      /* handle cases, such as cm.sh rs2', (rs1') */
+		      if (riscv_handle_implicit_zero_offset (imm_expr, asarg))
+			continue;
+		      if (my_getSmallExpression (imm_expr, imm_reloc, asarg, p)
+			|| imm_expr->X_op != O_constant
+			|| !VALID_ZCMB_HALFWORD_UIMM ((valueT) imm_expr->X_add_number))
+			  break;
+		      ip->insn_opcode |= ENCODE_ZCMB_HALFWORD_UIMM (imm_expr->X_add_number);
+		      goto rvc_imm_done;
+
+		    case 'B': /* immediate field for cm.lbu/cm.sb.  */
+		      /* handle cases, such as cm.lbu rd', (rs1') */
+		      if (riscv_handle_implicit_zero_offset (imm_expr, asarg))
+			continue;
+		      if (my_getSmallExpression (imm_expr, imm_reloc, asarg, p)
+			|| imm_expr->X_op != O_constant
+			|| !VALID_ZCMB_BYTE_UIMM ((valueT) imm_expr->X_add_number))
+			break;
+		      ip->insn_opcode |= ENCODE_ZCMB_BYTE_UIMM (imm_expr->X_add_number);
 		      goto rvc_imm_done;
 
 		    default:
