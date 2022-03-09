@@ -1,0 +1,13 @@
+.*: Assembler messages:
+.*: Error: illegal operands `cm.sb x7,1\(x9\)'
+.*: Error: illegal operands `cm.sb x17,1\(x17\)'
+.*: Error: illegal operands `cm.sh x7,4\(x7\)'
+.*: Error: illegal operands `cm.sh x19,4\(x16\)'
+.*: Error: illegal operands `cm.lb x17,1\(x10\)'
+.*: Error: illegal operands `cm.lb x18,1\(x18\)'
+.*: Error: illegal operands `cm.lbu x7,1\(x10\)'
+.*: Error: illegal operands `cm.lbu x16,1\(x16\)'
+.*: Error: illegal operands `cm.lh x7,4\(x10\)'
+.*: Error: illegal operands `cm.lh x16,4\(x16\)'
+.*: Error: illegal operands `cm.lhu x7,4\(x15\)'
+.*: Error: illegal operands `cm.lhu x15,4\(x16\)'
