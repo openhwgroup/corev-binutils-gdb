@@ -383,6 +383,10 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 		case 'p':
 		  print (info->stream, "%d", riscv_get_spimm (l));
 		  break;
+		case 'i':
+		case 'I':
+		  print (info->stream, "%lu", EXTRACT_ZCMP_TABLE_JUMP_INDEX (l));
+		  break;
 		default: break;
 		}
 	      break;
