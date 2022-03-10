@@ -145,6 +145,8 @@ static const char * const riscv_pred_succ[16] =
   ((RV_X(x, 5, 2) << 1) | (RV_X(x, 10, 2) << 3))
 #define EXTRACT_ZCMP_SPIMM(x) \
   (RV_X(x, 2, 2) << 4)
+#define EXTRACT_ZCMP_TABLE_JUMP_INDEX(x) \
+  (RV_X(x, 2, 8))
 
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
@@ -214,6 +216,8 @@ static const char * const riscv_pred_succ[16] =
   ((RV_X(x, 1, 2) << 5) | (RV_X(x, 3, 2) << 10))
 #define ENCODE_ZCMP_SPIMM(x) \
   (RV_X(x, 4, 2) << 2)
+#define ENCODE_ZCMP_TABLE_JUMP_INDEX(x) \
+  (RV_X(x, 0, 8) << 2)
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
@@ -495,7 +499,8 @@ enum riscv_insn_class
   INSN_CLASS_ZCB_AND_ZBB,
   INSN_CLASS_ZCB_AND_M,
   INSN_CLASS_ZCMB,
-  INSN_CLASS_ZCMP
+  INSN_CLASS_ZCMP,
+  INSN_CLASS_ZCMT
 };
 
 /* This structure holds information for a particular instruction.  */

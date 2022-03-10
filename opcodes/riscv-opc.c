@@ -280,6 +280,25 @@ match_sreg1_not_eq_sreg2 (const struct riscv_opcode *op, insn_t insn)
       && (EXTRACT_OPERAND (SREG1, insn) != EXTRACT_OPERAND (SREG2, insn));
 }
 
+/* This is used for cm.jt. This requires index operand to be less than 64.  */
+
+static int
+match_cm_jt (const struct riscv_opcode *op, insn_t insn)
+{
+  return match_opcode (op, insn)
+    && EXTRACT_ZCMP_TABLE_JUMP_INDEX (insn) < 64;
+}
+
+/* This is used for cm.jalt. This requires index operand to be in 64 to 255.  */
+
+static int
+match_cm_jalt (const struct riscv_opcode *op, insn_t insn)
+{
+  return match_opcode (op, insn)
+    && EXTRACT_ZCMP_TABLE_JUMP_INDEX (insn) >= 64
+    && EXTRACT_ZCMP_TABLE_JUMP_INDEX (insn) < 256;
+}
+
 const struct riscv_opcode riscv_opcodes[] =
 {
 /* name, xlen, isa, operands, match, mask, match_func, pinfo.  */
@@ -1927,6 +1946,9 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cm.popretz", 0,  INSN_CLASS_ZCMP, "{CZr},CZp",  MATCH_CM_POPRETZ, MASK_CM_POPRETZ, match_opcode, 0 },
 {"cm.mva01s",  0,  INSN_CLASS_ZCMP, "CZ1,CZ2",    MATCH_CM_MVA01S, MASK_CM_MVA01S, match_opcode, 0 },
 {"cm.mvsa01",  0,  INSN_CLASS_ZCMP, "CZ1,CZ2",    MATCH_CM_MVSA01, MASK_CM_MVSA01, match_sreg1_not_eq_sreg2, 0 },
+/* ZCMT instructions */
+{"cm.jt",      0,  INSN_CLASS_ZCMT, "CZI",        MATCH_TABLE_JUMP, MASK_CM_JT, match_cm_jt, 0 },
+{"cm.jalt",    0,  INSN_CLASS_ZCMT, "CZi",        MATCH_TABLE_JUMP, MASK_CM_JALT, match_cm_jalt, 0 },
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
 };

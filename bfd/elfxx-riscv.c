@@ -2516,6 +2516,8 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
       return riscv_subset_supports (rps, "zcmb");
     case INSN_CLASS_ZCMP:
       return riscv_subset_supports (rps, "zcmp");
+    case INSN_CLASS_ZCMT:
+      return riscv_subset_supports (rps, "zcmt");
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));
