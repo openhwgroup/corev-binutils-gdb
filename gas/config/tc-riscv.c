@@ -72,7 +72,8 @@ enum riscv_csr_class
   CSR_CLASS_F,		/* f-ext only */
   CSR_CLASS_ZKR,	/* zkr only */
   CSR_CLASS_V,		/* rvv only */
-  CSR_CLASS_DEBUG	/* debug CSR */
+  CSR_CLASS_DEBUG,	/* debug CSR */
+  CSR_CLASS_ZCMT	/* zcmt only */
 };
 
 /* This structure holds all restricted conditions for a CSR.  */
@@ -956,6 +957,10 @@ riscv_csr_address (const char *csr_name,
       need_check_version = false;
       break;
     case CSR_CLASS_DEBUG:
+      need_check_version = false;
+      break;
+    case CSR_CLASS_ZCMT:
+      result = riscv_subset_supports (&riscv_rps_as, "zcmt");
       need_check_version = false;
       break;
     default:
