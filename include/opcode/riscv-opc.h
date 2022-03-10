@@ -2103,6 +2103,10 @@
 #define MASK_CM_MVA01S 0xfc63
 #define MATCH_CM_MVSA01 0xac22
 #define MASK_CM_MVSA01 0xfc63
+/* ZCMT instructions.  */
+#define MATCH_TABLE_JUMP 0xa002
+#define MASK_CM_JT 0xff03
+#define MASK_CM_JALT 0xfc03
 /* Privileged CSR addresses.  */
 #define CSR_USTATUS 0x0
 #define CSR_UIE 0x4

@@ -1335,6 +1335,9 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 		case 'p': used_bits |= ENCODE_ZCMP_SPIMM (-1U); break;
 		/* register list operand for cm.push and cm.pop. */
 		case 'r': USE_BITS (OP_MASK_RLIST, OP_SH_RLIST); break;
+		/* table jump index operand.  */
+		case 'i':
+		case 'I': used_bits |= ENCODE_ZCMP_TABLE_JUMP_INDEX (-1U); break;
 		default:
 		  goto unknown_validate_operand;
 		}
@@ -3176,6 +3179,31 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 			break;
 		      INSERT_OPERAND (SREG2, *ip, regno % 8);
 		      continue;
+
+		    case 'I': /* index operand of cm.jt. The range is from 0 to 63. */
+		      my_getExpression (imm_expr, asarg);
+		      if (imm_expr->X_op == O_constant
+		          || imm_expr->X_add_number < 0
+			  || imm_expr->X_add_number > 64)
+			{
+			  as_bad ("bad index value for cm.jt, range: [0, 63]");
+			  break;
+			}
+		      ip->insn_opcode |= ENCODE_ZCMP_TABLE_JUMP_INDEX (imm_expr->X_add_number);
+		      goto rvc_imm_done;
+
+		    case 'i': /* index operand of cm.jalt. The range is from 64 to 255. */
+		      my_getExpression (imm_expr, asarg);
+		      if (imm_expr->X_op == O_constant
+		          || imm_expr->X_add_number < 64
+			  || imm_expr->X_add_number > 255)
+			{
+			  as_bad ("bad index value for cm.jalt, range: [64, 255]");
+			  break;
+			}
+		      ip->insn_opcode |= ENCODE_ZCMP_TABLE_JUMP_INDEX (imm_expr->X_add_number);
+		      goto rvc_imm_done;
+
 		    default:
 		      goto unknown_riscv_ip_operand;
 		    }
