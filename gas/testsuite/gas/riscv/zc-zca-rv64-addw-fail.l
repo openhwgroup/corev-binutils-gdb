@@ -1,0 +1,12 @@
+.*: Assembler messages:
+.*: Error: illegal operands `c.addw '
+.*: Error: illegal operands `c.addw ,'
+.*: Error: illegal operands `c.addw ,x8'
+.*: Error: illegal operands `c.addw x8,'
+.*: Error: illegal operands `c.addw ,,'
+.*: Error: illegal operands `c.addw x7,x8'
+.*: Error: illegal operands `c.addw x16,x8'
+.*: Error: illegal operands `c.addw 3,x8'
+.*: Error: illegal operands `c.addw x8,x7'
+.*: Error: illegal operands `c.addw x8,x16'
+.*: Error: illegal operands `c.addw x8,3'

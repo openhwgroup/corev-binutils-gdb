@@ -1,0 +1,12 @@
+.*: Assembler messages:
+.*: Error: illegal operands `c.and '
+.*: Error: illegal operands `c.and ,'
+.*: Error: illegal operands `c.and ,x8'
+.*: Error: illegal operands `c.and x8,'
+.*: Error: illegal operands `c.and ,,'
+.*: Error: illegal operands `c.and x7,x8'
+.*: Error: illegal operands `c.and x16,x8'
+.*: Error: illegal operands `c.and 3,x8'
+.*: Error: illegal operands `c.and x8,x7'
+.*: Error: illegal operands `c.and x8,x16'
+.*: Error: illegal operands `c.and x8,3'

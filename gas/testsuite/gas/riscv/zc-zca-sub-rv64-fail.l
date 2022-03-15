@@ -1,0 +1,12 @@
+.*: Assembler messages:
+.*: Error: illegal operands `c.sub '
+.*: Error: illegal operands `c.sub ,'
+.*: Error: illegal operands `c.sub ,x8'
+.*: Error: illegal operands `c.sub x8,'
+.*: Error: illegal operands `c.sub ,,'
+.*: Error: illegal operands `c.sub x7,x8'
+.*: Error: illegal operands `c.sub x16,x8'
+.*: Error: illegal operands `c.sub 3,x8'
+.*: Error: illegal operands `c.sub x8,x7'
+.*: Error: illegal operands `c.sub x8,x16'
+.*: Error: illegal operands `c.sub x8,3'

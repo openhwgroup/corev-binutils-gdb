@@ -1,0 +1,12 @@
+.*: Assembler messages:
+.*: Error: illegal operands `c.xor '
+.*: Error: illegal operands `c.xor ,'
+.*: Error: illegal operands `c.xor ,x8'
+.*: Error: illegal operands `c.xor x8,'
+.*: Error: illegal operands `c.xor ,,'
+.*: Error: illegal operands `c.xor x7,x8'
+.*: Error: illegal operands `c.xor x16,x8'
+.*: Error: illegal operands `c.xor 3,x8'
+.*: Error: illegal operands `c.xor x8,x7'
+.*: Error: illegal operands `c.xor x8,x16'
+.*: Error: illegal operands `c.xor x8,3'

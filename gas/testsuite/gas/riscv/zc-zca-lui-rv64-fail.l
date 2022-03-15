@@ -1,0 +1,12 @@
+.*: Assembler messages:
+.*: Error: illegal operands `c.lui '
+.*: Error: illegal operands `c.lui ,31'
+.*: Error: illegal operands `c.lui x4,'
+.*: Error: illegal operands `c.lui x2,4'
+.*: Error: illegal operands `c.lui 2,4'
+.*: Error: illegal operands `c.lui x31,x0'
+.*: Error: illegal operands `c.lui x31,x2'
+.*: Error: illegal operands `c.lui x31,-1'
+.*: Error: illegal operands `c.lui x31,32'
+.*: Error: illegal operands `c.lui x31,1.0'
+.*: Error: illegal operands `c.lui x31,0'
