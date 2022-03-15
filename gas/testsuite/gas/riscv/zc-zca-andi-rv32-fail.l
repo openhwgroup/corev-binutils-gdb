@@ -1,0 +1,12 @@
+.*: Assembler messages:
+.*: Error: illegal operands `c.andi '
+.*: Error: illegal operands `c.andi ,'
+.*: Error: illegal operands `c.andi ,x8'
+.*: Error: illegal operands `c.andi x8,'
+.*: Error: illegal operands `c.andi ,,'
+.*: Error: illegal operands `c.andi x7,1'
+.*: Error: illegal operands `c.andi x16,1'
+.*: Error: illegal operands `c.andi 3,1'
+.*: Error: illegal operands `c.andi x8,-33'
+.*: Error: illegal operands `c.andi x8,32'
+.*: Error: illegal operands `c.andi x8,x9'

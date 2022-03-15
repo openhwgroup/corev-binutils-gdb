@@ -1,0 +1,10 @@
+target:
+    c.swsp x0, (x2)
+    c.swsp x1, (x2)
+    c.swsp x2, 4(x2)
+    c.swsp x3, 8(x2)
+    c.swsp x4, 32(x2)
+    c.swsp x9, 40(x2)
+    c.swsp x10, 124(x2)
+    c.swsp x11, 128(x2)
+    c.swsp x31, 252(x2)
