@@ -13,8 +13,8 @@ Disassembly of section \.text:
 .*:[[:space:]]+00008067[[:space:]]+ret
 
 .* <_start>:
-.*:[[:space:]]+0102b463[[:space:]]+cv.bneimm[[:space:]]+t0,-16,10060 <L2>
-.*:[[:space:]]+ff9ff0ef[[:space:]]+jal[[:space:]]+ra,10054 <func>
+.*:[[:space:]]+0102b463[[:space:]]+cv.bneimm[[:space:]]+t0,-16,.*[[:space:]]+<L2>
+.*:[[:space:]]+ff9ff0ef[[:space:]]+jal[[:space:]]+ra,.*[[:space:]]+<func>
 
 .* <L2>:
 .*:[[:space:]]+00000013[[:space:]]+nop

@@ -1,3 +1,12 @@
+2021-08-23  Lin Sinan  <sinan@isrc.iscas.ac.cn>
+
+	* ld-riscv-elf/cv-bi-beqimm.d: Remove hard coded address.
+	* ld-riscv-elf/cv-bi-bneimm.d: Likewise.
+	* ld-riscv-elf/cv-hwlp-starti.d: Likewise.
+	* ld-riscv-elf/cv-hwlp-endi.d: Likewise.
+	* ld-riscv-elf/cv-hwlp-setupi.d: Likewise.
+	* ld-riscv-elf/cv-hwlp-setup.d: Likewise.
+
 2021-08-23  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* ld-riscv-elf/ld-riscv-elf.exp: Renamed CORE-V hwlp tests to match
