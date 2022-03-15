@@ -1983,6 +1983,28 @@ riscv_parse_check_conflicts (riscv_parse_subset_t *rps)
       no_conflict = false;
     }
 
+  /* zcmb, zcmt, zcmp and zcmpe extensions are not compatible with
+  16-bit double precision floating point instructions in C
+  extension.  */
+  if (riscv_lookup_subset (rps->subset_list, "c", &subset)
+      && (riscv_lookup_subset (rps->subset_list, "zcmb", &subset)
+	  || riscv_lookup_subset (rps->subset_list, "zcmp", &subset)
+	  || riscv_lookup_subset (rps->subset_list, "zcmpe", &subset)
+	  || riscv_lookup_subset (rps->subset_list, "zcmt", &subset)))
+    {
+      rps->error_handler
+	(_("zcm* is not incompatible with `c' extension."));
+      no_conflict = false;
+    }
+
+  if (riscv_lookup_subset (rps->subset_list, "zcf", &subset)
+      && xlen > 32)
+    {
+      rps->error_handler
+	(_("rv%d does not support the `zcf' extension"), xlen);
+      no_conflict = false;
+    }
+
   return no_conflict;
 }
 
