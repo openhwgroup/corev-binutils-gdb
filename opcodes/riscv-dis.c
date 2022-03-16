@@ -71,6 +71,8 @@ static const char * const *riscv_fpr_names;
 
 /* If set, disassemble as most general instruction.  */
 static int no_aliases;
+/* If set, disassemble numeric register names instead of ABI names.  */
+static int numeric;
 
 static void
 set_default_riscv_dis_options (void)
@@ -78,6 +80,7 @@ set_default_riscv_dis_options (void)
   riscv_gpr_names = riscv_gpr_names_abi;
   riscv_fpr_names = riscv_fpr_names_abi;
   no_aliases = 0;
+  numeric = 0;
 }
 
 static bool
@@ -89,6 +92,7 @@ parse_riscv_dis_option_without_args (const char *option)
     {
       riscv_gpr_names = riscv_gpr_names_numeric;
       riscv_fpr_names = riscv_fpr_names_numeric;
+      numeric = 1;
     }
   else
     return false;
@@ -192,6 +196,50 @@ maybe_print_address (struct riscv_private_data *pd, int base_reg, int offset,
   /* Sign-extend a 32-bit value to a 64-bit value.  */
   if (wide)
     pd->print_addr = (bfd_vma)(int32_t) pd->print_addr;
+}
+
+/* Get ZCMP rlist field. */
+
+static void
+print_rlist (disassemble_info *info, insn_t l)
+{
+  unsigned rlist = (int)EXTRACT_OPERAND (RLIST, l);
+  unsigned r_start = numeric ? X_S2 : X_S0;
+  info->fprintf_func (info->stream, "%s", riscv_gpr_names[X_RA]);
+
+  if (rlist == 5)
+    info->fprintf_func (info->stream, ",%s", riscv_gpr_names[X_S0]);
+  else if (rlist == 6 || (numeric && rlist > 6))
+    info->fprintf_func (info->stream, ",%s-%s",
+	  riscv_gpr_names[X_S0],
+	  riscv_gpr_names[X_S1]);
+
+  if (rlist == 15)
+    info->fprintf_func (info->stream, ",%s-%s",
+	  riscv_gpr_names[r_start],
+	  riscv_gpr_names[X_S11]);
+  else if (rlist == 7 && numeric)
+    info->fprintf_func (info->stream, ",%s",
+	  riscv_gpr_names[X_S2]);
+  else if (rlist > 6)
+    info->fprintf_func (info->stream, ",%s-%s",
+	  riscv_gpr_names[r_start],
+	  riscv_gpr_names[rlist + 11]);
+}
+
+/* Get ZCMP sp adjustment immediate. */
+
+static int
+riscv_get_spimm (insn_t l)
+{
+  int spimm = riscv_get_base_spimm(l, &riscv_rps_dis);
+
+  spimm += EXTRACT_ZCMP_SPIMM (l);
+
+  if (((l ^ MATCH_CM_PUSH) & MASK_CM_PUSH) == 0)
+    spimm *= -1;
+
+  return spimm;
 }
 
 /* Print insn arguments for 32/64-bit code.  */
@@ -310,6 +358,12 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 		case 'H':
 		  print (info->stream, "%d", (int)EXTRACT_ZCMB_HALFWORD_UIMM (l));
 		  break;
+		case 'r':
+		  print_rlist (info, l);
+		  break;
+		case 'p':
+		  print (info->stream, "%d", riscv_get_spimm (l));
+		  break;
 		default: break;
 		}
 	      break;
@@ -391,6 +445,8 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	case ')':
 	case '[':
 	case ']':
+	case '{':
+	case '}':
 	  print (info->stream, "%c", *oparg);
 	  break;
 

@@ -2518,9 +2518,25 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
 	    && riscv_subset_supports (rps, "m");
     case INSN_CLASS_ZCMB:
       return riscv_subset_supports (rps, "zcmb");
+    case INSN_CLASS_ZCMP:
+      return riscv_subset_supports (rps, "zcmp");
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));
       return false;
     }
+}
+
+/* get base sp adjustment */
+
+int
+riscv_get_base_spimm (insn_t opcode, riscv_parse_subset_t *rps)
+{
+  unsigned sp_alignment = 16;
+  unsigned reg_size = *(rps->xlen) / 8;
+  unsigned rlist = EXTRACT_BITS (opcode, OP_MASK_RLIST, OP_SH_RLIST);
+
+  unsigned min_sp_adj = (rlist - 3) * reg_size + (rlist == 15 ? reg_size : 0);
+  return ((min_sp_adj / sp_alignment) + (min_sp_adj % sp_alignment != 0))
+	  * sp_alignment;
 }

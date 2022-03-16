@@ -143,6 +143,8 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 11, 1) | (RV_X(x, 5, 2) << 1) | (RV_X(x, 10, 1) << 3))
 #define EXTRACT_ZCMB_HALFWORD_UIMM(x) \
   ((RV_X(x, 5, 2) << 1) | (RV_X(x, 10, 2) << 3))
+#define EXTRACT_ZCMP_SPIMM(x) \
+  (RV_X(x, 2, 2) << 4)
 
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
@@ -210,6 +212,8 @@ static const char * const riscv_pred_succ[16] =
   ((RV_X(x, 0, 1) << 11) | (RV_X(x, 1, 2) << 5)) | (RV_X(x, 3, 1) << 10)
 #define ENCODE_ZCMB_HALFWORD_UIMM(x) \
   ((RV_X(x, 1, 2) << 5) | (RV_X(x, 3, 2) << 10))
+#define ENCODE_ZCMP_SPIMM(x) \
+  (RV_X(x, 4, 2) << 2)
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
@@ -241,6 +245,7 @@ static const char * const riscv_pred_succ[16] =
 #define VALID_ZCB_HALFWORD_UIMM(x) (EXTRACT_ZCB_HALFWORD_UIMM(ENCODE_ZCB_HALFWORD_UIMM(x)) == (x))
 #define VALID_ZCMB_BYTE_UIMM(x) (EXTRACT_ZCMB_BYTE_UIMM(ENCODE_ZCMB_BYTE_UIMM(x)) == (x))
 #define VALID_ZCMB_HALFWORD_UIMM(x) (EXTRACT_ZCMB_HALFWORD_UIMM(ENCODE_ZCMB_HALFWORD_UIMM(x)) == (x))
+#define VALID_ZCMP_SPIMM(x) (EXTRACT_ZCMP_SPIMM(ENCODE_ZCMP_SPIMM(x)) == (x))
 
 #define RISCV_RTYPE(insn, rd, rs1, rs2) \
   ((MATCH_ ## insn) | ((rd) << OP_SH_RD) | ((rs1) << OP_SH_RS1) | ((rs2) << OP_SH_RS2))
@@ -313,6 +318,10 @@ static const char * const riscv_pred_succ[16] =
 #define OP_SH_IMM5              15
 #define OP_MASK_LN              0x1
 #define OP_SH_LN                7
+
+/* ZC Specific */
+#define OP_MASK_RLIST		0xf
+#define OP_SH_RLIST		4
 
 #define OP_MASK_CSR		0xfffU
 #define OP_SH_CSR		20
@@ -389,6 +398,11 @@ static const char * const riscv_pred_succ[16] =
 #define X_T0 5
 #define X_T1 6
 #define X_T2 7
+#define X_S0 8
+#define X_S1 9
+#define X_S2 18
+#define X_S10 26
+#define X_S11 27
 #define X_T3 28
 
 #define NGPR 32
@@ -465,7 +479,8 @@ enum riscv_insn_class
   INSN_CLASS_ZCB_AND_ZBA,
   INSN_CLASS_ZCB_AND_ZBB,
   INSN_CLASS_ZCB_AND_M,
-  INSN_CLASS_ZCMB
+  INSN_CLASS_ZCMB,
+  INSN_CLASS_ZCMP
 };
 
 /* This structure holds information for a particular instruction.  */
