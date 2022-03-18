@@ -118,6 +118,45 @@ struct riscv_csr_extra
 #define DEFAULT_RISCV_PRIV_SPEC "1.11"
 #endif
 
+/* Instruction pair combiner check function. */
+typedef bfd_boolean (*riscv_combine_check) (const struct riscv_cl_insn*,
+    const expressionS*, const bfd_reloc_code_real_type);
+
+typedef bfd_boolean (*riscv_combine_avail) (void);
+
+/* A matcher defines a rule to combine an instruction pair. */
+struct riscv_combiner_matcher
+{
+  /* Func to check the first/second insn in insn pair. */
+  riscv_combine_check check_1;
+  riscv_combine_check check_2;
+
+  /* Func to write the combined insn after check_2 passes.
+    The combined insn is written to the cached field in
+    riscv_combiner.  */
+  riscv_combine_check update;
+
+  /* Rturn TRUE if this matcher is available. */
+  riscv_combine_avail avail;
+};
+
+struct riscv_combiner
+{
+  /* Matcher list */
+  struct riscv_combiner_matcher *matcher;
+
+  /* idx is 0 if no insn is cached. If idx is not 0,
+    then an insn is cached through the matcher(check_1)
+    at the index idx-1 in matcher list. */
+  int idx;
+
+  /* Holding a cached insn information,
+     insn symbol, info and reloc type */
+  expressionS imm_expr;
+  struct riscv_cl_insn insn;
+  bfd_reloc_code_real_type imm_reloc;
+};
+
 static const char default_arch[] = DEFAULT_ARCH;
 static const char *default_arch_with_ext = DEFAULT_RISCV_ARCH_WITH_EXT;
 static enum riscv_spec_class default_isa_spec = ISA_SPEC_CLASS_NONE;
@@ -395,6 +434,9 @@ static bool explicit_attr = false;
 static bool explicit_priv_attr = false;
 
 static char *expr_end;
+
+/* Instruction pair combiner */
+static struct riscv_combiner *insn_combiner;
 
 /* Macros for encoding relaxation state for RVC branches and far jumps.  */
 #define RELAX_BRANCH_ENCODE(uncond, rvc, length)	\
@@ -1598,6 +1640,66 @@ append_insn (struct riscv_cl_insn *ip, expressionS *address_expr,
       frag_wane (frag_now);
       frag_new (0);
     }
+}
+
+/* Return TRUE if instruction combiner is available.  */
+
+static bfd_boolean
+use_insn_combiner (void)
+{
+  return riscv_subset_supports (&riscv_rps_as, "zcmp");
+}
+
+/* Instruction pair matching table.  */
+
+static struct riscv_combiner_matcher riscv_comb_matchers [] = {
+  { NULL, NULL, NULL, NULL },
+};
+
+/* Cache an instruction when it passes check function */
+
+static void
+cache_an_insn (struct riscv_cl_insn *insn,
+		    expressionS *imm_expr,
+		    bfd_reloc_code_real_type reloc_type)
+{
+  memcpy((void*)&(insn_combiner->imm_expr),
+      (void*)imm_expr, sizeof(expressionS));
+  memcpy((void*)&(insn_combiner->insn), (void*)insn,
+      sizeof(struct riscv_cl_insn));
+  insn_combiner->imm_reloc = reloc_type;
+}
+
+/* Initialize instruction pair combiner */
+
+static void
+init_insn_combiner (void)
+{
+  insn_combiner = (struct riscv_combiner *)
+	xmalloc (sizeof (struct riscv_combiner));
+  insn_combiner->idx = 0;
+  insn_combiner->matcher = riscv_comb_matchers;
+}
+
+/* Return TRUE if combiner has cached one instruction.  */
+
+static bfd_boolean
+has_cached_insn (void)
+{
+  return use_insn_combiner ()
+      && insn_combiner
+      && insn_combiner->idx > 0;
+}
+
+/* Append a cached instruction.  */
+
+static void
+release_cached_insn (void)
+{
+  append_insn (&insn_combiner->insn,
+		&insn_combiner->imm_expr,
+		insn_combiner->imm_reloc);
+  insn_combiner->idx = 0;
 }
 
 /* Build an instruction created by a macro expansion.  This is passed
@@ -3685,6 +3787,57 @@ riscv_ip_hardcode (char *str,
   return NULL;
 }
 
+static
+void riscv_append_insn (struct riscv_cl_insn *insn, expressionS *imm_expr,
+  bfd_reloc_code_real_type imm_reloc)
+{
+  if (insn->insn_mo->pinfo == INSN_MACRO)
+    {
+      if (has_cached_insn ())
+        release_cached_insn ();
+      macro (insn, imm_expr, &imm_reloc);
+      return;
+    }
+
+  if (use_insn_combiner ())
+    {
+      struct riscv_combiner_matcher *matchers = insn_combiner->matcher;
+      unsigned idx;
+
+      /* if one insn is cached, we now check the second insn */
+      if (insn_combiner->idx)
+	{
+	  idx = insn_combiner->idx - 1;
+
+	  /* if successfully match a insn pair, we output the merged result */
+	  if (matchers[idx].check_2 (insn, imm_expr, imm_reloc))
+	    {
+	      matchers[idx].update (insn, imm_expr, imm_reloc);
+	      release_cached_insn ();
+	      return;
+	    }
+
+	  release_cached_insn ();
+	}
+
+      gas_assert (insn_combiner->idx == 0);
+
+      for (idx = 0; matchers[idx].check_1 != NULL; idx++)
+	{
+	  if (!matchers[idx].avail())
+	    continue;
+	  if (matchers[idx].check_1 (insn, imm_expr, imm_reloc))
+	    {
+	      cache_an_insn (insn, imm_expr, imm_reloc);
+	      insn_combiner->idx = idx + 1;
+	      return;
+	    }
+	}
+    }
+
+  append_insn (insn, imm_expr, imm_reloc);
+}
+
 void
 md_assemble (char *str)
 {
@@ -3697,6 +3850,10 @@ md_assemble (char *str)
   if (!start_assemble)
     {
       start_assemble = true;
+      /* Initialize instruction pair combiner for cm.mva01s
+	and cm.mvsa01*/
+      if (use_insn_combiner ())
+	init_insn_combiner ();
 
       riscv_set_abi_by_arch ();
       if (!riscv_set_default_priv_spec (NULL))
@@ -3713,10 +3870,7 @@ md_assemble (char *str)
       return;
     }
 
-  if (insn.insn_mo->pinfo == INSN_MACRO)
-    macro (&insn, &imm_expr, &imm_reloc);
-  else
-    append_insn (&insn, &imm_expr, imm_reloc);
+  riscv_append_insn (&insn, &imm_expr, imm_reloc);
 }
 
 const char *
@@ -4837,11 +4991,28 @@ riscv_set_public_attributes (void)
     riscv_write_out_attrs ();
 }
 
+/* Implement TC_START_LABEL and md_cleanup. Release cache instruction
+   when assemble finished parsing input file or defining a label  */
+
+bfd_boolean
+riscv_md_cleanup (void)
+{
+  if (has_cached_insn ())
+    release_cached_insn ();
+
+  return TRUE;
+}
+
 /* Called after all assembly has been done.  */
 
 void
 riscv_md_end (void)
 {
+  if (use_insn_combiner ()
+	&& insn_combiner)
+    {
+      free (insn_combiner);
+    }
   riscv_set_public_attributes ();
 }
 
