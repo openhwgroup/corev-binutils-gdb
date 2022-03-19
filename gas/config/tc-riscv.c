@@ -1671,9 +1671,82 @@ use_insn_combiner (void)
   return riscv_subset_supports (&riscv_rps_as, "zcmp");
 }
 
+/* Return TRUE if the insn is valid for the first insn in
+  instruction pair. */
+
+static bfd_boolean
+zcmp_mva01s_1 (const struct riscv_cl_insn *insn,
+	const expressionS *imm_expr ATTRIBUTE_UNUSED,
+	const bfd_reloc_code_real_type reloc_type ATTRIBUTE_UNUSED)
+{
+  int rd, rs2;
+
+  /* mv is replaced by c.mv in C ext  */
+  if (insn->insn_mo->match != MATCH_C_MV)
+    return FALSE;
+
+  rd = EXTRACT_OPERAND (RD, insn->insn_opcode);
+  rs2 = EXTRACT_OPERAND (CRS2, insn->insn_opcode);
+
+  return (rd == X_A0 || rd == X_A1)
+      && RISCV_SREG_0_7 (rs2);
+}
+
+/* Return TRUE if the insn is valid for the second insn in
+  instruction pair. */
+
+static bfd_boolean
+zcmp_mva01s_2 (const struct riscv_cl_insn *insn,
+	const expressionS *imm_expr ATTRIBUTE_UNUSED,
+	const bfd_reloc_code_real_type reloc_type ATTRIBUTE_UNUSED)
+{
+  if (insn->insn_mo->match != MATCH_C_MV)
+    return FALSE;
+
+  int rd = EXTRACT_OPERAND (RD, insn->insn_opcode);
+  int rs2 = EXTRACT_OPERAND (CRS2, insn->insn_opcode);
+  int rd_cache = EXTRACT_OPERAND (RD, insn_combiner->insn.insn_opcode);
+
+  /* First check if rd does not equal the rd of cached c.mv insn,
+    and if rd is a0 or a1. */
+  if ((rd == rd_cache)
+      || (rd != X_A0 && rd != X_A1))
+    return FALSE;
+
+  /* Then we check if rs is s0-s7. */
+  return RISCV_SREG_0_7 (rs2);
+}
+
+/* Write combined insn to the cached field in insn_combiner to append
+  later. */
+
+static bfd_boolean
+zcmp_mva01s_update (const struct riscv_cl_insn *insn,
+	const expressionS *imm_expr ATTRIBUTE_UNUSED,
+	const bfd_reloc_code_real_type reloc_type ATTRIBUTE_UNUSED)
+{
+  unsigned sreg1, sreg2;
+  struct riscv_cl_insn *cached_insn = &insn_combiner->insn;
+
+  unsigned rd = EXTRACT_OPERAND (RD, insn->insn_opcode);
+  unsigned rs2 = EXTRACT_OPERAND (CRS2, insn->insn_opcode);
+  unsigned rs2_cache = EXTRACT_OPERAND (CRS2, cached_insn->insn_opcode);
+
+  cached_insn->insn_opcode = MATCH_CM_MVA01S;
+
+  sreg1 = (rd == X_A0 ? rs2 : rs2_cache) % 8;
+  sreg2 = (rd == X_A0 ? rs2_cache : rs2) % 8;
+
+  INSERT_OPERAND (SREG1, *cached_insn, sreg1);
+  INSERT_OPERAND (SREG2, *cached_insn, sreg2);
+
+  return TRUE;
+}
+
 /* Instruction pair matching table.  */
 
 static struct riscv_combiner_matcher riscv_comb_matchers [] = {
+  { zcmp_mva01s_1, zcmp_mva01s_2, zcmp_mva01s_update, use_insn_combiner },
   { NULL, NULL, NULL, NULL },
 };
 
