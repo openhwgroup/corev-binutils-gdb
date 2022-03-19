@@ -99,6 +99,8 @@ START_RELOC_NUMBERS (elf_riscv_reloc_type)
   /* CORE-V Specific Relocations.  */
   RELOC_NUMBER (R_RISCV_CVPCREL_UI12, 224)
   RELOC_NUMBER (R_RISCV_CVPCREL_URS1, 225)
+  /* ZCMT Specific Relocation */
+  RELOC_NUMBER (R_RISCV_TABLE_JUMP, 226)
 END_RELOC_NUMBERS (R_RISCV_max)
 
 /* Processor specific flags for the ELF header e_flags field.  */
@@ -126,6 +128,10 @@ END_RELOC_NUMBERS (R_RISCV_max)
 
 /* The name of the global pointer symbol.  */
 #define RISCV_GP_SYMBOL "__global_pointer$"
+
+#define RISCV_TABLE_JUMP_BASE_SYMBOL "__jvt_base$"
+
+#define TABLE_JUMP_SEC_NAME ".text.tbljal"
 
 /* Processor specific dynamic array tags.  */
 #define DT_RISCV_VARIANT_CC (DT_LOPROC + 1)

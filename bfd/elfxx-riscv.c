@@ -908,6 +908,21 @@ static reloc_howto_type howto_table[] =
 	 0,				/* src_mask */
 	 ENCODE_CV_HWLP_UIMM5 (-1U),	/* dst_mask */
 	 true),				/* pcrel_offset */
+
+  /* Table jump entries.  */
+  HOWTO (R_RISCV_TABLE_JUMP,		/* type */
+	 0,				/* rightshift */
+	 1,				/* size */
+	 16,				/* bitsize */
+	 true,				/* pc_relative */
+	 0,				/* bitpos */
+	 complain_overflow_dont,	/* complain_on_overflow */
+	 bfd_elf_generic_reloc,		/* special_function */
+	 "R_RISCV_TABLE_JUMP",	/* name */
+	 false,				/* partial_inplace */
+	 0,				/* src_mask */
+	 ENCODE_ZCMP_TABLE_JUMP_INDEX (-1U),	/* dst_mask */
+	 true),				/* pcrel_offset */
 };
 
 /* A mapping from BFD reloc types to RISC-V ELF reloc types.  */
