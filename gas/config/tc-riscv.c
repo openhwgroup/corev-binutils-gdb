@@ -972,8 +972,8 @@ riscv_csr_address (const char *csr_name,
     case CSR_CLASS_DEBUG:
       break;
     case CSR_CLASS_ZCMT:
-      result = riscv_subset_supports (&riscv_rps_as, "zcmt");
       need_check_version = false;
+      extension = "zcmt";
       break;
     default:
       as_bad (_("internal: bad RISC-V CSR class (0x%x)"), csr_class);
