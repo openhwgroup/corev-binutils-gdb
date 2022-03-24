@@ -58,6 +58,7 @@ struct riscv_private_data
 {
   bfd_vma gp;
   bfd_vma print_addr;
+  bfd_vma jvt_base;
   bfd_vma hi_addr[OP_MASK_RD + 1];
 };
 
@@ -196,6 +197,54 @@ maybe_print_address (struct riscv_private_data *pd, int base_reg, int offset,
   /* Sign-extend a 32-bit value to a 64-bit value.  */
   if (wide)
     pd->print_addr = (bfd_vma)(int32_t) pd->print_addr;
+}
+
+/* Print table jump index.  */
+
+static bool
+print_jvt_index (disassemble_info *info, unsigned int index)
+{
+  bfd_vma entry_value;
+  bfd_vma memaddr;
+  int status;
+
+  bfd_byte packet[8] = {0};
+  struct riscv_private_data *pd = info->private_data;
+
+  memaddr = pd->jvt_base + index * (xlen/8);
+  status = (*info->read_memory_func) (memaddr, packet, xlen / 8, info);
+  if (status != 0)
+    return false;
+
+  entry_value = xlen == 32 ? bfd_getl32 (packet)
+			    : bfd_getl64 (packet);
+
+  maybe_print_address (pd, 0, entry_value, 0);
+  return true;
+}
+
+/* Print table jump entry value.  */
+
+static bool
+print_jvt_entry_value (disassemble_info *info, bfd_vma memaddr)
+{
+  bfd_vma entry_value;
+  int status;
+  struct riscv_private_data *pd = info->private_data;
+  bfd_byte packet[8] = {0};
+  unsigned index = (memaddr - pd->jvt_base) / (xlen / 8);
+
+  status = (*info->read_memory_func) (memaddr, packet, xlen / 8, info);
+  if (status != 0)
+    return false;
+
+  entry_value = xlen == 32 ? bfd_getl32 (packet)
+			    : bfd_getl64 (packet);
+
+  info->target = entry_value;
+  (*info->fprintf_func) (info->stream, "index %u # ", index);
+  (*info->print_address_func) (info->target, info);
+  return true;
 }
 
 /* Get ZCMP rlist field. */
@@ -386,6 +435,7 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 		case 'i':
 		case 'I':
 		  print (info->stream, "%lu", EXTRACT_ZCMP_TABLE_JUMP_INDEX (l));
+		  print_jvt_index (info, EXTRACT_ZCMP_TABLE_JUMP_INDEX (l));
 		  break;
 		default: break;
 		}
@@ -713,12 +763,19 @@ riscv_disassemble_insn (bfd_vma memaddr, insn_t word, disassemble_info *info)
       pd = info->private_data = xcalloc (1, sizeof (struct riscv_private_data));
       pd->gp = -1;
       pd->print_addr = -1;
+      pd->jvt_base = -1;
       for (i = 0; i < (int)ARRAY_SIZE (pd->hi_addr); i++)
 	pd->hi_addr[i] = -1;
 
       for (i = 0; i < info->symtab_size; i++)
-	if (strcmp (bfd_asymbol_name (info->symtab[i]), RISCV_GP_SYMBOL) == 0)
-	  pd->gp = bfd_asymbol_value (info->symtab[i]);
+        {
+	  if (strcmp (bfd_asymbol_name (info->symtab[i]), RISCV_GP_SYMBOL) == 0)
+	    pd->gp = bfd_asymbol_value (info->symtab[i]);
+	  /* Read the address of table jump entries.  */
+	  else if (strcmp (bfd_asymbol_name (info->symtab[i]),
+				  RISCV_TABLE_JUMP_BASE_SYMBOL) == 0)
+	    pd->jvt_base = bfd_asymbol_value (info->symtab[i]);
+	}
     }
   else
     pd = info->private_data;
@@ -752,6 +809,18 @@ riscv_disassemble_insn (bfd_vma memaddr, insn_t word, disassemble_info *info)
 	  Elf_Internal_Ehdr *ehdr = elf_elfheader (info->section->owner);
 	  xlen = ehdr->e_ident[EI_CLASS] == ELFCLASS64 ? 64 : 32;
 	}
+
+    /* Dump jump table entries.  */
+    if (riscv_subset_supports (&riscv_rps_dis, "zcmt")
+	&& pd->jvt_base != 0
+	&& pd->jvt_base != (bfd_vma)-1
+	&& memaddr >= pd->jvt_base
+	&& memaddr < pd->jvt_base + 255 * (xlen / 8)
+	&& print_jvt_entry_value (info, memaddr))
+      {
+	info->bytes_per_chunk = xlen / 8;
+	return xlen / 8;
+      }
 
       /* If arch has ZFINX flags, use gpr for disassemble.  */
       if(riscv_subset_supports (&riscv_rps_dis, "zfinx"))

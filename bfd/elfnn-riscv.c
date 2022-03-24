@@ -2735,7 +2735,7 @@ riscv_elf_relocate_section (bfd *output_bfd,
 	    bfd_vma insn = bfd_getl16 (contents + rel->r_offset);
 	    unsigned int tbl_index = EXTRACT_ZCMP_TABLE_JUMP_INDEX (insn);
 	    htab->table_jump_htab->tbj_indexes[tbl_index] = relocation + rel->r_addend;
-	    htab->table_jump_htab->tbj_indexes[tbl_index] = &~ (bfd_vma) 1;
+	    htab->table_jump_htab->tbj_indexes[tbl_index] &= ~ (bfd_vma) 1;
 	  }
 	  break;
 
