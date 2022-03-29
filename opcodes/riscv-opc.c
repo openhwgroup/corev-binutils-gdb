@@ -1939,11 +1939,11 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cm.lh",      0, INSN_CLASS_ZCMB, "Ct,CZH(Cs)", MATCH_CM_LH, MASK_CM_LH, match_opcode, INSN_DREF|INSN_2_BYTE },
 {"cm.sb",      0, INSN_CLASS_ZCMB, "Ct,CZB(Cs)", MATCH_CM_SB, MASK_CM_SB, match_opcode, INSN_DREF|INSN_1_BYTE },
 {"cm.sh",      0, INSN_CLASS_ZCMB, "Ct,CZH(Cs)", MATCH_CM_SH, MASK_CM_SH, match_opcode, INSN_DREF|INSN_2_BYTE },
-/* ZCMP instructions */
-{"cm.push",    0,  INSN_CLASS_ZCMP, "{CZr},CZp",  MATCH_CM_PUSH, MASK_CM_PUSH, match_opcode, 0 },
-{"cm.pop",     0,  INSN_CLASS_ZCMP, "{CZr},CZp",  MATCH_CM_POP, MASK_CM_POP, match_opcode, 0 },
-{"cm.popret",  0,  INSN_CLASS_ZCMP, "{CZr},CZp",  MATCH_CM_POPRET, MASK_CM_POPRET, match_opcode, 0 },
-{"cm.popretz", 0,  INSN_CLASS_ZCMP, "{CZr},CZp",  MATCH_CM_POPRETZ, MASK_CM_POPRETZ, match_opcode, 0 },
+/* ZCMP/ZCMPE instructions */
+{"cm.push",    0,  INSN_CLASS_ZCMP_OR_ZCMPE, "{CZr},CZp",  MATCH_CM_PUSH, MASK_CM_PUSH, match_opcode, 0 },
+{"cm.pop",     0,  INSN_CLASS_ZCMP_OR_ZCMPE, "{CZr},CZp",  MATCH_CM_POP, MASK_CM_POP, match_opcode, 0 },
+{"cm.popret",  0,  INSN_CLASS_ZCMP_OR_ZCMPE, "{CZr},CZp",  MATCH_CM_POPRET, MASK_CM_POPRET, match_opcode, 0 },
+{"cm.popretz", 0,  INSN_CLASS_ZCMP_OR_ZCMPE, "{CZr},CZp",  MATCH_CM_POPRETZ, MASK_CM_POPRETZ, match_opcode, 0 },
 {"cm.mva01s",  0,  INSN_CLASS_ZCMP, "CZ1,CZ2",    MATCH_CM_MVA01S, MASK_CM_MVA01S, match_opcode, 0 },
 {"cm.mvsa01",  0,  INSN_CLASS_ZCMP, "CZ1,CZ2",    MATCH_CM_MVSA01, MASK_CM_MVSA01, match_sreg1_not_eq_sreg2, 0 },
 /* ZCMT instructions */

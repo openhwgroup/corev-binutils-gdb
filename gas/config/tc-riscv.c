@@ -1145,6 +1145,7 @@ static bool
 reglist_lookup (char **s, unsigned *rlist)
 {
   unsigned regno;
+  bool is_zcmpe = riscv_subset_supports (&riscv_rps_as, "zcmpe");
   /* Use to check if the register format is xreg.  */
   bool use_xreg = **s == 'x';
 
@@ -1187,12 +1188,13 @@ reglist_lookup (char **s, unsigned *rlist)
   if (use_xreg && **s != 'x')
     return FALSE;
 
-  /* Reg2 is x9 if the numeric name is used, otherwise,
-    it could be any other sN register, where N > 0. */
+  /* Reg2 is x9 if the numeric name is used or arch is zcmpe,
+    otherwise, it could be any other sN register, where N > 0. */
   if (!reg_lookup (s, RCLASS_GPR, &regno)
       || !(*rlist = regno_to_rlist (regno))
       || regno <= X_S0
-      || (use_xreg && regno != X_S1))
+      || (use_xreg && regno != X_S1)
+	  || (is_zcmpe && regno != X_S1))
     return FALSE;
 
    /* Skip whitespace */
@@ -1202,7 +1204,7 @@ reglist_lookup (char **s, unsigned *rlist)
   /* Check if it is the end of register list. */
   if (**s == '}')
     return TRUE;
-  else if (!use_xreg)
+  else if (!(use_xreg || is_zcmpe))
     return FALSE;
 
   /* Here is not reachable if the abi name is used. */
