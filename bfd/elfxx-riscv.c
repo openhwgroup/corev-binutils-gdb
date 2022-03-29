@@ -2020,6 +2020,22 @@ riscv_parse_check_conflicts (riscv_parse_subset_t *rps)
       no_conflict = false;
     }
 
+  if (riscv_lookup_subset (rps->subset_list, "zcmpe", &subset)
+      && !riscv_lookup_subset (rps->subset_list, "e", &subset))
+    {
+      rps->error_handler
+	(_("Zcmpe requires `e' extension."));
+      no_conflict = false;
+    }
+
+  if (riscv_lookup_subset (rps->subset_list, "zcmp", &subset)
+      && riscv_lookup_subset (rps->subset_list, "e", &subset))
+    {
+      rps->error_handler
+	(_("Zcmp is not is not compatible with `e' extension."));
+      no_conflict = false;
+    }
+
   return no_conflict;
 }
 
@@ -2533,6 +2549,9 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
       return riscv_subset_supports (rps, "zcmp");
     case INSN_CLASS_ZCMT:
       return riscv_subset_supports (rps, "zcmt");
+    case INSN_CLASS_ZCMP_OR_ZCMPE:
+      return riscv_subset_supports (rps, "zcmp")
+	    || riscv_subset_supports (rps, "zcmpe");
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));
