@@ -3189,8 +3189,8 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 
 		    case 'I': /* index operand of cm.jt. The range is from 0 to 63. */
 		      my_getExpression (imm_expr, asarg);
-		      if (imm_expr->X_op == O_constant
-		          || imm_expr->X_add_number < 0
+		      if (imm_expr->X_op != O_constant
+			  || imm_expr->X_add_number < 0
 			  || imm_expr->X_add_number > 64)
 			{
 			  as_bad ("bad index value for cm.jt, range: [0, 63]");
@@ -3201,8 +3201,8 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 
 		    case 'i': /* index operand of cm.jalt. The range is from 64 to 255. */
 		      my_getExpression (imm_expr, asarg);
-		      if (imm_expr->X_op == O_constant
-		          || imm_expr->X_add_number < 64
+		      if (imm_expr->X_op != O_constant
+			  || imm_expr->X_add_number < 64
 			  || imm_expr->X_add_number > 255)
 			{
 			  as_bad ("bad index value for cm.jalt, range: [64, 255]");
