@@ -59,6 +59,7 @@ struct riscv_private_data
   bfd_vma gp;
   bfd_vma print_addr;
   bfd_vma jvt_base;
+  bfd_vma jvt_end;
   bfd_vma hi_addr[OP_MASK_RD + 1];
 };
 
@@ -799,11 +800,14 @@ riscv_disassemble_insn (bfd_vma memaddr, insn_t word, disassemble_info *info)
   if (info->private_data == NULL)
     {
       int i;
+      bfd_vma sym_val;
 
       pd = info->private_data = xcalloc (1, sizeof (struct riscv_private_data));
       pd->gp = -1;
       pd->print_addr = -1;
       pd->jvt_base = -1;
+      pd->jvt_end = -1;
+
       for (i = 0; i < (int)ARRAY_SIZE (pd->hi_addr); i++)
 	pd->hi_addr[i] = -1;
 
@@ -815,6 +819,18 @@ riscv_disassemble_insn (bfd_vma memaddr, insn_t word, disassemble_info *info)
 	  else if (strcmp (bfd_asymbol_name (info->symtab[i]),
 				  RISCV_TABLE_JUMP_BASE_SYMBOL) == 0)
 	    pd->jvt_base = bfd_asymbol_value (info->symtab[i]);
+	}
+
+      /* Calculate the closest symbol from jvt base to determine the size of table jump
+          entry section.  */
+      if (pd->jvt_base != 0)
+	{
+	  for (i = 0; i < info->symtab_size; i++)
+	    {
+	      sym_val = bfd_asymbol_value (info->symtab[i]);
+	      if (sym_val > pd->jvt_base && sym_val < pd->jvt_end)
+	        pd->jvt_end = sym_val;
+	    }
 	}
     }
   else
@@ -850,17 +866,21 @@ riscv_disassemble_insn (bfd_vma memaddr, insn_t word, disassemble_info *info)
 	  xlen = ehdr->e_ident[EI_CLASS] == ELFCLASS64 ? 64 : 32;
 	}
 
-    /* Dump jump table entries.  */
-    if (riscv_subset_supports (&riscv_rps_dis, "zcmt")
-	&& pd->jvt_base != 0
-	&& pd->jvt_base != (bfd_vma)-1
-	&& memaddr >= pd->jvt_base
-	&& memaddr < pd->jvt_base + 255 * (xlen / 8)
-	&& print_jvt_entry_value (info, memaddr))
-      {
-	info->bytes_per_chunk = xlen / 8;
-	return xlen / 8;
-      }
+      if (pd->jvt_base
+	  && (pd->jvt_end > pd->jvt_base + 255 * (xlen / 8)))
+        pd->jvt_end = pd->jvt_base + 255 * (xlen / 8);
+
+      /* Dump jump table entries.  */
+      if (riscv_subset_supports (&riscv_rps_dis, "zcmt")
+	  && pd->jvt_base != 0
+	  && pd->jvt_base != (bfd_vma)-1
+	  && memaddr >= pd->jvt_base
+	  && memaddr < pd->jvt_end
+	  && print_jvt_entry_value (info, memaddr))
+	{
+	  info->bytes_per_chunk = xlen / 8;
+	  return xlen / 8;
+	}
 
       /* If arch has ZFINX flags, use gpr for disassemble.  */
       if(riscv_subset_supports (&riscv_rps_dis, "zfinx"))
