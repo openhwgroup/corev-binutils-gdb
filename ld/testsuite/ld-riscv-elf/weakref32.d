@@ -12,9 +12,9 @@ Disassembly of section \.text:
 90000010:	ff010113          	addi	sp,sp,-16
 90000014:	00112623          	sw	ra,12\(sp\)
 90000018:	00000097          	auipc	ra,0x0
-9000001c:	000000e7          	jalr	zero # 0 <_start\-0x90000000>
+9000001c:	000000e7          	jalr	zero # 0 <__jvt_base\$>
 90000020:	00c12083          	lw	ra,12\(sp\)
 90000024:	01010113          	addi	sp,sp,16
 90000028:	00000317          	auipc	t1,0x0
-9000002c:	00000067          	jr	zero # 0 <_start\-0x90000000>
+9000002c:	00000067          	jr	zero # 0 <__jvt_base\$>
 90000030:	00008067          	ret
