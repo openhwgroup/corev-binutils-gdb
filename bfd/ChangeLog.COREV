@@ -1,3 +1,8 @@
+2022-07-28  Nandni Jamnadas  <nandni.jamnadas@embecosm.com>
+
+	* elfxx-riscv.c (riscv_parse_check_conflicts):  Correct grammar of
+	error message about Zcmp compatiblity.
+
 2020-11-10  Mary Bennett  <mary.bennett@embecosm.com>
 
 	* elfnn-riscv.c (perform_relocation): Renamed macros for clarity -
