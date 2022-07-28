@@ -2032,7 +2032,7 @@ riscv_parse_check_conflicts (riscv_parse_subset_t *rps)
       && riscv_lookup_subset (rps->subset_list, "e", &subset))
     {
       rps->error_handler
-	(_("Zcmp is not is not compatible with `e' extension."));
+	(_("Zcmp is not compatible with `e' extension."));
       no_conflict = false;
     }
 
