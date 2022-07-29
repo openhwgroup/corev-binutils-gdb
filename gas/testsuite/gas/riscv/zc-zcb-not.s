@@ -1,9 +1,9 @@
 zcb:
-	# test to compress not insturctions(boundary)
+	# test to compress not instruction (boundary)
 	not x15,x15
 	not x8,x8
 
-	# test to compress not insturctions
+	# test to compress not instruction
 	not x9,x9
 	not x10,x10
 	not x11,x11

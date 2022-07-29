@@ -1,9 +1,9 @@
 zcb:
-	# test to compress mul insturctions(boundary)
+	# test to compress mul instruction (boundary)
 	mul x15,x15,x8
 	mul x8,x8,x15
 
-	# test to compress mul insturctions
+	# test to compress mul instructions
 	mul x9,x9,x12
 	mul x10,x10,x11
 	mul x11,x11,x11
