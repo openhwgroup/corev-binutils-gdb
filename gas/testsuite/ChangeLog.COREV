@@ -1,4 +1,14 @@
 2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
+	* gas/riscv/zc-zcmp-march-accept.d: Added test case for success on use of valid opcodes for Zcmp.
+	* gas/riscv/zc-zcmp-march-accept.s: Added test case for success on use of valid opcodes for Zcmp.
+	* gas/riscv/zc-zcmp-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmp.
+	* gas/riscv/zc-zcmp-march-reject.l: Added test case for failure on use of invalid opcodes for Zcmp.
+	* gas/riscv/zc-zcmp-march-reject.s: Added test case for failure on use of invalid opcodes for Zcmp.
+	* gas/riscv/zc-zcmb-march-accept.d: Added test case for success on use of valid opcodes for Zcmb.
+	* gas/riscv/zc-zcmb-march-accept.s: Added test case for success on use of valid opcodes for Zcmb.
+	* gas/riscv/zc-zcmb-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmb.
+	* gas/riscv/zc-zcmb-march-reject.l: Added test case for failure on use of invalid opcodes for Zcmb.
+	* gas/riscv/zc-zcmb-march-reject.s: Added test case for failure on use of invalid opcodes for Zcmb.
 	* gas/riscv/zc-zcf-march-accept.d: Added test case for success on use of valid opcodes for Zcf.
 	* gas/riscv/zc-zcf-march-accept.s: Added test case for success on use of valid opcodes for Zcf.
 	* gas/riscv/zc-zcf-march-reject.d: Added test case for failure on use of invalid opcodes for Zcf.
