@@ -1,4 +1,43 @@
 2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* gas/riscv/zc-zcb-c-lbu-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-lbu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-lbu-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-lh-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-lh-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-lh-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-lhu-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-lhu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-lhu-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-sb-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-sb-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-sb-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-sh-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-sh-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-c-sh-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-cm-lh-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-cm-lh-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-cm-lh-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-cm-lhu-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-cm-lhu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-cm-lhu-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcb-cm-lu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcmt-jalt-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcmt-jalt-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcmt-jalt-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcmt-jt-range-fail.d: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcmt-jt-range-fail.l: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcmt-jt-range-fail.s: Added test for failure on invalid immediate offset outside of range.
+	* gas/riscv/zc-zcmt-march-accept.d: Added test case for success on use of valid opcodes for Zcmt.
+	* gas/riscv/zc-zcmt-march-accept.s: Added test case for success on use of valid opcodes for Zcmt.
+	* gas/riscv/zc-zcmt-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmt.
+	* gas/riscv/zc-zcmt-march-reject.l: Added test case for failure on use of invalid opcodes for Zcmt.
+	* gas/riscv/zc-zcmt-march-reject.s: Added test case for failure on use of invalid opcodes for Zcmt.
+	* gas/riscv/zc-zcmpe-march-accept.d: Added test case for success on use of valid opcodes for Zcmpe.
+	* gas/riscv/zc-zcmpe-march-accept.s: Added test case for success on use of valid opcodes for Zcmpe.
+	* gas/riscv/zc-zcmpe-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmpe.
+	* gas/riscv/zc-zcmpe-march-reject.l: Added test case for failure on use of invalid opcodes for Zcmpe.
+	* gas/riscv/zc-zcmpe-march-reject.s: Added test case for failure on use of invalid opcodes for Zcmpe.
 	* gas/riscv/zc-zcmp-march-accept.d: Added test case for success on use of valid opcodes for Zcmp.
 	* gas/riscv/zc-zcmp-march-accept.s: Added test case for success on use of valid opcodes for Zcmp.
 	* gas/riscv/zc-zcmp-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmp.
