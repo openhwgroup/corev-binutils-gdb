@@ -1,3 +1,7 @@
+2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* bfd/elfxx-riscv.c: Fixed typo in error message.
+
 2022-04-20  Clément Chigot  <clement.chigot@atos.net>
 
 	* coff-rs6000.c (xcoff_reloc_type_noop): Add info argument.

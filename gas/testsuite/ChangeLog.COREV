@@ -4,6 +4,13 @@
 	* gas/testsuite/gas/riscv/zc-zcmt-jalt.s: Added test for successful assembly of instruction.
 	* gas/testsuite/gas/riscv/zc-zcmt-jt.d: Added test for successful assembly of instruction.
 	* gas/testsuite/gas/riscv/zc-zcmt-jt.s: Added test for successful assembly of instruction.
+	* gas/riscv/zc-zcmb-fail-arch-conflict-0.l: Fixed typo in error message.
+	* gas/riscv/zc-zcmb-fail-arch-conflict-1.l: Fixed typo in error message.
+	* gas/riscv/zc-zcmpe-fail-arch-conflict-1.l: Fixed typo in error message.
+	* gas/riscv/zc-zcmt-jalt.d: Added test for successful assembly of instruction.
+	* gas/riscv/zc-zcmt-jalt.s: Added test for successful assembly of instruction.
+	* gas/riscv/zc-zcmt-jt.d: Added test for successful assembly of instruction.
+	* gas/riscv/zc-zcmt-jt.s: Added test for successful assembly of instruction.
 	* gas/riscv/zc-zcb-c-lbu-range-fail.d: Added test for failure on invalid immediate offset outside of range.
 	* gas/riscv/zc-zcb-c-lbu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
 	* gas/riscv/zc-zcb-c-lbu-range-fail.s: Added test for failure on invalid immediate offset outside of range.

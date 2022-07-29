@@ -1,3 +1,6 @@
+2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
+	* riscv-op.c: Made Zca and C being equivalent instruction classes explicit.
+
 2021-08-28  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* riscv-opc.c (MATCH_CV_EXTHS, MATCH_CV_EXTHZ, MATCH_CV_EXTBS)

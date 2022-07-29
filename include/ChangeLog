@@ -1,3 +1,7 @@
+2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	opcode/riscv.h: Made Zca and C being equivalent instruction classes explicit.
+
 2022-04-20  Clément Chigot  <clement.chigot@atos.net>
 
 	* coff/xcoff.h (struct xcoff_loader_info): Add ldrel_count and
