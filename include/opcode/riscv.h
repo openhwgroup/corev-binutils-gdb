@@ -453,7 +453,7 @@ enum riscv_insn_class
   INSN_CLASS_NONE,
 
   INSN_CLASS_I,
-  INSN_CLASS_C,
+  INSN_CLASS_C_OR_ZCA,
   INSN_CLASS_A,
   INSN_CLASS_M,
   INSN_CLASS_F,
