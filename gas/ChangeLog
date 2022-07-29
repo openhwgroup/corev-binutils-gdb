@@ -1,3 +1,7 @@
+2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* gas/config/tc-riscv.c: Fixed bug that allowed use of invalid operand 64 with cm.jt.
+
 2022-04-07  Mark Harmstone  <mark@harmstone.com>
 
 	* config/tc-i386.c (pe_directive_secidx): New function.
