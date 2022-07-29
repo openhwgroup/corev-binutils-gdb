@@ -1,4 +1,31 @@
 2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
+	* gas/riscv/zc-zcf-march-accept.d: Added test case for success on use of valid opcodes for Zcf.
+	* gas/riscv/zc-zcf-march-accept.s: Added test case for success on use of valid opcodes for Zcf.
+	* gas/riscv/zc-zcf-march-reject.d: Added test case for failure on use of invalid opcodes for Zcf.
+	* gas/riscv/zc-zcf-march-reject.l: Added test case for failure on use of invalid opcodes for Zcf.
+	* gas/riscv/zc-zcf-march-reject.s: Added test case for failure on use of invalid opcodes for Zcf.
+	* gas/riscv/zc-zcb-m-march-accept.s: Added test case for success on use of valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-m-march-reject.d: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-m-march-reject.l: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-m-march-reject.s: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-march-accept.d: Added test case for success on use of valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-march-accept.s: Added test case for success on use of valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-march-reject.d: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-march-reject.l: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-march-reject.s: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-mul.s: Fixed typo.
+	* gas/riscv/zc-zcb-not.s: Fixed typo.
+	* gas/riscv/zc-zcb-sext-b.s: Fixed typo.
+	* gas/riscv/zc-zcb-sext-h.s: Fixed Typo.
+	* gas/riscv/zc-zcb-zba-fail-march.d: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zba-fail-march.l: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zba-fail-march.s: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zba-march-accept.s: Added test case for success on use of valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zbb-fail-march.d: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zbb-fail-march.l: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zbb-fail-march.s: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zbb-march-accept.s: Added test case for success on use of valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zext-b.s: Fixed typo.
 	* gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.d: Added test case for failure on use of invalid opcodes for Zca.
 	* gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.l: Likewise.
 	* gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.s: Likewise.
