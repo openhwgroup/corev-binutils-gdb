@@ -3191,7 +3191,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		      my_getExpression (imm_expr, asarg);
 		      if (imm_expr->X_op != O_constant
 			  || imm_expr->X_add_number < 0
-			  || imm_expr->X_add_number > 64)
+			  || imm_expr->X_add_number > 63)
 			{
 			  as_bad ("bad index value for cm.jt, range: [0, 63]");
 			  break;
