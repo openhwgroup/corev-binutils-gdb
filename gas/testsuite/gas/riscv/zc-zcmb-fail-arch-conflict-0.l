@@ -1,2 +1,2 @@
 .*Assembler messages:
-.*Error: zcm\* is not incompatible with `c' extension.
+.*Error: zcm\* is not compatible with the `c' extension.

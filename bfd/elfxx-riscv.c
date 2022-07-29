@@ -2008,7 +2008,7 @@ riscv_parse_check_conflicts (riscv_parse_subset_t *rps)
 	  || riscv_lookup_subset (rps->subset_list, "zcmt", &subset)))
     {
       rps->error_handler
-	(_("zcm* is not incompatible with `c' extension."));
+	(_("zcm* is not compatible with the `c' extension."));
       no_conflict = false;
     }
 
@@ -2452,7 +2452,7 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
       return riscv_subset_supports (rps, "d");
     case INSN_CLASS_Q:
       return riscv_subset_supports (rps, "q");
-    case INSN_CLASS_C:
+    case INSN_CLASS_C_OR_ZCA:
       return riscv_subset_supports (rps, "c")
 		|| riscv_subset_supports (rps, "zca");
     case INSN_CLASS_F_AND_C:
