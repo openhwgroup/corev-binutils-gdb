@@ -1,5 +1,136 @@
 2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
 
+	* gas/testsuite/gas/riscv/zc-zca-march-reject.s: Fixed test case.
+
+2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* gas/testsuite/gas/riscv/zc-zca-cm-lbu-fail-march.d: Moved test into
+	zc-zca-march-reject and deleted original.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lbu-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lbu-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lh-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lh-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lh-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lhu-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lhu-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lhu-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mva01s-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mva01s-e-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mva01s-e-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mva01s-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mva01s-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mva01s-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mvsa01-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mvsa01-e-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mvsa01-e-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mvsa01-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mvsa01-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mvsa01-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-pop-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-pop-e-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-pop-e-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-pop-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-pop-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-pop-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popret-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popret-e-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popret-e-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popret-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popret-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popret-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-e-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-e-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-push-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-push-e-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-push-e-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-push-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-push-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-push-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-sb-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-sb-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-sb-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-sh-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-sh-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-sh-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jalt-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jalt-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jalt-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jt-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jt-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jt-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lb-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lb-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lb-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lh-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lh-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lh-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-march-reject.l: Expanded test case.
+	* gas/testsuite/gas/riscv/zc-zca-march-reject.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sb-fail-march.d: Moved test into
+	zc-zca-march-reject and deleted original.
+	* gas/testsuite/gas/riscv/zc-zca-sb-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sb-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-zba-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-zba-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-zba-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-zbb-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-zbb-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-zbb-fail-march.s: Likewise.
+
+2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* gas/testsuite/gas/riscv/zc-zca-march-reject.l: Fixed test.
+	* gas/testsuite/gas/riscv/zc-zca-march-reject.s: Likewise.
+
+2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* gas/testsuite/gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.d: 
+	Deleted and moved its test into zc-zca-march-reject.
+	* gas/testsuite/gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.l: 
+	Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.s: 
+	Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-c-mul-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-c-mul-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-c-mul-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-c-not-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-c-not-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-c-not-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lbu-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lbu-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lbu-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lhu-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lhu-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lhu-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-march-reject.d: Added new test case.
+	* gas/testsuite/gas/riscv/zc-zca-march-reject.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-march-reject.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sext-b-fail-march.d: Deleted and moved its
+	test into zc-zca-march-reject.
+	* gas/testsuite/gas/riscv/zc-zca-sext-b-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sext-b-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sext-h-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sext-h-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sext-h-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sh-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sh-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sh-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-b-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-b-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-b-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-h-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-h-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-h-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-w-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-w-fail-march.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-zext-w-fail-march.s: Likewise.
+
+2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
+
 	* gas/testsuite/gas/riscv/zc-zca-cm-lh-fail-march.s: Removed unnecessary
 	comment.
 
