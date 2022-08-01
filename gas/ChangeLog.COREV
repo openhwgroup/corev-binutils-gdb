@@ -1,3 +1,8 @@
+2022-08-01  Nandni Jamnadas  <nandni.jamnadas@embecosm.com>
+	
+	* gas/doc/internals.texi: Incomplete closing bracket: line 1554
+	 changed ) to }. 
+
 2021-08-23  Jessica Mills  <jessica.mills@embecosm.com>
 
 	* config/tc-riscv.c (riscv_ip): Fix boundary bug for hardware loop
