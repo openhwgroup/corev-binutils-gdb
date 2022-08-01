@@ -1,5 +1,10 @@
 2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
 
+	* gas/testsuite/gas/riscv/zc-zca-cm-lh-fail-march.s: Removed unnecessary
+	comment.
+
+2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
+
 	* gas/testsuite/gas/riscv/zc-zca-c-mul-fail-march.d: Fixed whitespace.
 	* gas/testsuite/gas/riscv/zc-zca-c-not-fail-march.s: Likewise.
 	* gas/testsuite/gas/riscv/zc-zca-cm-lbu-fail-march.d: Likewise.
