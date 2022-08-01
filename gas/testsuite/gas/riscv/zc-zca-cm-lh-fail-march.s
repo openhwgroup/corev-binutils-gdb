@@ -1,5 +1,4 @@
 zcb_lh:
-	# test to compress lh
 	cm.lh x8,2(x8)
 	cm.lh x15,0(x15)
 	cm.lh x8,2(x14)
