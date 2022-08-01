@@ -1,3 +1,8 @@
+2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* gas/testsuite/gas/riscv/zc-zca-march-accept.s: Deleted unused file.
+	* gas/testsuite/gas/riscv/zc-zcb-cm-lu-range-fail.l: Deleted unused file.
+
 2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
 
 	* gas/testsuite/gas/riscv/zc-zcmt-jalt.d: Added test for successful assembly of instruction.
