@@ -1,6 +1,6 @@
 target:
-	cm.lh x8,-1(x8)
-	cm.lh x8,1(x8)
+    cm.lh x8,-1(x8)
+    cm.lh x8,1(x8)
     cm.lh x8,3(x8)
     cm.lh x8,5(x8)
     cm.lh x8,7(x8)

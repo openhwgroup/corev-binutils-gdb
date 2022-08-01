@@ -1,6 +1,5 @@
 zca:
     # -march=rv32i_zca_zcmp
-    # abi names
     cm.popretz.e {ra}, 64
     cm.popretz.e {ra, s0}, 64
     cm.popretz.e {ra, s0-s1}, 64
@@ -8,7 +7,6 @@ zca:
     cm.popretz.e {ra, s0-s8}, 64
     cm.popretz.e {ra, s0-s11}, 64
 
-    # numeric .enames
     cm.popretz.e {x1}, 64
     cm.popretz.e {x1, x8}, 64
     cm.popretz.e {x1, x8-x9}, 64
@@ -16,7 +14,6 @@ zca:
     cm.popretz.e {x1, x8-x9, x18-x24}, 64
     cm.popretz.e {x1, x8-x9, x18-x27}, 64
 
-    # spimm.e
     cm.popretz.e {ra}, 16
     cm.popretz.e {ra}, 32
     cm.popretz.e {ra}, 64
@@ -42,4 +39,3 @@ zca:
     cm.popretz.e {ra, s0-s11}, 80
     cm.popretz.e {ra, s0-s11}, 96
     cm.popretz.e {ra, s0-s11}, 112
-
