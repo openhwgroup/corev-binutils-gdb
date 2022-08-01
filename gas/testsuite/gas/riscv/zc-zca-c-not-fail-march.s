@@ -6,4 +6,4 @@ zcb:
 	# test c.not
 	c.not x9
 	c.not x11
-    c.not x12
+	c.not x12

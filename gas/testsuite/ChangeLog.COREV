@@ -1,97 +1,202 @@
 2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
 
+	* gas/testsuite/gas/riscv/zc-zca-c-mul-fail-march.d: Fixed whitespace.
+	* gas/testsuite/gas/riscv/zc-zca-c-not-fail-march.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lbu-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lh-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lh-fail-march.s: Removed
+	unnecessary comment.
+	* gas/testsuite/gas/riscv/zc-zca-cm-lhu-fail-march.d: Fixed whitespace.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mva01s-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-mvsa01-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-pop-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-pop-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popret-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popret-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-e-fail-march.s: Removed
+	unnecessary comment.
+	* gas/testsuite/gas/riscv/zc-zca-cm-popretz-fail-march.d: Fixed whitespace.
+	* gas/testsuite/gas/riscv/zc-zca-cm-push-e-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-push-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-sb-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-cm-sh-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-ebreak-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-ebreak-rv32-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-ebreak-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-ebreak-rv64-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-j-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-j-rv32-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-j-rv32.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-j-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-j-rv64.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jalr-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jalr-rv32-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jalr-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jalr-rv64-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jalt-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jr-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jr-rv32-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jr-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jr-rv64-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-jt-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lb-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lbu-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lh-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lhu-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-li-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-li-rv32.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-li-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lui-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lui-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lw-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lw-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lw-rv64-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lwsp-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lwsp-rv32.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-lwsp-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-mv-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-mv-rv32-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-mv-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-nop-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-nop-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-rv32-jal-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-rv32-jal-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-rv32-jal.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sb-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sext-b-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sext-h-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sh-fail-march.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zca-sw-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-c-lbu-range-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-cm-lh-range-fail.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-cm-lhu-range-fail.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-m-march-reject.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcb-zext-b.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmp-pop-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmp-popret-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmp-popret-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmp-popretz-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmp-popretz-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmp-push-rv32-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmp-push-rv64-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmpe-pop-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmpe-popret-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmpe-popretz-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmpe-push-fail.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmt-march-reject.s: Likewise.
+
+2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
+
 	* gas/testsuite/gas/riscv/zc-zca-march-accept.s: Deleted unused file.
-	* gas/testsuite/gas/riscv/zc-zcb-cm-lu-range-fail.l: Deleted unused file.
+	* gas/testsuite/gas/riscv/zc-zcb-cm-lu-range-fail.l: Likewise.
 
 2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
 
-	* gas/testsuite/gas/riscv/zc-zcmt-jalt.d: Added test for successful assembly of instruction.
-	* gas/testsuite/gas/riscv/zc-zcmt-jalt.s: Added test for successful assembly of instruction.
-	* gas/testsuite/gas/riscv/zc-zcmt-jt.d: Added test for successful assembly of instruction.
-	* gas/testsuite/gas/riscv/zc-zcmt-jt.s: Added test for successful assembly of instruction.
 	* gas/riscv/zc-zcmb-fail-arch-conflict-0.l: Fixed typo in error message.
 	* gas/riscv/zc-zcmb-fail-arch-conflict-1.l: Fixed typo in error message.
-	* gas/riscv/zc-zcmpe-fail-arch-conflict-1.l: Fixed typo in error message.
-	* gas/riscv/zc-zcmt-jalt.d: Added test for successful assembly of instruction.
-	* gas/riscv/zc-zcmt-jalt.s: Added test for successful assembly of instruction.
-	* gas/riscv/zc-zcmt-jt.d: Added test for successful assembly of instruction.
-	* gas/riscv/zc-zcmt-jt.s: Added test for successful assembly of instruction.
-	* gas/riscv/zc-zcb-c-lbu-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-lbu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-lbu-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-lh-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-lh-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-lh-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-lhu-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-lhu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-lhu-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-sb-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-sb-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-sb-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-sh-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-sh-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-c-sh-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-cm-lh-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-cm-lh-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-cm-lh-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-cm-lhu-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-cm-lhu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-cm-lhu-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcb-cm-lu-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcmt-jalt-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcmt-jalt-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcmt-jalt-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcmt-jt-range-fail.d: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcmt-jt-range-fail.l: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcmt-jt-range-fail.s: Added test for failure on invalid immediate offset outside of range.
-	* gas/riscv/zc-zcmt-march-accept.d: Added test case for success on use of valid opcodes for Zcmt.
-	* gas/riscv/zc-zcmt-march-accept.s: Added test case for success on use of valid opcodes for Zcmt.
-	* gas/riscv/zc-zcmt-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmt.
-	* gas/riscv/zc-zcmt-march-reject.l: Added test case for failure on use of invalid opcodes for Zcmt.
-	* gas/riscv/zc-zcmt-march-reject.s: Added test case for failure on use of invalid opcodes for Zcmt.
-	* gas/riscv/zc-zcmpe-march-accept.d: Added test case for success on use of valid opcodes for Zcmpe.
-	* gas/riscv/zc-zcmpe-march-accept.s: Added test case for success on use of valid opcodes for Zcmpe.
-	* gas/riscv/zc-zcmpe-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmpe.
-	* gas/riscv/zc-zcmpe-march-reject.l: Added test case for failure on use of invalid opcodes for Zcmpe.
-	* gas/riscv/zc-zcmpe-march-reject.s: Added test case for failure on use of invalid opcodes for Zcmpe.
-	* gas/riscv/zc-zcmp-march-accept.d: Added test case for success on use of valid opcodes for Zcmp.
-	* gas/riscv/zc-zcmp-march-accept.s: Added test case for success on use of valid opcodes for Zcmp.
-	* gas/riscv/zc-zcmp-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmp.
-	* gas/riscv/zc-zcmp-march-reject.l: Added test case for failure on use of invalid opcodes for Zcmp.
-	* gas/riscv/zc-zcmp-march-reject.s: Added test case for failure on use of invalid opcodes for Zcmp.
-	* gas/riscv/zc-zcmb-march-accept.d: Added test case for success on use of valid opcodes for Zcmb.
-	* gas/riscv/zc-zcmb-march-accept.s: Added test case for success on use of valid opcodes for Zcmb.
-	* gas/riscv/zc-zcmb-march-reject.d: Added test case for failure on use of invalid opcodes for Zcmb.
-	* gas/riscv/zc-zcmb-march-reject.l: Added test case for failure on use of invalid opcodes for Zcmb.
-	* gas/riscv/zc-zcmb-march-reject.s: Added test case for failure on use of invalid opcodes for Zcmb.
-	* gas/riscv/zc-zcf-march-accept.d: Added test case for success on use of valid opcodes for Zcf.
-	* gas/riscv/zc-zcf-march-accept.s: Added test case for success on use of valid opcodes for Zcf.
-	* gas/riscv/zc-zcf-march-reject.d: Added test case for failure on use of invalid opcodes for Zcf.
-	* gas/riscv/zc-zcf-march-reject.l: Added test case for failure on use of invalid opcodes for Zcf.
-	* gas/riscv/zc-zcf-march-reject.s: Added test case for failure on use of invalid opcodes for Zcf.
-	* gas/riscv/zc-zcb-m-march-accept.s: Added test case for success on use of valid opcodes for Zcb.
-	* gas/riscv/zc-zcb-m-march-reject.d: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-m-march-reject.l: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-m-march-reject.s: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-march-accept.d: Added test case for success on use of valid opcodes for Zcb.
-	* gas/riscv/zc-zcb-march-accept.s: Added test case for success on use of valid opcodes for Zcb.
-	* gas/riscv/zc-zcb-march-reject.d: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-march-reject.l: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-march-reject.s: Added test case for failure on use of invalid opcodes for Zcb.
+	* gas/riscv/zc-zcmb-fail-arch-conflict-1.l: Likewise.
+	* gas/riscv/zc-zcmpe-fail-arch-conflict-1.l: Likewise.
+	* gas/riscv/zc-zcmt-jalt.d: Added test for successful assembly of 
+	instruction.
+	* gas/riscv/zc-zcmt-jalt.s: Likewise.
+	* gas/riscv/zc-zcmt-jt.d: Likewise.
+	* gas/riscv/zc-zcmt-jt.s: Likewise.
+	* gas/riscv/zc-zcb-c-lbu-range-fail.d: Likewise.
+	* gas/riscv/zc-zcb-c-lbu-range-fail.l: Likewise.
+	* gas/riscv/zc-zcb-c-lbu-range-fail.s: Likewise.
+	* gas/riscv/zc-zcb-c-lh-range-fail.d: Likewise.
+	* gas/riscv/zc-zcb-c-lh-range-fail.l: Likewise.
+	* gas/riscv/zc-zcb-c-lh-range-fail.s: Likewise.
+	* gas/riscv/zc-zcb-c-lhu-range-fail.d: Likewise.
+	* gas/riscv/zc-zcb-c-lhu-range-fail.l: Likewise.
+	* gas/riscv/zc-zcb-c-lhu-range-fail.s: Likewise.
+	* gas/riscv/zc-zcb-c-sb-range-fail.d: Likewise.
+	* gas/riscv/zc-zcb-c-sb-range-fail.l: Likewise.
+	* gas/riscv/zc-zcb-c-sb-range-fail.s: Likewise.
+	* gas/riscv/zc-zcb-c-sh-range-fail.d: Likewise.
+	* gas/riscv/zc-zcb-c-sh-range-fail.l: Likewise.
+	* gas/riscv/zc-zcb-c-sh-range-fail.s: Likewise.
+	* gas/riscv/zc-zcb-cm-lh-range-fail.d: Likewise.
+	* gas/riscv/zc-zcb-cm-lh-range-fail.l: Likewise.
+	* gas/riscv/zc-zcb-cm-lh-range-fail.s: Likewise.
+	* gas/riscv/zc-zcb-cm-lhu-range-fail.d: Likewise.
+	* gas/riscv/zc-zcb-cm-lhu-range-fail.l: Likewise.
+	* gas/riscv/zc-zcb-cm-lhu-range-fail.s: Likewise.
+	* gas/riscv/zc-zcb-cm-lu-range-fail.l: Likewise.
+	* gas/riscv/zc-zcmt-jalt-range-fail.d: Likewise.
+	* gas/riscv/zc-zcmt-jalt-range-fail.l: Likewise.
+	* gas/riscv/zc-zcmt-jalt-range-fail.s: Likewise.
+	* gas/riscv/zc-zcmt-jt-range-fail.d: Likewise.
+	* gas/riscv/zc-zcmt-jt-range-fail.l: Likewise.
+	* gas/riscv/zc-zcmt-jt-range-fail.s: Likewise.
+	* gas/riscv/zc-zcmt-march-accept.d: Added test case for success on use of
+	valid opcodes for Zcmt.
+	* gas/riscv/zc-zcmt-march-accept.s: Likewise.
+	* gas/riscv/zc-zcmt-march-reject.d: Added test case for failure on use of
+	invalid opcodes for Zcmt.
+	* gas/riscv/zc-zcmt-march-reject.l: Likewise.
+	* gas/riscv/zc-zcmt-march-reject.s: Likewise.
+	* gas/riscv/zc-zcmpe-march-accept.d: Added test case for success on use of
+	valid opcodes for Zcmpe.
+	* gas/riscv/zc-zcmpe-march-accept.s: Likewise.
+	* gas/riscv/zc-zcmpe-march-reject.d: Added test case for failure on use of
+	invalid opcodes for Zcmpe.
+	* gas/riscv/zc-zcmpe-march-reject.l: Likewise.
+	* gas/riscv/zc-zcmpe-march-reject.s: Likewise.
+	* gas/riscv/zc-zcmp-march-accept.d: Added test case for success on use of
+	valid opcodes for Zcmp.
+	* gas/riscv/zc-zcmp-march-accept.s: Likewise.
+	* gas/riscv/inzc-zcmp-march-reject.d: Added test case for failure on use of
+	invalid opcodes for Zcmp.
+	* gas/riscv/zc-zcmp-march-reject.l: Likewise.
+	* gas/riscv/zc-zcmp-march-reject.s: Likewise.
+	* gas/riscv/zc-zcmb-march-accept.d: Added test case for success on use of
+	valid opcodes for Zcmb.
+	* gas/riscv/zc-zcmb-march-accept.s: Likewise.
+	* gas/riscv/zc-zcmb-march-reject.d: Likewise.
+	* gas/riscv/zc-zcmb-march-reject.l: Likewise.
+	* gas/riscv/zc-zcmb-march-reject.s: Likewise.
+	* gas/riscv/zc-zcf-march-accept.d: Added test case for success on use of
+	valid opcodes for Zcf.
+	* gas/riscv/zc-zcf-march-accept.s: Likewise.
+	* gas/riscv/zc-zcf-march-reject.d: Added test case for failure on use of
+	invalid opcodes for Zcf.
+	* gas/riscv/zc-zcf-march-reject.l: Likewise.
+	* gas/riscv/zc-zcf-march-reject.s: Likewise.
+	* gas/riscv/zc-zcb-m-march-accept.s: Added test case for success on use of
+	valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-m-march-reject.d: Added test case for failure on use of
+	invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-m-march-reject.l: Likewise.
+	* gas/riscv/zc-zcb-m-march-reject.s: Likewise.
+	* gas/riscv/zc-zcb-march-accept.d: Added test case for success on use of
+	valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-march-accept.s: Likewise.
+	* gas/riscv/zc-zcb-march-reject.d: Added test case for failure on use of
+	invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-march-reject.l: Added test case for failure on use of
+	invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-march-reject.s: Likewise.
 	* gas/riscv/zc-zcb-mul.s: Fixed typo.
 	* gas/riscv/zc-zcb-not.s: Fixed typo.
 	* gas/riscv/zc-zcb-sext-b.s: Fixed typo.
 	* gas/riscv/zc-zcb-sext-h.s: Fixed Typo.
-	* gas/riscv/zc-zcb-zba-fail-march.d: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-zba-fail-march.l: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-zba-fail-march.s: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-zba-march-accept.s: Added test case for success on use of valid opcodes for Zcb.
-	* gas/riscv/zc-zcb-zbb-fail-march.d: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-zbb-fail-march.l: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-zbb-fail-march.s: Added test case for failure on use of invalid opcodes for Zcb.
-	* gas/riscv/zc-zcb-zbb-march-accept.s: Added test case for success on use of valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zba-fail-march.d: Added test case for failure on use of
+	invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zba-fail-march.l: Likewise.
+	* gas/riscv/zc-zcb-zba-fail-march.s: Likewise.
+	* gas/riscv/zc-zcb-zba-march-accept.s: Added test case for success on use
+	of valid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zbb-fail-march.d: Added test case for failure on use of
+	invalid opcodes for Zcb.
+	* gas/riscv/zc-zcb-zbb-fail-march.l: Likewise.
+	* gas/riscv/zc-zcb-zbb-fail-march.s: Likewise.
+	* gas/riscv/zc-zcb-zbb-march-accept.s: Added test case for success on use
+	of valid opcodes for Zcb.
 	* gas/riscv/zc-zcb-zext-b.s: Fixed typo.
-	* gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.d: Added test case for failure on use of invalid opcodes for Zca.
+	* gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.d: Added test
+	case for failure on use of invalid opcodes for Zca.
 	* gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.l: Likewise.
 	* gas/riscv/zc-zca-c-flw-c-flwsp-c-fsw-c-fswsp-fail-march.s: Likewise.
 	* gas/riscv/zc-zca-c-mul-fail-march.d: Likewise.

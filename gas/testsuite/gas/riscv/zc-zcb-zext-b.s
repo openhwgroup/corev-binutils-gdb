@@ -6,7 +6,7 @@ zcb:
 	c.zext.b x9
 	c.zext.b x12
 
-	# test to compress sign/zero extension instructions 
+	# test to compress sign/zero extension instructions
 	zext.b x8,x8
 	zext.b x15,x15
 	zext.b x9,x9
