@@ -7,7 +7,7 @@
 
 Disassembly of section .text:
 
-0+000 <zcmpe>:
+0+000 <target>:
 [	 ]*[0-9a-f]+:[	 ]+b84e[	 ]+cm.push[	 ]+\{ra\},-64
 [	 ]*[0-9a-f]+:[	 ]+b85e[	 ]+cm.push[	 ]+\{ra,s0\},-64
 [	 ]*[0-9a-f]+:[	 ]+b86e[	 ]+cm.push[	 ]+\{ra,s0-s1\},-64

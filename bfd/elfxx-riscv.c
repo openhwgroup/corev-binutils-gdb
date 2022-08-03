@@ -2008,7 +2008,7 @@ riscv_parse_check_conflicts (riscv_parse_subset_t *rps)
 	  || riscv_lookup_subset (rps->subset_list, "zcmt", &subset)))
     {
       rps->error_handler
-	(_("zcm* is not compatible with the `c' extension."));
+	(_("Zcm* is not compatible with the `c' extension."));
       no_conflict = false;
     }
 

@@ -7,7 +7,7 @@
 
 Disassembly of section .text:
 
-0+000 <zcb_lh>:
+0+000 <target>:
 [	 ]*[0-9a-f]+:[	 ]+8460[	 ]+c.lh[	 ]+s0,2\(s0\)
 [	 ]*[0-9a-f]+:[	 ]+87dc[	 ]+c.lh[	 ]+a5,0\(a5\)
 [	 ]*[0-9a-f]+:[	 ]+8760[	 ]+c.lh[	 ]+s0,2\(a4\)

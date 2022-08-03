@@ -1,3 +1,3 @@
 target:
-    c.ebreak f
-    c.ebreak s0
+	c.ebreak f
+	c.ebreak s0

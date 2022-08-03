@@ -1,2 +1,2 @@
 target:
-    c.jal target
+	c.jal target

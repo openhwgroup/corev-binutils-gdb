@@ -1,4 +1,4 @@
-zcb:
+target:
 	# test zcb sign/zero extension instruction
 	c.zext.h x8
 	c.zext.h x15

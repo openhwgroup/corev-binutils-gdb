@@ -1,4 +1,4 @@
-zcb_lh:
+target:
 	# test to compress lh
 	lh x8,2(x8)
 	lh x15,0(x15)

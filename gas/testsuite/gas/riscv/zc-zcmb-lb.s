@@ -1,4 +1,4 @@
-zcmb_lb:
+target:
 	# test to compress lb
 	lb x8,2(x10)
 	lb x15,1(x12)

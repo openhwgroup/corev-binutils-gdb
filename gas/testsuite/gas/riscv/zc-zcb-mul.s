@@ -1,4 +1,4 @@
-zcb:
+target:
 	# test to compress mul instruction (boundary)
 	mul x15,x15,x8
 	mul x8,x8,x15
@@ -16,4 +16,4 @@ zcb:
 	# test c.mul
 	c.mul x9,x12
 	c.mul x11,x13
-    c.mul x12,x12
+	c.mul x12,x12

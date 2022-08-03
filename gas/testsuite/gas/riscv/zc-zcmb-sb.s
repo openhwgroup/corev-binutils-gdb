@@ -1,4 +1,4 @@
-zcmb_sb:
+target:
 	# test to compress sb
 	sb x8,2(x10)
 	sb x15,1(x12)
