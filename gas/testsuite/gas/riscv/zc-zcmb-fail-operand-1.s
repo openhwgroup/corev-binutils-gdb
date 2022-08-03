@@ -1,4 +1,4 @@
-# the register operand of load and save instructions in ZCB
+# the register operand of load and save instructions in Zcmb
 # requires the destination register is the source register and
 # the register is ranged from x8 to x15
 target:

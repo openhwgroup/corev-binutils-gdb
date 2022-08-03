@@ -1,5 +1,5 @@
 # test cases when zcb arch string is missing
-zcb:
+target:
 	c.mul a0,a1
 	c.sext.b a0
 	c.sext.h a0

@@ -1,5 +1,5 @@
 # c.sext.w is an alias of c.addiw
-zcb64:
+target:
 	# test to compress zext.w insturctions
 	sext.w x9,x9
 	sext.w x1,x1

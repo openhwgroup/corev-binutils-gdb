@@ -1,3 +1,3 @@
 target:
-    cm.jt -1
-    cm.jt 64
+	cm.jt -1
+	cm.jt 64

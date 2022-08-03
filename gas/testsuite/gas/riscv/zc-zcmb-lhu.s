@@ -1,4 +1,4 @@
-zcmb_lhu:
+target:
 	# test to compress lhu
 	lhu x8,0(x8)
 	lhu x15,2(x15)

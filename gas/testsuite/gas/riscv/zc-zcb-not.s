@@ -1,4 +1,4 @@
-zcb:
+target:
 	# test to compress not instruction (boundary)
 	not x15,x15
 	not x8,x8
@@ -16,4 +16,4 @@ zcb:
 	# test c.not
 	c.not x9
 	c.not x11
-    c.not x12
+	c.not x12

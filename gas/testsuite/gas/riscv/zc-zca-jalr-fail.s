@@ -1,4 +1,4 @@
 target:
-    c.jalr zero
-    c.jalr 2
-    c.jalr
+	c.jalr zero
+	c.jalr 2
+	c.jalr

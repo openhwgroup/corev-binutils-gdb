@@ -1,4 +1,4 @@
-zcmb_sh:
+target:
 	# test to compress sh
 	sh x8,0(x8)
 	sh x15,2(x15)

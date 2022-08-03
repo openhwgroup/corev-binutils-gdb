@@ -1,4 +1,4 @@
-zcb64:
+target:
 	# test to compress zext.w insturctions
 	zext.w x9,x9
 	zext.w x10,x10

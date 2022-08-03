@@ -1,3 +1,3 @@
 target:
-    cm.jalt 64
-    cm.jalt 255
+	cm.jalt 64
+	cm.jalt 255

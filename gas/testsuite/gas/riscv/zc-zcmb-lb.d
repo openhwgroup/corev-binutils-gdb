@@ -7,7 +7,7 @@
 
 Disassembly of section .text:
 
-0+000 <zcmb_lb>:
+0+000 <target>:
 [	 ]*[0-9a-f]+:[	 ]+2120[	 ]+cm.lb[	 ]+s0,2\(a0\)
 [	 ]*[0-9a-f]+:[	 ]+2a1c[	 ]+cm.lb[	 ]+a5,1\(a2\)
 [	 ]*[0-9a-f]+:[	 ]+2080[	 ]+cm.lb[	 ]+s0,0\(s1\)

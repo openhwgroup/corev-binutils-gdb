@@ -1,4 +1,4 @@
-# test imm operands of load and save instructions in zcb
+# test imm operands of load and save instructions in Zcmb
 target:
 	# the valid immediate operand of cm.sb, cm.lb, cm.lbu is 2-bit unsigned immediate from 0 to 15.
 	cm.sb x9,16(x9)

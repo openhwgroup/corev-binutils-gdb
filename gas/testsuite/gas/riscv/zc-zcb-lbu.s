@@ -1,4 +1,4 @@
-zcb_lbu:
+target:
 	# test to compress lbu
 	lbu x8,2(x10)
 	lbu x15,1(x12)

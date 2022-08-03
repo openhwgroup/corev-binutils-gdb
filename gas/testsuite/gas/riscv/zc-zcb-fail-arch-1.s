@@ -1,7 +1,7 @@
 # test missing prerequisites cases
-zcb:
+target:
 	# prerequisites of c.mul: M ext
- 	c.mul a0,a1
+	c.mul a0,a1
 
 	# prerequisites of c.sext.b, c.sext.h, c.zext.h: ZBB ext
 	c.sext.b a0
