@@ -9,14 +9,13 @@ target:
 	lb x14,15(x15)
 
 	# test cm.lb
-	cm.lb x9,2(x8)
-	cm.lb x15,1(x15)
-	cm.lb x8,0(x8)
+	cm.lb x9,4(x8)
+	cm.lb x15,5(x15)
+	cm.lb x8,6(x8)
 	cm.lb x15,4(x9)
 	cm.lb x15,7(x12)
 	cm.lb x13,8(x15)
 	cm.lb x14,15(x15)
 
 	# implicit zero offset
-	cm.lb x8,(x15)
 	lb x9,(x8)

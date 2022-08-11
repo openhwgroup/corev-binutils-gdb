@@ -7,9 +7,9 @@ target:
 	c.zext.b x8
 	c.mul x15,x15
 	c.not x15
-	cm.lb x8,(x8)
-	cm.lbu x8,2(x10)
-	cm.lh x8,2(x8)
-	cm.lhu x8,2(x8)
-	cm.sb x8,2(x10)
-	cm.sh x8,2(x8)
+	cm.lb x8,4(x8)
+	cm.lbu x8,4(x10)
+	cm.lh x8,4(x8)
+	cm.lhu x8,4(x8)
+	cm.sb x8,4(x10)
+	cm.sh x8,4(x8)

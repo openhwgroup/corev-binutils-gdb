@@ -1,3 +1,24 @@
+2022-08-11  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* gas/testsuite/gas/riscv/zc-zcmb-fail-arch-conflict-0.s: Updated
+	tests so that they no longer give false negatives for a
+	relaxation issue.
+	* gas/testsuite/gas/riscv/zc-zcmb-fail-arch-conflict-1.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-lb.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-lb.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-lbu.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-lbu.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-lh.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-lh.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-lhu.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-lhu.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-march-accept.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-march-accept.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-sb.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-sb.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-sh.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-zcmb-sh.s: Likewise.
+
 2022-08-01  Charlie Keaney  <charlie.keaney@embecosm.com>
 
 	* gas/testsuite/gas/riscv/zc-zca-march-reject.s: Fixed test case.

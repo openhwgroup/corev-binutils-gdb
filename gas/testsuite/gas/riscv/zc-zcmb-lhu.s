@@ -9,8 +9,8 @@ target:
 	lhu x12,10(x14)
 
 	# test cm.lhu
-	cm.lhu x9,0(x14)
-	cm.lhu x11,2(x15)
+	cm.lhu x9,4(x14)
+	cm.lhu x11,6(x15)
 	cm.lhu x8,4(x8)
 	cm.lhu x9,16(x9)
 	cm.lhu x8,24(x12)
@@ -18,5 +18,4 @@ target:
 	cm.lhu x14,10(x14)
 
 	# implicit zero offset
-	cm.lhu x11,(x8)
 	lhu x9,(x15)

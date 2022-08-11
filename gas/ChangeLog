@@ -1,3 +1,12 @@
+2022-08-11  Charlie Keaney  <charlie.keaney@embecosm.com>	
+
+	* gas/config/tc-riscv.c: Fixed Invalid operands being accepted
+	for cm.lbu, cm.lhu, cm.lh, cm.sb, and cm.sh. If uimm < 4, the 
+	instruction is illegal as the encoding is designated
+	for custom use. Fixing this also Fixed an issue where instructions
+	could be promoted to this illegal instructions (i.e. for sake of 
+	compression).
+
 2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
 
 	* gas/config/tc-riscv.c: Fixed bug that allowed use of invalid operand 64 with cm.jt.
