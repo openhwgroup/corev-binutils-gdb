@@ -3131,10 +3131,11 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		    case 'H': /* immediate field for cm.lh/cm.lhu/cm.sh.  */
 		      /* handle cases, such as cm.sh rs2', (rs1') */
 		      if (riscv_handle_implicit_zero_offset (imm_expr, asarg))
-			continue;
+			break;
 		      if (my_getSmallExpression (imm_expr, imm_reloc, asarg, p)
 			|| imm_expr->X_op != O_constant
-			|| !VALID_ZCMB_HALFWORD_UIMM ((valueT) imm_expr->X_add_number))
+			|| !VALID_ZCMB_HALFWORD_UIMM ((valueT) imm_expr->X_add_number)
+			|| (imm_expr->X_add_number < 4))
 			  break;
 		      ip->insn_opcode |= ENCODE_ZCMB_HALFWORD_UIMM (imm_expr->X_add_number);
 		      goto rvc_imm_done;
@@ -3142,10 +3143,11 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		    case 'B': /* immediate field for cm.lbu/cm.sb.  */
 		      /* handle cases, such as cm.lbu rd', (rs1') */
 		      if (riscv_handle_implicit_zero_offset (imm_expr, asarg))
-			continue;
+			break;
 		      if (my_getSmallExpression (imm_expr, imm_reloc, asarg, p)
 			|| imm_expr->X_op != O_constant
-			|| !VALID_ZCMB_BYTE_UIMM ((valueT) imm_expr->X_add_number))
+			|| !VALID_ZCMB_BYTE_UIMM ((valueT) imm_expr->X_add_number)
+			|| (imm_expr->X_add_number < 4))
 			break;
 		      ip->insn_opcode |= ENCODE_ZCMB_BYTE_UIMM (imm_expr->X_add_number);
 		      goto rvc_imm_done;

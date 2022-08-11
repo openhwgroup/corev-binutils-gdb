@@ -9,8 +9,8 @@ target:
 	sh x12,10(x14)
 
 	# test cm.sh
-	cm.sh x9,0(x14)
-	cm.sh x11,2(x15)
+	cm.sh x9,4(x14)
+	cm.sh x11,6(x15)
 	cm.sh x8,4(x8)
 	cm.sh x9,16(x9)
 	cm.sh x8,24(x12)
@@ -18,5 +18,4 @@ target:
 	cm.sh x14,10(x14)
 
 	# implicit zero offset
-	cm.sh x11,(x8)
 	sh x9,(x15)
