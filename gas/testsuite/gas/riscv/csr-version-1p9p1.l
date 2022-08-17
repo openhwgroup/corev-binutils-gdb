@@ -488,3 +488,5 @@
 .*Warning: invalid CSR `vlenb', needs `v' extension
 .*Warning: invalid CSR `vlenb', needs `v' extension
 .*Warning: read-only CSR is written `csrw vlenb,a1'
+.*Warning: invalid CSR `jvt' for the current ISA
+.*Warning: invalid CSR `jvt' for the current ISA
