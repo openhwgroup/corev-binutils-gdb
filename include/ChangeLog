@@ -1,3 +1,7 @@
+2022-08-22  Charlie Keaney  <charlie.keaney@embecosm.com>
+
+	* modified: elf/riscv.h: Moved jump table from .text to .rodata.
+
 2022-07-29  Charlie Keaney  <charlie.keaney@embecosm.com>
 
 	opcode/riscv.h: Made Zca and C being equivalent instruction classes explicit.
