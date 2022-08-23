@@ -1,3 +1,30 @@
+2022-08-23  Nandni Jamnadas  <nandni.jamnadas@embecosm.com>
+
+	* gas/testsuite/gas/riscv/zc-c-relax-fail.d: Added tests to
+	check that zcb should not accept instructions c.lbu, c.lh,
+	c.lhu, c.sb, c.sh when immu is less than 4.
+	* gas/testsuite/gas/riscv/zc-c-relax-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-c-relax-fail.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-c-relax-pass.d: Likewise.
+	* gas/testsuite/gas/riscv/zc-c-relax-pass.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-cm-relax-fail.d: Added tests
+	to check that zcmb should not accept instructions cm.lbu,
+	cm.lh, cm.lhu, cm.sb, cm.sh when immu is less than 4.
+	* gas/testsuite/gas/riscv/zc-cm-relax-fail.l: Likewise.
+	* gas/testsuite/gas/riscv/zc-cm-relax-fail.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-halfword-test.d: Added test
+	to check the consistency between riscv lbu, lh, lhu, sb,
+	sh and zc* equivalent instructions.
+	* gas/testsuite/gas/riscv/zc-halfword-test.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-norm-cm-relax-immu.d: Added
+	tests to check zcmb do NOT relax riscv instructions to cm
+	equivalent.
+	* gas/testsuite/gas/riscv/zc-norm-cm-relax-immu.s: Likewise.
+	* gas/testsuite/gas/riscv/zc-norm-cm-relax-pass.d: Added
+	tests to check zcmb do relax riscv instructions to cm
+	equivalent within their boundaries.
+	* gas/testsuite/gas/riscv/zc-norm-cm-relax-pass.s: Likewise.
+
 2022-08-15  Charlie Keaney  <charlie.keaney@embecosm.com>
 
 	* gas/testsuite/gas/riscv/csr-version-1p10.d: 
