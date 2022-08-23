@@ -1,3 +1,9 @@
+2022-08-23  Nandni Jamnadas  <nandni.jamnadas@embecosm.com>
+
+	* ld/testsuite/ld-riscv-elf/jump-table.s: Added tests 
+	to check that the jump tables symbols are generated in 
+	.rodata rather than .text.
+
 2021-08-23  Lin Sinan  <sinan@isrc.iscas.ac.cn>
 
 	* ld-riscv-elf/cv-bi-beqimm.d: Remove hard coded address.
