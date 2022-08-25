@@ -2453,8 +2453,8 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
     case INSN_CLASS_Q:
       return riscv_subset_supports (rps, "q");
     case INSN_CLASS_C_OR_ZCA:
-      return riscv_subset_supports (rps, "c")
-		|| riscv_subset_supports (rps, "zca");
+      return (riscv_subset_supports (rps, "c")
+		    || riscv_subset_supports (rps, "zca"));
     case INSN_CLASS_F_AND_C:
       return (riscv_subset_supports (rps, "f")
 	      && (riscv_subset_supports (rps, "c")
@@ -2535,14 +2535,14 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
     case INSN_CLASS_ZCB:
       return riscv_subset_supports (rps, "zcb");
     case INSN_CLASS_ZCB_AND_ZBB:
-      return riscv_subset_supports (rps, "zcb")
-	    && riscv_subset_supports (rps, "zbb");
+      return (riscv_subset_supports (rps, "zcb")
+	    && riscv_subset_supports (rps, "zbb"));
     case INSN_CLASS_ZCB_AND_ZBA:
-      return riscv_subset_supports (rps, "zcb")
-	    && riscv_subset_supports (rps, "zba");
+      return (riscv_subset_supports (rps, "zcb")
+	    && riscv_subset_supports (rps, "zba"));
     case INSN_CLASS_ZCB_AND_M:
-      return riscv_subset_supports (rps, "zcb")
-	    && riscv_subset_supports (rps, "m");
+      return (riscv_subset_supports (rps, "zcb")
+	    && riscv_subset_supports (rps, "m"));
     case INSN_CLASS_ZCMB:
       return riscv_subset_supports (rps, "zcmb");
     case INSN_CLASS_ZCMP:
@@ -2550,8 +2550,8 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
     case INSN_CLASS_ZCMT:
       return riscv_subset_supports (rps, "zcmt");
     case INSN_CLASS_ZCMP_OR_ZCMPE:
-      return riscv_subset_supports (rps, "zcmp")
-	    || riscv_subset_supports (rps, "zcmpe");
+      return (riscv_subset_supports (rps, "zcmp")
+	    || riscv_subset_supports (rps, "zcmpe"));
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));
@@ -2587,7 +2587,7 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
     case INSN_CLASS_Q:
       return "q";
     case INSN_CLASS_C_OR_ZCA:
-      return "c";
+      return "c' or `zca";
     case INSN_CLASS_F_AND_C:
       if (!riscv_subset_supports (rps, "f")
 	  && !riscv_subset_supports (rps, "c"))
@@ -2658,6 +2658,22 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return "v' or `zve64d' or `zve64f' or `zve32f";
     case INSN_CLASS_SVINVAL:
       return "svinval";
+    case INSN_CLASS_ZCB:
+      return "zcb";
+    case INSN_CLASS_ZCB_AND_ZBB:
+      return "zcb' and `zbb";
+    case INSN_CLASS_ZCB_AND_ZBA:
+      return "zcb' and `zba";
+    case INSN_CLASS_ZCB_AND_M:
+      return "zcb' and `m";
+    case INSN_CLASS_ZCMB:
+      return "zcmb";
+    case INSN_CLASS_ZCMP:
+      return "zcmp";
+    case INSN_CLASS_ZCMT:
+      return "zcmt";
+    case INSN_CLASS_ZCMP_OR_ZCMPE:
+      return "zcmp' or `zcmpe";
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));
