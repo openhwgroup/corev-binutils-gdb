@@ -5,5 +5,5 @@
 .*:.*: Error: unrecognized opcode `cm.popretz.e \{ra\},64'
 .*:.*: Error: unrecognized opcode `cm.mva01s.e s0,s7'
 .*:.*: Error: unrecognized opcode `cm.mvsa01.e s0,s7'
-.*:.*: Error: unrecognized opcode `cm.jt 512'
-.*:.*: Error: unrecognized opcode `cm.jalt 8'
+.*:.*: Error: unrecognized opcode `cm.jt 512', extension `zcmt' required
+.*:.*: Error: unrecognized opcode `cm.jalt 8', extension `zcmt' required
