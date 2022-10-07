@@ -2120,6 +2120,9 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.beqimm", 0, INSN_CLASS_COREV_BI, "s,b4,p", MATCH_CV_BEQIMM, MASK_CV_BEQIMM, match_opcode, 0},
 {"cv.bneimm", 0, INSN_CLASS_COREV_BI, "s,b4,p", MATCH_CV_BNEIMM, MASK_CV_BNEIMM, match_opcode, 0},
 
+/* Event Load */
+{"cv.elw", 0, INSN_CLASS_COREV_ELW, "d,o(s)",  MATCH_CV_ELW, MASK_CV_ELW, match_opcode, 0},
+
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
 };

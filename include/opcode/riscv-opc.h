@@ -2917,6 +2917,10 @@
 #define MASK_CV_SRRPOST   0xfe00707f
 #define MASK_CV_SRR       0xfe00707f
 
+/* Event Load */
+#define MATCH_CV_ELW      0x6003
+#define MASK_CV_ELW       0x707f
+
 #ifdef DECLARE_INSN
 DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
 DECLARE_INSN(srli_rv32, MATCH_SRLI_RV32, MASK_SRLI_RV32)
