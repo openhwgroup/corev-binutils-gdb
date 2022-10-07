@@ -1422,7 +1422,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	      used_bits |= ENCODE_CV_HWLP_LN(-1U);
 	      ++oparg;
 	      break;
-	    }    
+	    }
 	  USE_BITS (OP_MASK_RD, OP_SH_RD); break;
 	case 'y': USE_BITS (OP_MASK_BS,	OP_SH_BS); break;
 	case 'Y': USE_BITS (OP_MASK_RNUM, OP_SH_RNUM); break;

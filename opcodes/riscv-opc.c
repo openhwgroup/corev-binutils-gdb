@@ -1918,6 +1918,9 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.beqimm", 0, INSN_CLASS_COREV_BI, "s,b4,p", MATCH_CV_BEQIMM, MASK_CV_BEQIMM, match_opcode, 0},
 {"cv.bneimm", 0, INSN_CLASS_COREV_BI, "s,b4,p", MATCH_CV_BNEIMM, MASK_CV_BNEIMM, match_opcode, 0},
 
+/* Event Load */
+{"cv.elw", 0, INSN_CLASS_COREV_ELW, "d,o(s)",  MATCH_CV_ELW, MASK_CV_ELW, match_opcode, 0},
+
 /* ZCB instructions */
 {"c.lbu",      0, INSN_CLASS_ZCB, "Ct,CZb(Cs)", MATCH_C_LBU, MASK_C_LBU, match_opcode, INSN_DREF|INSN_1_BYTE },
 {"c.lhu",      0, INSN_CLASS_ZCB, "Ct,CZh(Cs)", MATCH_C_LHU, MASK_C_LHU, match_opcode, INSN_DREF|INSN_2_BYTE },
