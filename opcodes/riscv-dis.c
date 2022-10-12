@@ -563,7 +563,7 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	      info->target = (EXTRACT_ITYPE_IMM (l)<<1) + pc; ++oparg;
 	      (*info->print_address_func) (info->target, info);
 	      break;
-            }
+        }
 	  else if (oparg[1] == '2')
 	    {
 	      info->target = (EXTRACT_CV_HWLP_UIMM5 (l)<<1) + pc; ++oparg;
@@ -579,6 +579,12 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	  else if (oparg[1] == '4')
 	    {
 	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_BI_IMM5 (l)));
+	      ++oparg;
+	      break;
+	    }
+	   else if (oparg[1] == '5')
+	    {
+	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_SIMD_IMM6 (l)));
 	      ++oparg;
 	      break;
 	    }
