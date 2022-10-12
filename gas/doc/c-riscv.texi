@@ -774,6 +774,11 @@ It is documented in @url{https://docs.openhwgroup.org/projects/cv32e40p-user-man
 
 It is documented in @url{https://docs.openhwgroup.org/projects/cv32e40p-user-manual/en/latest/instruction_set_extensions.html}
 
+@item Xcvsimd
+The Xcvsimd extension provides instructions for SIMD operations.
+
+It is documented in @url{https://docs.openhwgroup.org/projects/cv32e40p-user-manual/en/latest/instruction_set_extensions.html}
+
 @item XTheadBa
 The XTheadBa extension provides instructions for address calculations.
 
