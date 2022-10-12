@@ -443,6 +443,24 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	      (*info->print_address_func) (info->target, info);
 	      break;
 	    }
+	  else if (oparg[1] == '4')
+	    {
+	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_BI_IMM5 (l)));
+	      ++oparg;
+	      break;
+	    }
+	   else if (oparg[1] == '5')
+	    {
+	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_SIMD_IMM6 (l)));
+	      ++oparg;
+	      break;
+	    }
+	   else if (oparg[1] == '8')
+	    {
+	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_SIMD_UIMM6 (l)));
+	      ++oparg;
+	      break;
+	    }
 	/* Fall through.  */
 	case 's':
 	  if ((l & MASK_JALR) == MATCH_JALR)
