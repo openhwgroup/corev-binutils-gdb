@@ -50,15 +50,17 @@ is provided to enable all CORE-V extensions. To enable only a subset of the CORE
 extensions, the following additional ISA options are provided:
 @itemize @bullet
 @item
-hardware loop: @samp{Xcorevhwlp}
+hardware loop: @samp{Xcorevhwlp} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-multiply-accumulate: @samp{Xcorevmac}
+multiply-accumulate: @samp{Xcorevmac} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-general ALU operations: @samp{Xcorevalu}
+general ALU operations: @samp{Xcorevalu} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-Post-incrementing and reg-reg load/store: @samp{Xcorevmem}
+Post-incrementing and reg-reg load/store: @samp{Xcorevmem} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-immediate branching: @samp{Xcorevbi}
+immediate branching: @samp{Xcorevbi} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
+@item
+event load: @samp{Xcorevelw} (not supported for CV32E40Pv1, version 1 for CV32E40Pv2)
 @end itemize
 
 @cindex @samp{-misa-spec=ISAspec} option, RISC-V
