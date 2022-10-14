@@ -61,6 +61,8 @@ Post-incrementing and reg-reg load/store: @samp{Xcorevmem} (version 1 for CV32E4
 immediate branching: @samp{Xcorevbi} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
 event load: @samp{Xcorevelw} (not supported for CV32E40Pv1, version 1 for CV32E40Pv2)
+@item
+single instruction multiple data: @samp{Xcorevsimd} (not supported for CV32E40Pv1, version 1 for CV32E40Pv2)
 @end itemize
 
 @cindex @samp{-misa-spec=ISAspec} option, RISC-V
