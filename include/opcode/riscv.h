@@ -135,6 +135,10 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 20, 5) | (RV_IMM_SIGN_N(x, 20, 5) << 5))
 #define EXTRACT_CV_SIMD_IMM6(x) \
   ((RV_X(x, 25, 1)) | (RV_X(x, 20, 5) << 1) | (RV_IMM_SIGN_N(x, 20, 5) << 5))
+#define EXTRACT_CV_BITMANIP_UIMM5(x) \
+  (RV_X(x, 25, 5))
+#define EXTRACT_CV_BITMANIP_UIMM2(x) \
+  (RV_X(x, 25, 2))
 
 /* ZC Specific.  */
 #define EXTRACT_ZCB_BYTE_UIMM(x) \
@@ -208,8 +212,12 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 0, 5) << 20)
 #define ENCODE_CV_SIMD_IMM6(x) \
   ((RV_X(x, 0, 1) << 25) | (RV_X(x, 1, 5) << 20))
+#define ENCODE_CV_BITMANIP_UIMM5(x) \
+  (RV_X(x, 0, 5) << 25)
+#define ENCODE_CV_BITMANIP_UIMM2(x) \
+  (RV_X(x, 0, 2) << 25)
 
-/* ZC Specific.  */
+
 #define ENCODE_ZCB_BYTE_UIMM(x) \
   ((RV_X(x, 0, 1) << 6) | (RV_X(x, 1, 1) << 5))
 #define ENCODE_ZCB_HALFWORD_UIMM(x) \
@@ -479,6 +487,7 @@ enum riscv_insn_class
   INSN_CLASS_COREV_BI,
   INSN_CLASS_COREV_ELW,
   INSN_CLASS_COREV_SIMD,
+  INSN_CLASS_COREV_BITMANIP,
   INSN_CLASS_ZBA,
   INSN_CLASS_ZBB,
   INSN_CLASS_ZBC,
