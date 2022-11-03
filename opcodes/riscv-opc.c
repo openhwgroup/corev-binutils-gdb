@@ -1823,6 +1823,7 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.setup",  0, INSN_CLASS_COREV_HWLP, "di,s,b1",  MATCH_CV_SETUP,  MASK_CV_SETUP,  match_opcode, 0},
 {"cv.setupi", 0, INSN_CLASS_COREV_HWLP, "di,ji,b2", MATCH_CV_SETUPI, MASK_CV_SETUPI, match_opcode, 0},
 
+
 /* Multiply accumulate */
 {"cv.mac",      0, INSN_CLASS_COREV_MAC, "d,s,t",	MATCH_CV_MAC,		MASK_CV_MACMSU,	 match_opcode, 0},
 {"cv.msu",      0, INSN_CLASS_COREV_MAC, "d,s,t",	MATCH_CV_MSU,		MASK_CV_MACMSU,	 match_opcode, 0},
@@ -1846,6 +1847,7 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.machhun",  0, INSN_CLASS_COREV_MAC, "d,s,t,b3",	MATCH_CV_MACHHUN,	MASK_CV_MULMACN, match_opcode, 0},
 {"cv.macurn",   0, INSN_CLASS_COREV_MAC, "d,s,t,b3",	MATCH_CV_MACURN,	MASK_CV_MULMACN, match_opcode, 0},
 {"cv.machhurn", 0, INSN_CLASS_COREV_MAC, "d,s,t,b3",	MATCH_CV_MACHHURN,	MASK_CV_MULMACN, match_opcode, 0},
+
 
 /* General ALU operations */
 {"cv.abs",     0, INSN_CLASS_COREV_ALU, "d,s",      MATCH_CV_ABS,     MASK_CV_ABS,  match_opcode, 0},
@@ -2144,6 +2146,27 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.sub.div8",           0, INSN_CLASS_COREV_SIMD, "d,s,t", MATCH_CV_SUB_DIV8, MASK_CV_SUB_DIV8, match_opcode, 0},
 
 /* END OF SIMD */
+
+/* Bit Manipulation */
+{"cv.extractr",     0, INSN_CLASS_COREV_BITMANIP, "d,s,t", MATCH_CV_EXTRACTR, MASK_CV_EXTRACTR, match_opcode, 0},
+{"cv.extractur",    0, INSN_CLASS_COREV_BITMANIP, "d,s,t", MATCH_CV_EXTRACTUR, MASK_CV_EXTRACTUR, match_opcode, 0},
+{"cv.insertr",      0, INSN_CLASS_COREV_BITMANIP, "d,s,t", MATCH_CV_INSERTR, MASK_CV_INSERTR, match_opcode, 0},
+{"cv.bclrr",        0, INSN_CLASS_COREV_BITMANIP, "d,s,t", MATCH_CV_BCLRR, MASK_CV_BCLRR, match_opcode, 0},
+{"cv.bsetr",        0, INSN_CLASS_COREV_BITMANIP, "d,s,t", MATCH_CV_BSETR, MASK_CV_BSETR, match_opcode, 0},
+{"cv.ror",          0, INSN_CLASS_COREV_BITMANIP, "d,s,t", MATCH_CV_ROR, MASK_CV_ROR, match_opcode, 0},
+{"cv.ff1",          0, INSN_CLASS_COREV_BITMANIP, "d,s",   MATCH_CV_FF1, MASK_CV_FF1, match_opcode, 0},
+{"cv.fl1",          0, INSN_CLASS_COREV_BITMANIP, "d,s",   MATCH_CV_FL1, MASK_CV_FL1, match_opcode, 0},
+{"cv.clb",          0, INSN_CLASS_COREV_BITMANIP, "d,s",   MATCH_CV_CLB, MASK_CV_CLB, match_opcode, 0},
+{"cv.cnt",          0, INSN_CLASS_COREV_BITMANIP, "d,s",   MATCH_CV_CNT, MASK_CV_CNT, match_opcode, 0},
+
+{"cv.extract",      0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_EXTRACT, MASK_CV_EXTRACT, match_opcode, 0},
+{"cv.extractu",     0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_EXTRACTU, MASK_CV_EXTRACTU, match_opcode, 0},
+{"cv.insert",       0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_INSERT, MASK_CV_INSERT, match_opcode, 0},
+{"cv.bclr",         0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_BCLR, MASK_CV_BCLR, match_opcode, 0},
+{"cv.bset",         0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_BSET, MASK_CV_BSET, match_opcode, 0},
+{"cv.bitrev",       0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b7", MATCH_CV_BITREV, MASK_CV_BITREV, match_opcode, 0},
+
+
 /* END OF CORE-V */
 
 /* ZCB instructions */

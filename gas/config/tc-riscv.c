@@ -1413,6 +1413,16 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	      used_bits |= ENCODE_CV_SIMD_IMM6(-1U);
 	      ++oparg; break;
 	    }
+	  else if (oparg[1] == '6')
+	    {
+	      used_bits |= ENCODE_CV_BITMANIP_UIMM5(-1U);
+	      ++oparg; break;
+	    }
+	  else if (oparg[1] == '7')
+	    {
+	      used_bits |= ENCODE_CV_BITMANIP_UIMM2(-1U);
+	      ++oparg; break;
+	    }
 	  else if (oparg[1] == 'i')
 	    {
 	      used_bits |= ENCODE_CV_UIMM5(-1U);
@@ -3664,7 +3674,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  ++oparg;
 		}
 		  else if (oparg[1] == '5')
-			// b5: imm6 bits signed immediate bits
+		  // b5: imm6 bits signed immediate bits
 		{
 		  my_getExpression (imm_expr, asarg);
 		  check_absolute_expr (ip, imm_expr, FALSE);
@@ -3673,6 +3683,26 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		  as_bad(_("immediate value must be 6-bit signed, %ld is out of range"),
 		  imm_expr->X_add_number);
 		  ip->insn_opcode |= ENCODE_CV_SIMD_IMM6 (imm_expr->X_add_number);
+		  ++oparg;
+		}
+	      else if (oparg[1] == '6')
+		  // b6: Luimm5 bits unsigned immediate bits
+		{
+		  my_getExpression (imm_expr, asarg);
+		  check_absolute_expr (ip, imm_expr, FALSE);
+		  asarg = expr_end;
+		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>31) break;
+		  ip->insn_opcode |= ENCODE_CV_BITMANIP_UIMM5 (imm_expr->X_add_number);
+		  ++oparg;
+		}
+		  else if (oparg[1] == '7')
+		  // b7: Luimm2 bits unsigned immediate bits
+		{
+		  my_getExpression (imm_expr, asarg);
+		  check_absolute_expr (ip, imm_expr, FALSE);
+		  asarg = expr_end;
+		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>3) break;
+		  ip->insn_opcode |= ENCODE_CV_BITMANIP_UIMM2 (imm_expr->X_add_number);
 		  ++oparg;
 		}
 	      else if (oparg[1] == 'i')
