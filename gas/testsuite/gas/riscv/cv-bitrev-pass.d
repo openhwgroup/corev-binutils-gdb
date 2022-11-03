@@ -1,0 +1,18 @@
+#as: -march=rv32i_xcorevbitmanip1p0
+#source: cv-bitrev-pass.s
+#objdump: -d
+
+.*:[ 	]+file format .*
+
+
+Disassembly of section .text:
+
+0+000 <target>:
+   0:	c540105b          	cv.bitrev	zero,zero,20,2
+   4:	c54090db          	cv.bitrev	ra,ra,20,2
+   8:	c541115b          	cv.bitrev	sp,sp,20,2
+   c:	c544145b          	cv.bitrev	s0,s0,20,2
+  10:	c54a1a5b          	cv.bitrev	s4,s4,20,2
+  14:	c54f9fdb          	cv.bitrev	t6,t6,20,2
+  18:	c003935b          	cv.bitrev	t1,t2,0,0
+  1c:	c7f3935b          	cv.bitrev	t1,t2,31,3
