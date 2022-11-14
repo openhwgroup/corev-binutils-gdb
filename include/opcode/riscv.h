@@ -129,8 +129,7 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define EXTRACT_CV_BI_IMM5(x) \
   (RV_X(x, 20, 5) | (RV_IMM_SIGN_N(x, 20, 5) << 5))
 #define EXTRACT_CV_SIMD_IMM6(x) \
-  ((RV_X(x, 20, 6)) | (RV_IMM_SIGN_N(x, 20, 6) << 6))
-
+  ((RV_X(x, 25, 1)) | (RV_X(x, 20, 5) << 1) | (RV_IMM_SIGN_N(x, 20, 5) << 5))
 
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
@@ -189,7 +188,7 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define ENCODE_CV_ALU_UIMM5(x) \
   (RV_X(x, 0, 5) << 20)
 #define ENCODE_CV_SIMD_IMM6(x) \
-  (RV_X(x, 0, 6) << 20)
+  ((RV_X(x, 0, 1) << 25) | (RV_X(x, 1, 5) << 20))
 
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
