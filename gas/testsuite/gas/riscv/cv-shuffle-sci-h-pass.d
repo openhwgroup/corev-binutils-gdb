@@ -8,12 +8,12 @@
 Disassembly of section .text:
 
 0+000 <target>:
-   0:	c140607b          	cv.shuffle.sci.h	zero,zero,20
-   4:	c140e0fb          	cv.shuffle.sci.h	ra,ra,20
-   8:	c141617b          	cv.shuffle.sci.h	sp,sp,20
-   c:	c144647b          	cv.shuffle.sci.h	s0,s0,20
-  10:	c14a6a7b          	cv.shuffle.sci.h	s4,s4,20
-  14:	c14feffb          	cv.shuffle.sci.h	t6,t6,20
-  18:	c203e37b          	cv.shuffle.sci.h	t1,t2,-32
+   0:	c0a0607b          	cv.shuffle.sci.h	zero,zero,20
+   4:	c0a0e0fb          	cv.shuffle.sci.h	ra,ra,20
+   8:	c0a1617b          	cv.shuffle.sci.h	sp,sp,20
+   c:	c0a4647b          	cv.shuffle.sci.h	s0,s0,20
+  10:	c0aa6a7b          	cv.shuffle.sci.h	s4,s4,20
+  14:	c0afeffb          	cv.shuffle.sci.h	t6,t6,20
+  18:	c103e37b          	cv.shuffle.sci.h	t1,t2,-32
   1c:	c003e37b          	cv.shuffle.sci.h	t1,t2,0
-  20:	c1f3e37b          	cv.shuffle.sci.h	t1,t2,31
+  20:	c2f3e37b          	cv.shuffle.sci.h	t1,t2,31
