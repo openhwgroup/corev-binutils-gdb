@@ -5376,6 +5376,7 @@ _bfd_riscv_relax_section (bfd *abfd, asection *sec,
       bool undefined_weak = false;
 
       relax_func = NULL;
+      /* TODO: simplify the logic. */
       if (info->relax_pass == 0)
 	{
 	  if (!riscv_use_table_jump (info))
@@ -5418,16 +5419,6 @@ _bfd_riscv_relax_section (bfd *abfd, asection *sec,
 	    relax_func = _bfd_riscv_relax_pc;
 	  else
 	    continue;
-
-	  /* Only relax this reloc if it is paired with R_RISCV_RELAX.  */
-	  if (type != R_RISCV_JAL && (i == sec->reloc_count - 1
-		|| ELFNN_R_TYPE ((rel + 1)->r_info) != R_RISCV_RELAX
-		|| rel->r_offset != (rel + 1)->r_offset))
-	    continue;
-
-	  /* Skip over the R_RISCV_RELAX.  */
-	  if (type != R_RISCV_JAL)
-	    i++;
 	}
       else if (info->relax_pass == 2 && type == R_RISCV_DELETE)
 	relax_func = _bfd_riscv_relax_delete;
@@ -5435,6 +5426,18 @@ _bfd_riscv_relax_section (bfd *abfd, asection *sec,
 	relax_func = _bfd_riscv_relax_align;
       else
 	continue;
+
+      if (info->relax_pass <= 1)
+	{
+	  /* Only relax this reloc if it is paired with R_RISCV_RELAX.  */
+	  if (i == sec->reloc_count - 1
+		|| ELFNN_R_TYPE ((rel + 1)->r_info) != R_RISCV_RELAX
+		|| rel->r_offset != (rel + 1)->r_offset)
+	    continue;
+
+          /* Skip over the R_RISCV_RELAX.  */
+          i++;
+	}
 
       data->relocs = relocs;
 

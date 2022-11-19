@@ -1656,7 +1656,6 @@ append_insn (struct riscv_cl_insn *ip, expressionS *address_expr,
 	  ip->fixp = fix_new_exp (ip->frag, ip->where,
 				  bfd_get_reloc_size (howto),
 				  address_expr, false, reloc_type);
-
 	  ip->fixp->fx_tcbit = riscv_opts.relax;
 	}
     }
@@ -4473,6 +4472,13 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
       break;
 
     case BFD_RELOC_RISCV_JMP:
+      /* j and jal can be relaxed into cm.jalt or cm.jt if zcmt is used. */
+      if (riscv_subset_supports (&riscv_rps_as, "zcmt"))
+	{
+	  relaxable = true;
+	  fixP->fx_tcbit = riscv_opts.relax;
+	}
+
       if (fixP->fx_addsy)
 	{
 	  /* Fill in a tentative value to improve objdump readability.  */
