@@ -4982,7 +4982,24 @@ md_convert_frag_branch (fragS *fragp)
 	    /* Invert the branch condition.  Branch over the jump.  */
 	    insn = bfd_getl16 (buf);
 	    insn ^= MATCH_C_BEQZ ^ MATCH_C_BNEZ;
-	    insn |= ENCODE_CBTYPE_IMM (6);
+
+	    if (riscv_subset_supports (&riscv_rps_as, "zcmt"))
+	      {
+		symbolS *sym = symbol_new (FAKE_LABEL_NAME , now_seg, fragp,
+				     fragp->fr_fix + fragp->fr_var);
+		fixp = fix_new (fragp,
+				buf - (bfd_byte *)fragp->fr_literal,
+				2,
+				sym,
+				0,
+				false,
+				BFD_RELOC_RISCV_RVC_BRANCH);
+		fixp->fx_file = fragp->fr_file;
+		fixp->fx_line = fragp->fr_line;
+	      }
+	    else
+	      insn |= ENCODE_CBTYPE_IMM (6);
+
 	    bfd_putl16 (insn, buf);
 	    buf += 2;
 	    goto jump;
@@ -5009,7 +5026,25 @@ md_convert_frag_branch (fragS *fragp)
       /* Invert the branch condition.  Branch over the jump.  */
       insn = bfd_getl32 (buf);
       insn ^= MATCH_BEQ ^ MATCH_BNE;
-      insn |= ENCODE_BTYPE_IMM (8);
+
+      if (riscv_subset_supports (&riscv_rps_as, "zcmt"))
+	{
+	  symbolS *sym = (symbolS *) local_symbol_make (
+		    FAKE_LABEL_NAME, now_seg, fragp,
+		    fragp->fr_fix + fragp->fr_var);
+	  fixp = fix_new (fragp,
+			  buf - (bfd_byte *)fragp->fr_literal,
+			  4,
+			  sym,
+			  0,
+			  false,
+			  BFD_RELOC_12_PCREL);
+	  fixp->fx_file = fragp->fr_file;
+	  fixp->fx_line = fragp->fr_line;
+	}
+      else
+        insn |= ENCODE_BTYPE_IMM (8);
+ 
       bfd_putl32 (insn, buf);
       buf += 4;
 
