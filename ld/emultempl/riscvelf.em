@@ -25,6 +25,8 @@ fragment <<EOF
 #include "elf/riscv.h"
 #include "elfxx-riscv.h"
 
+static int zcmt_force_table_jump = 0;		/* --zcmt-force-table-jump */
+
 static void
 riscv_elf_before_allocation (void)
 {
@@ -96,9 +98,30 @@ riscv_create_output_section_statements (void)
 	       " whilst linking %s binaries\n"), "RISC-V");
       return;
     }
+
+  bfd_elf${ELFSIZE}_set_target_option (&link_info,
+	  zcmt_force_table_jump);
 }
 
 EOF
+# Define some shell vars to insert bits of code into the standard elf
+# parse_args and list_options functions.
+#
+PARSE_AND_LIST_PROLOGUE='
+#define OPTION_ZCMT_FORCE_JUMP_TABLE			301
+'
+PARSE_AND_LIST_LONGOPTS='
+  { "zcmt-force-table-jump", no_argument, NULL, OPTION_ZCMT_FORCE_JUMP_TABLE},
+'
+PARSE_AND_LIST_OPTIONS='
+  fprintf (file, _("  --zcmt-force-table-jump          "
+		   "Force to generate table jump instructions\n"));
+'
+PARSE_AND_LIST_ARGS_CASES='
+  case OPTION_ZCMT_FORCE_JUMP_TABLE:
+    zcmt_force_table_jump = true;
+    break;
+'
 
 LDEMUL_BEFORE_ALLOCATION=riscv_elf_before_allocation
 LDEMUL_AFTER_ALLOCATION=gld${EMULATION_NAME}_after_allocation

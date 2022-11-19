@@ -114,3 +114,10 @@ bfd_elf64_riscv_set_data_segment_info (struct bfd_link_info *, int *);
 
 extern int
 riscv_get_base_spimm (insn_t, riscv_parse_subset_t *);
+
+extern void
+bfd_elf32_set_target_option (struct bfd_link_info *link_info,
+				   bool zcmt_force_table_jump);
+extern void
+bfd_elf64_set_target_option (struct bfd_link_info *link_info,
+				   bool zcmt_force_table_jump);
