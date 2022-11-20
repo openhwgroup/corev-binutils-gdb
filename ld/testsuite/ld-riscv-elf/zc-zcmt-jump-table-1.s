@@ -1,0 +1,48 @@
+.macro PADDIING_32_BYTES
+	.option push
+	.option norvc
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	nop
+	.option pop
+.endm
+
+.macro PADDIING_256_BYTES
+	PADDIING_32_BYTES
+	PADDIING_32_BYTES
+	PADDIING_32_BYTES
+	PADDIING_32_BYTES
+	PADDIING_32_BYTES
+	PADDIING_32_BYTES
+	PADDIING_32_BYTES
+	PADDIING_32_BYTES
+.endm
+
+.macro PADDIING_2048_BYTES
+	PADDIING_256_BYTES
+	PADDIING_256_BYTES
+	PADDIING_256_BYTES
+	PADDIING_256_BYTES
+	PADDIING_256_BYTES
+	PADDIING_256_BYTES
+	PADDIING_256_BYTES
+	PADDIING_256_BYTES
+.endm
+
+	.option relax
+	.globl _start
+	.type	_start, @function
+_start:
+	c.beqz s0, FLIP_C_BRANCH_AND_JUMP
+	c.bnez s0, FLIP_C_BRANCH_AND_JUMP
+	PADDIING_2048_BYTES
+	PADDIING_2048_BYTES
+FLIP_C_BRANCH_AND_JUMP:
+	c.beqz s0, 4
+	c.bnez s0,_start
+	ret
