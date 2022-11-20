@@ -4579,14 +4579,6 @@ _bfd_riscv_relax_call (bfd *abfd, asection *sec, asection *sym_sec,
       foff += ((bfd_signed_vma) foff < 0 ? -max_alignment : max_alignment);
     }
 
-  /* See if this function call can be shortened.  */
-  if (!VALID_JTYPE_IMM (foff) && !(!bfd_link_pic (link_info) && near_zero)
-      && link_info->relax_pass != 0)
-    return true;
-
-  /* Shorten the function call.  */
-  BFD_ASSERT (rel->r_offset + 8 <= sec->size);
-
   auipc = bfd_getl32 (contents + rel->r_offset);
   jalr = bfd_getl32 (contents + rel->r_offset + 4);
 
@@ -4598,6 +4590,14 @@ _bfd_riscv_relax_call (bfd *abfd, asection *sec, asection *sym_sec,
       *again = true;
       return riscv_relax_delete_bytes (abfd, sec, rel->r_offset + 2, 6, link_info, pcgp_relocs);
     }
+
+  /* See if this function call can be shortened.  */
+  if (!VALID_JTYPE_IMM (foff) && !(!bfd_link_pic (link_info) && near_zero)
+      && link_info->relax_pass != 0)
+    return true;
+
+  /* Shorten the function call.  */
+  BFD_ASSERT (rel->r_offset + 8 <= sec->size);
 
   rd = (jalr >> OP_SH_RD) & OP_MASK_RD;
   rvc = rvc && VALID_CJTYPE_IMM (foff);
