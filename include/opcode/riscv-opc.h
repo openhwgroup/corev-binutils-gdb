@@ -2918,7 +2918,7 @@
 #define MASK_CV_SRR       0xfe00707f
 
 /* Event Load */
-#define MATCH_CV_ELW      0x6003
+#define MATCH_CV_ELW      0x300b
 #define MASK_CV_ELW       0x707f
 
 /*SIMD Instructions: */
