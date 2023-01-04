@@ -7,6 +7,6 @@
 Disassembly of section .text:
 
 0+000 <target>:
-[ 	]+0:[ 	]+c07302db[ 	]+cv.mulhhs[ 	]+t0,t1,t2
-[ 	]+4:[ 	]+e0538edb[ 	]+cv.mulhhsn[ 	]+t4,t2,t0,16
-[ 	]+8:[ 	]+fe6f0e5b[ 	]+cv.mulhhsn[ 	]+t3,t5,t1,31
+[ 	]+0:[ 	]+407342db[ 	]+cv.mulhhsn[ 	]+t0,t1,t2,0
+[ 	]+4:[ 	]+6053cedb[ 	]+cv.mulhhsn[ 	]+t4,t2,t0,16
+[ 	]+8:[ 	]+7e6f4e5b[ 	]+cv.mulhhsn[ 	]+t3,t5,t1,31
