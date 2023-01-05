@@ -2876,11 +2876,11 @@
 #define MASK_CV_ADDN     0xc000707f
 
 /* Immediate Branching */
-#define MATCH_CV_BNEIMM    0x00003063
-#define MATCH_CV_BEQIMM    0x00002063
+#define MATCH_CV_BNEIMM    0x700b
+#define MATCH_CV_BEQIMM    0x600b
 
-#define MASK_CV_BNEIMM     0x0000707f
-#define MASK_CV_BEQIMM     0x0000707f
+#define MASK_CV_BNEIMM     0x707f
+#define MASK_CV_BEQIMM     0x707f
 
 /* Post-incrementing and reg-reg load/store */
 #define MATCH_CV_LBPOST    0xb
