@@ -13,3 +13,5 @@ Disassembly of section .text:
 [ 	]+c:[ 	]+0f4f47ab[ 	]+cv.setup[ 	]+1,t5,1f4 <target\+0x1f4>
 [ 	]+10:[ 	]+0005c5ab[ 	]+cv.count[ 	]+1,a1
 [ 	]+14:[ 	]+791044ab[ 	]+cv.counti[ 	]+1,1937
+[ 	]+18:[ 	]+0005c1ab[ 	]+cv.start[ 	]+1,a1
+[ 	]+1c:[ 	]+0005c3ab[ 	]+cv.end[ 	]+1,a1
