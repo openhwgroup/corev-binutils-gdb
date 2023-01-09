@@ -2476,12 +2476,12 @@
 #define MASK_CV_SETUP  0x7f7f
 #define MASK_CV_SETUPI 0x7f7f
 
-#define MATCH_CV_STARTI 0x7b
-#define MATCH_CV_ENDI   0x107b
-#define MATCH_CV_COUNT  0x207b
-#define MATCH_CV_COUNTI 0x307b
-#define MATCH_CV_SETUP  0x407b
-#define MATCH_CV_SETUPI 0x507b
+#define MATCH_CV_STARTI 0x402b
+#define MATCH_CV_ENDI   0x422b
+#define MATCH_CV_COUNT  0x452b
+#define MATCH_CV_COUNTI 0x442b
+#define MATCH_CV_SETUP  0x472b
+#define MATCH_CV_SETUPI 0x462b
 
 /* Multiply accumulate */
 #define MATCH_CV_MAC       0x9000302b
