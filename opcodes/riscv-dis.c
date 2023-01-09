@@ -564,7 +564,9 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	  if (oparg[1] == 'i')
 	    {
 	      ++oparg;
-	      print (info->stream, dis_style_immediate, "%d", (int) rd);
+	      /* di refers to just bit 7. Therefore we have masked the top 4 bits
+	       *  of rd, bits 11 to 7. */
+	      print (info->stream, dis_style_immediate, "%d", (int) (rd & 0b00001));
 	    }
 	  else
 	    print (info->stream, dis_style_register, "%s", riscv_gpr_names[rd]);
