@@ -6,3 +6,5 @@ target:
         cv.setup  1, t5, 488
         cv.count  1, a1
         cv.counti 1, 1937
+        cv.start  1, a1
+        cv.end    1, a1

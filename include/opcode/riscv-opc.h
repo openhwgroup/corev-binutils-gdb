@@ -2469,14 +2469,18 @@
 
 /* CORE-V Specific Instructions  */
 /* Hardware loops  */
+#define MASK_CV_START  0xfff07f7f
 #define MASK_CV_STARTI 0xfff7f
+#define MASK_CV_END    0xfff07f7f
 #define MASK_CV_ENDI   0xfff7f
 #define MASK_CV_COUNT  0xfff07f7f
 #define MASK_CV_COUNTI 0xfff7f
 #define MASK_CV_SETUP  0x7f7f
 #define MASK_CV_SETUPI 0x7f7f
 
+#define MATCH_CV_START  0x412b
 #define MATCH_CV_STARTI 0x402b
+#define MATCH_CV_END    0x432b
 #define MATCH_CV_ENDI   0x422b
 #define MATCH_CV_COUNT  0x452b
 #define MATCH_CV_COUNTI 0x442b
