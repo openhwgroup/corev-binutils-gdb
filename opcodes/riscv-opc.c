@@ -1816,7 +1816,9 @@ const struct riscv_opcode riscv_opcodes[] =
 
 /* CORE-V Specific Opcodes.  */
 /* Hardware loops  */
+{"cv.start",  0, INSN_CLASS_COREV_HWLP, "di,s",     MATCH_CV_START,  MASK_CV_START,  match_opcode, 0},
 {"cv.starti", 0, INSN_CLASS_COREV_HWLP, "di,b1",    MATCH_CV_STARTI, MASK_CV_STARTI, match_opcode, 0},
+{"cv.end",    0, INSN_CLASS_COREV_HWLP, "di,s",     MATCH_CV_END,    MASK_CV_END,    match_opcode, 0},
 {"cv.endi",   0, INSN_CLASS_COREV_HWLP, "di,b1",    MATCH_CV_ENDI,   MASK_CV_ENDI,   match_opcode, 0},
 {"cv.count",  0, INSN_CLASS_COREV_HWLP, "di,s",     MATCH_CV_COUNT,  MASK_CV_COUNT,  match_opcode, 0},
 {"cv.counti", 0, INSN_CLASS_COREV_HWLP, "di,ji",    MATCH_CV_COUNTI, MASK_CV_COUNTI, match_opcode, 0},
