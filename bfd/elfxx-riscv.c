@@ -1178,7 +1178,6 @@ static struct riscv_implicit_subset riscv_implicit_subsets[] =
   {"zks", "zksh",	check_implicit_always},
   {"zcmp", "zca",	check_implicit_always},
   {"zcmt", "zca",	check_implicit_always},
-  {"zcmpe", "zca",	check_implicit_always},
   {"zcf", "zca",	check_implicit_always},
   {"zcb", "zca",	check_implicit_always},
   {NULL, NULL, NULL}
@@ -1287,7 +1286,6 @@ static struct riscv_supported_ext riscv_supported_std_z_ext[] =
   {"zcb",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {"zcf",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {"zcmp",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
-  {"zcmpe",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {"zcmt",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {NULL, 0, 0, 0, 0}
 };
@@ -1996,12 +1994,11 @@ riscv_parse_check_conflicts (riscv_parse_subset_t *rps)
       no_conflict = false;
     }
 
-  /* zcmt, zcmp and zcmpe extensions are not compatible with
+  /* zcmt and zcmp extensions are not compatible with
   16-bit double precision floating point instructions in C
   extension.  */
   if (riscv_lookup_subset (rps->subset_list, "c", &subset)
       && (riscv_lookup_subset (rps->subset_list, "zcmp", &subset)
-	  || riscv_lookup_subset (rps->subset_list, "zcmpe", &subset)
 	  || riscv_lookup_subset (rps->subset_list, "zcmt", &subset)))
     {
       rps->error_handler
@@ -2014,14 +2011,6 @@ riscv_parse_check_conflicts (riscv_parse_subset_t *rps)
     {
       rps->error_handler
 	(_("rv%d does not support the `zcf' extension"), xlen);
-      no_conflict = false;
-    }
-
-  if (riscv_lookup_subset (rps->subset_list, "zcmpe", &subset)
-      && !riscv_lookup_subset (rps->subset_list, "e", &subset))
-    {
-      rps->error_handler
-	(_("Zcmpe requires `e' extension."));
       no_conflict = false;
     }
 
@@ -2553,9 +2542,6 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
       return riscv_subset_supports (rps, "zcmp");
     case INSN_CLASS_ZCMT:
       return riscv_subset_supports (rps, "zcmt");
-    case INSN_CLASS_ZCMP_OR_ZCMPE:
-      return (riscv_subset_supports (rps, "zcmp")
-	    || riscv_subset_supports (rps, "zcmpe"));
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));
@@ -2680,8 +2666,6 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return "zcmp";
     case INSN_CLASS_ZCMT:
       return "zcmt";
-    case INSN_CLASS_ZCMP_OR_ZCMPE:
-      return "zcmp' or `zcmpe";
     default:
       rps->error_handler
         (_("internal: unreachable INSN_CLASS_*"));

@@ -505,7 +505,6 @@ enum riscv_insn_class
   INSN_CLASS_ZCB_AND_M,
   INSN_CLASS_ZCMP,
   INSN_CLASS_ZCMT,
-  INSN_CLASS_ZCMP_OR_ZCMPE
 };
 
 /* This structure holds information for a particular instruction.  */
