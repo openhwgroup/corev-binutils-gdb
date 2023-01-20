@@ -1,4 +1,4 @@
-#as: -march=rv32g_zcmb
+#as: -march=rv32g_zcb
 #source: zc-norm-cm-relax-immu.s
 #objdump: -d -Mno-aliases
 

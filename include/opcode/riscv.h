@@ -147,10 +147,6 @@ static const char * const riscv_pred_succ[16] =
   (RV_X(x, 6, 1) | (RV_X(x, 5, 1) << 1))
 #define EXTRACT_ZCB_HALFWORD_UIMM(x) \
   (RV_X(x, 5, 1) << 1)
-#define EXTRACT_ZCMB_BYTE_UIMM(x) \
-  (RV_X(x, 11, 1) | (RV_X(x, 5, 2) << 1) | (RV_X(x, 10, 1) << 3))
-#define EXTRACT_ZCMB_HALFWORD_UIMM(x) \
-  ((RV_X(x, 5, 2) << 1) | (RV_X(x, 10, 2) << 3))
 #define EXTRACT_ZCMP_SPIMM(x) \
   (RV_X(x, 2, 2) << 4)
 #define EXTRACT_ZCMP_TABLE_JUMP_INDEX(x) \
@@ -226,10 +222,6 @@ static const char * const riscv_pred_succ[16] =
   ((RV_X(x, 0, 1) << 6) | (RV_X(x, 1, 1) << 5))
 #define ENCODE_ZCB_HALFWORD_UIMM(x) \
   (RV_X(x, 1, 1) << 5)
-#define ENCODE_ZCMB_BYTE_UIMM(x) \
-  ((RV_X(x, 0, 1) << 11) | (RV_X(x, 1, 2) << 5)) | (RV_X(x, 3, 1) << 10)
-#define ENCODE_ZCMB_HALFWORD_UIMM(x) \
-  ((RV_X(x, 1, 2) << 5) | (RV_X(x, 3, 2) << 10))
 #define ENCODE_ZCMP_SPIMM(x) \
   (RV_X(x, 4, 2) << 2)
 #define ENCODE_ZCMP_TABLE_JUMP_INDEX(x) \
@@ -263,8 +255,6 @@ static const char * const riscv_pred_succ[16] =
 /* ZC Specific.  */
 #define VALID_ZCB_BYTE_UIMM(x) (EXTRACT_ZCB_BYTE_UIMM(ENCODE_ZCB_BYTE_UIMM(x)) == (x))
 #define VALID_ZCB_HALFWORD_UIMM(x) (EXTRACT_ZCB_HALFWORD_UIMM(ENCODE_ZCB_HALFWORD_UIMM(x)) == (x))
-#define VALID_ZCMB_BYTE_UIMM(x) (EXTRACT_ZCMB_BYTE_UIMM(ENCODE_ZCMB_BYTE_UIMM(x)) == (x))
-#define VALID_ZCMB_HALFWORD_UIMM(x) (EXTRACT_ZCMB_HALFWORD_UIMM(ENCODE_ZCMB_HALFWORD_UIMM(x)) == (x))
 #define VALID_ZCMP_SPIMM(x) (EXTRACT_ZCMP_SPIMM(ENCODE_ZCMP_SPIMM(x)) == (x))
 
 #define RISCV_RTYPE(insn, rd, rs1, rs2) \
@@ -517,7 +507,6 @@ enum riscv_insn_class
   INSN_CLASS_ZCB_AND_ZBA,
   INSN_CLASS_ZCB_AND_ZBB,
   INSN_CLASS_ZCB_AND_M,
-  INSN_CLASS_ZCMB,
   INSN_CLASS_ZCMP,
   INSN_CLASS_ZCMT,
   INSN_CLASS_ZCMP_OR_ZCMPE

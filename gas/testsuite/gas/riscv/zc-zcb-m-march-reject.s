@@ -9,12 +9,6 @@ target:
 	c.zext.h x8
 	c.sext.h a0
 	c.zext.w x8
-	cm.lb x8,(x8)
-	cm.lbu x8,(x8)
-	cm.lh x8,2(x8)
-	cm.lhu x8,2(x8)
-	cm.sb x8,2(x10)
-	cm.sh x8,2(x8)
 	cm.push {ra}, -64
 	cm.pop {ra}, 64
 	cm.popret {ra}, 64

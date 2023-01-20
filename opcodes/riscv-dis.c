@@ -436,14 +436,6 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
             print (info->stream, dis_style_immediate, "%d",
              (int)EXTRACT_ZCB_HALFWORD_UIMM (l));
             break;
-          case 'B':
-            print (info->stream, dis_style_immediate, "%d",
-             (int)EXTRACT_ZCMB_BYTE_UIMM (l));
-            break;
-          case 'H':
-            print (info->stream, dis_style_immediate, "%d",
-             (int)EXTRACT_ZCMB_HALFWORD_UIMM (l));
-            break;
           case 'r':
             print_rlist (info, l);
             break;

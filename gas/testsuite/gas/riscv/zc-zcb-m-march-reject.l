@@ -7,12 +7,6 @@
 .*:.*: Error: unrecognized opcode `c.zext.h x8', extension `zcb' and `zbb' required
 .*:.*: Error: unrecognized opcode `c.sext.h a0', extension `zcb' and `zbb' required
 .*:.*: Error: unrecognized opcode `c.zext.w x8'
-.*:.*: Error: unrecognized opcode `cm.lb x8,\(x8\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.lbu x8,\(x8\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.lh x8,2\(x8\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.lhu x8,2\(x8\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.sb x8,2\(x10\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.sh x8,2\(x8\)', extension `zcmb' required
 .*:.*: Error: unrecognized opcode `cm.push \{ra\},-64', extension `zcmp' or `zcmpe' required
 .*:.*: Error: unrecognized opcode `cm.pop \{ra\},64', extension `zcmp' or `zcmpe' required
 .*:.*: Error: unrecognized opcode `cm.popret \{ra\},64', extension `zcmp' or `zcmpe' required
