@@ -15,12 +15,6 @@
 .*:.*: Error: unrecognized opcode `c.zext.w x8'
 .*:.*: Error: unrecognized opcode `c.mul x15,x15', extension `zcb' and `m' required
 .*:.*: Error: unrecognized opcode `c.not x15', extension `zcb' required
-.*:.*: Error: unrecognized opcode `cm.lb x8,\(x8\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.lbu x8,\(x8\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.lh x8,2\(x8\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.lhu x8,2\(x8\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.sb x8,2\(x10\)', extension `zcmb' required
-.*:.*: Error: unrecognized opcode `cm.sh x8,2\(x8\)', extension `zcmb' required
 .*:.*: Error: unrecognized opcode `cm.mva01s s0,s7', extension `zcmp' required
 .*:.*: Error: unrecognized opcode `cm.mvsa01 s0,s7', extension `zcmp' required
 .*:.*: Error: unrecognized opcode `cm.jt 512', extension `zcmt' required

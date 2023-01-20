@@ -17,12 +17,6 @@ target:
 	c.zext.w x8
 	c.mul x15,x15
 	c.not x15
-	cm.lb x8,(x8)
-	cm.lbu x8,(x8)
-	cm.lh x8,2(x8)
-	cm.lhu x8,2(x8)
-	cm.sb x8,2(x10)
-	cm.sh x8,2(x8)
 	cm.mva01s s0, s7
 	cm.mvsa01 s0, s7
 	cm.jt 512

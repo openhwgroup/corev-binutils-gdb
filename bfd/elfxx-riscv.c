@@ -1176,7 +1176,6 @@ static struct riscv_implicit_subset riscv_implicit_subsets[] =
   {"zks", "zbkx",	check_implicit_always},
   {"zks", "zksed",	check_implicit_always},
   {"zks", "zksh",	check_implicit_always},
-  {"zcmb", "zcb",	check_implicit_always},
   {"zcmp", "zca",	check_implicit_always},
   {"zcmt", "zca",	check_implicit_always},
   {"zcmpe", "zca",	check_implicit_always},
@@ -1287,7 +1286,6 @@ static struct riscv_supported_ext riscv_supported_std_z_ext[] =
   {"zca",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {"zcb",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {"zcf",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
-  {"zcmb",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {"zcmp",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {"zcmpe",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
   {"zcmt",		ISA_SPEC_CLASS_DRAFT,		0, 70, 4 },
@@ -1998,12 +1996,11 @@ riscv_parse_check_conflicts (riscv_parse_subset_t *rps)
       no_conflict = false;
     }
 
-  /* zcmb, zcmt, zcmp and zcmpe extensions are not compatible with
+  /* zcmt, zcmp and zcmpe extensions are not compatible with
   16-bit double precision floating point instructions in C
   extension.  */
   if (riscv_lookup_subset (rps->subset_list, "c", &subset)
-      && (riscv_lookup_subset (rps->subset_list, "zcmb", &subset)
-	  || riscv_lookup_subset (rps->subset_list, "zcmp", &subset)
+      && (riscv_lookup_subset (rps->subset_list, "zcmp", &subset)
 	  || riscv_lookup_subset (rps->subset_list, "zcmpe", &subset)
 	  || riscv_lookup_subset (rps->subset_list, "zcmt", &subset)))
     {
@@ -2552,8 +2549,6 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
     case INSN_CLASS_ZCB_AND_M:
       return (riscv_subset_supports (rps, "zcb")
 	    && riscv_subset_supports (rps, "m"));
-    case INSN_CLASS_ZCMB:
-      return riscv_subset_supports (rps, "zcmb");
     case INSN_CLASS_ZCMP:
       return riscv_subset_supports (rps, "zcmp");
     case INSN_CLASS_ZCMT:
@@ -2681,8 +2676,6 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return "zcb' and `zba";
     case INSN_CLASS_ZCB_AND_M:
       return "zcb' and `m";
-    case INSN_CLASS_ZCMB:
-      return "zcmb";
     case INSN_CLASS_ZCMP:
       return "zcmp";
     case INSN_CLASS_ZCMT:

@@ -17,12 +17,6 @@ target:
 	c.zext.w x8
 	c.mul x15,x15
 	c.not x15
-	cm.lb x8,(x8)
-	cm.lbu x8,(x8)
-	cm.lh x8,2(x8)
-	cm.lhu x8,2(x8)
-	cm.sb x8,2(x10)
-	cm.sh x8,2(x8)
 	cm.push.e {ra}, -64
 	cm.pop.e {ra}, 64
 	cm.popret.e {ra}, 64
