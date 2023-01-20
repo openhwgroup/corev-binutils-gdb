@@ -8,10 +8,10 @@
 .*:.*: Error: unrecognized opcode `c.sext.h a0', extension `zcb' and `zbb' required
 .*:.*: Error: unrecognized opcode `c.zext.w x8'
 .*:.*: Error: unrecognized opcode `c.mul x15,x15', extension `zcb' and `m' required
-.*:.*: Error: unrecognized opcode `cm.push \{ra\},-64', extension `zcmp' or `zcmpe' required
-.*:.*: Error: unrecognized opcode `cm.pop \{ra\},64', extension `zcmp' or `zcmpe' required
-.*:.*: Error: unrecognized opcode `cm.popret \{ra\},64', extension `zcmp' or `zcmpe' required
-.*:.*: Error: unrecognized opcode `cm.popretz \{ra\},64', extension `zcmp' or `zcmpe' required
+.*:.*: Error: unrecognized opcode `cm.push \{ra\},-64', extension `zcmp' required
+.*:.*: Error: unrecognized opcode `cm.pop \{ra\},64', extension `zcmp' required
+.*:.*: Error: unrecognized opcode `cm.popret \{ra\},64', extension `zcmp' required
+.*:.*: Error: unrecognized opcode `cm.popretz \{ra\},64', extension `zcmp' required
 .*:.*: Error: unrecognized opcode `cm.mva01s s0,s7', extension `zcmp' required
 .*:.*: Error: unrecognized opcode `cm.mvsa01 s0,s7', extension `zcmp' required
 .*:.*: Error: unrecognized opcode `cm.push.e \{ra\},-64'
