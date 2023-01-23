@@ -492,13 +492,13 @@ print_tablejump_entries(riscv_table_jump_htab_t *table_jump_htab)
 {
   if (table_jump_htab->tbj_indexes[0])
     printf("cm.jt:\n");
-  for (unsigned int z = 0; z < 64 && table_jump_htab->tbj_indexes[z] != 0; z ++)
+  for (unsigned int z = 0; z < 32 && table_jump_htab->tbj_indexes[z] != 0; z ++)
     printf ("\tindex=%d, sym name=%s, address=0x%08lx, savings=%u\n",
 	z, table_jump_htab->names[z], table_jump_htab->tbj_indexes[z], table_jump_htab->savings[z]);
 
-  if (table_jump_htab->tbj_indexes[64])
+  if (table_jump_htab->tbj_indexes[32])
     printf("cm.jalt:\n");
-  for (unsigned int z = 64; z < 256 && table_jump_htab->tbj_indexes[z] != 0; z ++)
+  for (unsigned int z = 32; z < 256 && table_jump_htab->tbj_indexes[z] != 0; z ++)
     printf ("\tindex=%d, sym name=%s, address=0x%08lx, savings=%u\n",
 	z, table_jump_htab->names[z], table_jump_htab->tbj_indexes[z], table_jump_htab->savings[z]);
 }
@@ -5174,7 +5174,7 @@ static bool
 riscv_table_jump_profiling (riscv_table_jump_htab_t *table_jump_htab,
     riscv_table_jump_args *args)
 {
-  args->start = 0, args->end = 63;
+  args->start = 0, args->end = 31;
   /* Do a ranking. */
   htab_traverse (table_jump_htab->tbljt_htab,
 	riscv_ranking_table_jump,
@@ -5183,7 +5183,7 @@ riscv_table_jump_profiling (riscv_table_jump_htab_t *table_jump_htab,
 	  table_jump_htab->tbljt_htab,
 	  args);
 
-  args->start = 64, args->end = 255;
+  args->start = 32, args->end = 255;
   htab_traverse (table_jump_htab->tbljalt_htab,
 	riscv_ranking_table_jump,
 	args);
@@ -5287,7 +5287,7 @@ _bfd_riscv_relax_section (bfd *abfd, asection *sec,
       that can be replaced by table jump instructions.
 
      relax_trip 1:
-      Rank the best 64 relocations to replace for cm.jt and the best 192
+      Rank the best 32 relocations to replace for cm.jt and the best 224
       relocations for cm.jalt in terms of the total size saved.
 
      relax_trip 2:

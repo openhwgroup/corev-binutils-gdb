@@ -3172,25 +3172,25 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		      INSERT_OPERAND (SREG2, *ip, regno % 8);
 		      continue;
 
-		    case 'I': /* index operand of cm.jt. The range is from 0 to 63. */
+		    case 'I': /* index operand of cm.jt. The range is from 0 to 31. */
 		      my_getExpression (imm_expr, asarg);
 		      if (imm_expr->X_op != O_constant
 			  || imm_expr->X_add_number < 0
-			  || imm_expr->X_add_number > 63)
+			  || imm_expr->X_add_number > 31)
 			{
-			  as_bad ("bad index value for cm.jt, range: [0, 63]");
+			  as_bad ("bad index value for cm.jt, range: [0, 31]");
 			  break;
 			}
 		      ip->insn_opcode |= ENCODE_ZCMP_TABLE_JUMP_INDEX (imm_expr->X_add_number);
 		      goto rvc_imm_done;
 
-		    case 'i': /* index operand of cm.jalt. The range is from 64 to 255. */
+		    case 'i': /* index operand of cm.jalt. The range is from 32 to 255. */
 		      my_getExpression (imm_expr, asarg);
 		      if (imm_expr->X_op != O_constant
-			  || imm_expr->X_add_number < 64
+			  || imm_expr->X_add_number < 32
 			  || imm_expr->X_add_number > 255)
 			{
-			  as_bad ("bad index value for cm.jalt, range: [64, 255]");
+			  as_bad ("bad index value for cm.jalt, range: [32, 255]");
 			  break;
 			}
 		      ip->insn_opcode |= ENCODE_ZCMP_TABLE_JUMP_INDEX (imm_expr->X_add_number);
