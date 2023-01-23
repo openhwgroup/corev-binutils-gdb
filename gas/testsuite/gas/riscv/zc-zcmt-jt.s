@@ -1,3 +1,3 @@
 target:
 	cm.jt 0
-	cm.jt 63
+	cm.jt 31
