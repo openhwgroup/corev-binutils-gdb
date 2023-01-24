@@ -135,10 +135,10 @@ typedef struct
   /* end_idx is used to calculate size of used slots at table jump section,
     and it is set to -1 if the profiling stage completed.  */
   int end_idx;
-  unsigned int total_saving;
+  int total_saving;
 
   /* debug use.  */
-  unsigned int *savings;
+  int *savings;
   const char **names;
 } riscv_table_jump_htab_t;
 typedef struct
@@ -148,7 +148,7 @@ typedef struct
 
   /* debug use.  */
   const char *name;
-  unsigned int benefit;
+  int benefit;
 } riscv_table_jump_htab_entry;
 
 struct riscv_elf_link_hash_table
@@ -5094,7 +5094,7 @@ riscv_ranking_table_jump (void **entry_ptr, void *_arg)
   const riscv_table_jump_htab_entry *entry;
   riscv_table_jump_args *arg;
   riscv_table_jump_htab_t *htab;
-  unsigned int *savings;
+  int *savings;
   const char **names;
   uintNN_t *tbj_indexes;
 
