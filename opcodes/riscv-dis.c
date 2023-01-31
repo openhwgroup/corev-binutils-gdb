@@ -434,13 +434,13 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	case 'b':
 	  if (oparg[1] == '1')
 	    {
-	      info->target = (EXTRACT_ITYPE_IMM (l)<<1) + pc; ++oparg;
+	      info->target = (EXTRACT_ITYPE_IMM (l)<<2) + pc; ++oparg;
 	      (*info->print_address_func) (info->target, info);
 	      break;
         }
 	  else if (oparg[1] == '2')
 	    {
-	      info->target = (EXTRACT_CV_HWLP_UIMM5 (l)<<1) + pc; ++oparg;
+	      info->target = (EXTRACT_CV_HWLP_UIMM5 (l)<<2) + pc; ++oparg;
 	      (*info->print_address_func) (info->target, info);
 	      break;
 	    }

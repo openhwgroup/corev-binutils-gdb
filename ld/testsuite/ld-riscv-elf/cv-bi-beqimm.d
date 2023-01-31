@@ -13,7 +13,7 @@ Disassembly of section \.text:
 .*:[[:space:]]+00008067[[:space:]]+ret
 
 .* <_start>:
-.*:[[:space:]]+0102a463[[:space:]]+cv.beqimm[[:space:]]+t0,-16,.*[[:space:]]+<L2>
+.*:[[:space:]]+0102e40b[[:space:]]+cv.beqimm[[:space:]]+t0,-16,.*[[:space:]]+<L2>
 .*:[[:space:]]+ff9ff0ef[[:space:]]+jal[[:space:]]+10074[[:space:]]+<func>
 
 .* <L2>:
