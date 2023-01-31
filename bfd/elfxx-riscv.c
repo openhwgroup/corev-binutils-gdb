@@ -881,7 +881,7 @@ static reloc_howto_type howto_table[] =
   /* CORE-V Specific.  */
   /* 12-bit PC-relative offset, for hwloop.  */
   HOWTO (R_RISCV_CVPCREL_UI12,		/* type */
-	 1,				/* rightshift */
+	 2,				/* rightshift */
 	 2,				/* size */
 	 32,				/* bitsize */
 	 true,				/* pc_relative */
@@ -896,7 +896,7 @@ static reloc_howto_type howto_table[] =
 
   /* Unsigned 5-bit PC-relative offset, for hwloop.  */
   HOWTO (R_RISCV_CVPCREL_URS1,		/* type */
-	 1,				/* rightshift */
+	 2,				/* rightshift */
 	 1,				/* size */
 	 32,				/* bitsize */
 	 true,				/* pc_relative */
