@@ -13,7 +13,7 @@ Disassembly of section .text:
 [  ]+8:[ 	]+a943835b[ 	]+cv.insert	t1,t2,20,20
 [  ]+c:[ 	]+2943935b[ 	]+cv.bclr	t1,t2,20,20
 [  ]+10:[ 	]+6943935b[ 	]+cv.bset	t1,t2,20,20
-[  ]+14:[ 	]+c743935b[ 	]+cv.bitrev	t1,t2,20,3
+[  ]+14:[ 	]+c743935b[ 	]+cv.bitrev	t1,t2,3,20
 [  ]+18:[ 	]+307332ab[ 	]+cv.extractr	t0,t1,t2
 [  ]+1c:[ 	]+327332ab[ 	]+cv.extractur	t0,t1,t2
 [  ]+20:[ 	]+347332ab[ 	]+cv.insertr	t0,t1,t2

@@ -8,12 +8,12 @@
 Disassembly of section .text:
 
 0+000 <target>:
-[  ]+0:[ 	]+28a502db[ 	]+cv.extract	t0,a0,10,20
-[  ]+4:[ 	]+68f4835b[ 	]+cv.extractu	t1,s1,15,20
+[  ]+0:[ 	]+28a502db[ 	]+cv.extract	t0,a0,20,10
+[  ]+4:[ 	]+68f4835b[ 	]+cv.extractu	t1,s1,20,15
 [  ]+8:[ 	]+a94403db[ 	]+cv.insert	t2,s0,20,20
-[  ]+c:[ 	]+2993945b[ 	]+cv.bclr	s0,t2,25,20
-[  ]+10:[ 	]+69e314db[ 	]+cv.bset	s1,t1,30,20
-[  ]+14:[ 	]+c652955b[ 	]+cv.bitrev	a0,t0,5,3
+[  ]+c:[ 	]+2993945b[ 	]+cv.bclr	s0,t2,20,25
+[  ]+10:[ 	]+69e314db[ 	]+cv.bset	s1,t1,20,30
+[  ]+14:[ 	]+c652955b[ 	]+cv.bitrev	a0,t0,3,5
 [  ]+18:[ 	]+307332ab[ 	]+cv.extractr	t0,t1,t2
 [  ]+1c:[ 	]+327332ab[ 	]+cv.extractur	t0,t1,t2
 [  ]+20:[ 	]+347332ab[ 	]+cv.insertr	t0,t1,t2
