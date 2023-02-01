@@ -2363,12 +2363,12 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.clb",          0, INSN_CLASS_COREV_BITMANIP, "d,s",   MATCH_CV_CLB, MASK_CV_CLB, match_opcode, 0},
 {"cv.cnt",          0, INSN_CLASS_COREV_BITMANIP, "d,s",   MATCH_CV_CNT, MASK_CV_CNT, match_opcode, 0},
 
-{"cv.extract",      0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_EXTRACT, MASK_CV_EXTRACT, match_opcode, 0},
-{"cv.extractu",     0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_EXTRACTU, MASK_CV_EXTRACTU, match_opcode, 0},
-{"cv.insert",       0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_INSERT, MASK_CV_INSERT, match_opcode, 0},
-{"cv.bclr",         0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_BCLR, MASK_CV_BCLR, match_opcode, 0},
-{"cv.bset",         0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b6", MATCH_CV_BSET, MASK_CV_BSET, match_opcode, 0},
-{"cv.bitrev",       0, INSN_CLASS_COREV_BITMANIP, "d,s,bi,b7", MATCH_CV_BITREV, MASK_CV_BITREV, match_opcode, 0},
+{"cv.extract",      0, INSN_CLASS_COREV_BITMANIP, "d,s,b6,bi", MATCH_CV_EXTRACT, MASK_CV_EXTRACT, match_opcode, 0},
+{"cv.extractu",     0, INSN_CLASS_COREV_BITMANIP, "d,s,b6,bi", MATCH_CV_EXTRACTU, MASK_CV_EXTRACTU, match_opcode, 0},
+{"cv.insert",       0, INSN_CLASS_COREV_BITMANIP, "d,s,b6,bi", MATCH_CV_INSERT, MASK_CV_INSERT, match_opcode, 0},
+{"cv.bclr",         0, INSN_CLASS_COREV_BITMANIP, "d,s,b6,bi", MATCH_CV_BCLR, MASK_CV_BCLR, match_opcode, 0},
+{"cv.bset",         0, INSN_CLASS_COREV_BITMANIP, "d,s,b6,bi", MATCH_CV_BSET, MASK_CV_BSET, match_opcode, 0},
+{"cv.bitrev",       0, INSN_CLASS_COREV_BITMANIP, "d,s,b7,bi", MATCH_CV_BITREV, MASK_CV_BITREV, match_opcode, 0},
 
 
 /* END OF CORE-V */

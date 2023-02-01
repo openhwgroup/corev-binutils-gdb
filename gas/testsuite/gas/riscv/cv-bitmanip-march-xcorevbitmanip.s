@@ -4,7 +4,7 @@ target:
     cv.insert x6, x7, 20, 20
     cv.bclr x6, x7, 20, 20
     cv.bset x6, x7, 20, 20
-    cv.bitrev x6, x7, 20, 3
+    cv.bitrev x6, x7, 3, 20
     cv.extractr x5, x6, x7
     cv.extractur x5, x6, x7
     cv.insertr x5, x6, x7
