@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	98a4747b          	cv.sdotup.sci.b	s0,s0,20
   10:	98aa7a7b          	cv.sdotup.sci.b	s4,s4,20
   14:	98affffb          	cv.sdotup.sci.b	t6,t6,20
-  18:	9903f37b          	cv.sdotup.sci.b	t1,t2,-32
-  1c:	9803f37b          	cv.sdotup.sci.b	t1,t2,0
-  20:	9af3f37b          	cv.sdotup.sci.b	t1,t2,31
+  18:	9803f37b          	cv.sdotup.sci.b	t1,t2,0
+  1c:	9bf3f37b          	cv.sdotup.sci.b	t1,t2,63

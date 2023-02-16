@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	44a4647b          	cv.cmpltu.sci.h	s0,s0,20
   10:	44aa6a7b          	cv.cmpltu.sci.h	s4,s4,20
   14:	44afeffb          	cv.cmpltu.sci.h	t6,t6,20
-  18:	4503e37b          	cv.cmpltu.sci.h	t1,t2,-32
-  1c:	4403e37b          	cv.cmpltu.sci.h	t1,t2,0
-  20:	46f3e37b          	cv.cmpltu.sci.h	t1,t2,31
+  18:	4403e37b          	cv.cmpltu.sci.h	t1,t2,0
+  1c:	47f3e37b          	cv.cmpltu.sci.h	t1,t2,63
