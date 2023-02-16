@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	3ca4647b          	cv.cmpgeu.sci.h	s0,s0,20
   10:	3caa6a7b          	cv.cmpgeu.sci.h	s4,s4,20
   14:	3cafeffb          	cv.cmpgeu.sci.h	t6,t6,20
-  18:	3d03e37b          	cv.cmpgeu.sci.h	t1,t2,-32
-  1c:	3c03e37b          	cv.cmpgeu.sci.h	t1,t2,0
-  20:	3ef3e37b          	cv.cmpgeu.sci.h	t1,t2,31
+  18:	3c03e37b          	cv.cmpgeu.sci.h	t1,t2,0
+  1c:	3ff3e37b          	cv.cmpgeu.sci.h	t1,t2,63

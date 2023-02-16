@@ -7,6 +7,5 @@ target:
     cv.minu.sci.b x20, x20, 20
     cv.minu.sci.b x31, x31, 20
     #Immediate Values Test
-    cv.minu.sci.b x6, x7, -32
     cv.minu.sci.b x6, x7, 0
-    cv.minu.sci.b x6, x7, 31
+    cv.minu.sci.b x6, x7, 63
