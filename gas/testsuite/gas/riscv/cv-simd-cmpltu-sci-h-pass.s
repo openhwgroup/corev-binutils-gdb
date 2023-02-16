@@ -7,6 +7,5 @@ target:
     cv.cmpltu.sci.h x20, x20, 20
     cv.cmpltu.sci.h x31, x31, 20
     #Immediate Values Test
-    cv.cmpltu.sci.h x6, x7, -32
     cv.cmpltu.sci.h x6, x7, 0
-    cv.cmpltu.sci.h x6, x7, 31
+    cv.cmpltu.sci.h x6, x7, 63

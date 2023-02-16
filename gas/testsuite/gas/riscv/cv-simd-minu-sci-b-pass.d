@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	28a4747b          	cv.minu.sci.b	s0,s0,20
   10:	28aa7a7b          	cv.minu.sci.b	s4,s4,20
   14:	28affffb          	cv.minu.sci.b	t6,t6,20
-  18:	2903f37b          	cv.minu.sci.b	t1,t2,-32
-  1c:	2803f37b          	cv.minu.sci.b	t1,t2,0
-  20:	2af3f37b          	cv.minu.sci.b	t1,t2,31
+  18:	2803f37b          	cv.minu.sci.b	t1,t2,0
+  1c:	2bf3f37b          	cv.minu.sci.b	t1,t2,63

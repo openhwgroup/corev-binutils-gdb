@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	38a4647b          	cv.maxu.sci.h	s0,s0,20
   10:	38aa6a7b          	cv.maxu.sci.h	s4,s4,20
   14:	38afeffb          	cv.maxu.sci.h	t6,t6,20
-  18:	3903e37b          	cv.maxu.sci.h	t1,t2,-32
-  1c:	3803e37b          	cv.maxu.sci.h	t1,t2,0
-  20:	3af3e37b          	cv.maxu.sci.h	t1,t2,31
+  18:	3803e37b          	cv.maxu.sci.h	t1,t2,0
+  1c:	3bf3e37b          	cv.maxu.sci.h	t1,t2,63

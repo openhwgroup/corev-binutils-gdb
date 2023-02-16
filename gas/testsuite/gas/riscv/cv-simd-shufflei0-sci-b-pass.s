@@ -7,6 +7,5 @@ target:
     cv.shufflei0.sci.b x20, x20, 20
     cv.shufflei0.sci.b x31, x31, 20
     #Immediate Values Test
-    cv.shufflei0.sci.b x6, x7, -32
     cv.shufflei0.sci.b x6, x7, 0
-    cv.shufflei0.sci.b x6, x7, 31
+    cv.shufflei0.sci.b x6, x7, 63

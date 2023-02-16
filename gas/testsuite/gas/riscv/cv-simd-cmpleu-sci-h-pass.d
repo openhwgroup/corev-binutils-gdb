@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	4ca4647b          	cv.cmpleu.sci.h	s0,s0,20
   10:	4caa6a7b          	cv.cmpleu.sci.h	s4,s4,20
   14:	4cafeffb          	cv.cmpleu.sci.h	t6,t6,20
-  18:	4d03e37b          	cv.cmpleu.sci.h	t1,t2,-32
-  1c:	4c03e37b          	cv.cmpleu.sci.h	t1,t2,0
-  20:	4ef3e37b          	cv.cmpleu.sci.h	t1,t2,31
+  18:	4c03e37b          	cv.cmpleu.sci.h	t1,t2,0
+  1c:	4ff3e37b          	cv.cmpleu.sci.h	t1,t2,63

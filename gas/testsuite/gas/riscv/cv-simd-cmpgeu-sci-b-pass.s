@@ -7,6 +7,5 @@ target:
     cv.cmpgeu.sci.b x20, x20, 20
     cv.cmpgeu.sci.b x31, x31, 20
     #Immediate Values Test
-    cv.cmpgeu.sci.b x6, x7, -32
     cv.cmpgeu.sci.b x6, x7, 0
-    cv.cmpgeu.sci.b x6, x7, 31
+    cv.cmpgeu.sci.b x6, x7, 63

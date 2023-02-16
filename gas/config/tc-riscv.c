@@ -3391,7 +3391,7 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		{
 		  my_getExpression (imm_expr, asarg);
 		  check_absolute_expr (ip, imm_expr, FALSE);
-		  asarg = expr_end;
+		  asarg = expr_parse_end;
 		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>63)
 		  as_bad(_("immediate value must be 6-bit unsigned, %ld is out of range"),
 		  imm_expr->X_add_number);

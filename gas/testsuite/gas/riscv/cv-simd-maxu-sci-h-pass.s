@@ -7,6 +7,5 @@ target:
     cv.maxu.sci.h x20, x20, 20
     cv.maxu.sci.h x31, x31, 20
     #Immediate Values Test
-    cv.maxu.sci.h x6, x7, -32
     cv.maxu.sci.h x6, x7, 0
-    cv.maxu.sci.h x6, x7, 31
+    cv.maxu.sci.h x6, x7, 63

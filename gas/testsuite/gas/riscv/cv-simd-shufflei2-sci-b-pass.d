@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	d0a4747b          	cv.shufflei2.sci.b	s0,s0,20
   10:	d0aa7a7b          	cv.shufflei2.sci.b	s4,s4,20
   14:	d0affffb          	cv.shufflei2.sci.b	t6,t6,20
-  18:	d103f37b          	cv.shufflei2.sci.b	t1,t2,-32
-  1c:	d003f37b          	cv.shufflei2.sci.b	t1,t2,0
-  20:	d2f3f37b          	cv.shufflei2.sci.b	t1,t2,31
+  18:	d003f37b          	cv.shufflei2.sci.b	t1,t2,0
+  1c:	d3f3f37b          	cv.shufflei2.sci.b	t1,t2,63

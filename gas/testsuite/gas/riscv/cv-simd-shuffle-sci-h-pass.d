@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	c0a4647b          	cv.shuffle.sci.h	s0,s0,20
   10:	c0aa6a7b          	cv.shuffle.sci.h	s4,s4,20
   14:	c0afeffb          	cv.shuffle.sci.h	t6,t6,20
-  18:	c103e37b          	cv.shuffle.sci.h	t1,t2,-32
-  1c:	c003e37b          	cv.shuffle.sci.h	t1,t2,0
-  20:	c2f3e37b          	cv.shuffle.sci.h	t1,t2,31
+  18:	c003e37b          	cv.shuffle.sci.h	t1,t2,0
+  1c:	c3f3e37b          	cv.shuffle.sci.h	t1,t2,63
