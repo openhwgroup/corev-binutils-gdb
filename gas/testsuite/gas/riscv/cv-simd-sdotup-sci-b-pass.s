@@ -7,6 +7,5 @@ target:
     cv.sdotup.sci.b x20, x20, 20
     cv.sdotup.sci.b x31, x31, 20
     #Immediate Values Test
-    cv.sdotup.sci.b x6, x7, -32
     cv.sdotup.sci.b x6, x7, 0
-    cv.sdotup.sci.b x6, x7, 31
+    cv.sdotup.sci.b x6, x7, 63
