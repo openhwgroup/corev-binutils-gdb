@@ -46,26 +46,26 @@ Select the base isa, as specified by ISA.  For example -march=rv32ima.
 If this option and the architecture attributes aren't set, then assembler
 will check the default configure setting --with-arch=ISA.
 
-For the CORE-V variant of the assembler, an additional ISA option @samp{Xcorev}
+For the CORE-V variant of the assembler, an additional ISA option @samp{Xcv}
 is provided to enable all CORE-V extensions. To enable only a subset of the CORE-V
 extensions, the following additional ISA options are provided:
 @itemize @bullet
 @item
-hardware loop: @samp{Xcorevhwlp} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
+hardware loop: @samp{Xcvhwlp} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-multiply-accumulate: @samp{Xcorevmac} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
+multiply-accumulate: @samp{Xcvmac} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-general ALU operations: @samp{Xcorevalu} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
+general ALU operations: @samp{Xcvalu} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-post-incrementing and reg-reg load/store: @samp{Xcorevmem} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
+post-incrementing and reg-reg load/store: @samp{Xcvmem} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-immediate branching: @samp{Xcorevbi} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
+immediate branching: @samp{Xcvbi} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @item
-event load: @samp{Xcorevelw} (not supported for CV32E40Pv1, version 1 for CV32E40Pv2)
+event load: @samp{Xcvelw} (not supported for CV32E40Pv1, version 1 for CV32E40Pv2)
 @item
-single instruction multiple data: @samp{Xcorevsimd} (not supported for CV32E40Pv1, version 1 for CV32E40Pv2)
+single instruction multiple data: @samp{Xcvsimd} (not supported for CV32E40Pv1, version 1 for CV32E40Pv2)
 @item
-bit manipulation: @samp{Xcorevbitmanip} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
+bit manipulation: @samp{Xcvbitmanip} (version 1 for CV32E40Pv1, version 2 for CV32E40Pv2)
 @end itemize
 
 @cindex @samp{-misa-spec=ISAspec} option, RISC-V

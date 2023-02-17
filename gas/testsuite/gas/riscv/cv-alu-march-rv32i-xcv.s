@@ -1,4 +1,4 @@
-# xcorev march option works for all CORE-V general ALU ops extensions
+# xcv march option works for all CORE-V general ALU ops extensions
 target:
 	cv.abs t4,t2
 	cv.slet t4,t2,t6

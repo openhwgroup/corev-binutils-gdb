@@ -1,6 +1,6 @@
 #name: starti relocation
 #source: cv-hwlp-starti.s
-#as: -march=rv32i_xcorevhwlp1p0
+#as: -march=rv32i_xcvhwlp1p0
 #ld: -melf32lriscv
 #objdump: -dr
 

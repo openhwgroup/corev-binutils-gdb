@@ -1,4 +1,4 @@
-# xcorev march option works for all CORE-V mac extensions
+# xcv march option works for all CORE-V mac extensions
 target:
 	cv.lb t4, t2(t0)
 	cv.lbu t6, t1(t4)

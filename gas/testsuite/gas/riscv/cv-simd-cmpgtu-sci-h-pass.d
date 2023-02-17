@@ -1,4 +1,4 @@
-#as: -march=rv32i_xcorevsimd1p0
+#as: -march=rv32i_xcvsimd1p0
 #source: cv-simd-cmpgtu-sci-h-pass.s
 #objdump: -d
 
