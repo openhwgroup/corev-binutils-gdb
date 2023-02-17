@@ -1,4 +1,4 @@
-#as: -march=rv32i_xcorevelw1p0
+#as: -march=rv32i_xcvelw1p0
 #source: cv-elw-pass.s
 #objdump: -d
 

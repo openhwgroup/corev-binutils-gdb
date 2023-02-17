@@ -2358,32 +2358,32 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
 	       && riscv_subset_supports (rps, "q"))
 	      || (riscv_subset_supports (rps, "zhinxmin")
 		  && riscv_subset_supports (rps, "zqinx")));
-    case INSN_CLASS_COREV:
-      return riscv_subset_supports (rps, "xcorev");
-    case INSN_CLASS_COREV_HWLP:
-      return (riscv_subset_supports (rps, "xcorevhwlp")
-	      || riscv_subset_supports (rps, "xcorev"));
-    case INSN_CLASS_COREV_MAC:
-      return (riscv_subset_supports (rps, "xcorevmac")
-	      || riscv_subset_supports (rps, "xcorev"));
-    case INSN_CLASS_COREV_ALU:
-      return (riscv_subset_supports (rps, "xcorevalu")
-	      || riscv_subset_supports (rps, "xcorev"));
-    case INSN_CLASS_COREV_MEM:
-      return (riscv_subset_supports (rps, "xcorevmem")
-	      || riscv_subset_supports (rps, "xcorev"));
-    case INSN_CLASS_COREV_BI:
-      return (riscv_subset_supports (rps, "xcorevbi")
-	      || riscv_subset_supports (rps, "xcorev"));
-    case INSN_CLASS_COREV_ELW:
-      return (riscv_subset_supports (rps, "xcorevelw")
-	      || riscv_subset_supports (rps, "xcorev"));
-    case INSN_CLASS_COREV_SIMD:
-      return (riscv_subset_supports (rps, "xcorevsimd")
-	      || riscv_subset_supports (rps, "xcorev"));
-    case INSN_CLASS_COREV_BITMANIP:
-      return (riscv_subset_supports (rps, "xcorevbitmanip")
-	      || riscv_subset_supports (rps, "xcorev"));
+    case INSN_CLASS_CV:
+      return riscv_subset_supports (rps, "xcv");
+    case INSN_CLASS_CV_HWLP:
+      return (riscv_subset_supports (rps, "xcvhwlp")
+	      || riscv_subset_supports (rps, "xcv"));
+    case INSN_CLASS_CV_MAC:
+      return (riscv_subset_supports (rps, "xcvmac")
+	      || riscv_subset_supports (rps, "xcv"));
+    case INSN_CLASS_CV_ALU:
+      return (riscv_subset_supports (rps, "xcvalu")
+	      || riscv_subset_supports (rps, "xcv"));
+    case INSN_CLASS_CV_MEM:
+      return (riscv_subset_supports (rps, "xcvmem")
+	      || riscv_subset_supports (rps, "xcv"));
+    case INSN_CLASS_CV_BI:
+      return (riscv_subset_supports (rps, "xcvbi")
+	      || riscv_subset_supports (rps, "xcv"));
+    case INSN_CLASS_CV_ELW:
+      return (riscv_subset_supports (rps, "xcvelw")
+	      || riscv_subset_supports (rps, "xcv"));
+    case INSN_CLASS_CV_SIMD:
+      return (riscv_subset_supports (rps, "xcvsimd")
+	      || riscv_subset_supports (rps, "xcv"));
+    case INSN_CLASS_CV_BITMANIP:
+      return (riscv_subset_supports (rps, "xcvbitmanip")
+	      || riscv_subset_supports (rps, "xcv"));
     case INSN_CLASS_ZBA:
       return riscv_subset_supports (rps, "zba");
     case INSN_CLASS_ZBB:
@@ -2550,24 +2550,24 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
 	return "zhinxmin";
       else
 	return _("zfhmin' and `q', or `zhinxmin' and `zqinx");
-    case INSN_CLASS_COREV:
-      return "xcorev";
-    case INSN_CLASS_COREV_HWLP:
-      return "xcorevhwlp' or `xcorev";
-    case INSN_CLASS_COREV_MAC:
-      return "xcorevmac' or `xcorev";
-    case INSN_CLASS_COREV_ALU:
-      return "xcorevalu' or `xcorev";
-    case INSN_CLASS_COREV_MEM:
-      return "xcorevmem' or `xcorev";
-    case INSN_CLASS_COREV_BI:
-      return "xcorevbi' or `xcorev";
-    case INSN_CLASS_COREV_ELW:
-      return "xcorevelw' or `xcorev";
-    case INSN_CLASS_COREV_SIMD:
-      return "xcorevsimd' or `xcorev";
-    case INSN_CLASS_COREV_BITMANIP:
-      return "xcorevbitmanip' or `xcorev";
+    case INSN_CLASS_CV:
+      return "xcv";
+    case INSN_CLASS_CV_HWLP:
+      return "xcvhwlp' or `xcv";
+    case INSN_CLASS_CV_MAC:
+      return "xcvmac' or `xcv";
+    case INSN_CLASS_CV_ALU:
+      return "xcvalu' or `xcv";
+    case INSN_CLASS_CV_MEM:
+      return "xcvmem' or `xcv";
+    case INSN_CLASS_CV_BI:
+      return "xcvbi' or `xcv";
+    case INSN_CLASS_CV_ELW:
+      return "xcvelw' or `xcv";
+    case INSN_CLASS_CV_SIMD:
+      return "xcvsimd' or `xcv";
+    case INSN_CLASS_CV_BITMANIP:
+      return "xcvbitmanip' or `xcv";
     case INSN_CLASS_ZBA:
       return "zba";
     case INSN_CLASS_ZBB:
