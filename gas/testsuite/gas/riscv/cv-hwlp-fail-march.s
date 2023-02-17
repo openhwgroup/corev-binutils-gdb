@@ -1,4 +1,4 @@
-# Absence of xcorev or xcorevhwlp march option disables all CORE-V hwlp extensions
+# Absence of xcv or xcvhwlp march option disables all CORE-V hwlp extensions
 target:
 	cv.starti 1, 320
 	cv.endi   1, 1056

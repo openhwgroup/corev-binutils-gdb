@@ -1,6 +1,6 @@
 #name: beqimm relocation
 #source: cv-bi-beqimm.s
-#as: -march=rv32i_xcorevbi1p0
+#as: -march=rv32i_xcvbi1p0
 #ld: -melf32lriscv
 #objdump: -dr
 

@@ -1,5 +1,5 @@
-#as: -march=rv32i_xcorev1p0
-#source: cv-simd-march-xcorev.s
+#as: -march=rv32i_xcv1p0
+#source: cv-simd-march-xcv.s
 #objdump: -d
 
 .*:[ 	]+file format .*

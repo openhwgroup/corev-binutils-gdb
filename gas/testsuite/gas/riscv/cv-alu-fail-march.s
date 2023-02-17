@@ -1,4 +1,4 @@
-# Absence of xcorev or xcorevalu march option disables all CORE-V general ALU ops extensions
+# Absence of xcv or xcvalu march option disables all CORE-V general ALU ops extensions
 target:
 	cv.abs t4,t2
 	cv.slet t4,t2,t6
