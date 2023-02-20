@@ -1,4 +1,4 @@
-# Absence of xcv or xcvmem march option disables all CORE-V mem extensions
+# Absence of xcvmem march option disables all CORE-V mem extensions
 target:
 	cv.lb t4, t2(t0)
 	cv.lbu t6, t1(t4)
