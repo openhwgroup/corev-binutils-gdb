@@ -1,25 +1,25 @@
 .*: Assembler messages:
-.*: Error: unrecognized opcode `cv.lb t4,t2\(t0\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lbu t6,t1\(t4\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lh t2,t0\(t3\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lhu t0,t5\(t1\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lw t1,t3\(t6\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lb t4,t2\(t0\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lbu t6,t1\(t4\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lh t2,t0\(t3\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lhu t0,t5\(t1\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lw t1,t3\(t6\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lb t4,23\(t0\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lbu t6,0\(t4\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lh t2,77\(t3\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lhu t0,101\(t1\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.lw t1,6\(t6\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sb t0,t1\(t2\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sh t1,t3\(t4\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sw t1,t2\(t4\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sb t0,t1\(t2\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sh t1,t6\(t2\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sw t5,t6\(t2\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sb t6,10\(t1\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sh t3,80\(t5\!\)', extension `xcvmem' or `xcv' required
-.*: Error: unrecognized opcode `cv.sw t1,20\(t4\!\)', extension `xcvmem' or `xcv' required
+.*: Error: unrecognized opcode `cv.lb t4,t2\(t0\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lbu t6,t1\(t4\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lh t2,t0\(t3\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lhu t0,t5\(t1\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lw t1,t3\(t6\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lb t4,t2\(t0\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lbu t6,t1\(t4\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lh t2,t0\(t3\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lhu t0,t5\(t1\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lw t1,t3\(t6\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lb t4,23\(t0\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lbu t6,0\(t4\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lh t2,77\(t3\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lhu t0,101\(t1\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.lw t1,6\(t6\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sb t0,t1\(t2\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sh t1,t3\(t4\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sw t1,t2\(t4\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sb t0,t1\(t2\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sh t1,t6\(t2\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sw t5,t6\(t2\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sb t6,10\(t1\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sh t3,80\(t5\!\)', extension `xcvmem' required
+.*: Error: unrecognized opcode `cv.sw t1,20\(t4\!\)', extension `xcvmem' required

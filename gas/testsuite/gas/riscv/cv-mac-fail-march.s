@@ -1,4 +1,4 @@
-# Absence of xcv or xcvmac march option disables all CORE-V mac extensions
+# Absence of xcvmac march option disables all CORE-V mac extensions
 target:
 	cv.mac t4, t2, t0
 	cv.msu t4, t2, t0

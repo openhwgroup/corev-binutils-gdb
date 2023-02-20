@@ -2358,32 +2358,22 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
 	       && riscv_subset_supports (rps, "q"))
 	      || (riscv_subset_supports (rps, "zhinxmin")
 		  && riscv_subset_supports (rps, "zqinx")));
-    case INSN_CLASS_CV:
-      return riscv_subset_supports (rps, "xcv");
     case INSN_CLASS_CV_HWLP:
-      return (riscv_subset_supports (rps, "xcvhwlp")
-	      || riscv_subset_supports (rps, "xcv"));
+      return riscv_subset_supports (rps, "xcvhwlp");
     case INSN_CLASS_CV_MAC:
-      return (riscv_subset_supports (rps, "xcvmac")
-	      || riscv_subset_supports (rps, "xcv"));
+      return riscv_subset_supports (rps, "xcvmac");
     case INSN_CLASS_CV_ALU:
-      return (riscv_subset_supports (rps, "xcvalu")
-	      || riscv_subset_supports (rps, "xcv"));
+      return riscv_subset_supports (rps, "xcvalu");
     case INSN_CLASS_CV_MEM:
-      return (riscv_subset_supports (rps, "xcvmem")
-	      || riscv_subset_supports (rps, "xcv"));
+      return riscv_subset_supports (rps, "xcvmem");
     case INSN_CLASS_CV_BI:
-      return (riscv_subset_supports (rps, "xcvbi")
-	      || riscv_subset_supports (rps, "xcv"));
+      return riscv_subset_supports (rps, "xcvbi");
     case INSN_CLASS_CV_ELW:
-      return (riscv_subset_supports (rps, "xcvelw")
-	      || riscv_subset_supports (rps, "xcv"));
+      return riscv_subset_supports (rps, "xcvelw");
     case INSN_CLASS_CV_SIMD:
-      return (riscv_subset_supports (rps, "xcvsimd")
-	      || riscv_subset_supports (rps, "xcv"));
+      return riscv_subset_supports (rps, "xcvsimd");
     case INSN_CLASS_CV_BITMANIP:
-      return (riscv_subset_supports (rps, "xcvbitmanip")
-	      || riscv_subset_supports (rps, "xcv"));
+      return riscv_subset_supports (rps, "xcvbitmanip");
     case INSN_CLASS_ZBA:
       return riscv_subset_supports (rps, "zba");
     case INSN_CLASS_ZBB:
@@ -2550,24 +2540,22 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
 	return "zhinxmin";
       else
 	return _("zfhmin' and `q', or `zhinxmin' and `zqinx");
-    case INSN_CLASS_CV:
-      return "xcv";
     case INSN_CLASS_CV_HWLP:
-      return "xcvhwlp' or `xcv";
+      return "xcvhwlp";
     case INSN_CLASS_CV_MAC:
-      return "xcvmac' or `xcv";
+      return "xcvmac";
     case INSN_CLASS_CV_ALU:
-      return "xcvalu' or `xcv";
+      return "xcvalu";
     case INSN_CLASS_CV_MEM:
-      return "xcvmem' or `xcv";
+      return "xcvmem";
     case INSN_CLASS_CV_BI:
-      return "xcvbi' or `xcv";
+      return "xcvbi";
     case INSN_CLASS_CV_ELW:
-      return "xcvelw' or `xcv";
+      return "xcvelw";
     case INSN_CLASS_CV_SIMD:
-      return "xcvsimd' or `xcv";
+      return "xcvsimd";
     case INSN_CLASS_CV_BITMANIP:
-      return "xcvbitmanip' or `xcv";
+      return "xcvbitmanip";
     case INSN_CLASS_ZBA:
       return "zba";
     case INSN_CLASS_ZBB:
