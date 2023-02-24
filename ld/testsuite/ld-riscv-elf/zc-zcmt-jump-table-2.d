@@ -14,10 +14,10 @@ Disassembly of section .text:
 	...
 
 0+[0-9a-f]+ <_start>:
-.*:[ 	]+[0-9a-f]+[ 	]+cm.jalt[ 	]+64
+.*:[ 	]+[0-9a-f]+[ 	]+cm.jt[ 	]+32
 .*:[ 	]+[0-9a-f]+[ 	]+ret
 	...
 
 0+[0-9a-f]+ <__jvt_base\$>:
 	...
-.*:[ 	]+[0-9a-f]+[ 	]+index 64[ 	]+[^<]+<bar>
+.*:[ 	]+[0-9a-f]+[ 	]+index 32[ 	]+[^<]+<bar>

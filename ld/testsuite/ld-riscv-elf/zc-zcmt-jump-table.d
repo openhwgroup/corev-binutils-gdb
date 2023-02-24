@@ -16,8 +16,8 @@ Disassembly of section .text:
 .*:[ 	]+[0-9a-f]+[ 	]+ret
 
 0+[0-9a-f]+ <_start>:
-.*:[ 	]+[0-9a-f]+[ 	]+cm.jalt[ 	]+64
-.*:[ 	]+[0-9a-f]+[ 	]+cm.jalt[ 	]+65
+.*:[ 	]+[0-9a-f]+[ 	]+cm.jt[ 	]+64
+.*:[ 	]+[0-9a-f]+[ 	]+cm.jt[ 	]+65
 .*:[ 	]+[0-9a-f]+[ 	]+ret
 	...
 
