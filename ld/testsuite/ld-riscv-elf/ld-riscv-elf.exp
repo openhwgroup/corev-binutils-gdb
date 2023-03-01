@@ -176,6 +176,10 @@ if [istarget "riscv*-*-*"] {
     run_dump_test "cv-hwlp-endi"
     run_dump_test "cv-hwlp-setup"
     run_dump_test "cv-hwlp-setupi"
+    run_dump_test "cv-hwlp-setupi-fail"
+    run_dump_test "cv-hwlp-starti-fail"
+    run_dump_test "cv-hwlp-setupi-2"
+    run_dump_test "cv-hwlp-starti-2"
     run_dump_test "cv-bi-bneimm"
     run_dump_test "cv-bi-beqimm"
     run_ld_link_tests [list \
