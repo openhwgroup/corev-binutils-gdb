@@ -1634,12 +1634,24 @@ perform_relocation (const reloc_howto_type *howto,
 
     /* CORE-V Specific Relocations.  */
     case R_RISCV_CVPCREL_UI12:
-      value = ENCODE_ITYPE_IMM (value >> howto->rightshift);
-      break;
+      if (bfd_check_overflow (howto->complain_on_overflow, 12, 0,
+	    bfd_get_reloc_size (howto) * 8, value >> howto->rightshift)
+		     != bfd_reloc_overflow)
+      {
+        value = ENCODE_ITYPE_IMM (value >> howto->rightshift);
+        break;
+      }
+      return bfd_reloc_overflow;
 
     case R_RISCV_CVPCREL_URS1:
-      value = ENCODE_CV_HWLP_UIMM5 (value >> howto->rightshift);
-      break;
+      if (bfd_check_overflow (howto->complain_on_overflow, 5, 0,
+	    bfd_get_reloc_size (howto) * 8, value >> howto->rightshift)
+		     != bfd_reloc_overflow)
+      {
+	value = ENCODE_CV_HWLP_UIMM5 (value >> howto->rightshift);
+	break;
+      }
+      return bfd_reloc_overflow;
 
     case R_RISCV_LO12_I:
     case R_RISCV_GPREL_I:
