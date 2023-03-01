@@ -3582,9 +3582,9 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		      || reg_lookup (&asarg, RCLASS_GPR, &regno))
 		    as_bad(_("%s immediate value must be a constant or label"),
 			   ip->insn_mo->name);
-		  asarg = expr_end;
-		  if (imm_expr->X_op == O_constant)
+		  else if (imm_expr->X_op == O_constant)
 		    {
+		      asarg = expr_end;
 		      if (imm_expr->X_add_number < 0 ||
 			  ((imm_expr->X_add_number>>2) > 4095))
 			as_bad (_("%ld constant out of range for %s, range:[0, %d]"),
@@ -3600,7 +3600,10 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		      INSERT_OPERAND (IMM12, *ip, (imm_expr->X_add_number>>2));
 		    }
 		  else
+		  {
+		    asarg = expr_end;
 		    *imm_reloc = BFD_RELOC_RISCV_CVPCREL_UI12;
+		  }
 		}
 	      else if (oparg[1] == '2')
 		{
@@ -3610,9 +3613,9 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		      || reg_lookup (&asarg, RCLASS_GPR, &regno))
 		    as_bad(_("%s immediate value must be a constant or label"),
 			   ip->insn_mo->name);
-		  asarg = expr_end;
-		  if (imm_expr->X_op == O_constant)
+		  else if (imm_expr->X_op == O_constant)
 		    {
+		      asarg = expr_end;
 		      if (imm_expr->X_add_number < 0 ||
 			  ((imm_expr->X_add_number>>2) > 31))
 			as_bad (_("%ld constant out of range for cv.setupi, "
@@ -3627,7 +3630,11 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 			}
 		      INSERT_OPERAND (IMM5, *ip, (imm_expr->X_add_number>>2));
 		    }
-		  else *imm_reloc = BFD_RELOC_RISCV_CVPCREL_URS1;
+		  else
+		  {
+		    asarg = expr_end;
+		    *imm_reloc = BFD_RELOC_RISCV_CVPCREL_URS1;
+		  }
 		}
 	      else if (oparg[1] == '3')
 		{
@@ -4511,15 +4518,12 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
       if (fixP->fx_addsy)
 	{
 	  reloc_howto_type *howto;
-	  bfd_reloc_status_type r;
 
 	  /* Fill in a tentative value to improve objdump readability.  */
 	  howto = bfd_reloc_type_lookup (stdoutput, fixP->fx_r_type);
 	  bfd_vma target = S_GET_VALUE (fixP->fx_addsy) + *valP;
 	  bfd_vma delta = (target - md_pcrel_from (fixP)) >> howto->rightshift;
-	  r = bfd_check_overflow (howto->complain_on_overflow, 12, 0, 32, delta);
-	  if (r != bfd_reloc_overflow)
-	    bfd_putl32 (bfd_getl32 (buf) | ENCODE_ITYPE_IMM (delta), buf);
+	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_ITYPE_IMM (delta), buf);
 	}
       break;
 
@@ -4527,15 +4531,12 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
       if (fixP->fx_addsy)
 	{
 	  reloc_howto_type *howto;
-	  bfd_reloc_status_type r;
 
 	  /* Fill in a tentative value to improve objdump readability.  */
 	  howto = bfd_reloc_type_lookup (stdoutput, fixP->fx_r_type);
 	  bfd_vma target = S_GET_VALUE (fixP->fx_addsy) + *valP;
 	  bfd_vma delta = (target - md_pcrel_from (fixP)) >> howto->rightshift;
-	  r = bfd_check_overflow (howto->complain_on_overflow, 5, 0, 32, delta);
-	  if (r != bfd_reloc_overflow)
-	    bfd_putl32 (bfd_getl32 (buf) | ENCODE_CV_HWLP_UIMM5 (delta), buf);
+	  bfd_putl32 (bfd_getl32 (buf) | ENCODE_CV_HWLP_UIMM5 (delta), buf);
 	}
       break;
 
