@@ -5394,6 +5394,11 @@ _bfd_riscv_relax_section (bfd *abfd, asection *sec,
 	  if (!riscv_use_table_jump (info))
 	    return true;
 
+	  if (!(type == R_RISCV_CALL
+	      || type == R_RISCV_CALL_PLT
+	      || type == R_RISCV_JAL))
+	    continue;
+
 	  if (info->relax_trip == 0)
 	    {
 	      if (type == R_RISCV_CALL
