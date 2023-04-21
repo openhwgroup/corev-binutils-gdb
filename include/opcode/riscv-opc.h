@@ -2125,6 +2125,31 @@
 #define MASK_WRS_NTO 0xffffffff
 #define MATCH_WRS_STO 0x01d00073
 #define MASK_WRS_STO 0xffffffff
+/* Zcb instructions.  */
+#define MATCH_C_LBU 0x8000
+#define MASK_C_LBU 0xfc03
+#define MATCH_C_LHU 0x8400
+#define MASK_C_LHU 0xfc43
+#define MATCH_C_LH 0x8440
+#define MASK_C_LH 0xfc43
+#define MATCH_C_SB 0x8800
+#define MASK_C_SB 0xfc03
+#define MATCH_C_SH 0x8c00
+#define MASK_C_SH 0xfc43
+#define MATCH_C_ZEXT_B 0x9c61
+#define MASK_C_ZEXT_B 0xfc7f
+#define MATCH_C_SEXT_B 0x9c65
+#define MASK_C_SEXT_B 0xfc7f
+#define MATCH_C_ZEXT_H 0x9c69
+#define MASK_C_ZEXT_H 0xfc7f
+#define MATCH_C_SEXT_H 0x9c6d
+#define MASK_C_SEXT_H 0xfc7f
+#define MATCH_C_ZEXT_W 0x9c71
+#define MASK_C_ZEXT_W 0xfc7f
+#define MATCH_C_NOT 0x9c75
+#define MASK_C_NOT 0xfc7f
+#define MATCH_C_MUL 0x9c41
+#define MASK_C_MUL 0xfc63
 /* Vendor-specific (T-Head) XTheadBa instructions.  */
 #define MATCH_TH_ADDSL 0x0000100b
 #define MASK_TH_ADDSL 0xf800707f
@@ -3749,6 +3774,19 @@ DECLARE_INSN(cbo_zero, MATCH_CBO_ZERO, MASK_CBO_ZERO);
 /* Zawrs instructions.  */
 DECLARE_INSN(wrs_nto, MATCH_WRS_NTO, MASK_WRS_NTO)
 DECLARE_INSN(wrs_sto, MATCH_WRS_STO, MASK_WRS_STO)
+/* Zcb instructions.  */
+DECLARE_INSN(c_sext_b, MATCH_C_SEXT_B, MASK_C_SEXT_B)
+DECLARE_INSN(c_sext_h, MATCH_C_SEXT_H, MASK_C_SEXT_H)
+DECLARE_INSN(c_zext_b, MATCH_C_ZEXT_B, MASK_C_ZEXT_B)
+DECLARE_INSN(c_zext_h, MATCH_C_ZEXT_H, MASK_C_ZEXT_H)
+DECLARE_INSN(c_zext_w, MATCH_C_ZEXT_W, MASK_C_ZEXT_W)
+DECLARE_INSN(c_mul, MATCH_C_MUL, MASK_C_MUL)
+DECLARE_INSN(c_not, MATCH_C_NOT, MASK_C_NOT)
+DECLARE_INSN(c_lbu, MATCH_C_LBU, MASK_C_LBU)
+DECLARE_INSN(c_lhu, MATCH_C_LHU, MASK_C_LHU)
+DECLARE_INSN(c_lh, MATCH_C_LH, MASK_C_LH)
+DECLARE_INSN(c_sb, MATCH_C_SB, MASK_C_SB)
+DECLARE_INSN(c_sh, MATCH_C_SH, MASK_C_SH)
 /* Vendor-specific (T-Head) XTheadBa instructions.  */
 DECLARE_INSN(th_addsl, MATCH_TH_ADDSL, MASK_TH_ADDSL)
 /* Vendor-specific (T-Head) XTheadBb instructions.  */
