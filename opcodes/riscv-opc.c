@@ -347,6 +347,13 @@ match_th_load_pair(const struct riscv_opcode *op,
   return rd1 != rd2 && rd1 != rs && rd2 != rs && match_opcode (op, insn);
 }
 
+static int
+match_sreg1_not_eq_sreg2 (const struct riscv_opcode *op, insn_t insn)
+{
+  return match_opcode (op, insn)
+      && (EXTRACT_OPERAND (SREG1, insn) != EXTRACT_OPERAND (SREG2, insn));
+}
+
 /* The order of overloaded instructions matters.  Label arguments and
    register arguments look the same. Instructions that can have either
    for arguments must apear in the correct order in this table for the
@@ -3326,6 +3333,9 @@ const struct riscv_opcode riscv_opcodes[] =
 {"sf.vc.fvw",   0, INSN_CLASS_XSFVCP, "XsO1,Vd,Vt,S",  MATCH_SF_VC_FVW, MASK_SF_VC_FVW, match_opcode, 0 },
 {"sf.vc.v.fvw", 0, INSN_CLASS_XSFVCP, "XsO1,Vd,Vt,S",  MATCH_SF_VC_V_FVW, MASK_SF_VC_V_FVW, match_opcode, 0 },
 
+/* Zcmp instructions.  */
+{"cm.mva01s",  0,  INSN_CLASS_ZCMP, "CZ1,CZ2",    MATCH_CM_MVA01S, MASK_CM_MVA01S, match_opcode, 0 },
+{"cm.mvsa01",  0,  INSN_CLASS_ZCMP, "CZ1,CZ2",    MATCH_CM_MVSA01, MASK_CM_MVSA01, match_sreg1_not_eq_sreg2, 0 },
 /* Terminate the list.  */
 {0, 0, INSN_CLASS_NONE, 0, 0, 0, 0, 0}
 };
