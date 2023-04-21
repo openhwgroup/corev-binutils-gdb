@@ -1309,6 +1309,17 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 		  goto unknown_validate_operand;
 		}
 	      break;
+	    case 'Z': /* Zcb extension operators.  */
+	      switch (*++oparg)
+		{
+		/* byte immediate operators, load/store byte insns.  */
+		case 'h': used_bits |= ENCODE_ZCB_HALFWORD_UIMM (-1U); break;
+		/* halfword immediate operators, load/store halfword insns.  */
+		case 'b': used_bits |= ENCODE_ZCB_BYTE_UIMM (-1U); break;
+		default:
+		  goto unknown_validate_operand;
+		}
+	      break;
 	    default:
 	      goto unknown_validate_operand;
 	    }
@@ -1448,6 +1459,14 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	    {
 	      case '4': USE_BITS (OP_MASK_OP, OP_SH_OP); break;
 	      case '2': USE_BITS (OP_MASK_OP2, OP_SH_OP2); break;
+	      default:
+		goto unknown_validate_operand;
+	    }
+	  break;
+  case 'n': /* Zcb extension.  */
+	  switch (*++oparg)
+	    {
+	      case 'f': break;
 	      default:
 		goto unknown_validate_operand;
 	    }
@@ -2915,6 +2934,36 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		    }
 		  break;
 
+		case 'Z': /* Zcb extension.  */
+		  switch (*++oparg)
+		    {
+		    case 'h': /* immediate field for c.lh/c.lhu/c.sh.  */
+		      /* handle cases, such as c.sh rs2', (rs1') */
+		      if (riscv_handle_implicit_zero_offset (imm_expr, asarg))
+			continue;
+		      if (my_getSmallExpression (imm_expr, imm_reloc, asarg, p)
+			|| imm_expr->X_op != O_constant
+			|| !VALID_ZCB_HALFWORD_UIMM ((valueT) imm_expr->X_add_number))
+			  break;
+		      ip->insn_opcode |= ENCODE_ZCB_HALFWORD_UIMM (imm_expr->X_add_number);
+		      goto rvc_imm_done;
+
+		    case 'b': /* immediate field for c.lbu/c.sb.  */
+		      /* handle cases, such as c.lbu rd', (rs1') */
+		      if (riscv_handle_implicit_zero_offset (imm_expr, asarg))
+			continue;
+		      if (my_getSmallExpression (imm_expr, imm_reloc, asarg, p)
+			|| imm_expr->X_op != O_constant
+			|| !VALID_ZCB_BYTE_UIMM ((valueT) imm_expr->X_add_number))
+			break;
+		      ip->insn_opcode |= ENCODE_ZCB_BYTE_UIMM (imm_expr->X_add_number);
+		      goto rvc_imm_done;
+
+		    default:
+		      goto unknown_riscv_ip_operand;
+		    }
+		  break;
+
 		default:
 		  goto unknown_riscv_ip_operand;
 		}
@@ -3683,6 +3732,24 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 	      imm_expr->X_op = O_absent;
 	      asarg = expr_parse_end;
 	      continue;
+
+      case 'n':
+	      switch (*++oparg)
+		{
+		case 'f': /* operand for matching immediate 255.  */
+		  if (my_getSmallExpression (imm_expr, imm_reloc, asarg, p)
+		      || imm_expr->X_op != O_constant
+		      || imm_expr->X_add_number != 255)
+		    break;
+		  /* this operand is used for matching immediate 255, and
+		  we do not write anything to encoding by this operand. */
+		  asarg = expr_parse_end;
+		  imm_expr->X_op = O_absent;
+		  continue;
+		default:
+		  goto unknown_riscv_ip_operand;
+		}
+	      break;
 
 	    case 'X': /* Integer immediate.  */
 	      {

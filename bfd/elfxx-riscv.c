@@ -2436,6 +2436,17 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
 	      || riscv_subset_supports (rps, "zve64d")
 	      || riscv_subset_supports (rps, "zve64f")
 	      || riscv_subset_supports (rps, "zve32f"));
+    case INSN_CLASS_ZCB:
+      return riscv_subset_supports (rps, "zcb");
+    case INSN_CLASS_ZCB_AND_ZBB:
+      return riscv_subset_supports (rps, "zcb")
+	      && riscv_subset_supports (rps, "zbb");
+    case INSN_CLASS_ZCB_AND_ZBA:
+      return riscv_subset_supports (rps, "zcb")
+	      && riscv_subset_supports (rps, "zba");
+    case INSN_CLASS_ZCB_AND_ZMMUL:
+      return riscv_subset_supports (rps, "zcb")
+	      && riscv_subset_supports (rps, "zmmul");
     case INSN_CLASS_SVINVAL:
       return riscv_subset_supports (rps, "svinval");
     case INSN_CLASS_H:
@@ -2610,6 +2621,14 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return _("v' or `zve64x' or `zve32x");
     case INSN_CLASS_ZVEF:
       return _("v' or `zve64d' or `zve64f' or `zve32f");
+    case INSN_CLASS_ZCB:
+      return "zcb";
+    case INSN_CLASS_ZCB_AND_ZBA:
+      return _("zcb' and `zba");
+    case INSN_CLASS_ZCB_AND_ZBB:
+      return _("zcb' and `zbb");
+    case INSN_CLASS_ZCB_AND_ZMMUL:
+      return _("zcb' and `zmmul', or `zcb' and `m");
     case INSN_CLASS_SVINVAL:
       return "svinval";
     case INSN_CLASS_H:

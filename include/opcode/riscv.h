@@ -137,6 +137,12 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define EXTRACT_CV_BITMANIP_UIMM2(x) \
   (RV_X(x, 25, 2))
 
+/* Zcb extension.  */
+#define EXTRACT_ZCB_BYTE_UIMM(x) \
+  (RV_X(x, 6, 1) | (RV_X(x, 5, 1) << 1))
+#define EXTRACT_ZCB_HALFWORD_UIMM(x) \
+  (RV_X(x, 5, 1) << 1)
+
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
 #define ENCODE_STYPE_IMM(x) \
@@ -203,6 +209,12 @@ static inline unsigned int riscv_insn_length (insn_t insn)
   (RV_X(x, 0, 2) << 25)
 
 
+/* Zcb extenison.  */
+#define ENCODE_ZCB_BYTE_UIMM(x) \
+  ((RV_X(x, 0, 1) << 6) | (RV_X(x, 1, 1) << 5))
+#define ENCODE_ZCB_HALFWORD_UIMM(x) \
+  (RV_X(x, 1, 1) << 5)
+
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
 #define VALID_BTYPE_IMM(x) (EXTRACT_BTYPE_IMM(ENCODE_BTYPE_IMM(x)) == (x))
@@ -227,6 +239,10 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define VALID_CJTYPE_IMM(x) (EXTRACT_CJTYPE_IMM(ENCODE_CJTYPE_IMM(x)) == (x))
 #define VALID_RVV_VB_IMM(x) (EXTRACT_RVV_VB_IMM(ENCODE_RVV_VB_IMM(x)) == (x))
 #define VALID_RVV_VC_IMM(x) (EXTRACT_RVV_VC_IMM(ENCODE_RVV_VC_IMM(x)) == (x))
+
+/* Zcb extension.  */
+#define VALID_ZCB_BYTE_UIMM(x) (EXTRACT_ZCB_BYTE_UIMM(ENCODE_ZCB_BYTE_UIMM(x)) == (x))
+#define VALID_ZCB_HALFWORD_UIMM(x) (EXTRACT_ZCB_HALFWORD_UIMM(ENCODE_ZCB_HALFWORD_UIMM(x)) == (x))
 
 #define RISCV_RTYPE(insn, rd, rs1, rs2) \
   ((MATCH_ ## insn) | ((rd) << OP_SH_RD) | ((rs1) << OP_SH_RS1) | ((rs2) << OP_SH_RS2))
@@ -476,6 +492,10 @@ enum riscv_insn_class
   INSN_CLASS_ZICBOM,
   INSN_CLASS_ZICBOP,
   INSN_CLASS_ZICBOZ,
+  INSN_CLASS_ZCB,
+  INSN_CLASS_ZCB_AND_ZBA,
+  INSN_CLASS_ZCB_AND_ZBB,
+  INSN_CLASS_ZCB_AND_ZMMUL,
   INSN_CLASS_H,
   INSN_CLASS_XTHEADBA,
   INSN_CLASS_XTHEADBB,
