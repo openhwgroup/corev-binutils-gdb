@@ -135,6 +135,10 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define EXTRACT_CV_SIMD_UIMM6(x) \
   ((RV_X(x, 25, 1)) | (RV_X(x, 20, 5) << 1))
 
+/* Zcmp extension.  */
+#define EXTRACT_ZCMP_SPIMM(x) \
+  (RV_X(x, 2, 2) << 4)
+
 #define ENCODE_ITYPE_IMM(x) \
   (RV_X(x, 0, 12) << 20)
 #define ENCODE_STYPE_IMM(x) \
@@ -205,6 +209,10 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define ENCODE_CV_SIMD_UIMM6(x) \
   ((RV_X(x, 0, 1) << 25) | (RV_X(x, 1, 5) << 20))
 
+/* Zcmp extenison.  */
+#define ENCODE_ZCMP_SPIMM(x) \
+  (RV_X(x, 4, 2) << 2)
+
 #define VALID_ITYPE_IMM(x) (EXTRACT_ITYPE_IMM(ENCODE_ITYPE_IMM(x)) == (x))
 #define VALID_STYPE_IMM(x) (EXTRACT_STYPE_IMM(ENCODE_STYPE_IMM(x)) == (x))
 #define VALID_BTYPE_IMM(x) (EXTRACT_BTYPE_IMM(ENCODE_BTYPE_IMM(x)) == (x))
@@ -231,6 +239,9 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define VALID_RVV_VC_IMM(x) (EXTRACT_RVV_VC_IMM(ENCODE_RVV_VC_IMM(x)) == (x))
 #define VALID_ZCB_BYTE_UIMM(x) (EXTRACT_ZCB_BYTE_UIMM(ENCODE_ZCB_BYTE_UIMM(x)) == (x))
 #define VALID_ZCB_HALFWORD_UIMM(x) (EXTRACT_ZCB_HALFWORD_UIMM(ENCODE_ZCB_HALFWORD_UIMM(x)) == (x))
+
+/* Zcmp extension.  */
+#define VALID_ZCMP_SPIMM(x) (EXTRACT_ZCMP_SPIMM(ENCODE_ZCMP_SPIMM(x)) == (x))
 
 #define RISCV_RTYPE(insn, rd, rs1, rs2) \
   ((MATCH_ ## insn) | ((rd) << OP_SH_RD) | ((rs1) << OP_SH_RS1) | ((rs2) << OP_SH_RS2))
@@ -303,6 +314,10 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define OP_SH_IMM5              15
 #define OP_MASK_LN              0x1
 #define OP_SH_LN                7
+
+/* ZC Specific */
+#define OP_MASK_RLIST		0xf
+#define OP_SH_RLIST		4
 
 #define OP_MASK_CSR		0xfffU
 #define OP_SH_CSR		20
@@ -394,6 +409,11 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define X_T0 5
 #define X_T1 6
 #define X_T2 7
+#define X_S0 8
+#define X_S1 9
+#define X_S2 18
+#define X_S10 26
+#define X_S11 27
 #define X_T3 28
 
 #define NGPR 32
@@ -508,6 +528,7 @@ enum riscv_insn_class
   INSN_CLASS_ZICBOP,
   INSN_CLASS_ZICBOZ,
   INSN_CLASS_ZABHA,
+  INSN_CLASS_ZCMP,
   INSN_CLASS_H,
   INSN_CLASS_XCVMAC,
   INSN_CLASS_XCVALU,
