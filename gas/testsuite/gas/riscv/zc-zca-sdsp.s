@@ -1,0 +1,10 @@
+target:
+    c.sdsp x0, (x2)
+    c.sdsp x1, (x2)
+    c.sdsp x2, 8(x2)
+    c.sdsp x3, 16(x2)
+    c.sdsp x4, 32(x2)
+    c.sdsp x9, 40(x2)
+    c.sdsp x10, 64(x2)
+    c.sdsp x11, 128(x2)
+    c.sdsp x31, 504(x2)
