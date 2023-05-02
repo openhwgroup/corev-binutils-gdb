@@ -1,6 +1,7 @@
 .macro PADDIING_32_BYTES
 	.option push
-	.option norvc
+	.option arch, -zcmt
+	.option arch, -zca
 	nop
 	nop
 	nop
