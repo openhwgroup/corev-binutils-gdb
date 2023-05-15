@@ -7,6 +7,5 @@ target:
     cv.sra.sci.h x20, x20, 20
     cv.sra.sci.h x31, x31, 20
     #Immediate Values Test
-    cv.sra.sci.h x6, x7, -32
     cv.sra.sci.h x6, x7, 0
-    cv.sra.sci.h x6, x7, 31
+    cv.sra.sci.h x6, x7, 63

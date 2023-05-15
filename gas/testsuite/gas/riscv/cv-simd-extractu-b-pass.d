@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	b8a4347b          	cv.extractu.b	s0,s0,20
   10:	b8aa3a7b          	cv.extractu.b	s4,s4,20
   14:	b8afbffb          	cv.extractu.b	t6,t6,20
-  18:	b903b37b          	cv.extractu.b	t1,t2,-32
-  1c:	b803b37b          	cv.extractu.b	t1,t2,0
-  20:	baf3b37b          	cv.extractu.b	t1,t2,31
+  18:	b803b37b          	cv.extractu.b	t1,t2,0
+  1c:	bbf3b37b          	cv.extractu.b	t1,t2,63
