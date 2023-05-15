@@ -7,6 +7,5 @@ target:
     cv.extractu.h x20, x20, 20
     cv.extractu.h x31, x31, 20
     #Immediate Values Test
-    cv.extractu.h x6, x7, -32
     cv.extractu.h x6, x7, 0
-    cv.extractu.h x6, x7, 31
+    cv.extractu.h x6, x7, 63

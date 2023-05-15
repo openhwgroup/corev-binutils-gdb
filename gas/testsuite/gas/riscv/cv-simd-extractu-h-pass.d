@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	b8a4247b          	cv.extractu.h	s0,s0,20
   10:	b8aa2a7b          	cv.extractu.h	s4,s4,20
   14:	b8afaffb          	cv.extractu.h	t6,t6,20
-  18:	b903a37b          	cv.extractu.h	t1,t2,-32
-  1c:	b803a37b          	cv.extractu.h	t1,t2,0
-  20:	baf3a37b          	cv.extractu.h	t1,t2,31
+  18:	b803a37b          	cv.extractu.h	t1,t2,0
+  1c:	bbf3a37b          	cv.extractu.h	t1,t2,63

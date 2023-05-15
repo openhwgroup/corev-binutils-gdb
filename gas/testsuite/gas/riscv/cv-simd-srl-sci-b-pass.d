@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	40a4747b          	cv.srl.sci.b	s0,s0,20
   10:	40aa7a7b          	cv.srl.sci.b	s4,s4,20
   14:	40affffb          	cv.srl.sci.b	t6,t6,20
-  18:	4103f37b          	cv.srl.sci.b	t1,t2,-32
-  1c:	4003f37b          	cv.srl.sci.b	t1,t2,0
-  20:	42f3f37b          	cv.srl.sci.b	t1,t2,31
+  18:	4003f37b          	cv.srl.sci.b	t1,t2,0
+  1c:	43f3f37b          	cv.srl.sci.b	t1,t2,63

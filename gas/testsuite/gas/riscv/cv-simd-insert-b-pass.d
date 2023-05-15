@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	b8a4547b          	cv.insert.b	s0,s0,20
   10:	b8aa5a7b          	cv.insert.b	s4,s4,20
   14:	b8afdffb          	cv.insert.b	t6,t6,20
-  18:	b903d37b          	cv.insert.b	t1,t2,-32
-  1c:	b803d37b          	cv.insert.b	t1,t2,0
-  20:	baf3d37b          	cv.insert.b	t1,t2,31
+  18:	b803d37b          	cv.insert.b	t1,t2,0
+  1c:	bbf3d37b          	cv.insert.b	t1,t2,63

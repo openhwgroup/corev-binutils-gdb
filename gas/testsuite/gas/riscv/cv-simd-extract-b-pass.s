@@ -7,6 +7,5 @@ target:
     cv.extract.b x20, x20, 20
     cv.extract.b x31, x31, 20
     #Immediate Values Test
-    cv.extract.b x6, x7, -32
     cv.extract.b x6, x7, 0
-    cv.extract.b x6, x7, 31
+    cv.extract.b x6, x7, 63

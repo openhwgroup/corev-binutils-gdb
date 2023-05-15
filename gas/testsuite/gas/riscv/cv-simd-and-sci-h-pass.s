@@ -7,6 +7,5 @@ target:
     cv.and.sci.h x20, x20, 20
     cv.and.sci.h x31, x31, 20
     #Immediate Values Test
-    cv.and.sci.h x6, x7, -32
     cv.and.sci.h x6, x7, 0
-    cv.and.sci.h x6, x7, 31
+    cv.and.sci.h x6, x7, 63

@@ -7,6 +7,5 @@ target:
     cv.sll.sci.b x20, x20, 20
     cv.sll.sci.b x31, x31, 20
     #Immediate Values Test
-    cv.sll.sci.b x6, x7, -32
     cv.sll.sci.b x6, x7, 0
-    cv.sll.sci.b x6, x7, 31
+    cv.sll.sci.b x6, x7, 63

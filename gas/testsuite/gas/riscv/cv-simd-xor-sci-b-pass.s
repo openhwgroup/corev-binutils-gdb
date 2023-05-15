@@ -7,6 +7,5 @@ target:
     cv.xor.sci.b x20, x20, 20
     cv.xor.sci.b x31, x31, 20
     #Immediate Values Test
-    cv.xor.sci.b x6, x7, -32
     cv.xor.sci.b x6, x7, 0
-    cv.xor.sci.b x6, x7, 31
+    cv.xor.sci.b x6, x7, 63
