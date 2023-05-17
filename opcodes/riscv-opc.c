@@ -132,6 +132,7 @@ const char * const riscv_vma[2] =
 #define MASK_RD (OP_MASK_RD << OP_SH_RD)
 #define MASK_CRS2 (OP_MASK_CRS2 << OP_SH_CRS2)
 #define MASK_IMM ENCODE_ITYPE_IMM (-1U)
+#define MASK_CV_MAC_UIMM5 ENCODE_CV_MAC_UIMM5 (-1U)
 #define MASK_RVC_IMM ENCODE_CITYPE_IMM (-1U)
 #define MASK_UIMM ENCODE_UTYPE_IMM (-1U)
 #define MASK_RM (OP_MASK_RM << OP_SH_RM)
@@ -2050,17 +2051,19 @@ const struct riscv_opcode riscv_opcodes[] =
 /* Multiply accumulate */
 {"cv.mac",      0, INSN_CLASS_CV_MAC, "d,s,t",	MATCH_CV_MAC,		MASK_CV_MACMSU,	 match_opcode, 0},
 {"cv.msu",      0, INSN_CLASS_CV_MAC, "d,s,t",	MATCH_CV_MSU,		MASK_CV_MACMSU,	 match_opcode, 0},
-{"cv.muls",     0, INSN_CLASS_CV_MAC, "d,s,t",	MATCH_CV_MULS,		MASK_CV_MULSH,	 match_opcode, 0},
-{"cv.mulhhs",   0, INSN_CLASS_CV_MAC, "d,s,t",	MATCH_CV_MULHHS,	MASK_CV_MULSH,	 match_opcode, 0},
+
+
 {"cv.mulsn",    0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULSN,		MASK_CV_MULMACN, match_opcode, 0},
-{"cv.mulhhsn",  0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULHHSN,	MASK_CV_MULMACN, match_opcode, 0},
+{"cv.muls",     0, INSN_CLASS_CV_MAC, "d,s,t",		MATCH_CV_MULSN,		MASK_CV_MULMACN|MASK_CV_MAC_UIMM5,	 match_opcode, INSN_ALIAS},
 {"cv.mulsrn",   0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULSRN,	MASK_CV_MULMACN, match_opcode, 0},
+{"cv.mulhhsn",  0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULHHSN,	MASK_CV_MULMACN, match_opcode, 0},
+{"cv.mulhhs",   0, INSN_CLASS_CV_MAC, "d,s,t",		MATCH_CV_MULHHSN,	MASK_CV_MULMACN|MASK_CV_MAC_UIMM5,	 match_opcode, INSN_ALIAS},
 {"cv.mulhhsrn", 0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULHHSRN,	MASK_CV_MULMACN, match_opcode, 0},
-{"cv.mulu",     0, INSN_CLASS_CV_MAC, "d,s,t",	MATCH_CV_MULU,		MASK_CV_MULSH,	 match_opcode, 0},
-{"cv.mulhhu",   0, INSN_CLASS_CV_MAC, "d,s,t",	MATCH_CV_MULHHU,	MASK_CV_MULSH,	 match_opcode, 0},
 {"cv.mulun",    0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULUN,		MASK_CV_MULMACN, match_opcode, 0},
-{"cv.mulhhun",  0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULHHUN,	MASK_CV_MULMACN, match_opcode, 0},
+{"cv.mulu",     0, INSN_CLASS_CV_MAC, "d,s,t",		MATCH_CV_MULUN,		MASK_CV_MULMACN|MASK_CV_MAC_UIMM5,	 match_opcode, INSN_ALIAS},
 {"cv.mulurn",   0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULURN,	MASK_CV_MULMACN, match_opcode, 0},
+{"cv.mulhhun",  0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULHHUN,	MASK_CV_MULMACN, match_opcode, 0},
+{"cv.mulhhu",   0, INSN_CLASS_CV_MAC, "d,s,t",		MATCH_CV_MULHHUN,	MASK_CV_MULMACN|MASK_CV_MAC_UIMM5,	 match_opcode, INSN_ALIAS},
 {"cv.mulhhurn", 0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MULHHURN,	MASK_CV_MULMACN, match_opcode, 0},
 {"cv.macsn",    0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MACSN,		MASK_CV_MULMACN, match_opcode, 0},
 {"cv.machhsn",  0, INSN_CLASS_CV_MAC, "d,s,t,b3",	MATCH_CV_MACHHSN,	MASK_CV_MULMACN, match_opcode, 0},
