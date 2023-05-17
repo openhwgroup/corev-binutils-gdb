@@ -2854,13 +2854,6 @@
 
 #define MASK_CV_MACMSU     0xfe00707f
 
-#define MATCH_CV_MULS      0x8000005b
-#define MATCH_CV_MULHHS    0xc000005b
-#define MATCH_CV_MULU      0x5b
-#define MATCH_CV_MULHHU    0x4000005b
-
-#define MASK_CV_MULSH      0xfe00707f
-
 #define MATCH_CV_MULSN     0x405b
 #define MATCH_CV_MULHHSN   0x4000405b
 #define MATCH_CV_MULSRN    0x8000405b
