@@ -1,6 +1,6 @@
 #name: bneimm relocation
 #source: cv-bi-bneimm.s
-#as: -march=rv32i_xcvbi1p0
+#as: -march=rv32i_xcvbi
 #ld: -melf32lriscv
 #objdump: -dr
 

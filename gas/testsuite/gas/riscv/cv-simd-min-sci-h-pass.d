@@ -1,4 +1,4 @@
-#as: -march=rv32i_xcvsimd1p0
+#as: -march=rv32i_xcvsimd
 #source: cv-simd-min-sci-h-pass.s
 #objdump: -d
 
