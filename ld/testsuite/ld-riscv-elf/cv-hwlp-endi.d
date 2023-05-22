@@ -1,6 +1,6 @@
 #name: endi relocation
 #source: cv-hwlp-endi.s
-#as: -march=rv32i_xcvhwlp1p0
+#as: -march=rv32i_xcvhwlp
 #ld: -melf32lriscv
 #objdump: -dr
 

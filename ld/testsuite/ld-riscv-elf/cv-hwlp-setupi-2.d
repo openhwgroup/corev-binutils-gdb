@@ -1,4 +1,4 @@
-#as: -march=rv32ixcvhwlp1p0
+#as: -march=rv32ixcvhwlp
 #ld: -melf32lriscv
 #objdump: -dr
 

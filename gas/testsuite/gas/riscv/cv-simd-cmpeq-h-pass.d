@@ -1,4 +1,4 @@
-#as: -march=rv32i_xcvsimd1p0
+#as: -march=rv32i_xcvsimd
 #source: cv-simd-cmpeq-h-pass.s
 #objdump: -d
 

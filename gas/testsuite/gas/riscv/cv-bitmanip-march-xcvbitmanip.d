@@ -1,4 +1,4 @@
-#as: -march=rv32i_xcvbitmanip1p0
+#as: -march=rv32i_xcvbitmanip
 #source: cv-bitmanip-march-xcvbitmanip.s
 #objdump: -d
 

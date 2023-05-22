@@ -1,5 +1,4 @@
-#as: -march=rv32i_xcvsimd1p0
-#source: cv-simd-add-h-pass.s
+#as: -march=rv32i_xcvsimd
 #objdump: -d
 
 .*:[ 	]+file format .*

@@ -1317,6 +1317,14 @@ static struct riscv_supported_ext riscv_supported_vendor_x_ext[] =
   {"xtheadmemidx",	ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
   {"xtheadmempair",	ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
   {"xtheadsync",	ISA_SPEC_CLASS_DRAFT,	1, 0, 0 },
+  {"xcvhwlp",		ISA_SPEC_CLASS_DRAFT,	1, 0,  0 },
+  {"xcvmac",		ISA_SPEC_CLASS_DRAFT,	1, 0,  0 },
+  {"xcvalu",		ISA_SPEC_CLASS_DRAFT,	1, 0,  0 },
+  {"xcvmem",		ISA_SPEC_CLASS_DRAFT,	1, 0,  0 },
+  {"xcvbi",		ISA_SPEC_CLASS_DRAFT,	1, 0,  0 },
+  {"xcvelw",		ISA_SPEC_CLASS_DRAFT,	1, 0,  0 },
+  {"xcvsimd",		ISA_SPEC_CLASS_DRAFT,	1, 0,  0 },
+  {"xcvbitmanip",	ISA_SPEC_CLASS_DRAFT,	1, 0,  0 },
   {NULL, 0, 0, 0, 0}
 };
 

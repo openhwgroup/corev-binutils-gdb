@@ -1,4 +1,4 @@
-#as: -march=rv32i_xcvsimd1p0
+#as: -march=rv32i_xcvsimd
 #source: cv-simd-sdotsp-sc-b-pass.s
 #objdump: -d
 
