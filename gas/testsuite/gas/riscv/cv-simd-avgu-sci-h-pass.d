@@ -14,6 +14,5 @@ Disassembly of section .text:
    c:	18a4647b          	cv.avgu.sci.h	s0,s0,20
   10:	18aa6a7b          	cv.avgu.sci.h	s4,s4,20
   14:	18afeffb          	cv.avgu.sci.h	t6,t6,20
-  18:	1903e37b          	cv.avgu.sci.h	t1,t2,-32
-  1c:	1803e37b          	cv.avgu.sci.h	t1,t2,0
-  20:	1af3e37b          	cv.avgu.sci.h	t1,t2,31
+  18:	1803e37b          	cv.avgu.sci.h	t1,t2,0
+  1c:	1bf3e37b          	cv.avgu.sci.h	t1,t2,63

@@ -14,5 +14,6 @@ Disassembly of section .text:
    c:	58a4747b          	cv.or.sci.b	s0,s0,20
   10:	58aa7a7b          	cv.or.sci.b	s4,s4,20
   14:	58affffb          	cv.or.sci.b	t6,t6,20
-  18:	5803f37b          	cv.or.sci.b	t1,t2,0
-  1c:	5bf3f37b          	cv.or.sci.b	t1,t2,63
+  18:	5903f37b          	cv.or.sci.b	t1,t2,-32
+  1c:	5803f37b          	cv.or.sci.b	t1,t2,0
+  20:	5af3f37b          	cv.or.sci.b	t1,t2,31
