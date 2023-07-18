@@ -7,6 +7,5 @@ target:
     cv.avgu.sci.h x20, x20, 20
     cv.avgu.sci.h x31, x31, 20
     #Immediate Values Test
-    cv.avgu.sci.h x6, x7, -32
     cv.avgu.sci.h x6, x7, 0
-    cv.avgu.sci.h x6, x7, 31
+    cv.avgu.sci.h x6, x7, 63

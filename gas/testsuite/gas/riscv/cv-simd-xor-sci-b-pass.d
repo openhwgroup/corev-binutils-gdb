@@ -14,5 +14,6 @@ Disassembly of section .text:
    c:	60a4747b          	cv.xor.sci.b	s0,s0,20
   10:	60aa7a7b          	cv.xor.sci.b	s4,s4,20
   14:	60affffb          	cv.xor.sci.b	t6,t6,20
-  18:	6003f37b          	cv.xor.sci.b	t1,t2,0
-  1c:	63f3f37b          	cv.xor.sci.b	t1,t2,63
+  18:	6103f37b          	cv.xor.sci.b	t1,t2,-32
+  1c:	6003f37b          	cv.xor.sci.b	t1,t2,0
+  20:	62f3f37b          	cv.xor.sci.b	t1,t2,31
