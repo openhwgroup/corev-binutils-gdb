@@ -1,4 +1,4 @@
 target:
-	cv.sw t1, -2048(t4!)
-	cv.sw t3, 100(t5!)
-	cv.sw t1, 2047(t2!)
+	cv.sw t1, (t4), -2048
+	cv.sw t3, (t5), 100
+	cv.sw t1, (t2), 2047

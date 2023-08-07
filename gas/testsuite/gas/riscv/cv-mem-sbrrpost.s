@@ -1,4 +1,4 @@
 target:
-	cv.sb t0, t1(t2!)
-	cv.sb t4, t3(t1!)
-	cv.sb t3, t0(t5!)
+	cv.sb t0, (t2), t1
+	cv.sb t4, (t1), t3
+	cv.sb t3, (t5), t0
