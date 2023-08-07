@@ -1,4 +1,4 @@
 target:
-	cv.sh t3, -2048(t5!)
-	cv.sh t1, 60(t6!)
-	cv.sh t2, 2047(t4!)
+	cv.sh t3, (t5), -2048
+	cv.sh t1, (t6), 60
+	cv.sh t2, (t4), 2047

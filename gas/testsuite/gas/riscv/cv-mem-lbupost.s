@@ -1,4 +1,4 @@
 target:
-	cv.lbu t0, -2048(t2!)
-	cv.lbu t4, 15(t1!)
-	cv.lbu t3, 2047(t5!)
+	cv.lbu t0, (t2), -2048
+	cv.lbu t4, (t1), 15
+	cv.lbu t3, (t5), 2047
