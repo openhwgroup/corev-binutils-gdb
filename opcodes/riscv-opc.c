@@ -316,6 +316,7 @@ match_th_load_pair(const struct riscv_opcode *op,
   return rd1 != rd2 && rd1 != rs && rd2 != rs && match_opcode (op, insn);
 }
 
+static int
 match_sreg1_not_eq_sreg2 (const struct riscv_opcode *op, insn_t insn)
 {
   return match_opcode (op, insn)
