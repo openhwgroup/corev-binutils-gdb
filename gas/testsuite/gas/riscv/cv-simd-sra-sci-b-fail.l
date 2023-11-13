@@ -1,5 +1,5 @@
 .*: Assembler messages:
-.*: Error: illegal operands `cv.sra.sci.b x32,x32,20'
-.*: Error: illegal operands `cv.sra.sci.b x33,x33,20'
-.*: Error: immediate value must be 6-bit unsigned, -1 is out of range
-.*: Error: immediate value must be 6-bit unsigned, 64 is out of range
+.*: Error: illegal operands `cv.sra.sci.b x32,x32,4'
+.*: Error: illegal operands `cv.sra.sci.b x33,x33,4'
+.*: Error: immediate value must be 3-bit unsigned, -1 is out of range
+.*: Error: immediate value must be 3-bit unsigned, 8 is out of range

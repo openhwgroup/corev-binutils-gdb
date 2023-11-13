@@ -8,11 +8,11 @@
 Disassembly of section .text:
 
 0+000 <target>:
-   0:	50a0607b          	cv.sll.sci.h	zero,zero,20
-   4:	50a0e0fb          	cv.sll.sci.h	ra,ra,20
-   8:	50a1617b          	cv.sll.sci.h	sp,sp,20
-   c:	50a4647b          	cv.sll.sci.h	s0,s0,20
-  10:	50aa6a7b          	cv.sll.sci.h	s4,s4,20
-  14:	50afeffb          	cv.sll.sci.h	t6,t6,20
+   0:	5060607b          	cv.sll.sci.h	zero,zero,12
+   4:	5060e0fb          	cv.sll.sci.h	ra,ra,12
+   8:	5061617b          	cv.sll.sci.h	sp,sp,12
+   c:	5064647b          	cv.sll.sci.h	s0,s0,12
+  10:	506a6a7b          	cv.sll.sci.h	s4,s4,12
+  14:	506feffb          	cv.sll.sci.h	t6,t6,12
   18:	5003e37b          	cv.sll.sci.h	t1,t2,0
-  1c:	53f3e37b          	cv.sll.sci.h	t1,t2,63
+  1c:	5273e37b          	cv.sll.sci.h	t1,t2,15

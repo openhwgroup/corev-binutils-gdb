@@ -51,20 +51,20 @@ target:
     cv.srl.b x5, x6, x7
     cv.srl.sc.h x5, x6, x7
     cv.srl.sc.b x5, x6, x7
-    cv.srl.sci.h x6, x7, 20
-    cv.srl.sci.b x6, x7, 20
+    cv.srl.sci.h x6, x7, 12
+    cv.srl.sci.b x6, x7, 4
     cv.sra.h x5, x6, x7
     cv.sra.b x5, x6, x7
     cv.sra.sc.h x5, x6, x7
     cv.sra.sc.b x5, x6, x7
-    cv.sra.sci.h x6, x7, 20
-    cv.sra.sci.b x6, x7, 20
+    cv.sra.sci.h x6, x7, 12
+    cv.sra.sci.b x6, x7, 4
     cv.sll.h x5, x6, x7
     cv.sll.b x5, x6, x7
     cv.sll.sc.h x5, x6, x7
     cv.sll.sc.b x5, x6, x7
-    cv.sll.sci.h x6, x7, 20
-    cv.sll.sci.b x6, x7, 20
+    cv.sll.sci.h x6, x7, 12
+    cv.sll.sci.b x6, x7, 4
     cv.or.h x5, x6, x7
     cv.or.b x5, x6, x7
     cv.or.sc.h x5, x6, x7
@@ -121,12 +121,12 @@ target:
     cv.sdotsp.sc.b x5, x6, x7
     cv.sdotsp.sci.h x6, x7, 20
     cv.sdotsp.sci.b x6, x7, 20
-    cv.extract.h x6, x7, 20
-    cv.extract.b x6, x7, 20
-    cv.extractu.h x6, x7, 20
-    cv.extractu.b x6, x7, 20
-    cv.insert.h x6, x7, 20
-    cv.insert.b x6, x7, 20
+    cv.extract.h x6, x7, 1
+    cv.extract.b x6, x7, 2
+    cv.extractu.h x6, x7, 1
+    cv.extractu.b x6, x7, 2
+    cv.insert.h x6, x7, 1
+    cv.insert.b x6, x7, 2
     cv.shuffle.h x5, x6, x7
     cv.shuffle.b x5, x6, x7
     cv.shuffle.sci.h x6, x7, 20
