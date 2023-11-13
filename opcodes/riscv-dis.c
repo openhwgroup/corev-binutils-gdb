@@ -552,6 +552,7 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 	   else if (oparg[1] == '8')
 	    {
 	      print (info->stream, dis_style_immediate, "%d", ((int) EXTRACT_CV_SIMD_UIMM6 (l)));
+	      if (oparg[2] == '1' || oparg[2] == '2' || oparg[2] == '3' || oparg[2] == '4') ++oparg;
 	      ++oparg;
 	      break;
 	    }

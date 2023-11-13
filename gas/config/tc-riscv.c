@@ -1611,6 +1611,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	  else if (oparg[1] == '8')
 	    {
 	      used_bits |= ENCODE_CV_SIMD_UIMM6(-1U);
+	      if (oparg[2] == '1' || oparg[2] == '2' || oparg[2] == '3' || oparg[2] == '4') ++oparg;
 	      ++oparg; break;
 	    }
 	  break;
@@ -3982,13 +3983,47 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		}
 	      else if (oparg[1] == '8')
 		// b8: uimm6 bits unsigned immediate bits
+		// b81: Imm6[0]
+		// b83: Imm6[2:0]
+		// b84: Imm6[3:0]
 		{
 		  my_getExpression (imm_expr, asarg);
 		  check_absolute_expr (ip, imm_expr, FALSE);
 		  asarg = expr_parse_end;
-		  if (imm_expr->X_add_number<0 || imm_expr->X_add_number>63)
-		  as_bad(_("immediate value must be 6-bit unsigned, %ld is out of range"),
-		  imm_expr->X_add_number);
+		  if (oparg[2] == '1')
+		  {
+		    if (imm_expr->X_add_number<0 || imm_expr->X_add_number>1)
+		    as_bad(_("immediate value must be 1-bit unsigned, %ld is out of range"),
+		    imm_expr->X_add_number);
+		    ++oparg;
+		  }
+		  else if (oparg[2] == '2')
+		  {
+		    if (imm_expr->X_add_number<0 || imm_expr->X_add_number>3)
+		    as_bad(_("immediate value must be 2-bit unsigned, %ld is out of range"),
+		    imm_expr->X_add_number);
+		    ++oparg;
+		  }
+		  else if (oparg[2] == '3')
+		  {
+		    if (imm_expr->X_add_number<0 || imm_expr->X_add_number>7)
+		    as_bad(_("immediate value must be 3-bit unsigned, %ld is out of range"),
+		    imm_expr->X_add_number);
+		    ++oparg;
+		  }
+		  else if (oparg[2] == '4')
+		  {
+		    if (imm_expr->X_add_number<0 || imm_expr->X_add_number>15)
+		    as_bad(_("immediate value must be 4-bit unsigned, %ld is out of range"),
+		    imm_expr->X_add_number);
+		    ++oparg;
+		  }
+		  else
+		  {
+		    if (imm_expr->X_add_number<0 || imm_expr->X_add_number>63)
+		    as_bad(_("immediate value must be 6-bit unsigned, %ld is out of range"),
+		    imm_expr->X_add_number);
+		  }
 		  ip->insn_opcode |= ENCODE_CV_SIMD_UIMM6 (imm_expr->X_add_number);
 		  ++oparg;
 		}
