@@ -1,4 +1,17 @@
-		   README for GNU development tools
+# CORE-V Binutils Development
+
+NOTE: This is NOT the official Binutils repository.
+
+This is the repository for CORE-V Binutils development prior to submitting
+for inclusion upstream. It has only one branch:
+
+1. development - this is where the active development continues.
+This branch tracks upstream Binutils and incorporates changes for
+CORE-V. It should always compile and pass tests.
+
+See https://github.com/openhwgroup/core-v-sw/tree/master/projects/gnu-tools/2023 for latest report.
+
+# Binutils Infrastructure
 
 This directory contains various GNU compilers, assemblers, linkers, 
 debuggers, etc., plus their support routines, definitions, and documentation.
