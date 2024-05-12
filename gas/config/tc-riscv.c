@@ -4027,6 +4027,10 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		    if (imm_expr->X_add_number<0 || imm_expr->X_add_number>63)
 		    as_bad(_("immediate value must be 6-bit unsigned, %ld is out of range"),
 		    imm_expr->X_add_number);
+        	    else if ((ip->insn_mo->match == MATCH_CV_SHUFFLE_SCI_H) &&
+            		(imm_expr)->X_add_number > 3)
+        	    as_bad(_("immediate value's high four bits for cv.shuffle.sci.h must be"
+              	    "0, %ld is out of range"), imm_expr->X_add_number);
 		  }
 		  ip->insn_opcode |= ENCODE_CV_SIMD_UIMM6 (imm_expr->X_add_number);
 		  ++oparg;

@@ -3,3 +3,6 @@
 .*: Error: illegal operands `cv.shuffle.sci.h x33,x33,20'
 .*: Error: immediate value must be 6-bit unsigned, -1 is out of range
 .*: Error: immediate value must be 6-bit unsigned, 64 is out of range
+.*: Error: immediate value's high four bits for cv.shuffle.sci.h must be 0, 4 is out of range
+.*: Error: immediate value's high four bits for cv.shuffle.sci.h must be 0, 5 is out of range
+.*: Error: immediate value's high four bits for cv.shuffle.sci.h must be 0, 63 is out of range
