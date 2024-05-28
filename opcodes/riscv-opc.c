@@ -2388,7 +2388,7 @@ const struct riscv_opcode riscv_opcodes[] =
 {"cv.insert.b",           0, INSN_CLASS_XCVSIMD, "d,s,b82", MATCH_CV_INSERT_B, MASK_CV_INSERT_B, match_opcode, 0},
 {"cv.shuffle.h",          0, INSN_CLASS_XCVSIMD, "d,s,t", MATCH_CV_SHUFFLE_H, MASK_CV_SHUFFLE_H, match_opcode, 0},
 {"cv.shuffle.b",          0, INSN_CLASS_XCVSIMD, "d,s,t", MATCH_CV_SHUFFLE_B, MASK_CV_SHUFFLE_B, match_opcode, 0},
-{"cv.shuffle.sci.h",      0, INSN_CLASS_XCVSIMD, "d,s,b8", MATCH_CV_SHUFFLE_SCI_H, MASK_CV_SHUFFLE_SCI_H, match_opcode, 0},
+{"cv.shuffle.sci.h",      0, INSN_CLASS_XCVSIMD, "d,s,b82", MATCH_CV_SHUFFLE_SCI_H, MASK_CV_SHUFFLE_SCI_H, match_opcode, 0},
 {"cv.shufflei0.sci.b",    0, INSN_CLASS_XCVSIMD, "d,s,b8", MATCH_CV_SHUFFLEI0_SCI_B, MASK_CV_SHUFFLEI0_SCI_B, match_opcode, 0},
 {"cv.shufflei1.sci.b",    0, INSN_CLASS_XCVSIMD, "d,s,b8", MATCH_CV_SHUFFLEI1_SCI_B, MASK_CV_SHUFFLEI1_SCI_B, match_opcode, 0},
 {"cv.shufflei2.sci.b",    0, INSN_CLASS_XCVSIMD, "d,s,b8", MATCH_CV_SHUFFLEI2_SCI_B, MASK_CV_SHUFFLEI2_SCI_B, match_opcode, 0},

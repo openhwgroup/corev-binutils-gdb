@@ -129,7 +129,7 @@
 .*: Error: unrecognized opcode `cv.insert.b x6,x7,20', extension `xcvsimd' required
 .*: Error: unrecognized opcode `cv.shuffle.h x5,x6,x7', extension `xcvsimd' required
 .*: Error: unrecognized opcode `cv.shuffle.b x5,x6,x7', extension `xcvsimd' required
-.*: Error: unrecognized opcode `cv.shuffle.sci.h x6,x7,20', extension `xcvsimd' required
+.*: Error: unrecognized opcode `cv.shuffle.sci.h x6,x7,2', extension `xcvsimd' required
 .*: Error: unrecognized opcode `cv.shufflei0.sci.b x6,x7,20', extension `xcvsimd' required
 .*: Error: unrecognized opcode `cv.shufflei1.sci.b x6,x7,20', extension `xcvsimd' required
 .*: Error: unrecognized opcode `cv.shufflei2.sci.b x6,x7,20', extension `xcvsimd' required

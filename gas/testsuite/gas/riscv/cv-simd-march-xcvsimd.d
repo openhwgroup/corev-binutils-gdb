@@ -138,7 +138,7 @@ Disassembly of section .text:
 [  ]+1fc:[ 	]+b813d37b[ 	]+cv.insert.b	t1,t2,2
 [  ]+200:[ 	]+c07302fb[ 	]+cv.shuffle.h	t0,t1,t2
 [  ]+204:[ 	]+c07312fb[ 	]+cv.shuffle.b	t0,t1,t2
-[  ]+208:[ 	]+c0a3e37b[ 	]+cv.shuffle.sci.h	t1,t2,20
+[  ]+208:[ 	]+c013e37b[ 	]+cv.shuffle.sci.h	t1,t2,2
 [  ]+20c:[ 	]+c0a3f37b[ 	]+cv.shufflei0.sci.b	t1,t2,20
 [  ]+210:[ 	]+c8a3f37b[ 	]+cv.shufflei1.sci.b	t1,t2,20
 [  ]+214:[ 	]+d0a3f37b[ 	]+cv.shufflei2.sci.b	t1,t2,20

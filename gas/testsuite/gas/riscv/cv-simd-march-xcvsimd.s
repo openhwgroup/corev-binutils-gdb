@@ -129,7 +129,7 @@ target:
     cv.insert.b x6, x7, 2
     cv.shuffle.h x5, x6, x7
     cv.shuffle.b x5, x6, x7
-    cv.shuffle.sci.h x6, x7, 20
+    cv.shuffle.sci.h x6, x7, 2
     cv.shufflei0.sci.b x6, x7, 20
     cv.shufflei1.sci.b x6, x7, 20
     cv.shufflei2.sci.b x6, x7, 20
